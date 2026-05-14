@@ -98,7 +98,7 @@
 					</article>
 				</section>
 
-								<section class="post cta-section cta-dark" aria-labelledby="cost-cta-title">
+								<section class="post cta-section cta-light" aria-labelledby="cost-cta-title">
 					<div class="cta-copy">
 						<span class="date">Расчет проекта</span>
 						<h2 id="cost-cta-title">Получить расчет стоимости бассейна</h2>
@@ -180,23 +180,6 @@
 					<ul class="actions special">
 						<li><a href="#contact" class="button primary large scrolly">Запланировать консультацию</a></li>
 					</ul>
-				</section>
-
-				<section id="seo-pages" class="post about-section" aria-labelledby="seo-pages-title">
-					<div class="about-copy">
-						<header>
-							<span class="date">SEO структура</span>
-							<h2 id="seo-pages-title">Структура для масштабирования страниц</h2>
-						</header>
-						<p>Семантические секции, понятные ID, переиспользуемые карточки услуг, проектов и статей подготовлены для будущих посадочных страниц.</p>
-						<div class="seo-link-grid">
-							<a href="#services">/services/</a>
-							<a href="#portfolio">/projects/</a>
-							<a href="#articles">/blog/</a>
-							<a href="#contact">/contacts/</a>
-						</div>
-					</div>
-					<a href="#contact" class="image fit scrolly"><img src="images/photo-bassein.jpg" alt="Премиальный бассейн с архитектурной подсветкой" /></a>
 				</section>
 
 				<section id="articles" class="post featured section-intro" aria-labelledby="articles-title">
@@ -304,7 +287,7 @@
 						<h2 id="contact-title">Получить персональную консультацию</h2>
 						<p>Оставьте заявку — свяжемся, уточним параметры объекта и предложим следующий шаг.</p>
 					</header>
-					<form method="post" action="#">
+					<form method="POST" action="https://formspree.io/f/xnjwywvy">
 						<div class="fields">
 							<div class="field">
 								<label for="name">Имя</label>
@@ -312,7 +295,11 @@
 							</div>
 							<div class="field">
 								<label for="phone">Телефон</label>
-								<input type="tel" name="phone" id="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" />
+								<input type="tel" name="phone" id="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required />
+							</div>
+							<div class="field">
+								<label for="email">Email</label>
+								<input type="email" name="email" id="email" placeholder="Ваш email" autocomplete="email" />
 							</div>
 							<div class="field">
 								<label for="message">Сообщение</label>
@@ -320,18 +307,18 @@
 							</div>
 						</div>
 						<ul class="actions">
-							<li><input type="submit" value="Отправить заявку" /></li>
+							<li><input type="submit" class="button primary large" value="Отправить заявку" /></li>
 						</ul>
 					</form>
 				</section>
 				<section class="split contact contact-details" aria-label="Контактная информация">
 					<section class="alt">
 						<h3>Мессенджеры</h3>
-						<p>Быстро ответим и согласуем удобное время консультации.</p>
 						<ul class="actions contact-messengers">
 							<li><a href="https://wa.me/79856446654" class="button icon brands fa-whatsapp">WhatsApp</a></li>
 							<li><a href="https://t.me/desertocean" class="button icon brands fa-telegram-plane">Telegram</a></li>
 						</ul>
+
 					</section>
 					<section>
 						<h3>Телефон</h3>
@@ -342,10 +329,10 @@
 						<p><a href="mailto:aanufriev@list.ru">aanufriev@list.ru</a></p>
 					</section>
 					<section>
-						<h3>Соцсвязь</h3>
-						<ul class="icons alt">
-							<li><a href="https://wa.me/79856446654" class="icon brands alt fa-whatsapp"><span class="label">WhatsApp</span></a></li>
-							<li><a href="https://t.me/desertocean" class="icon brands alt fa-telegram-plane"><span class="label">Telegram</span></a></li>
+						<h3>Социальные сети</h3>
+						<ul class="actions contact-messengers">
+							<li><a href="#" class="button">ВК</a></li>
+							<li><a href="#" class="button">MAX</a></li>
 						</ul>
 					</section>
 				</section>
