@@ -6,6 +6,11 @@
 	background-image: linear-gradient(180deg, rgba(14, 20, 27, 0.7), rgba(14, 20, 27, 1)), url("../../images/overlay.png");
 }
 
+#intro.hero-pool,
+#intro.hero-pool:before {
+	background-image: url("../../images/betonnii-bassein.jpg");
+}
+
 .article-hero {
 	position: relative;
 	min-height: 92vh;
@@ -305,6 +310,12 @@
 .light-cta {
 	background: linear-gradient(135deg, #edf1f2 0%, #ffffff 100%);
 	border: 1px solid #dfe6e9;
+}
+
+.article-body > .article-cta.light-cta:last-child {
+	grid-template-columns: 1fr;
+	gap: 1.5rem;
+	align-items: start;
 }
 
 .cost-table {
