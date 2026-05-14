@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Калькулятор стоимости бассейна под ключ — рассчитать цену строительства онлайн</title>
+  <meta name="description" content="Калькулятор стоимости бассейна под ключ: рассчитайте цену строительства за 1 минуту, получите точную смету и консультацию инженера. Ответ в течение 10–15 минут.">
+  <meta name="keywords" content="калькулятор стоимости бассейна под ключ, стоимость строительства бассейна, цена бассейна под ключ, расчет бассейна онлайн, смета на бассейн, строительство бассейнов">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Калькулятор стоимости бассейна под ключ">
+  <meta property="og:description" content="Рассчитайте стоимость строительства бассейна онлайн и получите персональную смету от инженера.">
+  <meta property="og:url" content="https://example.com/kalkulyator-stoimosti-basseyna">
+  <meta property="og:site_name" content="Калькулятор бассейна">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Калькулятор стоимости бассейна под ключ",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "ru",
+    "description": "Онлайн-калькулятор расчета стоимости строительства бассейна под ключ с отправкой заявки инженеру.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "RUB"
+    },
+    "featureList": [
+      "Расчет стоимости бассейна за 1 минуту",
+      "Подбор оборудования и дополнительных опций",
+      "Получение персональной сметы от инженера"
+    ]
+  }
+  </script>
+<style>
+
+:root {
+  --bg-1: #f2f7f5;
+  --bg-2: #e7efec;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.9);
+  --stroke: rgba(14, 72, 54, 0.12);
+  --text: #10211a;
+  --text-soft: #555;
+  --emerald-900: #0f4f3d;
+  --emerald-700: #16694f;
+  --emerald-500: #1f8d67;
+  --mint-400: #73d8ad;
+  --accent-grad: linear-gradient(135deg, #0f4f3d 0%, #1c7a5a 58%, #57c798 100%);
+  --shadow-soft: 0 22px 48px rgba(11, 35, 27, 0.14), 0 2px 10px rgba(11, 35, 27, 0.07);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: radial-gradient(circle at 10% 10%, rgba(133, 209, 176, 0.16), transparent 40%),
+              radial-gradient(circle at 90% 0%, rgba(79, 162, 128, 0.14), transparent 35%),
+              linear-gradient(145deg, var(--bg-1), var(--bg-2));
+  margin: 0;
+  color: var(--text);
+  padding: 22px 12px 28px;
+}
+
+.container {
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 28px 22px 24px;
+  background: var(--surface);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.58);
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+h1 {
+  font-size: clamp(1.65rem, 4.6vw, 2.02rem);
+  line-height: 1.15;
+  margin: 0 0 8px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.45rem);
+  margin: 0 0 8px;
+  letter-spacing: -0.012em;
+}
+
+.subtitle {
+  color: var(--text-soft);
+  margin: 0 0 18px;
+  line-height: 1.45;
+}
+
+.top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-size: 12px;
+  color: #4f5b56;
+}
+
+.top-meta .badge {
+  background: linear-gradient(135deg, rgba(25, 122, 92, 0.12), rgba(80, 176, 142, 0.17));
+  border: 1px solid rgba(26, 108, 81, 0.24);
+  color: var(--emerald-900);
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-weight: 600;
+}
+
+#step-counter {
+  font-weight: 700;
+  color: #2f4740;
+}
+
+.progress {
+  height: 4px;
+  background: rgba(15, 79, 61, 0.09);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 18px 0 24px;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 10%;
+  background: linear-gradient(90deg, #0f4f3d 0%, #1f8d67 52%, #73d8ad 100%);
+  border-radius: 999px;
+  transition: width 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.step {
+  display: none;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.step.active {
+  display: block;
+  animation: stepIn 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.options button {
+  width: 100%;
+  padding: 16px 50px 16px 16px;
+  margin: 9px 0;
+  background: var(--surface-strong);
+  border: 1px solid var(--stroke);
+  border-radius: 17px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  transition: transform 0.22s ease, box-shadow 0.24s ease, border-color 0.22s ease, background 0.22s ease;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.options button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(111, 214, 169, 0.12), rgba(17, 86, 64, 0.05));
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.options button::after {
+  content: "Выбрать";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: var(--emerald-700);
+  background: rgba(15, 79, 61, 0.08);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-weight: 600;
+}
+
+.option-title,
+.option-desc { position: relative; z-index: 1; }
+
+.option-title {
+  display: block;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.option-desc {
+  display: block;
+  font-size: 12px;
+  color: #58645f;
+}
+
+.options button:hover,
+.options button:focus-visible {
+  transform: translateY(-2px);
+  background: #fff;
+  border-color: rgba(23, 117, 88, 0.4);
+  box-shadow: 0 12px 24px rgba(15, 79, 61, 0.12);
+  outline: none;
+}
+
+.options button:hover::before,
+.options button:focus-visible::before,
+.options button:active::before { opacity: 1; }
+
+.options button:active {
+  transform: scale(0.98);
+  border-color: rgba(26, 125, 94, 0.58);
+  background: linear-gradient(120deg, rgba(115, 216, 173, 0.25), rgba(255,255,255,0.92));
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px 15px;
+  margin-top: 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(16, 70, 54, 0.16);
+  background: rgba(255,255,255,0.86);
+  outline: none;
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea { resize: vertical; min-height: 112px; }
+
+input:focus,
+textarea:focus {
+  border-color: rgba(24, 126, 94, 0.45);
+  box-shadow: 0 0 0 4px rgba(44, 153, 117, 0.13);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border-radius: 17px;
+  border: none;
+  background: var(--accent-grad);
+  color: #fff;
+  font-weight: 650;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(15, 79, 61, 0.26);
+  filter: saturate(1.05);
+}
+
+button:active { transform: scale(0.985); }
+
+#price {
+  font-size: clamp(1.55rem, 5vw, 2rem);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 14px 0 12px;
+  display: none;
+  color: var(--emerald-900);
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: linear-gradient(130deg, rgba(115, 216, 173, 0.27), rgba(255,255,255,0.92));
+  box-shadow: inset 0 0 0 1px rgba(20, 101, 76, 0.16), 0 12px 28px rgba(15, 79, 61, 0.16);
+}
+
+.price-caption {
+  font-size: 13px;
+  color: #4f5e59;
+  line-height: 1.52;
+  margin-top: -2px;
+}
+
+.addons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.addon {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(14, 72, 54, 0.14);
+  border-radius: 16px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.addon:hover {
+  transform: translateY(-2px);
+  border-color: rgba(16, 91, 68, 0.32);
+  box-shadow: 0 12px 24px rgba(15, 79, 61, 0.12);
+}
+
+.addon.active {
+  border: 1px solid rgba(16, 98, 73, 0.56);
+  background: linear-gradient(150deg, rgba(120, 221, 178, 0.33), rgba(255,255,255,0.96));
+  box-shadow: 0 14px 28px rgba(15, 79, 61, 0.16);
+}
+
+.addon .icon { font-size: 22px; margin-bottom: 6px; }
+.addon .title { font-size: 12px; font-weight: 650; color: #163a2f; }
+
+@keyframes stepIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.price-anim { animation: pricePulse 0.58s ease; }
+
+@keyframes pricePulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.035); text-shadow: 0 8px 18px rgba(15,79,61,0.18); }
+  100% { transform: scale(1); }
+}
+
+.notice {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(244, 196, 98, 0.16);
+  border: 1px solid rgba(196, 143, 34, 0.42);
+  color: #6f4e0d;
+  font-size: 13px;
+  line-height: 1.5;
+  backdrop-filter: blur(6px);
+}
+.engineer-block {
+  margin: 14px 0;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(14, 72, 54, 0.2);
+  background: rgba(255,255,255,0.84);
+  color: #2b3e38;
+  line-height: 1.45;
+}
+.engineer-block h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+.engineer-block p {
+  margin: 10px 0;
+}
+.engineer-block ul {
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+.engineer-block li {
+  margin-bottom: 6px;
+}
+
+.value-list {
+  margin: 12px 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #384843;
+}
+
+.anchor { font-weight: 600; margin: 10px 0 6px; }
+
+.trust {
+  margin-top: 10px;
+  color: #4f5f5a;
+  font-size: 13px;
+  line-height: 1.48;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+
+.trust-item {
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(13, 72, 54, 0.12);
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 12px;
+  color: #2b3e38;
+  line-height: 1.4;
+}
+
+.microcopy {
+  margin-top: 8px;
+  color: var(--text-soft);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.tg-link {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border-radius: 17px;
+  border: 1px solid rgba(14, 72, 54, 0.16);
+  background: rgba(255,255,255,0.88);
+  color: #143d31;
+  text-align: center;
+  font-weight: 650;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+}
+
+.tg-link:hover {
+  transform: translateY(-1px);
+  border-color: rgba(19, 100, 75, 0.35);
+  box-shadow: 0 10px 22px rgba(15, 79, 61, 0.12);
+}
+
+.consult-btn {
+  background: rgba(255,255,255,0.9) !important;
+  color: var(--emerald-700) !important;
+  border: 1px solid rgba(21, 103, 78, 0.34) !important;
+  border-radius: 15px !important;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background: rgba(10, 17, 24, 0.62);
+  backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  position: relative;
+  background: linear-gradient(155deg, #ffffff, #f2f8f5);
+  padding: 30px 24px;
+  border-radius: 22px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 28px 74px rgba(0,0,0,0.24), 0 10px 32px rgba(15,79,61,0.18);
+  animation: modalPop 0.34s ease;
+  border: 1px solid rgba(15,79,61,0.18);
+}
+
+.modal-content .icon {
+  font-size: 52px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 10px 20px rgba(15,79,61,0.24));
+}
+
+.modal-content h3 {
+  margin: 8px 0 5px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.modal-content p {
+  color: #5a6762;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.modal-content button {
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  background: var(--accent-grad);
+  color: #fff;
+  font-weight: 650;
+}
+
+@keyframes modalPop {
+  from { transform: scale(0.88) translateY(8px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@media (max-width: 540px) {
+  body { padding: 10px 8px 18px; }
+  .container {
+    border-radius: 18px;
+    padding: 20px 14px 18px;
+    max-width: 100%;
+  }
+  .top-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .addons { gap: 8px; }
+  .addon { padding: 11px 6px; }
+  button,
+  .tg-link,
+  .options button { min-height: 52px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Калькулятор стоимости бассейна под ключ</h1>
+  <p class="subtitle">Рассчитайте стоимость строительства бассейна за 1 минуту</p>
+  <div class="top-meta">
+    <span id="step-counter">Шаг 1 из 10</span>
+    <span class="badge">Среднее время заполнения — 1 минута</span>
+  </div>
+
+  <div class="notice">
+    <strong>От чего зависит цена бассейна:</strong> тип чаши, размеры, форма, перелив, отделка, инженерное оборудование и дополнительные опции.
+  </div>
+
+  <div class="value-list">
+    <div class="anchor">Что входит в строительство бассейна под ключ:</div>
+    ✔ проектные решения и подбор оборудования<br>
+    ✔ облицовка и гидроизоляция чаши и монтаж инженерных систем<br>
+    ✔ пусконаладка, инструктаж и итоговая смета
+  </div>
+    <div class="trust-grid">
+    <div class="trust-item">🏆 300+ реализованных бассейнов</div>
+    <div class="trust-item">🧾 Расчёт без скрытых платежей</div>
+    <div class="trust-item">🛠️ Проверка инженером перед отправкой</div>
+    <div class="trust-item">⚡ Ответ в течение 10–15 минут</div>
+  </div>
+  <div class="trust">8 из 10 пользователей доходят до финальной сметы • Инженерный расчет по вашему участку</div>
+
+  <div class="progress">
+    <div id="progress-bar"></div>
+  </div>
+
+  <form id="quiz">
+    <div class="step active">
+      <h2>Тип бассейна</h2>
+      <div class="microcopy">Это займёт около 1 минуты. 8 из 10 пользователей доходят до финальной сметы.</div>
+      <div class="options">
+        <button type="button" onclick="selectOption('type',15000)"><span class="option-title">Бетонный</span><span class="option-desc">Максимальная гибкость формы и долговечность</span></button>
+        <button type="button" onclick="selectOption('type',12000)"><span class="option-title">Композитный</span><span class="option-desc">Быстрый монтаж и оптимальный бюджет</span></button>
+        <button type="button" onclick="selectOption('type',8000)"><span class="option-title">Каркасный</span><span class="option-desc">Практичное решение с быстрым запуском</span></button>
+      </div>
+      <div class="microcopy">Выберите вариант — это поможет точнее рассчитать стоимость под ключ.</div>
+    </div>
+
+    <div class="step">
+      <h2>Тип перелива бассейна</h2>
+      <div class="microcopy">Шаг 2 из 10. Двигаемся к точной смете.</div>
+      <div class="options">
+        <button type="button" onclick="selectOverflow('skimmer',1)"><span class="option-title">Скиммерный</span><span class="option-desc">Надёжный базовый вариант</span></button>
+        <button type="button" onclick="selectOverflow('overflow',1.2)"><span class="option-title">Переливной</span><span class="option-desc">Премиальный эффект “зеркала воды”</span></button>
+      </div>
+      <div class="microcopy">Мягкий CTA: продолжите, и мы покажем ориентир стоимости уже на финальном шаге.</div>
+    </div>
+
+    <div class="step">
+      <h2>Форма бассейна</h2>
+      <div class="microcopy">Вы почти закончили первую половину расчёта.</div>
+      <div class="options">
+        <button type="button" onclick="selectShape('rect')"><span class="option-title">Прямоугольная</span><span class="option-desc">Самое популярное решение</span></button>
+        <button type="button" onclick="selectShape('round')"><span class="option-title">Круглая</span><span class="option-desc">Мягкая эстетика и акцент на дизайн</span></button>
+        <button type="button" onclick="selectShape('irregular')"><span class="option-title">Неправильной формы</span><span class="option-desc">Индивидуальный проект под участок</span></button>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>Размеры</h2>
+      <div class="microcopy">Чем точнее размеры, тем ближе итоговая смета к реальной стоимости.</div>
+
+      <input type="hidden" id="length">
+      <input type="hidden" id="width">
+      <input type="hidden" id="depth">
+
+      <div id="dimensions-rect">
+        <input type="number" id="rect-length" placeholder="Длина, например 8" oninput="updateDimensions()">
+        <input type="number" id="rect-width" placeholder="Ширина, например 3.5" oninput="updateDimensions()">
+        <input type="number" id="rect-depth" placeholder="Средняя глубина, например 1.6" oninput="updateDimensions()">
+      </div>
+
+      <div id="dimensions-round" style="display:none;">
+        <input type="number" id="round-diameter" placeholder="Диаметр, например 5" oninput="updateDimensions()">
+        <input type="number" id="round-depth" placeholder="Глубина, например 1.5" oninput="updateDimensions()">
+      </div>
+
+      <div id="dimensions-irregular" style="display:none;">
+        <input type="number" id="irregular-area" placeholder="Площадь зеркала воды, например 28" oninput="updateDimensions()">
+        <input type="number" id="irregular-depth" placeholder="Глубина, например 1.6" oninput="updateDimensions()">
+      </div>
+
+      <button type="button" onclick="updateDimensionsAndNext()">Продолжить расчет →</button>
+      <div class="microcopy">После этого шага расчёт станет ещё точнее.</div>
+    </div>
+
+    <div class="step">
+      <h2>Отделка чаши</h2>
+      <div class="microcopy">Шаг 5 из 10. Осталось меньше половины.</div>
+      <div class="options">
+        <button type="button" onclick="selectOption('finish',0)"><span class="option-title">Пленка ПВХ</span><span class="option-desc">Практичный старт без переплаты</span></button>
+        <button type="button" onclick="selectOption('finish',150000)"><span class="option-title">Плитка</span><span class="option-desc">Баланс визуала и ресурса эксплуатации</span></button>
+        <button type="button" onclick="selectOption('finish',300000)"><span class="option-title">Мозаика</span><span class="option-desc">Премиум-отделка с акцентом на стиль</span></button>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>Оборудование</h2>
+      <div class="microcopy">На этом шаге формируется комфорт эксплуатации и итоговый бюджет.</div>
+      <div class="options">
+        <button type="button" onclick="selectOption('equipment',0)"><span class="option-title">Базовое</span><span class="option-desc">Необходимый минимум для запуска</span></button>
+        <button type="button" onclick="selectOption('equipment',150000)"><span class="option-title">Среднее</span><span class="option-desc">Оптимальный комфорт для семьи</span></button>
+        <button type="button" onclick="selectOption('equipment',350000)"><span class="option-title">Премиум (умный бассейн)</span><span class="option-desc">Автоматизация и максимальное удобство</span></button>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>Дополнительно</h2>
+      <div class="microcopy">Добавьте нужные опции — это сразу учитывается в расчете.</div>
+      <div class="addons">
+        <div class="addon" onclick="toggleAddon(this,'heater')"><div class="icon">🔥</div><div class="title">Подогрев</div></div>
+        <div class="addon" onclick="toggleAddon(this,'lights')"><div class="icon">💡</div><div class="title">Подсветка</div></div>
+        <div class="addon" onclick="toggleAddon(this,'hydromassage')"><div class="icon">💦</div><div class="title">Гидромассаж</div></div>
+        <div class="addon" onclick="toggleAddon(this,'aeroplatto')"><div class="icon">🌊</div><div class="title">Аэроплато</div></div>
+        <div class="addon" onclick="toggleAddon(this,'aerolezhak')"><div class="icon">🛏️</div><div class="title">Аэролежак</div></div>
+        <div class="addon" onclick="toggleAddon(this,'waterfall')"><div class="icon">⛲</div><div class="title">Водопад</div></div>
+        <div class="addon" onclick="toggleAddon(this,'countercurrent')"><div class="icon">🏊</div><div class="title">Противоток</div></div>
+        <div class="addon" onclick="toggleAddon(this,'shutters')"><div class="icon">🪟</div><div class="title">Жалюзи</div></div>
+      </div>
+      <button type="button" onclick="nextStep()">Продолжить расчет →</button>
+      <div class="microcopy">Мягкий CTA: ещё 3 шага до персональной сметы.</div>
+    </div>
+
+    <div class="step">
+      <h2>Нужно ли проектирование?</h2>
+      <div class="microcopy">Проектирование снижает риски переделок и внеплановых затрат.</div>
+      <div class="options">
+        <button type="button" onclick="chooseDesign(false)"><span class="option-title">Не нужно</span><span class="option-desc">Перейти сразу к ориентиру стоимости</span></button>
+        <button type="button" onclick="chooseDesign(true)"><span class="option-title">Нужно</span><span class="option-desc">Учесть проектные разделы для точной сметы</span></button>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>Разделы проектирования</h2>
+      <div class="microcopy">Вы почти закончили расчёт — финал уже близко.</div>
+      <div class="addons">
+        <div class="addon" onclick="toggleAddon(this,'design_tech')"><div class="icon">⚙️</div><div class="title">Технология</div></div>
+        <div class="addon" onclick="toggleAddon(this,'design_arch')"><div class="icon">🏛️</div><div class="title">Архитектура</div></div>
+        <div class="addon" onclick="toggleAddon(this,'design_struct')"><div class="icon">🏗️</div><div class="title">Конструктив</div></div>
+        <div class="addon" onclick="toggleAddon(this,'design_electro')"><div class="icon">⚡</div><div class="title">Электрика</div></div>
+        <div class="addon" onclick="toggleAddon(this,'design_auto')"><div class="icon">🤖</div><div class="title">Автоматизация</div></div>
+      </div>
+      <button type="button" onclick="nextStep()">Продолжить расчет →</button>
+      <div class="microcopy">Последний шаг: оставьте контакты и получите смету с проверкой инженера.</div>
+    </div>
+
+    <div class="step">
+      <h2>Ваш расчёт почти готов — зафиксируйте точную смету ✅</h2>
+      <div id="price"></div>
+      <div class="price-caption">Ориентир стоимости: <strong>от индивидуальных параметров вашего объекта</strong>. Точную смету подтвердит инженер после проверки.</div>
+
+      <p>Оставьте контакты — инженер подготовит точный расчет под ваш участок и задачи, чтобы вы получили понятную смету без скрытых затрат.</p>
+      <div class="value-list">
+        ✔ точная смета<br>
+        ✔ подбор оборудования<br>
+        ✔ 2–3 варианта под бюджет
+      </div>
+      <p class="anchor">Обычно такие проекты стоят от <span id="anchorMin">—</span> до <span id="anchorMax">—</span>.</p>
+
+      <div class="notice">
+        ⚠️ Расчёт предварительный. Более точная стоимость формируется после проверки инженером и уточнения технических параметров объекта.
+      </div>
+      <div class="notice">
+        🔒 Финальная проверка: инженер проверит смету, уточнит технические нюансы и предложит оптимальный вариант под ваш бюджет.
+      </div>
+      <div class="engineer-block">
+        <h3>🔍 Ваш расчёт проверит инженер с опытом 10+ лет</h3>
+        <p>📋 Вы получите:</p>
+        <ul>
+          <li>Чек-лист перед строительством</li>
+          <li>Где чаще всего переплачивают</li>
+          <li>5 ошибок, которые могут увеличить бюджет до 40%</li>
+        </ul>
+      </div>
+
+      <input type="text" id="name" placeholder="Как к вам обращаться?">
+      <input type="tel" id="phone" placeholder="Телефон для связи (WhatsApp/Telegram)">
+      <input type="email" id="email" placeholder="Email">
+      <textarea id="comment" placeholder="Комментарий: сроки, место, предполагаемый бюджет, особые пожелания"></textarea>
+
+      <button type="button" onclick="sendLead()">Получить персональную смету →</button>
+      <a class="tg-link" href="https://t.me/desertocean" target="_blank" rel="noopener">💬 Получить консультацию в Telegram</a>
+      <div class="trust">Ответ инженера в течение 10–15 минут • 300+ реализованных бассейнов • Бесплатно • Без обязательств</div>
+      <div class="microcopy">Отправляя заявку, вы получаете усиленный финальный расчёт с учетом участка, пожеланий и технических ограничений.</div>
+      <div class="microcopy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных для связи по вашему запросу.</div>
+    </div>
+  </form>
+</div>
+
+<audio id="clickSound" preload="auto">
+  <source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let step = 0;
+let data = { type: 0, finish: 0, equipment: 0 };
+let selectedAddons = {};
+let needDesign = false;
+let poolShape = "rect";
+let overflowMultiplier = 1;
+let calculatedRange = { min: 0, max: 0 };
+
+const addonsPrice = {
+  heater: 120000,
+  lights: 50000,
+  hydromassage: 180000,
+  aeroplatto: 120000,
+  aerolezhak: 130000,
+  waterfall: 90000,
+  countercurrent: 200000,
+  shutters: 150000,
+  design_tech: 80000,
+  design_arch: 120000,
+  design_struct: 150000,
+  design_electro: 90000,
+  design_auto: 180000
+};
+
+const steps = document.querySelectorAll(".step");
+
+function updateProgress(){
+  const total = steps.length - 1;
+  const percent = Math.max(10, Math.round((step / total) * 100));
+  document.getElementById("progress-bar").style.width = percent + "%";
+  const stepCounter = document.getElementById("step-counter");
+  if(stepCounter){
+    const currentStep = Math.min(step + 1, total + 1);
+    stepCounter.textContent = `Шаг ${currentStep} из ${total + 1}`;
+  }
+}
+
+function updateAnchorText(){
+  const minEl = document.getElementById("anchorMin");
+  const maxEl = document.getElementById("anchorMax");
+  if(minEl && maxEl && calculatedRange.min && calculatedRange.max){
+    const anchorMin = Math.floor(calculatedRange.min / 100000) * 100000;
+    const anchorMax = Math.ceil(calculatedRange.max / 100000) * 100000;
+    minEl.textContent = anchorMin.toLocaleString() + " ₽";
+    maxEl.textContent = anchorMax.toLocaleString() + " ₽";
+  }
+}
+
+function selectShape(shape){
+  poolShape = shape;
+  updateDimensions();
+  playClick();
+  nextStep();
+}
+
+function updateDimensions(){
+  const rectFields = document.getElementById("dimensions-rect");
+  const roundFields = document.getElementById("dimensions-round");
+  const irregularFields = document.getElementById("dimensions-irregular");
+
+  if(rectFields) rectFields.style.display = poolShape === "rect" ? "block" : "none";
+  if(roundFields) roundFields.style.display = poolShape === "round" ? "block" : "none";
+  if(irregularFields) irregularFields.style.display = poolShape === "irregular" ? "block" : "none";
+
+  let lengthValue = "";
+  let widthValue = "";
+  let depthValue = "";
+
+  if(poolShape === "rect"){
+    const rectLength = parseFloat(document.getElementById("rect-length")?.value);
+    const rectWidth = parseFloat(document.getElementById("rect-width")?.value);
+    const rectDepth = parseFloat(document.getElementById("rect-depth")?.value);
+    lengthValue = Number.isFinite(rectLength) ? rectLength : "";
+    widthValue = Number.isFinite(rectWidth) ? rectWidth : "";
+    depthValue = Number.isFinite(rectDepth) ? rectDepth : "";
+  } else if(poolShape === "round"){
+    const diameter = parseFloat(document.getElementById("round-diameter")?.value);
+    const roundDepth = parseFloat(document.getElementById("round-depth")?.value);
+    lengthValue = Number.isFinite(diameter) ? diameter : "";
+    widthValue = Number.isFinite(diameter) ? diameter : "";
+    depthValue = Number.isFinite(roundDepth) ? roundDepth : "";
+  } else if(poolShape === "irregular"){
+    const area = parseFloat(document.getElementById("irregular-area")?.value);
+    const irregularDepth = parseFloat(document.getElementById("irregular-depth")?.value);
+    const side = Number.isFinite(area) && area > 0 ? Math.sqrt(area) : "";
+    lengthValue = side;
+    widthValue = side;
+    depthValue = Number.isFinite(irregularDepth) ? irregularDepth : "";
+  }
+
+  const lengthInput = document.getElementById("length");
+  const widthInput = document.getElementById("width");
+  const depthInput = document.getElementById("depth");
+
+  if(lengthInput) lengthInput.value = lengthValue;
+  if(widthInput) widthInput.value = widthValue;
+  if(depthInput) depthInput.value = depthValue;
+}
+
+function updateDimensionsAndNext(){
+  updateDimensions();
+  nextStep();
+}
+
+function selectOverflow(type, mult){
+  overflowMultiplier = mult;
+  playClick();
+  nextStep();
+}
+
+function chooseDesign(val){
+  needDesign = val;
+
+  if(!needDesign){
+    steps[step].classList.remove("active");
+    step = steps.length - 1;
+    steps[step].classList.add("active");
+    calculate();
+    updateProgress();
+    playClick();
+    startConsultTimer();
+    return;
+  }
+
+  nextStep();
+}
+
+function selectOption(k,v){
+  data[k]=v;
+  playClick();
+  nextStep();
+}
+
+function nextStep(){
+  if(step >= steps.length - 1) return;
+  steps[step].classList.remove("active");
+  step++;
+  steps[step].classList.add("active");
+  calculate();
+  updateProgress();
+  playClick();
+  startConsultTimer();
+}
+
+function toggleAddon(el,key){
+  el.classList.toggle("active");
+  selectedAddons[key] ? delete selectedAddons[key] : selectedAddons[key] = true;
+  calculate();
+  pulsePrice();
+  playClick();
+}
+
+function calculate(){
+  let l=parseFloat(document.getElementById('length')?.value)||6;
+  let w=parseFloat(document.getElementById('width')?.value)||3;
+  let d=parseFloat(document.getElementById('depth')?.value)||1.5;
+
+  let volume = l*w*d;
+  let area = l*w;
+
+  let base = 500000;
+
+  let scaleCoef = 1;
+  if(volume > 60) scaleCoef = 0.75;
+  else if(volume > 40) scaleCoef = 0.82;
+  else if(volume > 25) scaleCoef = 0.9;
+  else if(volume < 10) scaleCoef = 1.25;
+
+  if(data.type === 15000){
+    base += volume * 30000 * scaleCoef;
+  } else if(data.type === 12000){
+    base += volume * 20000 * scaleCoef;
+  } else if(data.type === 8000){
+    base += volume * 10000 * scaleCoef;
+  }
+
+  if(poolShape === "round") base *= 1.1;
+  if(poolShape === "irregular") base *= 1.35;
+
+  base += area * ((data.finish || 0) / 4);
+  base += (data.equipment || 0);
+
+  for(let k in selectedAddons) base += addonsPrice[k] || 0;
+  base *= overflowMultiplier;
+
+  if(base < 600000) base = 600000;
+
+  let min = Math.round(base * 0.9);
+  let max = Math.round(base * 1.3);
+  calculatedRange = { min, max };
+
+  const el = document.getElementById("price");
+  if(el){
+    el.textContent = `от ${min.toLocaleString()} ₽ до ${max.toLocaleString()} ₽`;
+    el.style.display = "block";
+  }
+
+  updateAnchorText();
+}
+
+function pulsePrice(){
+  const p=document.getElementById("price");
+  if(!p) return;
+  p.classList.remove("price-anim");
+  void p.offsetWidth;
+  p.classList.add("price-anim");
+}
+
+function playClick(){
+  const s=document.getElementById("clickSound");
+  if(s){
+    s.currentTime=0;
+    s.volume=0.2;
+    s.play();
+  }
+}
+
+async function sendLead(){
+  let phone = document.getElementById("phone").value;
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let comment = document.getElementById("comment").value;
+
+  if(!phone){
+    alert("Введите телефон");
+    return;
+  }
+
+  calculate();
+
+  let l = parseFloat(document.getElementById("length")?.value) || 0;
+  let w = parseFloat(document.getElementById("width")?.value) || 0;
+  let d = parseFloat(document.getElementById("depth")?.value) || 0;
+  let volume = l * w * d;
+
+  function getTypeName(value){
+    if(value === 15000) return "Бетонный";
+    if(value === 12000) return "Композитный";
+    if(value === 8000) return "Каркасный";
+    return "Не выбран";
+  }
+
+  function getFinishName(value){
+    if(value === 0) return "ПВХ пленка";
+    if(value === 150000) return "Плитка";
+    if(value === 300000) return "Мозаика";
+    return "Не выбрана";
+  }
+
+  function getEquipmentName(value){
+    if(value === 0) return "Базовое";
+    if(value === 150000) return "Среднее";
+    if(value === 350000) return "Премиум";
+    return "Не выбрано";
+  }
+
+  function getShapeName(value){
+    if(value === "rect") return "Прямоугольная";
+    if(value === "round") return "Круглая";
+    if(value === "irregular") return "Неправильная форма";
+    return "Не выбрана";
+  }
+
+  function getOverflowName(){
+    return overflowMultiplier === 1.2 ? "Переливной" : "Скиммерный";
+  }
+
+  function getAddonName(key){
+    const names = {
+      heater: "Подогрев",
+      lights: "Подсветка",
+      hydromassage: "Гидромассаж",
+      aeroplatto: "Аэроплато",
+      aerolezhak: "Аэролежак",
+      waterfall: "Водопад",
+      countercurrent: "Противоток",
+      shutters: "Жалюзи",
+      design_tech: "Проект: технология",
+      design_arch: "Проект: архитектура",
+      design_struct: "Проект: конструктив",
+      design_electro: "Проект: электрика",
+      design_auto: "Проект: автоматизация"
+    };
+    return names[key] || key;
+  }
+
+  let addonsList = Object.keys(selectedAddons).length
+    ? Object.keys(selectedAddons).map(k => getAddonName(k)).join(", ")
+    : "нет";
+
+  let message = `
+🏊‍♂️ НОВАЯ ЗАЯВКА
+
+👤 Имя: ${name || "не указано"}
+📞 Телефон: ${phone}
+📧 Email: ${email || "не указан"}
+💬 Комментарий: ${comment || "нет"}
+
+💰 Цена: ${calculatedRange.min.toLocaleString()} — ${calculatedRange.max.toLocaleString()} ₽
+
+📊 ТЕХНИЧЕСКИЕ ДАННЫЕ:
+- Габариты (Д×Ш×Г): ${l} × ${w} × ${d} м
+- Объём: ${volume.toFixed(2)} м³
+- Тип: ${getTypeName(data.type)}
+- Тип перелива: ${getOverflowName()}
+- Форма: ${getShapeName(poolShape)}
+- Отделка: ${getFinishName(data.finish)}
+- Оборудование: ${getEquipmentName(data.equipment)}
+
+➕ Допы:
+${addonsList}
+`;
+
+  try {
+    const payload = {
+      name: (name || "").trim(),
+      phone: (phone || "").trim(),
+      email: (email || "").trim(),
+      comment: (comment || "").trim(),
+      message
+    };
+
+    console.log("SEND PAYLOAD:", payload);
+
+    const response = await fetch("/.netlify/functions/send-lead", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const raw = await response.text();
+    const result = raw ? JSON.parse(raw) : {};
+
+    if(!response.ok || !result.success){
+      throw new Error(result.error || "Lead request failed");
+    }
+
+    showModal();
+  } catch (error) {
+    alert("Не удалось отправить заявку. Попробуйте еще раз.");
+  }
+}
+
+function showModal(){
+  document.getElementById("successModal").style.display = "flex";
+}
+
+function closeModal(){
+  document.getElementById("successModal").style.display = "none";
+}
+
+let consultTimer;
+
+function startConsultTimer(){
+  clearTimeout(consultTimer);
+
+  consultTimer = setTimeout(() => {
+    const targetSteps = [2, 6];
+
+    targetSteps.forEach(i => {
+      const stepEl = steps[i];
+      if(!stepEl || stepEl.querySelector(".consult-btn")) return;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "consult-btn";
+      btn.innerText = "💬 Нужна помощь? Получите консультацию инженера";
+      btn.style.marginTop = "12px";
+      btn.style.background = "#fff";
+      btn.style.color = "#00c853";
+      btn.style.border = "1px solid #00c853";
+      btn.onclick = openConsultModal;
+
+      stepEl.appendChild(btn);
+    });
+  }, 10000);
+}
+
+function openConsultModal(){
+  steps[step].classList.remove("active");
+  step = steps.length - 1;
+  steps[step].classList.add("active");
+  calculate();
+  updateProgress();
+  playClick();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+updateProgress();
+updateDimensions();
+calculate();
+startConsultTimer();
+</script>
+
+<div id="successModal" class="modal">
+  <div class="modal-content">
+    <div class="icon">✅</div>
+    <h3>Заявка отправлена!</h3>
+    <p>Мы уже начали расчет. Скоро свяжемся с вами.</p>
+    <button onclick="closeModal()">ОК</button>
+  </div>
+</div>
+
+</body>
+</html>
