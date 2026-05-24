@@ -1,9 +1,9 @@
 .article-page {
-	background: #0e141b;
+	background: #090f14;
 }
 
 .article-page #wrapper {
-	background-image: linear-gradient(180deg, rgba(14, 20, 27, 0.7), rgba(14, 20, 27, 1)), url("../../images/overlay.png");
+	background: #090f14;
 }
 
 #intro.hero-pool,
@@ -13,11 +13,12 @@
 
 .article-hero {
 	position: relative;
-	min-height: 92vh;
+	min-height: 100vh;
 	display: flex;
-	align-items: flex-end;
+	align-items: flex-start;
 	justify-content: center;
-	padding: 11rem 2rem 7rem;
+	padding: 8rem 2rem 7rem;
+	text-align: center;
 	overflow: hidden;
 	isolation: isolate;
 }
@@ -33,20 +34,21 @@
 	background-image: url("../../images/photo-bassein.jpg");
 	background-position: center;
 	background-size: cover;
-	transform: scale(1.04);
-	filter: saturate(1.05) contrast(1.05);
+	background-repeat: no-repeat;
+	transform: scale(1.02);
 }
 
 .article-hero__overlay {
 	z-index: -1;
 	background:
-		radial-gradient(circle at 50% 15%, rgba(200, 169, 111, 0.2), transparent 34rem),
-		linear-gradient(180deg, rgba(5, 8, 12, 0.22) 0%, rgba(5, 8, 12, 0.82) 72%, rgba(14, 20, 27, 0.98) 100%),
-		linear-gradient(90deg, rgba(5, 8, 12, 0.8) 0%, rgba(5, 8, 12, 0.22) 52%, rgba(5, 8, 12, 0.7) 100%);
+		radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 26rem),
+		linear-gradient(180deg, rgba(4, 10, 16, 0.58) 0%, rgba(4, 10, 16, 0.36) 42%, rgba(4, 10, 16, 0.86) 100%),
+		linear-gradient(90deg, rgba(4, 10, 16, 0.68), rgba(4, 10, 16, 0.2) 48%, rgba(4, 10, 16, 0.68));
+	backdrop-filter: saturate(112%);
 }
 
 .article-hero__content {
-	width: min(100%, 68rem);
+	width: min(62rem, 100%);
 	margin: 0 auto;
 	text-align: center;
 	color: #ffffff;
@@ -55,9 +57,9 @@
 .article-kicker,
 .section-label {
 	font-family: "Source Sans Pro", Helvetica, sans-serif;
-	font-size: 0.78rem;
-	font-weight: 900;
-	letter-spacing: 0.22em;
+	font-size: 0.76rem;
+	font-weight: 700;
+	letter-spacing: 0.18em;
 	line-height: 1.4;
 	text-transform: uppercase;
 	color: #c8a96f;
@@ -66,50 +68,65 @@
 }
 
 .article-hero h1 {
-	max-width: 62rem;
-	margin: 0 auto 1.5rem;
-	font-size: clamp(3rem, 8vw, 7.2rem);
-	line-height: 0.95;
-	letter-spacing: -0.065em;
+	max-width: 60rem;
+	margin: 0 auto 1.35rem;
+	font-size: clamp(3rem, 7.5vw, 6.8rem);
+	font-weight: 900;
+	line-height: 0.92;
+	letter-spacing: -0.055em;
 	text-transform: none;
+	text-wrap: balance;
 	text-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5);
 }
 
 .article-lead {
-	max-width: 44rem;
-	margin: 0 auto 2.4rem;
-	font-size: clamp(1.05rem, 2vw, 1.35rem);
-	line-height: 1.85;
-	color: rgba(255, 255, 255, 0.84);
+	max-width: 43rem;
+	margin: 0 auto;
+	font-size: clamp(1.08rem, 2vw, 1.38rem);
+	font-weight: 300;
+	line-height: 1.65;
+	color: rgba(255, 255, 255, 0.86);
 	text-align: center;
 }
 
 .article-hero__actions {
-	gap: 1rem;
+	justify-content: center;
+	gap: 0.85rem;
+	margin: 2.35rem 0 0;
 }
 
 .article-page .button,
 .article-page input[type="submit"] {
 	border-radius: 999px;
-	transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+	letter-spacing: 0.08em;
+	transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 .article-page .button:hover,
 .article-page input[type="submit"]:hover {
-	transform: translateY(-0.16rem);
-	box-shadow: 0 1rem 2.5rem rgba(15, 32, 44, 0.2);
+	transform: translateY(-0.12rem);
 }
 
 .article-page .button.primary,
 .article-page input[type="submit"] {
-	background: linear-gradient(135deg, #c8a96f 0%, #e6d1a4 100%);
-	box-shadow: none;
-	color: #111820 !important;
+	background-color: #176d8f !important;
+	box-shadow: 0 1rem 2.2rem rgba(23, 109, 143, 0.22) !important;
+	color: #ffffff !important;
 }
 
 .article-page #nav {
-	backdrop-filter: blur(18px);
-	background: rgba(255, 255, 255, 0.92);
+	color: #ffffff;
+	display: flex;
+	background: rgba(255, 255, 255, 0.175);
+	height: 4rem;
+	line-height: 4rem;
+	margin: -4rem auto 0 auto;
+	overflow: hidden;
+	padding: 0 2rem 0 0;
+	position: relative;
+	width: calc(100% - 4rem);
+	max-width: 72rem;
+	z-index: 2;
 }
 
 .breadcrumbs {
