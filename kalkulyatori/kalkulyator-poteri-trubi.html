@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Калькулятор гидравлических потерь</title>
+
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(135deg, #f7f7f7, #eef2f7);
+  margin: 0;
+  color: #111;
+}
+
+.container {
+  max-width: 520px;
+  margin: 40px auto;
+  padding: 28px;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 2px 10px rgba(0,0,0,0.05);
+}
+
+h1 { font-size: 26px; margin-bottom: 5px; }
+.subtitle { color: #666; margin-bottom: 20px; }
+
+.field{ margin-top: 12px; }
+
+label{
+  font-size: 13px;
+  color: #444;
+  display:block;
+  margin-bottom:6px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.8);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #00c853, #00bfa5);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(0,200,83,0.25);
+}
+
+.result {
+  margin-top: 15px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.7);
+}
+
+.addons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.addon {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.addon:hover { transform: translateY(-3px); }
+.addon.active {
+  border: 2px solid #00c853;
+  background: #eafff3;
+}
+
+.addon .icon { font-size: 20px; }
+.addon .title { font-size: 13px; font-weight: 600; margin-top: 6px; }
+
+.presetBtns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.presetBtns button{
+  margin-top:0;
+  background: rgba(255,255,255,0.9);
+  color:#111;
+  border:1px solid rgba(0,0,0,0.08);
+}
+
+.presetBtns button.active{
+  border:2px solid #00c853;
+  background:#eafff3;
+}
+
+/* ===== MODAL (улучшено под размер окна) ===== */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  padding: 20px;
+}
+
+.modal-content{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  padding:22px;
+  border-radius:18px;
+  box-sizing:border-box;
+}
+
+.modal-content h2{
+  margin:0 0 10px 0;
+  font-size:18px;
+}
+
+/* поля теперь аккуратно под размер окна */
+.modal-content input,
+.modal-content textarea{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,0.15);
+  outline:none;
+  box-sizing:border-box;
+  font-size:14px;
+}
+
+.modal-content textarea{
+  resize:vertical;
+  min-height:90px;
+}
+
+.modal-content button{
+  width:100%;
+}
+
+/* зелёная кнопка заказа (теперь единый стиль) */
+.order-btn{
+  background: linear-gradient(135deg,#00c853,#00bfa5) !important;
+}
+
+.close-btn{
+  background:#eee !important;
+  color:#111;
+  margin-top:10px;
+}
+</style>
+<link rel="stylesheet" href="kalkulyatori-ui.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>Калькулятор гидравлических потерь</h1>
+  <div class="subtitle">Рассчитайте потери напора, чтобы корректно подобрать насос, трубопроводы и инженерную схему бассейна.</div>
+
+  <div class="presetBtns">
+    <button id="btnPrivate" onclick="setPreset('private')">🏊 Частный бассейн</button>
+    <button id="btnPublic" onclick="setPreset('public')">🏢 Гос бассейн</button>
+  </div>
+
+  <div class="field">
+    <label>Длина трубы (м)</label>
+    <input id="L" type="number" value="50">
+  </div>
+
+  <div class="field">
+    <label>Диаметр (мм)</label>
+    <input id="D" type="number" value="50">
+  </div>
+
+  <div class="field">
+    <label>Расход (м³/ч)</label>
+    <input id="Q" type="number" value="10">
+  </div>
+
+  <div class="field">
+    <label>Перепад высот (м)</label>
+    <input id="H" type="number" value="0">
+  </div>
+
+  <div class="field">
+    <label>Повороты</label>
+    <input id="kElbow" type="number" value="4">
+  </div>
+
+  <div class="field">
+    <label>Краны</label>
+    <input id="kValve" type="number" value="2">
+  </div>
+
+  <div class="field">
+    <label>Обратные клапаны</label>
+    <input id="kCheck" type="number" value="1">
+  </div>
+
+  <div class="addons">
+    <div class="addon" onclick="toggle(this,'uv')"><div class="icon">💡</div><div class="title">УФ</div><input type="checkbox" id="uv" hidden></div>
+    <div class="addon" onclick="toggle(this,'heat')"><div class="icon">🔥</div><div class="title">Теплообменник</div><input type="checkbox" id="heat" hidden></div>
+    <div class="addon" onclick="toggle(this,'flow')"><div class="icon">📊</div><div class="title">Расходомер</div><input type="checkbox" id="flow" hidden></div>
+    <div class="addon" onclick="toggle(this,'ozone')"><div class="icon">🌀</div><div class="title">Озон</div><input type="checkbox" id="ozone" hidden></div>
+    <div class="addon" onclick="toggle(this,'chiller')"><div class="icon">🧊</div><div class="title">Чиллер</div><input type="checkbox" id="chiller" hidden></div>
+    <div class="addon" onclick="toggle(this,'heater')"><div class="icon">⚡</div><div class="title">Электронагреватель</div><input type="checkbox" id="heater" hidden></div>
+  </div>
+
+  <button onclick="calc()">Рассчитать</button>
+
+  <!-- зелёная кнопка заказа -->
+  <button class="order-btn" onclick="openForm()">
+    Заказать проект бассейна
+  </button>
+
+  <div class="result" id="res"><div id="out"></div></div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2>Заказ проекта бассейна</h2>
+
+    <input id="name" placeholder="Имя">
+    <input id="phone" placeholder="Телефон">
+    <textarea id="comment" placeholder="Комментарий"></textarea>
+
+    <button onclick="sendForm()">Отправить</button>
+    <button class="close-btn" onclick="closeForm()">Закрыть</button>
+  </div>
+</div>
+
+<!-- УСПЕХ -->
+<div id="successModal" class="modal">
+  <div class="modal-content">
+    <div class="icon">✅</div>
+    <h3>Заявка отправлена!</h3>
+    <p>Мы свяжемся с вами в ближайшее время</p>
+    <button onclick="closeSuccess()">ОК</button>
+  </div>
+</div>
+
+<script>
+let mode = 'private';
+
+function setPreset(type){
+  mode = type;
+  document.getElementById('btnPrivate').classList.remove('active');
+  document.getElementById('btnPublic').classList.remove('active');
+
+  if(type === 'private') document.getElementById('btnPrivate').classList.add('active');
+  if(type === 'public') document.getElementById('btnPublic').classList.add('active');
+}
+
+function toggle(el,id){
+  let cb = document.getElementById(id);
+  cb.checked = !cb.checked;
+  el.classList.toggle('active');
+}
+
+function calc(){
+  let L = +document.getElementById('L').value;
+  let D = +document.getElementById('D').value / 1000;
+  let Q = +document.getElementById('Q').value / 3600;
+  let H = +document.getElementById('H').value;
+
+  let kElbow = +document.getElementById('kElbow').value;
+  let kValve = +document.getElementById('kValve').value;
+  let kCheck = +document.getElementById('kCheck').value;
+
+  const g = 9.81;
+
+  let v = (4 * Q) / (Math.PI * D * D);
+  let dyn = (v*v)/(2*g);
+
+  let hf = 0.02 * (L / D) * dyn;
+  let hl = (kElbow*0.5 + kValve*1.5 + kCheck*2.5) * dyn;
+
+  let equip = 0;
+  if(mode === 'private') equip += 5;
+  if(mode === 'public') equip += 3;
+
+  if(uv.checked) equip += 1;
+  if(heat.checked) equip += 1.2;
+  if(flow.checked) equip += 0.5;
+  if(ozone.checked) equip += 1.4;
+  if(chiller.checked) equip += 2;
+  if(heater.checked) equip += 1.5;
+
+  let total = hf + hl + equip + H;
+
+  let sizes = [25,32,40,50,63,75,90,110,125,140,160,200,225,250];
+  let vTarget = 1.5;
+  let Dreq = Math.sqrt((4*Q)/(Math.PI*vTarget));
+  let DreqMm = Dreq*1000;
+
+  let recommended = sizes.find(s => s >= DreqMm) || 250;
+
+  let out = document.getElementById('out');
+  let res = document.getElementById('res');
+
+  res.style.display = 'block';
+
+  let message = (v>=1 && v<=2.5) ? 'Система подобрана оптимально' : 'Рекомендуется увеличить диаметр';
+
+  out.innerHTML = `
+    <p>Режим: <b>${mode === 'private' ? 'Частный бассейн' : 'Государственный бассейн'}</b></p>
+    <p>Скорость: <b>${v.toFixed(2)} м/с</b></p>
+    <p>Потери: <b>${total.toFixed(2)} м</b></p>
+    <p>Рекомендуемый диаметр: <b>${recommended} мм</b></p>
+    <div class="badge">${message}</div>
+  `;
+}
+
+function openForm(){
+  document.getElementById('modal').style.display='flex';
+}
+function closeForm(){
+  document.getElementById('modal').style.display='none';
+}
+
+function sendForm(){
+
+  const BOT_TOKEN = "8606617823:AAGGTTxEVCkNxc0N6wFsEi_XYVuke39KH_4";
+  const CHAT_ID = "8369302291";
+
+  const yesno = (v) => v ? "Да" : "Нет";
+  const modeText = mode === "private" ? "Частный бассейн" : "Государственный бассейн";
+
+  let message =
+`🏊 ЗАЯВКА НА ПРОЕКТ БАССЕЙНА (ПОТЕРИ НАПОРА)
+
+👤 Имя: ${document.getElementById('name').value}
+📞 Телефон: ${document.getElementById('phone').value}
+💬 Комментарий: ${document.getElementById('comment').value}
+
+📊 Параметры расчёта:
+Режим: ${modeText}
+Длина трубы: ${document.getElementById('L').value} м
+Диаметр трубы: ${document.getElementById('D').value} мм
+Расход воды: ${document.getElementById('Q').value} м³/ч
+Перепад высот: ${document.getElementById('H').value} м
+Количество поворотов: ${document.getElementById('kElbow').value}
+Краны: ${document.getElementById('kValve').value}
+Обратные клапаны: ${document.getElementById('kCheck').value}
+
+⚙️ Оборудование:
+УФ-стерилизация: ${yesno(uv.checked)}
+Теплообменник: ${yesno(heat.checked)}
+Расходомер: ${yesno(flow.checked)}
+Озонатор: ${yesno(ozone.checked)}
+Чиллер: ${yesno(chiller.checked)}
+Электронагреватель: ${yesno(heater.checked)}
+`;
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: message
+    })
+  });
+
+
+
+// 👉 ПОКАЗЫВАЕМ УСПЕХ
+document.getElementById('successModal').style.display = 'flex';
+}
+
+function closeSuccess(){
+  document.getElementById('successModal').style.display = 'none';
+}
+</script>
+
+</body>
+</html>

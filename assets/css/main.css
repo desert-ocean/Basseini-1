@@ -5211,6 +5211,37 @@ input[type="submit"]:hover {
 	border-top: solid 2px #eeeeee;
 }
 
+.articles-cta .hub-actions {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.85rem;
+	max-width: 56rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.articles-cta .articles-cta__lead {
+	max-width: 56rem;
+	margin: 0 auto 1.5rem;
+	color: #52616c;
+	text-align: center;
+}
+
+.articles-cta .hub-actions li {
+	display: flex;
+	width: 100%;
+}
+
+.articles-cta .hub-actions .button {
+	display: flex;
+	min-height: 3.75rem;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	line-height: 1.35;
+}
+
 #main > .posts.case-grid > article.case-card {
 	padding: 3.25rem 2.5rem 3rem;
 	background: #ffffff;
@@ -5553,6 +5584,10 @@ input[type="submit"]:hover {
 	.project-cta .actions li,
 	.project-cta .button {
 		width: 100%;
+	}
+
+	.articles-cta .hub-actions {
+		grid-template-columns: 1fr;
 	}
 
 	.project-grid article header,

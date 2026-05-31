@@ -1,0 +1,430 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:300,700,900&display=swap");
+
+:root {
+  --ink: #17212b;
+  --ink-soft: #3f454b;
+  --ink-muted: #6f7880;
+  --blue: #176d8f;
+  --blue-deep: #0d4e69;
+  --gold: #c8a96f;
+  --paper: #ffffff;
+  --paper-soft: #f7f8f8;
+  --line: #d9e0e3;
+  --line-soft: rgba(23, 33, 43, 0.1);
+  --night: #090f14;
+  --night-2: #101922;
+  --radius-card: 1.1rem;
+  --radius-field: 0.65rem;
+  --shadow-card: 0 1.8rem 4rem rgba(15, 32, 44, 0.09);
+  --shadow-button: 0 1rem 2.2rem rgba(23, 109, 143, 0.22);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  min-width: 320px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--ink-soft);
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  background:
+    linear-gradient(180deg, rgba(4, 10, 16, 0.72) 0%, rgba(4, 10, 16, 0.5) 22rem, rgba(247, 248, 248, 0.98) 42rem),
+    linear-gradient(90deg, rgba(4, 10, 16, 0.66), rgba(4, 10, 16, 0.16) 50%, rgba(4, 10, 16, 0.66)),
+    url("../images/photo-bassein.jpg") center top / cover no-repeat fixed,
+    var(--night);
+  padding: clamp(2.4rem, 6vw, 5rem) 1rem clamp(2.75rem, 7vw, 5.5rem);
+}
+
+.container {
+  width: min(64rem, calc(100vw - 2rem));
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4.4rem) clamp(1.2rem, 5vw, 4rem) clamp(1.65rem, 4.5vw, 3.5rem);
+  background: var(--paper);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: var(--radius-card);
+  box-shadow: 0 2.4rem 5.8rem rgba(0, 0, 0, 0.24), var(--shadow-card);
+  animation: premiumSectionFade 0.9s ease both;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  text-transform: none;
+}
+
+h1 {
+  max-width: 48rem;
+  margin: 0 auto 1rem;
+  font-size: clamp(2.45rem, 6.4vw, 5rem);
+  text-align: center;
+  text-wrap: balance;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.7rem, 3.6vw, 2.65rem);
+  text-wrap: balance;
+}
+
+h3 {
+  margin: 0 0 0.8rem;
+  font-size: clamp(1.18rem, 2.4vw, 1.55rem);
+}
+
+.subtitle {
+  max-width: 36rem;
+  margin: 0 auto 1.8rem;
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+.top-meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 0 1.5rem;
+}
+
+.badge,
+.top-meta span,
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.6rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: #eef3f4;
+  border: 1px solid #dde5e8;
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.notice {
+  margin: 1rem 0 1.15rem;
+  padding: 1rem 1.05rem;
+  border-radius: 0.85rem;
+  background: #f3f7f8;
+  color: var(--ink-soft);
+  border: 1px solid #dde5e8;
+}
+
+.value-list,
+.engineer-block,
+.trust,
+.small,
+.microcopy {
+  color: var(--ink-soft);
+}
+
+.value-list {
+  margin: 0 0 1rem;
+  padding: 1rem 1.05rem;
+  border-radius: 0.85rem;
+  background: #fbfcfc;
+  border: 1px solid #e7edf0;
+}
+
+.anchor {
+  margin-bottom: 0.55rem;
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.trust-grid,
+.addons,
+.options,
+.presetBtns {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.trust-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 0 1rem;
+}
+
+.trust {
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.progress {
+  height: 0.45rem;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0 0 1.4rem;
+}
+
+.progress > div,
+#bar,
+#progress-bar {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg, #00c853, #69f0ae);
+  transition: 0.4s;
+}
+
+.step {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.step.active {
+  display: block;
+  animation: up 0.5s forwards;
+}
+
+@keyframes up {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.options {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.options button,
+.presetBtns button,
+.addon,
+.option,
+.opt,
+.tg-link,
+button {
+  width: 100%;
+  min-height: 3.25rem;
+  margin-top: 0.9rem;
+  padding: 0 1.7rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #ffffff;
+  cursor: pointer;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 3.25rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-button);
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+button:hover,
+.tg-link:hover,
+.options button:hover,
+.presetBtns button:hover,
+.addon:hover,
+.option:hover,
+.opt:hover {
+  transform: translateY(-0.12rem);
+  background: var(--blue-deep);
+  box-shadow: 0 1.2rem 2.4rem rgba(13, 78, 105, 0.24);
+}
+
+button:focus-visible,
+.tg-link:focus-visible,
+.options button:focus-visible,
+.presetBtns button:focus-visible,
+.addon:focus-visible,
+.option:focus-visible,
+.opt:focus-visible {
+  outline: 0.18rem solid rgba(23, 109, 143, 0.25);
+  outline-offset: 0.16rem;
+}
+
+button:active,
+.tg-link:active,
+.options button:active,
+.presetBtns button:active,
+.addon:active,
+.option:active,
+.opt:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.options button,
+.presetBtns button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.2rem;
+  min-height: 4.8rem;
+  text-align: left;
+}
+
+.option-title {
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.option-desc {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.35;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 0.8rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--ink);
+  font: inherit;
+  outline: none;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.result,
+.engineer-block,
+.modal-content {
+  margin-top: 1rem;
+  padding: 1rem 1.05rem;
+  border-radius: 0.95rem;
+  background: #f8fbff;
+  border: 1px solid #dde5e8;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.modal-content {
+  width: min(100%, 34rem);
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  animation: pop 0.25s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.hidden { display: none !important; }
+
+.small,
+.microcopy {
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+}
+
+.highlight {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.addons {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0.9rem;
+}
+
+.addon {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 5rem;
+  background: var(--blue);
+  color: #fff;
+  border: 0;
+  box-shadow: var(--shadow-button);
+}
+
+.addon.active,
+.presetBtns button.active,
+.options button.active,
+.option.active {
+  background: var(--blue-deep);
+  color: #fff;
+}
+
+.order-btn,
+.close-btn {
+  background: var(--blue) !important;
+  color: #ffffff !important;
+  box-shadow: var(--shadow-button) !important;
+  border: 0 !important;
+}
+
+.order-btn:hover,
+.close-btn:hover {
+  background: var(--blue-deep) !important;
+  box-shadow: 0 1.2rem 2.4rem rgba(13, 78, 105, 0.24) !important;
+}
+
+.addon .icon {
+  font-size: 1.25rem;
+}
+
+.addon .title {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.presetBtns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100vw - 1rem, 64rem);
+    padding: 1.6rem 1rem 1.4rem;
+  }
+
+  .options,
+  .addons,
+  .trust-grid,
+  .presetBtns {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 3.1rem);
+  }
+
+  button,
+  .tg-link {
+    min-height: 3.4rem;
+    line-height: 1.35;
+    white-space: normal;
+  }
+}

@@ -2,34 +2,29 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Калькулятор стоимости бассейна под ключ — рассчитать цену строительства онлайн</title>
-  <meta name="description" content="Калькулятор стоимости бассейна под ключ: рассчитайте цену строительства за 1 минуту, получите точную смету и консультацию инженера. Ответ в течение 10–15 минут.">
-  <meta name="keywords" content="калькулятор стоимости бассейна под ключ, стоимость строительства бассейна, цена бассейна под ключ, расчет бассейна онлайн, смета на бассейн, строительство бассейнов">
+  <title>Техническое задание на строительство бассейна</title>
+  <meta name="description" content="Заполните техническое задание на бассейн онлайн. Инженер проверит параметры и подготовит рекомендации по реализации проекта.">
+  <meta name="keywords" content="техническое задание на бассейн, тз на бассейн, проектирование бассейна, строительство бассейнов, инженер бассейна">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:title" content="Калькулятор стоимости бассейна под ключ">
-  <meta property="og:description" content="Рассчитайте стоимость строительства бассейна онлайн и получите персональную смету от инженера.">
-  <meta property="og:url" content="https://example.com/kalkulyator-stoimosti-basseyna">
-  <meta property="og:site_name" content="Калькулятор бассейна">
+  <meta property="og:title" content="Техническое задание на бассейн">
+  <meta property="og:description" content="Заполните техническое задание на бассейн онлайн и отправьте параметры инженеру на проверку.">
+  <meta property="og:url" content="https://alpool.ru/kalkulyator-basseina/teh-zadanie.html">
+  <meta property="og:site_name" content="Техническое задание на бассейн">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Калькулятор стоимости бассейна под ключ",
+    "name": "Техническое задание на бассейн",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Any",
     "inLanguage": "ru",
-    "description": "Онлайн-калькулятор расчета стоимости строительства бассейна под ключ с отправкой заявки инженеру.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "RUB"
-    },
+    "description": "Онлайн-форма технического задания на бассейн с отправкой параметров инженеру.",
     "featureList": [
-      "Расчет стоимости бассейна за 1 минуту",
-      "Подбор оборудования и дополнительных опций",
-      "Получение персональной сметы от инженера"
+      "Заполнение технического задания за 1 минуту",
+      "Передача параметров бассейна инженеру",
+      "Подготовка рекомендаций по реализации проекта"
     ]
   }
   </script>
@@ -278,8 +273,7 @@ h3 {
   animation: stepIn 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-.microcopy,
-.price-caption {
+.microcopy {
   margin: 0.4rem 0 1rem;
   color: var(--ink-muted);
   font-family: "Merriweather", Georgia, serif;
@@ -455,21 +449,6 @@ button:focus-visible,
 button:active,
 .tg-link:active { transform: translateY(0) scale(0.99); }
 
-#price {
-  display: none;
-  margin: 1.15rem 0 0.75rem;
-  padding: 1.25rem;
-  border: 1px solid rgba(23, 109, 143, 0.18);
-  border-radius: var(--radius-field);
-  background: linear-gradient(135deg, rgba(23, 109, 143, 0.11), rgba(255, 255, 255, 0.94));
-  color: var(--ink);
-  box-shadow: 0 1.2rem 2.8rem rgba(15, 32, 44, 0.08);
-  font-size: clamp(1.55rem, 4.5vw, 2.45rem);
-  font-weight: 900;
-  letter-spacing: -0.025em;
-  line-height: 1.12;
-}
-
 .addons {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -609,14 +588,6 @@ button:active,
   to { opacity: 1; transform: translateY(0); }
 }
 
-.price-anim { animation: pricePulse 0.58s ease; }
-
-@keyframes pricePulse {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.025); text-shadow: 0 0.8rem 1.8rem rgba(23, 109, 143, 0.18); }
-  100% { transform: scale(1); }
-}
-
 @keyframes modalPop {
   from { transform: scale(0.92) translateY(0.5rem); opacity: 0; }
   to { transform: scale(1) translateY(0); opacity: 1; }
@@ -740,30 +711,30 @@ button:active,
 <body>
 
 <div class="container">
-  <h1>Калькулятор стоимости бассейна под ключ</h1>
-  <p class="subtitle">Рассчитайте стоимость строительства бассейна за 1 минуту</p>
+  <h1>Техническое задание на бассейн</h1>
+  <p class="subtitle">Заполните и отправьте техническое задание инженеру на проверку бассейна за 1 минуту</p>
   <div class="top-meta">
     <span id="step-counter">Шаг 1 из 10</span>
     <span class="badge">Среднее время заполнения — 1 минута</span>
   </div>
 
   <div class="notice">
-    <strong>От чего зависит цена бассейна:</strong> тип чаши, размеры, форма, перелив, отделка, инженерное оборудование и дополнительные опции.
+    <strong>Что важно для технического задания:</strong> тип чаши, размеры, форма, перелив, отделка, инженерное оборудование и дополнительные опции.
   </div>
 
   <div class="value-list">
-    <div class="anchor">Что входит в строительство бассейна под ключ:</div>
-    ✔ проектные решения и подбор оборудования<br>
-    ✔ облицовка и гидроизоляция чаши и монтаж инженерных систем<br>
-    ✔ пусконаладка, инструктаж и итоговая смета
+    <div class="anchor">Что инженер проверит по вашему ТЗ:</div>
+    ✔ исходные параметры и назначение бассейна<br>
+    ✔ облицовку, гидроизоляцию чаши и состав инженерных систем<br>
+    ✔ ограничения участка, этапность работ и рекомендации по реализации
   </div>
-    <div class="trust-grid">
+  <div class="trust-grid">
     <div class="trust-item">🏆 300+ реализованных бассейнов</div>
-    <div class="trust-item">🧾 Расчёт без скрытых платежей</div>
+    <div class="trust-item">📋 Проверка параметров проекта</div>
     <div class="trust-item">🛠️ Проверка инженером перед отправкой</div>
     <div class="trust-item">⚡ Ответ в течение 10–15 минут</div>
   </div>
-  <div class="trust">8 из 10 пользователей доходят до финальной сметы • Инженерный расчет по вашему участку</div>
+  <div class="trust">Заполните параметры бассейна • Инженер проверит данные по вашему участку</div>
 
   <div class="progress">
     <div id="progress-bar"></div>
@@ -772,28 +743,28 @@ button:active,
   <form id="quiz">
     <div class="step active">
       <h2>Тип бассейна</h2>
-      <div class="microcopy">Это займёт около 1 минуты. 8 из 10 пользователей доходят до финальной сметы.</div>
+      <div class="microcopy">Это займёт около 1 минуты. Выберите конструкцию, которую планируете использовать.</div>
       <div class="options">
-        <button type="button" onclick="selectOption('type',15000)"><span class="option-title">Бетонный</span><span class="option-desc">Максимальная гибкость формы и долговечность</span></button>
-        <button type="button" onclick="selectOption('type',12000)"><span class="option-title">Композитный</span><span class="option-desc">Быстрый монтаж и оптимальный бюджет</span></button>
-        <button type="button" onclick="selectOption('type',8000)"><span class="option-title">Каркасный</span><span class="option-desc">Практичное решение с быстрым запуском</span></button>
+        <button type="button" onclick="selectOption('type','Бетонный')"><span class="option-title">Бетонный</span><span class="option-desc">Максимальная гибкость формы и долговечность</span></button>
+        <button type="button" onclick="selectOption('type','Композитный')"><span class="option-title">Композитный</span><span class="option-desc">Быстрый монтаж и готовая заводская чаша</span></button>
+        <button type="button" onclick="selectOption('type','Каркасный')"><span class="option-title">Каркасный</span><span class="option-desc">Практичное решение с быстрым запуском</span></button>
       </div>
-      <div class="microcopy">Выберите вариант — это поможет точнее рассчитать стоимость под ключ.</div>
+      <div class="microcopy">Выберите вариант — это поможет инженеру проверить конструктивные требования.</div>
     </div>
 
     <div class="step">
       <h2>Тип перелива бассейна</h2>
-      <div class="microcopy">Шаг 2 из 10. Двигаемся к точной смете.</div>
+      <div class="microcopy">Укажите желаемую схему водообмена для будущего проекта.</div>
       <div class="options">
-        <button type="button" onclick="selectOverflow('skimmer',1)"><span class="option-title">Скиммерный</span><span class="option-desc">Надёжный базовый вариант</span></button>
-        <button type="button" onclick="selectOverflow('overflow',1.2)"><span class="option-title">Переливной</span><span class="option-desc">Премиальный эффект “зеркала воды”</span></button>
+        <button type="button" onclick="selectOverflow('Скиммерный')"><span class="option-title">Скиммерный</span><span class="option-desc">Надёжный базовый вариант</span></button>
+        <button type="button" onclick="selectOverflow('Переливной')"><span class="option-title">Переливной</span><span class="option-desc">Премиальный эффект “зеркала воды”</span></button>
       </div>
-      <div class="microcopy">Мягкий CTA: продолжите, и мы покажем ориентир стоимости уже на финальном шаге.</div>
+      <div class="microcopy">Если вы сомневаетесь, инженер подскажет подходящий вариант после проверки ТЗ.</div>
     </div>
 
     <div class="step">
       <h2>Форма бассейна</h2>
-      <div class="microcopy">Вы почти закончили первую половину расчёта.</div>
+      <div class="microcopy">Форма влияет на конструкцию чаши, отделку и компоновку оборудования.</div>
       <div class="options">
         <button type="button" onclick="selectShape('rect')"><span class="option-title">Прямоугольная</span><span class="option-desc">Самое популярное решение</span></button>
         <button type="button" onclick="selectShape('round')"><span class="option-title">Круглая</span><span class="option-desc">Мягкая эстетика и акцент на дизайн</span></button>
@@ -802,8 +773,8 @@ button:active,
     </div>
 
     <div class="step">
-      <h2>Размеры</h2>
-      <div class="microcopy">Чем точнее размеры, тем ближе итоговая смета к реальной стоимости.</div>
+      <h2>Желаемый размер бассейна</h2>
+      <div class="microcopy">Укажите ориентировочные размеры. Если точных данных нет, заполните поля приблизительно.</div>
 
       <input type="hidden" id="length">
       <input type="hidden" id="width">
@@ -825,33 +796,33 @@ button:active,
         <input type="number" id="irregular-depth" placeholder="Глубина, например 1.6" oninput="updateDimensions()">
       </div>
 
-      <button type="button" onclick="updateDimensionsAndNext()">Продолжить расчет →</button>
-      <div class="microcopy">После этого шага расчёт станет ещё точнее.</div>
+      <button type="button" onclick="updateDimensionsAndNext()">Продолжить ТЗ →</button>
+      <div class="microcopy">Размеры нужны инженеру для проверки компоновки и технических ограничений.</div>
     </div>
 
     <div class="step">
       <h2>Отделка чаши</h2>
-      <div class="microcopy">Шаг 5 из 10. Осталось меньше половины.</div>
+      <div class="microcopy">Выберите желаемый материал внутренней отделки бассейна.</div>
       <div class="options">
-        <button type="button" onclick="selectOption('finish',0)"><span class="option-title">Пленка ПВХ</span><span class="option-desc">Практичный старт без переплаты</span></button>
-        <button type="button" onclick="selectOption('finish',150000)"><span class="option-title">Плитка</span><span class="option-desc">Баланс визуала и ресурса эксплуатации</span></button>
-        <button type="button" onclick="selectOption('finish',300000)"><span class="option-title">Мозаика</span><span class="option-desc">Премиум-отделка с акцентом на стиль</span></button>
+        <button type="button" onclick="selectOption('finish','Пленка ПВХ')"><span class="option-title">Пленка ПВХ</span><span class="option-desc">Практичный вариант для быстрой реализации</span></button>
+        <button type="button" onclick="selectOption('finish','Плитка')"><span class="option-title">Плитка</span><span class="option-desc">Баланс визуала и ресурса эксплуатации</span></button>
+        <button type="button" onclick="selectOption('finish','Мозаика')"><span class="option-title">Мозаика</span><span class="option-desc">Премиальная отделка с акцентом на стиль</span></button>
       </div>
     </div>
 
     <div class="step">
       <h2>Оборудование</h2>
-      <div class="microcopy">На этом шаге формируется комфорт эксплуатации и итоговый бюджет.</div>
+      <div class="microcopy">Отметьте желаемый уровень оснащения для эксплуатации бассейна.</div>
       <div class="options">
-        <button type="button" onclick="selectOption('equipment',0)"><span class="option-title">Базовое</span><span class="option-desc">Необходимый минимум для запуска</span></button>
-        <button type="button" onclick="selectOption('equipment',150000)"><span class="option-title">Среднее</span><span class="option-desc">Оптимальный комфорт для семьи</span></button>
-        <button type="button" onclick="selectOption('equipment',350000)"><span class="option-title">Премиум (умный бассейн)</span><span class="option-desc">Автоматизация и максимальное удобство</span></button>
+        <button type="button" onclick="selectOption('equipment','Базовое')"><span class="option-title">Базовое</span><span class="option-desc">Необходимый минимум для запуска</span></button>
+        <button type="button" onclick="selectOption('equipment','Среднее')"><span class="option-title">Среднее</span><span class="option-desc">Оптимальный комфорт для семьи</span></button>
+        <button type="button" onclick="selectOption('equipment','Премиум (умный бассейн)')"><span class="option-title">Премиум (умный бассейн)</span><span class="option-desc">Автоматизация и максимальное удобство</span></button>
       </div>
     </div>
 
     <div class="step">
-      <h2>Дополнительно</h2>
-      <div class="microcopy">Добавьте нужные опции — это сразу учитывается в расчете.</div>
+      <h2>Дополнительное оборудование</h2>
+      <div class="microcopy">Добавьте опции, которые нужно учесть в техническом задании.</div>
       <div class="addons">
         <div class="addon" onclick="toggleAddon(this,'heater')"><div class="icon">🔥</div><div class="title">Подогрев</div></div>
         <div class="addon" onclick="toggleAddon(this,'lights')"><div class="icon">💡</div><div class="title">Подсветка</div></div>
@@ -862,22 +833,22 @@ button:active,
         <div class="addon" onclick="toggleAddon(this,'countercurrent')"><div class="icon">🏊</div><div class="title">Противоток</div></div>
         <div class="addon" onclick="toggleAddon(this,'shutters')"><div class="icon">🪟</div><div class="title">Жалюзи</div></div>
       </div>
-      <button type="button" onclick="nextStep()">Продолжить расчет →</button>
-      <div class="microcopy">Мягкий CTA: ещё 3 шага до персональной сметы.</div>
+      <button type="button" onclick="nextStep()">Продолжить ТЗ →</button>
+      <div class="microcopy">Эти данные помогут инженеру проверить состав инженерных систем.</div>
     </div>
 
     <div class="step">
       <h2>Нужно ли проектирование?</h2>
-      <div class="microcopy">Проектирование снижает риски переделок и внеплановых затрат.</div>
+      <div class="microcopy">Проектирование помогает заранее согласовать технологию, архитектуру и инженерные разделы.</div>
       <div class="options">
-        <button type="button" onclick="chooseDesign(false)"><span class="option-title">Не нужно</span><span class="option-desc">Перейти сразу к ориентиру стоимости</span></button>
-        <button type="button" onclick="chooseDesign(true)"><span class="option-title">Нужно</span><span class="option-desc">Учесть проектные разделы для точной сметы</span></button>
+        <button type="button" onclick="chooseDesign(false)"><span class="option-title">Пока не нужно</span><span class="option-desc">Перейти к контактам для консультации инженера</span></button>
+        <button type="button" onclick="chooseDesign(true)"><span class="option-title">Нужно</span><span class="option-desc">Указать проектные разделы для проверки</span></button>
       </div>
     </div>
 
     <div class="step">
       <h2>Разделы проектирования</h2>
-      <div class="microcopy">Вы почти закончили расчёт — финал уже близко.</div>
+      <div class="microcopy">Отметьте разделы, которые требуется включить в техническое задание.</div>
       <div class="addons">
         <div class="addon" onclick="toggleAddon(this,'design_tech')"><div class="icon">⚙️</div><div class="title">Технология</div></div>
         <div class="addon" onclick="toggleAddon(this,'design_arch')"><div class="icon">🏛️</div><div class="title">Архитектура</div></div>
@@ -885,48 +856,41 @@ button:active,
         <div class="addon" onclick="toggleAddon(this,'design_electro')"><div class="icon">⚡</div><div class="title">Электрика</div></div>
         <div class="addon" onclick="toggleAddon(this,'design_auto')"><div class="icon">🤖</div><div class="title">Автоматизация</div></div>
       </div>
-      <button type="button" onclick="nextStep()">Продолжить расчет →</button>
-      <div class="microcopy">Последний шаг: оставьте контакты и получите смету с проверкой инженера.</div>
+      <button type="button" onclick="nextStep()">Продолжить ТЗ →</button>
+      <div class="microcopy">Последний шаг: оставьте контакты, чтобы инженер смог уточнить детали.</div>
     </div>
 
     <div class="step">
-      <h2>Ваш расчёт почти готов — зафиксируйте точную смету ✅</h2>
-      <div id="price"></div>
-      <div class="price-caption">Ориентир стоимости: <strong>от индивидуальных параметров вашего объекта</strong>. Точную смету подтвердит инженер после проверки.</div>
-
-      <p>Оставьте контакты — инженер подготовит точный расчет под ваш участок и задачи, чтобы вы получили понятную смету без скрытых затрат.</p>
+      <h2>Техническое задание почти готово ✅</h2>
+      <p>Оставьте контакты — инженер проверит параметры бассейна, уточнит технические нюансы и подготовит рекомендации по реализации проекта.</p>
       <div class="value-list">
-        ✔ точная смета<br>
-        ✔ подбор оборудования<br>
-        ✔ 2–3 варианта под бюджет
+        ✔ проверка исходных данных<br>
+        ✔ рекомендации по оборудованию<br>
+        ✔ уточнение ограничений участка
       </div>
-      <p class="anchor">Обычно такие проекты стоят от <span id="anchorMin">—</span> до <span id="anchorMax">—</span>.</p>
 
       <div class="notice">
-        ⚠️ Расчёт предварительный. Более точная стоимость формируется после проверки инженером и уточнения технических параметров объекта.
-      </div>
-      <div class="notice">
-        🔒 Финальная проверка: инженер проверит смету, уточнит технические нюансы и предложит оптимальный вариант под ваш бюджет.
+        После получения заявки инженер проверит параметры и свяжется с вами для уточнения деталей проекта.
       </div>
       <div class="engineer-block">
-        <h3>🔍 Ваш расчёт проверит инженер с опытом 10+ лет</h3>
-        <p>📋 Вы получите:</p>
+        <h3>🔍 Ваше ТЗ проверит инженер с опытом 10+ лет</h3>
+        <p>📋 Что будет проверено:</p>
         <ul>
-          <li>Чек-лист перед строительством</li>
-          <li>Где чаще всего переплачивают</li>
-          <li>5 ошибок, которые могут увеличить бюджет до 40%</li>
+          <li>соответствие размеров, формы и типа чаши задачам проекта</li>
+          <li>состав оборудования и дополнительных опций</li>
+          <li>вопросы, которые нужно уточнить перед проектированием и строительством</li>
         </ul>
       </div>
 
       <input type="text" id="name" placeholder="Как к вам обращаться?">
       <input type="tel" id="phone" placeholder="Телефон для связи (WhatsApp/Telegram)">
       <input type="email" id="email" placeholder="Email">
-      <textarea id="comment" placeholder="Комментарий: сроки, место, предполагаемый бюджет, особые пожелания"></textarea>
+      <textarea id="comment" placeholder="Комментарий: сроки, место строительства, особенности участка, пожелания"></textarea>
 
-      <button type="button" onclick="sendLead()">Получить персональную смету →</button>
+      <button type="button" onclick="sendLead()">Отправить техническое задание</button>
       <a class="tg-link" href="https://t.me/desertocean" target="_blank" rel="noopener">💬 Получить консультацию в Telegram</a>
       <div class="trust">Ответ инженера в течение 10–15 минут • 300+ реализованных бассейнов • Бесплатно • Без обязательств</div>
-      <div class="microcopy">Отправляя заявку, вы получаете усиленный финальный расчёт с учетом участка, пожеланий и технических ограничений.</div>
+      <div class="microcopy">Отправляя заявку, вы передаёте инженеру параметры бассейна для проверки и уточнения деталей проекта.</div>
       <div class="microcopy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных для связи по вашему запросу.</div>
     </div>
   </form>
@@ -938,28 +902,10 @@ button:active,
 
 <script>
 let step = 0;
-let data = { type: 0, finish: 0, equipment: 0 };
+let data = { type: "", finish: "", equipment: "", overflow: "" };
 let selectedAddons = {};
 let needDesign = false;
 let poolShape = "rect";
-let overflowMultiplier = 1;
-let calculatedRange = { min: 0, max: 0 };
-
-const addonsPrice = {
-  heater: 120000,
-  lights: 50000,
-  hydromassage: 180000,
-  aeroplatto: 120000,
-  aerolezhak: 130000,
-  waterfall: 90000,
-  countercurrent: 200000,
-  shutters: 150000,
-  design_tech: 80000,
-  design_arch: 120000,
-  design_struct: 150000,
-  design_electro: 90000,
-  design_auto: 180000
-};
 
 const steps = document.querySelectorAll(".step");
 
@@ -971,17 +917,6 @@ function updateProgress(){
   if(stepCounter){
     const currentStep = Math.min(step + 1, total + 1);
     stepCounter.textContent = `Шаг ${currentStep} из ${total + 1}`;
-  }
-}
-
-function updateAnchorText(){
-  const minEl = document.getElementById("anchorMin");
-  const maxEl = document.getElementById("anchorMax");
-  if(minEl && maxEl && calculatedRange.min && calculatedRange.max){
-    const anchorMin = Math.floor(calculatedRange.min / 100000) * 100000;
-    const anchorMax = Math.ceil(calculatedRange.max / 100000) * 100000;
-    minEl.textContent = anchorMin.toLocaleString() + " ₽";
-    maxEl.textContent = anchorMax.toLocaleString() + " ₽";
   }
 }
 
@@ -1041,8 +976,8 @@ function updateDimensionsAndNext(){
   nextStep();
 }
 
-function selectOverflow(type, mult){
-  overflowMultiplier = mult;
+function selectOverflow(type){
+  data.overflow = type;
   playClick();
   nextStep();
 }
@@ -1054,7 +989,6 @@ function chooseDesign(val){
     steps[step].classList.remove("active");
     step = steps.length - 1;
     steps[step].classList.add("active");
-    calculate();
     updateProgress();
     playClick();
     startConsultTimer();
@@ -1075,7 +1009,6 @@ function nextStep(){
   steps[step].classList.remove("active");
   step++;
   steps[step].classList.add("active");
-  calculate();
   updateProgress();
   playClick();
   startConsultTimer();
@@ -1084,65 +1017,7 @@ function nextStep(){
 function toggleAddon(el,key){
   el.classList.toggle("active");
   selectedAddons[key] ? delete selectedAddons[key] : selectedAddons[key] = true;
-  calculate();
-  pulsePrice();
   playClick();
-}
-
-function calculate(){
-  let l=parseFloat(document.getElementById('length')?.value)||6;
-  let w=parseFloat(document.getElementById('width')?.value)||3;
-  let d=parseFloat(document.getElementById('depth')?.value)||1.5;
-
-  let volume = l*w*d;
-  let area = l*w;
-
-  let base = 500000;
-
-  let scaleCoef = 1;
-  if(volume > 60) scaleCoef = 0.75;
-  else if(volume > 40) scaleCoef = 0.82;
-  else if(volume > 25) scaleCoef = 0.9;
-  else if(volume < 10) scaleCoef = 1.25;
-
-  if(data.type === 15000){
-    base += volume * 30000 * scaleCoef;
-  } else if(data.type === 12000){
-    base += volume * 20000 * scaleCoef;
-  } else if(data.type === 8000){
-    base += volume * 10000 * scaleCoef;
-  }
-
-  if(poolShape === "round") base *= 1.1;
-  if(poolShape === "irregular") base *= 1.35;
-
-  base += area * ((data.finish || 0) / 4);
-  base += (data.equipment || 0);
-
-  for(let k in selectedAddons) base += addonsPrice[k] || 0;
-  base *= overflowMultiplier;
-
-  if(base < 600000) base = 600000;
-
-  let min = Math.round(base * 0.9);
-  let max = Math.round(base * 1.3);
-  calculatedRange = { min, max };
-
-  const el = document.getElementById("price");
-  if(el){
-    el.textContent = `от ${min.toLocaleString()} ₽ до ${max.toLocaleString()} ₽`;
-    el.style.display = "block";
-  }
-
-  updateAnchorText();
-}
-
-function pulsePrice(){
-  const p=document.getElementById("price");
-  if(!p) return;
-  p.classList.remove("price-anim");
-  void p.offsetWidth;
-  p.classList.add("price-anim");
 }
 
 function playClick(){
@@ -1165,43 +1040,18 @@ async function sendLead(){
     return;
   }
 
-  calculate();
+  updateDimensions();
 
   let l = parseFloat(document.getElementById("length")?.value) || 0;
   let w = parseFloat(document.getElementById("width")?.value) || 0;
   let d = parseFloat(document.getElementById("depth")?.value) || 0;
   let volume = l * w * d;
 
-  function getTypeName(value){
-    if(value === 15000) return "Бетонный";
-    if(value === 12000) return "Композитный";
-    if(value === 8000) return "Каркасный";
-    return "Не выбран";
-  }
-
-  function getFinishName(value){
-    if(value === 0) return "ПВХ пленка";
-    if(value === 150000) return "Плитка";
-    if(value === 300000) return "Мозаика";
-    return "Не выбрана";
-  }
-
-  function getEquipmentName(value){
-    if(value === 0) return "Базовое";
-    if(value === 150000) return "Среднее";
-    if(value === 350000) return "Премиум";
-    return "Не выбрано";
-  }
-
   function getShapeName(value){
     if(value === "rect") return "Прямоугольная";
     if(value === "round") return "Круглая";
     if(value === "irregular") return "Неправильная форма";
     return "Не выбрана";
-  }
-
-  function getOverflowName(){
-    return overflowMultiplier === 1.2 ? "Переливной" : "Скиммерный";
   }
 
   function getAddonName(key){
@@ -1228,39 +1078,38 @@ async function sendLead(){
     : "нет";
 
   let message = `
-🏊‍♂️ НОВАЯ ЗАЯВКА
+🏊‍♂️ НОВОЕ ТЕХНИЧЕСКОЕ ЗАДАНИЕ
 
 👤 Имя: ${name || "не указано"}
 📞 Телефон: ${phone}
 📧 Email: ${email || "не указан"}
 💬 Комментарий: ${comment || "нет"}
 
-💰 Цена: ${calculatedRange.min.toLocaleString()} — ${calculatedRange.max.toLocaleString()} ₽
-
-📊 ТЕХНИЧЕСКИЕ ДАННЫЕ:
+📊 ПАРАМЕТРЫ ТЗ:
 - Габариты (Д×Ш×Г): ${l} × ${w} × ${d} м
 - Объём: ${volume.toFixed(2)} м³
-- Тип: ${getTypeName(data.type)}
-- Тип перелива: ${getOverflowName()}
+- Тип: ${data.type || "Не выбран"}
+- Тип перелива: ${data.overflow || "Не выбран"}
 - Форма: ${getShapeName(poolShape)}
-- Отделка: ${getFinishName(data.finish)}
-- Оборудование: ${getEquipmentName(data.equipment)}
+- Отделка: ${data.finish || "Не выбрана"}
+- Оборудование: ${data.equipment || "Не выбрано"}
+- Проектирование: ${needDesign ? "нужно" : "пока не нужно"}
 
-➕ Допы:
+➕ Дополнительные опции и разделы:
 ${addonsList}
 `;
 
+  const payload = {
+    name: (name || "").trim(),
+    phone: (phone || "").trim(),
+    email: (email || "").trim(),
+    comment: (comment || "").trim(),
+    message
+  };
+
+  console.log("SEND PAYLOAD:", payload);
+
   try {
-    const payload = {
-      name: (name || "").trim(),
-      phone: (phone || "").trim(),
-      email: (email || "").trim(),
-      comment: (comment || "").trim(),
-      message
-    };
-
-    console.log("SEND PAYLOAD:", payload);
-
     const response = await fetch("/.netlify/functions/send-lead", {
       method: "POST",
       headers: {
@@ -1321,7 +1170,6 @@ function openConsultModal(){
   steps[step].classList.remove("active");
   step = steps.length - 1;
   steps[step].classList.add("active");
-  calculate();
   updateProgress();
   playClick();
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1329,16 +1177,15 @@ function openConsultModal(){
 
 updateProgress();
 updateDimensions();
-calculate();
 startConsultTimer();
 </script>
 
-<div id="successModal" class="modal">
+<div class="modal" id="successModal">
   <div class="modal-content">
     <div class="icon">✅</div>
-    <h3>Заявка отправлена!</h3>
-    <p>Мы уже начали расчет. Скоро свяжемся с вами.</p>
-    <button onclick="closeModal()">ОК</button>
+    <h3>Техническое задание отправлено</h3>
+    <p>Спасибо! Инженер проверит параметры бассейна и свяжется с вами для уточнения деталей проекта.</p>
+    <button type="button" onclick="closeModal()">Закрыть</button>
   </div>
 </div>
 
