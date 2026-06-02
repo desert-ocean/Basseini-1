@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор объема бассейна</title>
+  <meta name="description" content="Рассчитайте объем бассейна по форме чаши и получите ориентир по первичному заполнению в кубометрах и литрах.">
+  <meta name="keywords" content="калькулятор объема бассейна, объем воды, расчет бассейна, бассейн">
+  <link rel="stylesheet" href="kalkulyatori-ui.css">
+</head>
+<body>
+<div class="container">
+  <h1>Калькулятор объема бассейна</h1>
+  <p class="subtitle">Предварительный расчет объема воды для частных и коммерческих бассейнов.</p>
+  <div class="notice">Используйте расчет как базовый ориентир для проекта, подбора оборудования и консультации инженера.</div>
+  <div class="progress"><div id="bar"></div></div>
+  <div class="step active">
+    <h3>Форма бассейна</h3>
+    <button class="opt" onclick="setShape('rect')">Прямоугольный</button>
+    <button class="opt" onclick="setShape('round')">Круглый</button>
+    <button class="opt" onclick="setShape('oval')">Овальный</button>
+  </div>
+  <div class="step">
+    <h3>Геометрия</h3>
+    <input id="length" type="number" value="8" placeholder="Длина (м)">
+    <input id="width" type="number" value="4" placeholder="Ширина (м)">
+    <input id="depth" type="number" value="1.5" placeholder="Средняя глубина (м)">
+    <button onclick="next()">Далее</button>
+  </div>
+  <div class="step">
+    <h3>Результат</h3>
+    <div class="result">
+      <div>Объем воды: <b id="volume"></b> м³</div>
+      <div>Объем воды: <b id="liters"></b> литров</div>
+    </div>
+    <button onclick="openLead()">Получить консультацию</button>
+  </div>
+  <div class="step">
+    <h3>FAQ</h3>
+    <table>
+      <tr><th>Вопрос</th><th>Ответ</th></tr>
+      <tr><td>Как считать объем?</td><td>Берите внутренние размеры чаши и среднюю глубину.</td></tr>
+      <tr><td>Подходит ли для сметы?</td><td>Да, как предварительный ориентир.</td></tr>
+      <tr><td>Что делать со сложной формой?</td><td>Используйте ближайшую геометрию или консультацию инженера.</td></tr>
+      <tr><td>Почему расчет предварительный?</td><td>Итог зависит от конструкции, отделки и инженерии.</td></tr>
+    </table>
+    <a class="tg-link" href="/kalkulyatori/">К списку калькуляторов</a>
+  </div>
+  <div class="step">
+    <h3>Связанные расчеты</h3>
+    <div class="seo-link-grid">
+      <a href="/kalkulyatori/kalkulyator-filtracii-basseyna.html">Фильтрация</a>
+      <a href="/kalkulyatori/kalkulyator-moshnosti-teploobmennika.html">Теплообменник</a>
+      <a href="/kalkulyatori/kalkulyator-teplovogo-nasosa.html">Тепловой насос</a>
+      <a href="/kalkulyatori/kalkulyator-rashoda-vody.html">Расход воды</a>
+    </div>
+  </div>
+</div>
+<footer id="footer">
+  <section id="contact" class="contact-form-section" aria-labelledby="contact-title">
+    <header>
+      <span class="date">Контакты</span>
+      <h2 id="contact-title">Получить персональную консультацию</h2>
+      <p>Оставьте заявку — свяжемся, уточним параметры объекта и предложим следующий шаг.</p>
+    </header>
+    <form method="POST" action="https://formspree.io/f/xnjwywvy">
+      <div class="fields">
+        <div class="field"><label for="name">Имя</label><input type="text" name="name" id="name" placeholder="Ваше имя" autocomplete="name" /></div>
+        <div class="field"><label for="phone">Телефон</label><input type="tel" name="phone" id="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" /></div>
+        <div class="field"><label for="message">Комментарий</label><textarea name="message" id="message" placeholder="Что нужно рассчитать?"></textarea></div>
+      </div>
+      <button type="submit" class="button large">Получить консультацию</button>
+    </form>
+  </section>
+</footer>
+<script>
+let shape='rect';
+let currentStep=0;
+const steps=[...document.querySelectorAll('.step')];
+function update(){steps.forEach((s,i)=>s.classList.toggle('active', i===currentStep));document.getElementById('bar').style.width=((currentStep+1)/steps.length*100)+'%';}
+function setShape(v){shape=v;currentStep=1;update();}
+function next(){currentStep=Math.min(currentStep+1, steps.length-1);if(currentStep===2)calc();update();}
+function calc(){const L=+document.getElementById('length').value||0;const W=+document.getElementById('width').value||0;const H=+document.getElementById('depth').value||0;let v=0;if(shape==='rect')v=L*W*H;if(shape==='round')v=Math.PI*Math.pow(L/2,2)*H;if(shape==='oval')v=Math.PI*L*W*H/4;document.getElementById('volume').innerText=v.toFixed(2);document.getElementById('liters').innerText=Math.round(v*1000).toLocaleString();}
+function openLead(){location.href='/kalkulyatori/teh-zadanie.html';}
+update();
+</script>
+</body>
+</html>
