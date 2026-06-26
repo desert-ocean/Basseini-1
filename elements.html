@@ -431,52 +431,65 @@ print 'It took ' + i + ' iterations to sort the deck.';
 
 				<!-- Footer -->
 					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+				<section id="contact" class="contact-form-section" aria-labelledby="contact-title">
+					<header>
+						<span class="date">Контакты</span>
+						<h2 id="contact-title">Получить персональную консультацию</h2>
+						<p>Оставьте заявку — свяжемся, уточним параметры объекта и предложим следующий шаг.</p>
+					</header>
+					<form method="POST" action="https://formspree.io/f/xnjwywvy">
+						<div class="fields">
+							<div class="field">
+								<label for="name">Имя</label>
+								<input type="text" name="name" id="name" placeholder="Ваше имя" autocomplete="name" />
+							</div>
+							<div class="field">
+								<label for="phone">Телефон</label>
+								<input type="tel" name="phone" id="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required />
+							</div>
+							<div class="field">
+								<label for="email">Email</label>
+								<input type="email" name="email" id="email" placeholder="Ваш email" autocomplete="email" />
+							</div>
+							<div class="field">
+								<label for="message">Сообщение</label>
+								<textarea name="message" id="message" rows="4" placeholder="Коротко опишите объект, желаемый формат бассейна и удобный способ связи"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" class="button primary large" value="Отправить заявку" /></li>
+						</ul>
+					</form>
+				</section>
+				<section class="split contact contact-details" aria-label="Контактная информация">
+					<section class="alt">
+						<h3>Мессенджеры</h3>
+						<ul class="actions contact-messengers">
+							<li><a href="https://wa.me/79856446654" class="button icon brands fa-whatsapp">WhatsApp</a></li>
+							<li><a href="https://t.me/desertocean" class="button icon brands fa-telegram-plane">Telegram</a></li>
+						</ul>
+
+					</section>
+					<section>
+						<h3>Телефон</h3>
+						<p><a href="tel:+74956446654">+7 (495) 644-66-54</a></p>
+					</section>
+					<section>
+						<h3>Email</h3>
+						<p><a href="mailto:aanufriev@list.ru">aanufriev@list.ru</a></p>
+					</section>
+					<section class="contact-cta" aria-labelledby="tech-task-contact-title">
+						<div class="contact-cta__icon" aria-hidden="true">
+							<span class="icon solid fa-clipboard-list"></span>
+						</div>
+						<div class="contact-cta__content">
+							<h3 id="tech-task-contact-title">Техническое задание на бассейн</h3>
+							<p>Заполните электронное техническое задание. Это поможет нам подготовить точный расчет стоимости, подобрать оборудование и сформировать коммерческое предложение именно под ваш проект.</p>
+							<a href="https://adorable-sopapillas-143c42.netlify.app" class="button primary large contact-cta__button">Заполнить техническое задание</a>
+						</div>
+					</section>
+				</section>
+			</footer>
 
 				<!-- Copyright -->
 					<div id="copyright">
