@@ -6,9 +6,38 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="Статьи о бассейнах: проектирование бассейнов, строительство бассейнов, гидроизоляция, оборудование бассейна и инженерные системы для частных домов." />
 		<meta name="keywords" content="проектирование бассейнов, строительство бассейнов, гидроизоляция, оборудование бассейна, статьи о бассейнах" />
-		<link rel="canonical" href="https://alpool.ru/blog/" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Статьи о бассейнах — АЛ Пулс" />
+		<meta property="og:description" content="Статьи о бассейнах: проектирование бассейнов, строительство бассейнов, гидроизоляция, оборудование бассейна и инженерные системы для частных домов." />
+		<meta property="og:url" content="https://alpool.ru/blog/blog.html" />
+		<meta property="og:image" content="https://alpool.ru/images/photo-bassein.jpg" />
+		<meta property="og:locale" content="ru_RU" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="canonical" href="https://alpool.ru/blog/blog.html" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style>
+			#blog-category-list {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 0.75rem;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			#blog-category-list > li {
+				flex: 0 0 auto;
+				margin: 0;
+				padding: 0;
+			}
+
+			#blog-category-list .button {
+				width: auto !important;
+				white-space: normal;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 		<div id="wrapper">
@@ -49,6 +78,28 @@
 						<span class="date">Блог</span>
 						<h2 id="sections-title">Каталог статей о бассейнах</h2>
 						<p>Материалы о проектировании, строительстве, гидроизоляции, оборудовании, водоподготовке и обслуживании бассейнов.</p>
+					</header>
+				</section>
+				<section id="blog-filters" class="post featured section-intro" aria-labelledby="blog-filters-title">
+					<header class="major">
+						<span class="date">Поиск</span>
+						<h2 id="blog-filters-title">Поиск по статьям</h2>
+						<p>Найдите статьи по заголовку, описанию, категории или ключевым словам.</p>
+						<form id="blog-search-form" role="search">
+							<div class="fields">
+								<div class="field">
+									<label for="blog-search">Поиск по статьям</label>
+									<input type="search" id="blog-search" name="blog-search" placeholder="Найти статью..." autocomplete="off" />
+								</div>
+							</div>
+							<ul class="actions special">
+								<li><button type="button" id="blog-search-clear" class="button">Очистить</button></li>
+							</ul>
+						</form>
+						<p id="blog-results" class="blog-results">Найдено: 0 статей</p>
+						<nav id="blog-category-nav" aria-label="Фильтр по категориям">
+							<ul id="blog-category-list" class="actions special"></ul>
+						</nav>
 					</header>
 				</section>
 				<section class="post featured section-intro" aria-labelledby="design-title">
@@ -253,7 +304,7 @@
 				<section class="posts article-grid" aria-label="Статьи об отделке бассейна">
 					<article class="premium-card article-card">
 						<div class="service-card__image">
-							<img src="../images/pic03.jpg" alt="Облицовка бассейна: плитка, мозаика, ПВХ плёнка или камень" loading="lazy" />
+							<img src="../images/plitka-plenka-kamen-v-basseine.jpg" alt="Облицовка бассейна: плитка, мозаика, ПВХ плёнка или камень" loading="lazy" />
 						</div>
 						<div class="article-card__content">
 							<header>
@@ -268,7 +319,7 @@
 					</article>
 					<article class="premium-card article-card">
 						<div class="service-card__image">
-							<img src="../images/pic02.jpg" alt="Плёнка ПВХ для бассейна: плюсы, минусы и срок службы" loading="lazy" />
+							<img src="../images/plenka-v-basseine.jpg" alt="Плёнка ПВХ для бассейна: плюсы, минусы и срок службы" loading="lazy" />
 						</div>
 						<div class="article-card__content">
 							<header>
@@ -894,6 +945,179 @@
 		<script src="../assets/js/breakpoints.min.js"></script>
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>
+		<script>
+			(function () {
+				var searchInput = document.getElementById('blog-search');
+				var clearButton = document.getElementById('blog-search-clear');
+				var resultsText = document.getElementById('blog-results');
+				var categoryList = document.getElementById('blog-category-list');
+
+				if (!searchInput || !clearButton || !resultsText || !categoryList) {
+					return;
+				}
+
+				function normalizeText(value) {
+					return (value || '')
+						.toLowerCase()
+						.replace(/ё/g, 'е')
+						.normalize('NFD')
+						.replace(/[\u0300-\u036f]/g, '')
+						.trim();
+				}
+
+				var introSections = Array.prototype.slice.call(document.querySelectorAll('main > section.post.featured.section-intro'));
+				var groups = [];
+				var categories = ['Все статьи'];
+
+				introSections.forEach(function (section) {
+					var title = section.querySelector('h2');
+					if (!title || title.id === 'sections-title' || section.id === 'blog-filters') {
+						return;
+					}
+
+					var categoryName = title.textContent.trim();
+					var articleSection = section.nextElementSibling;
+
+					while (articleSection && !(articleSection.classList && articleSection.classList.contains('article-grid'))) {
+						articleSection = articleSection.nextElementSibling;
+					}
+
+					if (!articleSection) {
+						return;
+					}
+
+					var articles = Array.prototype.slice.call(articleSection.querySelectorAll('article.article-card'));
+
+					groups.push({
+						name: categoryName,
+						nameNormalized: normalizeText(categoryName),
+						introSection: section,
+						articleSection: articleSection,
+						articles: articles
+					});
+
+					categories.push(categoryName);
+				});
+
+				var articleData = [];
+
+				groups.forEach(function (group) {
+					group.articles.forEach(function (article) {
+						var title = article.querySelector('h3');
+						var description = article.querySelector('p');
+						var category = article.querySelector('.date');
+
+						articleData.push({
+							element: article,
+							category: normalizeText(category ? category.textContent : group.name),
+							searchText: normalizeText([
+								title ? title.textContent : '',
+								description ? description.textContent : '',
+								category ? category.textContent : group.name,
+								article.getAttribute('data-tags') || ''
+							].join(' '))
+						});
+					});
+				});
+
+				function renderCategories() {
+					categoryList.innerHTML = '';
+
+					categories.forEach(function (categoryName, index) {
+						var item = document.createElement('li');
+						var button = document.createElement('button');
+
+						button.type = 'button';
+						button.className = 'button' + (index === 0 ? ' primary' : '');
+						button.textContent = categoryName;
+						button.setAttribute('data-category', categoryName);
+
+						item.appendChild(button);
+						categoryList.appendChild(item);
+					});
+				}
+
+				function setActiveCategory(categoryName) {
+					Array.prototype.forEach.call(categoryList.querySelectorAll('button[data-category]'), function (button) {
+						button.classList.toggle('primary', button.getAttribute('data-category') === categoryName);
+					});
+				}
+
+				var activeCategory = 'Все статьи';
+				var searchQuery = '';
+
+				function updateView() {
+					var query = normalizeText(searchQuery);
+					var visibleCount = 0;
+
+					groups.forEach(function (group) {
+						var groupVisible = false;
+
+						group.articles.forEach(function (article) {
+							var matchedData = null;
+
+							for (var i = 0; i < articleData.length; i++) {
+								if (articleData[i].element === article) {
+									matchedData = articleData[i];
+									break;
+								}
+							}
+
+							if (!matchedData) {
+								return;
+							}
+
+							var matchesCategory = activeCategory === 'Все статьи' || matchedData.category === normalizeText(activeCategory);
+							var matchesQuery = !query || matchedData.searchText.indexOf(query) !== -1;
+							var isVisible = matchesCategory && matchesQuery;
+
+							article.style.display = isVisible ? '' : 'none';
+							article.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
+
+							if (isVisible) {
+								groupVisible = true;
+								visibleCount += 1;
+							}
+						});
+
+						group.introSection.style.display = groupVisible ? '' : 'none';
+						group.articleSection.style.display = groupVisible ? '' : 'none';
+						group.introSection.setAttribute('aria-hidden', groupVisible ? 'false' : 'true');
+						group.articleSection.setAttribute('aria-hidden', groupVisible ? 'false' : 'true');
+					});
+
+					resultsText.textContent = visibleCount ? ('Найдено: ' + visibleCount + ' статей') : 'Ничего не найдено. Попробуйте изменить запрос или выбрать другую категорию.';
+				}
+
+				renderCategories();
+				setActiveCategory(activeCategory);
+				updateView();
+
+				searchInput.addEventListener('input', function () {
+					searchQuery = searchInput.value;
+					updateView();
+				});
+
+				clearButton.addEventListener('click', function () {
+					searchInput.value = '';
+					searchQuery = '';
+					searchInput.focus();
+					updateView();
+				});
+
+				categoryList.addEventListener('click', function (event) {
+					var button = event.target && event.target.closest ? event.target.closest('button[data-category]') : null;
+
+					if (!button || !categoryList.contains(button)) {
+						return;
+					}
+
+					activeCategory = button.getAttribute('data-category') || 'Все статьи';
+					setActiveCategory(activeCategory);
+					updateView();
+				});
+			})();
+		</script>
 	</body>
 </html>
 

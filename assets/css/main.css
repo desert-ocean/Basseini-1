@@ -5220,6 +5220,12 @@ input[type="submit"]:hover {
 	margin-right: auto;
 }
 
+.articles-cta .hub-actions li:only-child {
+	grid-column: 1 / -1;
+	justify-self: center;
+	max-width: 28rem;
+}
+
 .articles-cta .articles-cta__lead {
 	max-width: 56rem;
 	margin: 0 auto 1.5rem;
