@@ -522,7 +522,7 @@
 
 .related-articles .related-grid {
 	display: grid !important;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	align-items: stretch;
 }
 
@@ -530,6 +530,8 @@
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	color: #111820;
+	text-decoration: none;
 	border: 1px solid #e2e8eb;
 	border-radius: 1.5rem;
 	overflow: hidden;
@@ -537,11 +539,21 @@
 	transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
+.related-card:focus-visible {
+	outline: 3px solid rgba(23, 109, 143, 0.35);
+	outline-offset: 3px;
+}
+
 .related-card img {
 	display: block;
 	width: 100%;
 	aspect-ratio: 4 / 3;
 	object-fit: cover;
+	transition: transform 0.35s ease;
+}
+
+.related-card:hover img {
+	transform: scale(1.035);
 }
 
 .related-card div {
@@ -564,6 +576,7 @@
 	font-size: 1.25rem;
 	line-height: 1.25;
 	margin-bottom: 0.8rem;
+	color: #111820;
 }
 
 .related-card p {
@@ -701,6 +714,10 @@
 	.factor-card,
 	.related-card {
 		animation: none;
+		transition: none;
+	}
+
+	.related-card img {
 		transition: none;
 	}
 }
