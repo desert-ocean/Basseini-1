@@ -256,3 +256,169 @@
 		}
 
 })(jQuery);
+
+// ALPOOL lead forms.
+(function() {
+
+	var leadEndpoint = 'https://api.alpool.ru/api/leads';
+	var leadUtmKeys = [
+		'utm_source',
+		'utm_medium',
+		'utm_campaign',
+		'utm_term',
+		'utm_content'
+	];
+
+	function getUtmParams() {
+		var params = new URLSearchParams(window.location.search);
+		var utm = {};
+
+		leadUtmKeys.forEach(function(key) {
+			utm[key] = params.get(key) || null;
+		});
+
+		return utm;
+	}
+
+	function getFormStatus(form) {
+		var status = form.querySelector('.lead-status');
+
+		if (!status) {
+			status = document.createElement('p');
+			status.className = 'lead-status';
+			status.setAttribute('aria-live', 'polite');
+			form.appendChild(status);
+		}
+
+		return status;
+	}
+
+	function setFormStatus(form, message, isError) {
+		var status = getFormStatus(form);
+
+		status.textContent = message;
+		status.setAttribute('role', isError ? 'alert' : 'status');
+		status.classList.toggle('lead-status--error', !!isError);
+		status.classList.toggle('lead-status--success', !isError);
+	}
+
+	function getErrorMessage(response, result) {
+		if (result && typeof result.detail === 'string')
+			return result.detail;
+
+		if (result && Array.isArray(result.detail))
+			return result.detail.map(function(item) {
+				return item && item.msg ? item.msg : String(item);
+			}).join('; ');
+
+		if (result && typeof result.error === 'string')
+			return result.error;
+
+		return 'Не удалось отправить заявку (код ' + response.status + ').';
+	}
+
+	document.addEventListener('submit', function(event) {
+		var form = event.target;
+
+		if (!form || form.tagName !== 'FORM' || form.action !== leadEndpoint)
+			return;
+
+		event.preventDefault();
+
+		if (form.dataset.leadSubmitting === 'true')
+			return;
+
+		var formData = new FormData(form);
+		var utm = getUtmParams();
+		var getValue = function(name) {
+			var value = formData.get(name);
+			return value == null ? '' : String(value).trim();
+		};
+		var name = getValue('name');
+		var phone = getValue('phone');
+
+		if (!name) {
+			setFormStatus(form, 'Пожалуйста, укажите имя.', true);
+			var nameField = form.querySelector('[name="name"]');
+			if (nameField)
+				nameField.focus();
+			return;
+		}
+
+		if (!phone) {
+			setFormStatus(form, 'Пожалуйста, укажите телефон.', true);
+			var phoneField = form.querySelector('[name="phone"]');
+			if (phoneField)
+				phoneField.focus();
+			return;
+		}
+
+		var submitControls = Array.prototype.slice.call(
+			form.querySelectorAll('button[type="submit"], input[type="submit"]')
+		);
+
+		submitControls.forEach(function(control) {
+			control.dataset.leadWasDisabled = control.disabled ? 'true' : 'false';
+			control.disabled = true;
+		});
+		form.dataset.leadSubmitting = 'true';
+		setFormStatus(form, 'Отправляем заявку…', false);
+
+		var payload = {
+			name: name,
+			phone: phone,
+			email: getValue('email') || null,
+			message: getValue('message') || null,
+			form_type: form.dataset.formType || 'contact',
+			source: window.location.hostname || null,
+			page_url: window.location.href,
+			utm_source: utm.utm_source,
+			utm_medium: utm.utm_medium,
+			utm_campaign: utm.utm_campaign,
+			utm_term: utm.utm_term,
+			utm_content: utm.utm_content
+		};
+
+		fetch(leadEndpoint, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(payload)
+		})
+			.then(function(response) {
+				return response.text().then(function(raw) {
+					var result = {};
+
+					try {
+						result = raw ? JSON.parse(raw) : {};
+					} catch (error) {
+						result = {};
+					}
+
+					if (!response.ok)
+						throw new Error(getErrorMessage(response, result));
+
+					return result;
+				});
+			})
+			.then(function() {
+				setFormStatus(form, 'Заявка отправлена. Мы свяжемся с вами.', false);
+			})
+			.catch(function(error) {
+				setFormStatus(
+					form,
+					error && error.message
+						? error.message
+						: 'Не удалось связаться с сервером. Попробуйте еще раз.',
+					true
+				);
+				delete form.dataset.leadSubmitting;
+				submitControls.forEach(function(control) {
+					control.disabled = control.dataset.leadWasDisabled === 'true';
+					delete control.dataset.leadWasDisabled;
+				});
+			});
+	});
+
+})();
