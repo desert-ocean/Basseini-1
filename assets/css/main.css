@@ -4486,6 +4486,7 @@ input, select, textarea {
 /* Nav Panel */
 
 	#navPanelToggle {
+		box-sizing: border-box;
 		text-decoration: none;
 		-moz-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 		-webkit-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -4552,10 +4553,11 @@ input, select, textarea {
 		}
 
 	#navPanel {
-		-moz-transform: translateX(20rem);
-		-webkit-transform: translateX(20rem);
-		-ms-transform: translateX(20rem);
-		transform: translateX(20rem);
+		box-sizing: border-box;
+		-moz-transform: translateX(100%);
+		-webkit-transform: translateX(100%);
+		-ms-transform: translateX(100%);
+		transform: translateX(100%);
 		-moz-transition: -moz-transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
 		-webkit-transition: -webkit-transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
 		-ms-transition: -ms-transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
@@ -4688,7 +4690,85 @@ input, select, textarea {
 
 	}
 
-@keyframes premiumHeroFade {
+/* Back to top */
+
+	#backToTop {
+		-moz-transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+		-webkit-transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+		-ms-transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+		transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+		align-items: center;
+		background: #3B4A5A;
+		border: 0;
+		border-radius: 6px;
+		bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+		box-shadow: none;
+		color: #D0D8E2;
+		display: flex;
+		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-size: 0;
+		font-weight: 900;
+		height: 3rem;
+		justify-content: center;
+		opacity: 0;
+		pointer-events: none;
+		position: fixed;
+		right: calc(1rem + env(safe-area-inset-right, 0px));
+		transform: translateY(0.5rem);
+		width: 3rem;
+		z-index: 10000;
+	}
+
+	#backToTop::before {
+		content: "↑";
+		color: #D0D8E2;
+		display: block;
+		font-size: 1.25rem;
+		line-height: 1;
+		-webkit-text-fill-color: #D0D8E2;
+	}
+
+	#backToTop.is-visible {
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	#backToTop:hover,
+	#backToTop:focus-visible {
+		background: #4C6F8F;
+		color: #ffffff;
+		transform: translateY(-0.15rem);
+	}
+
+	#backToTop:hover::before,
+	#backToTop:focus-visible::before {
+		color: #ffffff;
+		-webkit-text-fill-color: #ffffff;
+	}
+
+	#backToTop:focus-visible {
+		outline: 0.15rem solid #ffffff;
+		outline-offset: 0.15rem;
+	}
+
+	@media screen and (max-width: 480px) {
+
+		#backToTop {
+			bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+			right: calc(0.75rem + env(safe-area-inset-right, 0px));
+		}
+
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+
+		#backToTop {
+			transition: none;
+		}
+
+	}
+
+	@keyframes premiumHeroFade {
 	0% {
 		opacity: 0;
 		transform: translateY(1.25rem) scale(0.985);

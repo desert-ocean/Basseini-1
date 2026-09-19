@@ -1218,15 +1218,177 @@ button:focus-visible,
     padding-left: 1rem;
   }
 }
+
+.site-header {
+  position: relative;
+}
+
+.site-header__toggle {
+  display: none;
+  width: auto;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 2.75rem;
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 0.2rem;
+  background: rgba(9, 15, 20, 0.72);
+  box-shadow: none;
+  color: #ffffff;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.site-header__toggle::before {
+  content: "☰";
+  margin-right: 0.45rem;
+  font-size: 1rem;
+}
+
+.site-header__toggle[aria-expanded="true"]::before {
+  content: "×";
+}
+
+.site-header__toggle:hover,
+.site-header__toggle:focus-visible {
+  border-color: var(--site-accent);
+  background: rgba(9, 15, 20, 0.9);
+  color: #ffffff;
+}
+
+.back-to-top {
+  position: fixed;
+  right: calc(1rem + env(safe-area-inset-right, 0px));
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 20;
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(168, 179, 193, 0.25);
+  border-radius: 6px;
+  background: #3B4A5A;
+  box-shadow: none;
+  color: #D0D8E2;
+  font-size: 0;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+  transition: opacity 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.back-to-top::before {
+  content: "↑";
+  display: block;
+  color: #D0D8E2;
+  font-size: 1.2rem;
+  line-height: 1;
+  -webkit-text-fill-color: #D0D8E2;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background: #4C6F8F;
+  color: #ffffff;
+  transform: translateY(-0.15rem);
+}
+
+.back-to-top:hover::before,
+.back-to-top:focus-visible::before {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid #A8B3C1;
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .site-header {
+    align-items: center;
+    flex-direction: row;
+    gap: 0.65rem;
+  }
+
+  .site-header__toggle {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .site-header__nav {
+    position: absolute;
+    top: calc(100% + 0.65rem);
+    right: 0;
+    left: 0;
+    z-index: 30;
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0.35rem;
+    background: rgba(9, 15, 20, 0.97);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.24);
+  }
+
+  .site-header.is-menu-open .site-header__nav {
+    display: flex;
+  }
+
+  .site-header__nav a {
+    display: block;
+    padding: 0.7rem 0.65rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.72rem;
+  }
+
+  .site-header__nav a:last-child {
+    border-bottom: 0;
+  }
+
+  .back-to-top {
+    right: calc(0.75rem + env(safe-area-inset-right, 0px));
+    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top {
+    transition: none;
+  }
+}
 </style>
 </head>
 <body>
 
 <header class="site-header" aria-label="ALPOOL">
   <a class="site-logo" href="../index.html">ALPOOL</a>
-  <nav class="site-header__nav" aria-label="Навигация">
-    <a href="../index.html">На главную</a>
-    <a href="../index.html#contact">Контакты</a>
+  <button class="site-header__toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="Открыть меню">Меню</button>
+  <nav class="site-header__nav" id="site-navigation" aria-label="Основная навигация">
+    <a href="https://alpool.ru/#services">Услуги</a>
+    <a href="https://alpool.ru/#why-us">Почему мы</a>
+    <a href="https://alpool.ru/#portfolio">Портфолио</a>
+    <a href="https://alpool.ru/#articles">Статьи</a>
+    <a href="https://alpool.ru/#contact">Контакты</a>
   </nav>
 </header>
 
@@ -1818,6 +1980,59 @@ function openConsultModal(){
 updateProgress();
 updateDimensions();
 startConsultTimer();
+</script>
+
+<script>
+(function(){
+  const header = document.querySelector(".site-header");
+  const toggle = document.querySelector(".site-header__toggle");
+  const nav = document.getElementById("site-navigation");
+  const backToTop = document.createElement("button");
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if(header && toggle && nav){
+    const closeMenu = () => {
+      header.classList.remove("is-menu-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Открыть меню");
+    };
+
+    toggle.addEventListener("click", () => {
+      const isOpen = header.classList.toggle("is-menu-open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+    });
+
+    nav.addEventListener("click", (event) => {
+      if(event.target.closest("a")) closeMenu();
+    });
+
+    document.addEventListener("click", (event) => {
+      if(header.classList.contains("is-menu-open") && !header.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if(event.key === "Escape") closeMenu();
+    });
+  }
+
+  backToTop.type = "button";
+  backToTop.className = "back-to-top";
+  backToTop.setAttribute("aria-label", "Наверх");
+  backToTop.textContent = "↑";
+  document.body.appendChild(backToTop);
+
+  const updateBackToTop = () => {
+    backToTop.classList.toggle("is-visible", window.scrollY > Math.max(240, window.innerHeight * 0.35));
+  };
+
+  window.addEventListener("scroll", updateBackToTop, { passive: true });
+  window.addEventListener("resize", updateBackToTop);
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+  });
+  updateBackToTop();
+})();
 </script>
 
 <div class="modal" id="successModal">

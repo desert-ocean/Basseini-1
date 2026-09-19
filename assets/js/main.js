@@ -12,7 +12,7 @@
 		$header = $('#header'),
 		$nav = $('#nav'),
 		$main = $('#main'),
-		$navPanelToggle, $navPanel, $navPanelInner;
+		$navPanelToggle, $navPanel, $navPanelInner, $backToTop;
 
 	// Breakpoints.
 		breakpoints({
@@ -127,9 +127,16 @@
 
 		// Toggle.
 			$navPanelToggle = $(
-				'<a href="#navPanel" id="navPanelToggle">Menu</a>'
+				'<a href="#navPanel" id="navPanelToggle" role="button" aria-controls="navPanel" aria-expanded="false" aria-label="Открыть меню">Menu</a>'
 			)
-				.appendTo($wrapper);
+				.appendTo($body);
+
+			$navPanelToggle.on('keydown', function(event) {
+				if (event.keyCode == 32) {
+					event.preventDefault();
+					$(this).trigger('click');
+				}
+			});
 
 			// Change toggle styling once we've scrolled past the header.
 				$header.scrollex({
@@ -144,16 +151,17 @@
 
 		// Panel.
 			$navPanel = $(
-				'<div id="navPanel">' +
+				'<div id="navPanel" role="dialog" aria-label="Мобильная навигация" aria-hidden="true">' +
 					'<nav>' +
 					'</nav>' +
-					'<a href="#navPanel" class="close"></a>' +
+					'<a href="#navPanel" class="close" aria-label="Закрыть меню"></a>' +
 				'</div>'
 			)
 				.appendTo($body)
 				.panel({
 					delay: 500,
 					hideOnClick: true,
+					hideOnEscape: true,
 					hideOnSwipe: true,
 					resetScroll: true,
 					resetForms: true,
@@ -161,6 +169,25 @@
 					target: $body,
 					visibleClass: 'is-navPanel-visible'
 				});
+
+			// Keep the mobile navigation state exposed to assistive technologies.
+				var syncNavPanelState = function() {
+					var isVisible = $body.hasClass('is-navPanel-visible');
+
+					$navPanelToggle
+						.attr('aria-expanded', isVisible ? 'true' : 'false')
+						.attr('aria-label', isVisible ? 'Закрыть меню' : 'Открыть меню');
+
+					$navPanel.attr('aria-hidden', isVisible ? 'false' : 'true');
+				};
+
+				if (window.MutationObserver)
+					(new MutationObserver(syncNavPanelState)).observe($body[0], {
+						attributes: true,
+						attributeFilter: ['class']
+					});
+
+				syncNavPanelState();
 
 			// Get inner.
 				$navPanelInner = $navPanel.children('nav');
@@ -195,6 +222,29 @@
 				&&	browser.osVersion < 10)
 					$navPanel
 						.css('transition', 'none');
+
+	// Back to top.
+		$backToTop = $('<button type="button" id="backToTop" aria-label="Наверх">↑</button>')
+			.appendTo($body);
+
+		var updateBackToTop = function() {
+			$backToTop.toggleClass('is-visible', $window.scrollTop() > Math.max(240, $window.height() * 0.35));
+		};
+
+		$window
+			.on('scroll.backToTop resize.backToTop load.backToTop', updateBackToTop);
+
+		$backToTop.on('click', function() {
+			var reduceMotion = window.matchMedia
+				&& window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			window.scrollTo({
+				top: 0,
+				behavior: reduceMotion ? 'auto' : 'smooth'
+			});
+		});
+
+		updateBackToTop();
 
 	// Intro.
 		var $intro = $('#intro');
