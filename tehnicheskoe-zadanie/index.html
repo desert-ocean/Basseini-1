@@ -61,7 +61,6 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  overflow-x: hidden;
   color: var(--ink-soft);
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-size: 1rem;
@@ -707,13 +706,535 @@ button:active,
     white-space: normal;
   }
 }
+
+/* ALPOOL visual layer: shared engineering/site language and safe responsive sizing. */
+:root {
+  --site-ink: #212931;
+  --site-ink-soft: #3f4a54;
+  --site-muted: #6d767d;
+  --site-accent: #18bfef;
+  --site-accent-deep: #0e8fb7;
+  --site-line: #e2e7e9;
+  --site-panel: #ffffff;
+  --site-gutter: clamp(1.1rem, 5vw, 4rem);
+}
+
+html,
+body {
+  min-width: 0;
+}
+
+body {
+  min-width: 0;
+  padding: 1.25rem 1.25rem 4rem;
+  color: var(--site-ink-soft);
+  background:
+    linear-gradient(180deg, rgba(9, 15, 20, 0.7) 0, rgba(9, 15, 20, 0.88) 24rem, #090f14 48rem),
+    url("../images/photo-bassein.jpg") center top / cover no-repeat fixed,
+    #090f14;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  min-width: 0;
+}
+
+.site-header {
+  width: min(72rem, 100%);
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #ffffff;
+}
+
+.site-logo {
+  flex: 0 0 auto;
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.8rem 1.35rem;
+  border: 3px solid #ffffff;
+  color: #ffffff;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.site-logo:hover,
+.site-logo:focus-visible {
+  border-color: var(--site-accent);
+  color: var(--site-accent);
+}
+
+.site-header__nav {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem 1.35rem;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.site-header__nav a {
+  color: #ffffff;
+  text-decoration: none;
+  white-space: normal;
+}
+
+.site-header__nav a:hover,
+.site-header__nav a:focus-visible {
+  color: var(--site-accent);
+}
+
+.container {
+  position: relative;
+  width: min(72rem, 100%);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--site-gutter) 3.5rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: var(--site-panel);
+  box-shadow: 0 1.75rem 4rem rgba(0, 0, 0, 0.24);
+}
+
+.hero-panel {
+  margin: 0 calc(var(--site-gutter) * -1) 2.25rem;
+  padding: clamp(3rem, 7vw, 5.5rem) var(--site-gutter) clamp(2.5rem, 5vw, 4rem);
+  background:
+    linear-gradient(180deg, rgba(9, 15, 20, 0.3), rgba(9, 15, 20, 0.82)),
+    url("../images/photo-bassein.jpg") center / cover no-repeat;
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero-panel h1 {
+  max-width: 50rem;
+  margin: 0 auto 1rem;
+  color: #ffffff;
+  font-size: clamp(2.15rem, 5.6vw, 4.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.hero-panel .subtitle {
+  max-width: 38rem;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(0.95rem, 1.7vw, 1.16rem);
+  line-height: 1.75;
+}
+
+.top-meta,
+.notice,
+.value-list,
+.trust-grid,
+.trust,
+.progress,
+#quiz {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.top-meta {
+  margin-top: 0;
+  margin-bottom: 1.75rem;
+  color: var(--site-muted);
+  letter-spacing: 0.09em;
+}
+
+.top-meta .badge,
+#step-counter {
+  min-width: 0;
+  border-radius: 0.2rem;
+  border-color: var(--site-line);
+  background: #ffffff;
+  overflow-wrap: anywhere;
+}
+
+#step-counter {
+  color: var(--site-accent-deep);
+  border-color: rgba(24, 191, 239, 0.45);
+}
+
+.notice {
+  border: 1px solid #d9e8ed;
+  border-left: 3px solid var(--site-accent);
+  border-radius: 0.2rem;
+  background: #f7fafb;
+  color: var(--site-ink-soft);
+}
+
+.value-list,
+.trust-item,
+.addon,
+.engineer-block {
+  border-color: var(--site-line);
+  border-radius: 0.2rem;
+  box-shadow: none;
+}
+
+.value-list {
+  background: #ffffff;
+  color: var(--site-ink-soft);
+}
+
+.anchor,
+h2,
+h3,
+.option-title,
+.addon .title {
+  color: var(--site-ink);
+}
+
+h2 {
+  margin-bottom: 0.8rem;
+  font-size: clamp(1.6rem, 3.3vw, 2.35rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.microcopy,
+.option-desc,
+.trust,
+.engineer-block,
+.notice,
+.value-list {
+  overflow-wrap: anywhere;
+}
+
+.microcopy {
+  color: var(--site-muted);
+  font-size: 0.86rem;
+  line-height: 1.75;
+}
+
+.progress {
+  height: 0.32rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  background: #e6ecee;
+}
+
+#progress-bar {
+  background: var(--site-accent);
+}
+
+.options {
+  min-width: 0;
+  gap: 0.7rem;
+  margin: 1.15rem 0;
+}
+
+.options button {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 4.8rem;
+  padding: 1rem 7.5rem 1rem 1.15rem;
+  border: 1px solid var(--site-line);
+  border-radius: 0.2rem;
+  background: #ffffff;
+  box-shadow: 0 0.45rem 1.2rem rgba(20, 38, 52, 0.04);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.options button::before {
+  background: rgba(24, 191, 239, 0.07);
+}
+
+.options button::after {
+  box-sizing: border-box;
+  min-width: 5.25rem;
+  min-height: 2.35rem;
+  padding: 0 0.75rem;
+  border-radius: 0.15rem;
+  box-shadow: inset 0 0 0 1px var(--site-ink);
+  font-size: 0.68rem;
+}
+
+.options button:hover,
+.options button:focus-visible {
+  transform: translateY(-0.1rem);
+  border-color: var(--site-accent);
+  box-shadow: 0 0.7rem 1.5rem rgba(20, 38, 52, 0.08);
+}
+
+.options button:hover::after,
+.options button:focus-visible::after {
+  background: var(--site-ink);
+}
+
+.option-title {
+  font-size: 1.02rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.option-desc {
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+input:not([type="hidden"]),
+select,
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  border: 1px solid #d7e0e3;
+  border-radius: 0.15rem;
+  background: #ffffff;
+  color: var(--site-ink);
+  font: inherit;
+  line-height: 1.45;
+}
+
+input:not([type="hidden"]),
+select {
+  min-height: 3.1rem;
+}
+
+input:not([type="hidden"]),
+select,
+textarea {
+  padding: 0.8rem 0.95rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--site-accent);
+  box-shadow: 0 0 0 0.2rem rgba(24, 191, 239, 0.13);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  min-height: 0;
+  accent-color: var(--site-ink);
+}
+
+button,
+.tg-link,
+.step > button,
+#submitButton,
+.modal-content button {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 3.4rem;
+  height: auto;
+  margin-top: 0.85rem;
+  padding: 0.8rem 1.25rem;
+  border-radius: 0.15rem;
+  background: var(--site-ink);
+  box-shadow: none;
+  color: #ffffff;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+button:hover,
+.step > button:hover,
+#submitButton:hover,
+.modal-content button:hover {
+  background: var(--site-accent);
+  box-shadow: none;
+  color: #ffffff;
+  transform: none;
+}
+
+button:focus-visible,
+.tg-link:focus-visible,
+#submitButton:focus-visible,
+.modal-content button:focus-visible {
+  outline: 2px solid var(--site-accent);
+  outline-offset: 3px;
+}
+
+.tg-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--site-line);
+  background: #ffffff;
+  color: var(--site-ink);
+}
+
+.tg-link:hover {
+  border-color: var(--site-accent);
+  background: #ffffff;
+  color: var(--site-accent-deep);
+}
+
+.engineer-block {
+  background: #f7fafb;
+}
+
+.modal {
+  padding: 0.75rem;
+}
+
+.modal-content {
+  width: min(30rem, 100%);
+  max-width: 100%;
+  max-height: calc(100vh - 1.5rem);
+  overflow: auto;
+  padding: clamp(1.5rem, 5vw, 2rem) clamp(1.1rem, 5vw, 1.75rem);
+  border-radius: 0.25rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 900px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    padding: 0.75rem 0.75rem 2rem;
+  }
+
+  .site-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .site-logo {
+    align-self: flex-start;
+    font-size: 1.25rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .site-header__nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-size: 0.66rem;
+  }
+
+  .container {
+    --site-gutter: 1.05rem;
+    padding-bottom: 2.25rem;
+    border-radius: 0.2rem;
+  }
+
+  .hero-panel {
+    margin-bottom: 1.6rem;
+    padding-top: 2.45rem;
+    padding-bottom: 2.4rem;
+  }
+
+  .hero-panel h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .hero-panel .subtitle {
+    font-size: 0.94rem;
+  }
+
+  .top-meta {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .top-meta .badge,
+  #step-counter {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .notice,
+  .value-list,
+  .engineer-block {
+    padding: 1rem;
+  }
+
+  .trust-grid,
+  .addons {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .options button {
+    padding: 1rem;
+  }
+
+  .options button::after {
+    position: static;
+    top: auto;
+    right: auto;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-top: 0.75rem;
+    transform: none;
+  }
+
+  input:not([type="hidden"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  button,
+  .tg-link,
+  .step > button,
+  #submitButton,
+  .modal-content button {
+    min-height: 3.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
 </style>
 </head>
 <body>
 
+<header class="site-header" aria-label="ALPOOL">
+  <a class="site-logo" href="../index.html">ALPOOL</a>
+  <nav class="site-header__nav" aria-label="Навигация">
+    <a href="../index.html">На главную</a>
+    <a href="../index.html#contact">Контакты</a>
+  </nav>
+</header>
+
 <div class="container">
-  <h1>Техническое задание на бассейн</h1>
-  <p class="subtitle">Заполните и отправьте техническое задание инженеру на проверку бассейна за 1 минуту</p>
+  <div class="hero-panel">
+    <h1>Техническое задание на бассейн</h1>
+    <p class="subtitle">Заполните и отправьте техническое задание инженеру на проверку бассейна за 1 минуту</p>
+  </div>
   <div class="top-meta">
     <span id="step-counter">Шаг 1 из 10</span>
     <span class="badge">Среднее время заполнения — 1 минута</span>
