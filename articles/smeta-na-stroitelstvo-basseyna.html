@@ -370,6 +370,12 @@
 								<label for="message">Сообщение</label>
 								<textarea name="message" id="message" rows="4" placeholder="Коротко опишите объект, желаемый формат бассейна и удобный способ связи"></textarea>
 							</div>
+							<div class="field lead-file-field">
+								<label for="lead-files">Прикрепить файлы</label>
+								<input type="file" name="files" id="lead-files" multiple accept=".jpg,.jpeg,.png,.webp,.pdf,.doc,.docx,.xls,.xlsx,.dwg,.dxf" aria-describedby="lead-files-help lead-files-selected" />
+								<p id="lead-files-help" class="lead-file-help">До 10 файлов, не более 25 МБ каждый.<br />JPG, PNG, WEBP, PDF, DOC, DOCX, XLS, XLSX, DWG, DXF.</p>
+								<p id="lead-files-selected" class="lead-file-list" role="status" aria-live="polite" hidden></p>
+							</div>
 						</div>
 						<ul class="actions">
 							<li><input type="submit" class="button primary large" value="Отправить заявку" /></li>
