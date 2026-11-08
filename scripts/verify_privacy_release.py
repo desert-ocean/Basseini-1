@@ -9,7 +9,7 @@ import subprocess
 from pathlib import Path
 
 
-VERSION = "draft-2026-11-08-v3"
+VERSION = "alpool-consent-2026-11-08-v1"
 LEAD_ENDPOINT = "https://api.alpool.ru/api/leads"
 
 
@@ -61,8 +61,8 @@ def main() -> None:
             technical_task,
             "technical-task consent version",
         ),
-        one_match(r"Проект версии ([^<]+)", consent_page, "document version"),
-        one_match(r"<code>(draft-[^<]+)</code>", consent_page, "form version text"),
+        one_match(r"<p>Версия ([^<]+)</p>", consent_page, "document version"),
+        one_match(r"<code>(alpool-consent-[^<]+)</code>", consent_page, "form version text"),
     ]
     backend_version = one_match(
         r'CONSENT_TEXT_VERSION = "([^"]+)"',

@@ -318,7 +318,7 @@
 		'utm_term',
 		'utm_content'
 	];
-	var consentTextVersion = 'draft-2026-11-08-v3';
+	var consentTextVersion = 'alpool-consent-2026-11-08-v1';
 	var consentControlIndex = 0;
 
 	function ensureLeadConsent(form) {
