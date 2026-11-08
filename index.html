@@ -37,7 +37,7 @@
 
     ym(111538149, 'init', {
         ssr: true,
-        webvisor: true,
+        webvisor: false,
         clickmap: true,
         ecommerce: "dataLayer",
         referrer: document.referrer,
@@ -427,6 +427,12 @@
 								<p id="lead-files-help" class="lead-file-help">До 10 файлов, не более 25 МБ каждый.<br />JPG, PNG, WEBP, PDF, DOC, DOCX, XLS, XLSX, DWG, DXF.</p>
 								<p id="lead-files-selected" class="lead-file-list" role="status" aria-live="polite" hidden></p>
 							</div>
+						</div>
+						<div class="lead-consent">
+							<input type="checkbox" id="alpool-personal-data-consent-home" name="personal_data_consent" value="true" required aria-describedby="alpool-personal-data-consent-home-links" />
+							<label for="alpool-personal-data-consent-home">Я даю отдельное согласие на обработку персональных данных.</label>
+							<p class="lead-consent__links" id="alpool-personal-data-consent-home-links"><a href="/consent.html" target="_blank" rel="noopener">Текст согласия</a> · <a href="/privacy.html" target="_blank" rel="noopener">Политика обработки персональных данных</a></p>
+							<input type="hidden" name="consent_text_version" value="draft-2026-11-08-v3" />
 						</div>
 						<ul class="actions">
 							<li><input type="submit" class="button primary large" value="Отправить вопрос" /></li>

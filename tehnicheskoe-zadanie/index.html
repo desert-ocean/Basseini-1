@@ -1031,6 +1031,34 @@ input[type="radio"] {
   accent-color: var(--site-ink);
 }
 
+.privacy-consent {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border: 1px solid #d7e0e3;
+  background: #ffffff;
+}
+
+.privacy-consent__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.privacy-consent__row input[type="checkbox"] {
+  flex: 0 0 auto;
+  margin-top: 0.25rem;
+}
+
+.privacy-consent__row label {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.privacy-consent__links {
+  margin: 0.6rem 0 0 1.85rem;
+  font-size: 0.9rem;
+}
+
 button,
 .tg-link,
 .step > button,
@@ -1571,11 +1599,19 @@ button:focus-visible,
       <input type="email" id="email" placeholder="Email">
       <textarea id="comment" placeholder="Комментарий: сроки, место строительства, особенности участка, пожелания"></textarea>
 
+      <div class="privacy-consent">
+        <div class="privacy-consent__row">
+          <input type="checkbox" id="technical-task-personal-data-consent" required>
+          <label for="technical-task-personal-data-consent">Я даю отдельное согласие на обработку персональных данных.</label>
+        </div>
+        <p class="privacy-consent__links"><a href="/consent.html" target="_blank" rel="noopener">Текст согласия</a> · <a href="/privacy.html" target="_blank" rel="noopener">Политика обработки персональных данных</a></p>
+        <input type="hidden" id="technical-task-consent-version" value="draft-2026-11-08-v3">
+      </div>
+
       <button type="button" id="submitButton" onclick="sendLead()">Отправить техническое задание</button>
       <a class="tg-link" href="https://t.me/desertocean" target="_blank" rel="noopener">💬 Получить консультацию в Telegram</a>
       <div class="trust">Ответ инженера в течение 10–15 минут • 300+ реализованных бассейнов • Бесплатно • Без обязательств</div>
       <div class="microcopy">Отправляя заявку, вы передаёте инженеру параметры бассейна для проверки и уточнения деталей проекта.</div>
-      <div class="microcopy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных для связи по вашему запросу.</div>
     </div>
   </form>
 </div>
@@ -1850,6 +1886,15 @@ async function sendLead(){
   const phone = document.getElementById("phone")?.value.trim() || "";
   const name = document.getElementById("name")?.value || "";
   const email = document.getElementById("email")?.value || "";
+  const consent = document.getElementById("technical-task-personal-data-consent");
+
+  if(!consent || !consent.checked){
+    if(consent){
+      consent.reportValidity();
+      consent.focus();
+    }
+    return;
+  }
 
   if(!phone){
     alert("Введите телефон");
@@ -1867,6 +1912,8 @@ async function sendLead(){
     name: valueOrNull(name),
     phone: valueOrNull(phone),
     email: valueOrNull(email),
+    personal_data_consent: true,
+    consent_text_version: document.getElementById("technical-task-consent-version").value,
     message,
     form_type: "technical_task",
     source: window.location.hostname,
@@ -1902,25 +1949,22 @@ async function sendLead(){
       result = raw ? JSON.parse(raw) : {};
     } catch (parseError) {
       console.error("LEAD_RESPONSE_PARSE_ERROR:", {
-        status: response.status,
-        body: raw,
-        error: parseError
+        status: response.status
       });
       throw new Error("Сервер вернул некорректный ответ");
     }
 
     if(response.status !== 201 || !hasResponseId(result)){
       console.error("LEAD_REQUEST_ERROR:", {
-        status: response.status,
-        result
+        status: response.status
       });
-      throw new Error(result.error || "Не удалось отправить техническое задание");
+      throw new Error("Не удалось отправить техническое задание. Попробуйте ещё раз.");
     }
 
     showModal();
   } catch (error) {
-    console.error("SEND_LEAD_ERROR:", error);
-    alert(error.message || "Не удалось отправить техническое задание. Попробуйте ещё раз.");
+    console.error("SEND_LEAD_ERROR");
+    alert("Не удалось отправить техническое задание. Попробуйте ещё раз.");
   } finally {
     isSubmitting = false;
     if(submitButton){

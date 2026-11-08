@@ -5488,6 +5488,29 @@ input[type="submit"]:hover {
 #footer .lead-file-list {
 	word-break: break-word;
 }
+
+.lead-consent {
+	margin: 1.25rem 0 1.5rem;
+}
+
+.lead-consent__links {
+	margin: 0.35rem 0 0 2.8rem;
+	font-size: 0.9rem;
+	line-height: 1.55;
+}
+
+.privacy-draft-notice {
+	margin: 0 0 2rem;
+	padding: 1.25rem 1.5rem;
+	border-left: 0.35rem solid #b07819;
+	background: #fff6df;
+	color: #392d17;
+}
+
+.privacy-draft-notice p:last-child {
+	margin-bottom: 0;
+}
+
 #footer .icons.alt li .icon:before {
 	color: #176d8f;
 }

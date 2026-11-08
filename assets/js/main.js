@@ -318,6 +318,77 @@
 		'utm_term',
 		'utm_content'
 	];
+	var consentTextVersion = 'draft-2026-11-08-v3';
+	var consentControlIndex = 0;
+
+	function ensureLeadConsent(form) {
+		var checkbox = form.querySelector('input[name="personal_data_consent"]');
+		var versionField = form.querySelector('input[name="consent_text_version"]');
+
+		if (!checkbox) {
+			consentControlIndex++;
+			var control = document.createElement('div');
+			control.className = 'lead-consent';
+
+			checkbox = document.createElement('input');
+			checkbox.type = 'checkbox';
+			checkbox.name = 'personal_data_consent';
+			checkbox.value = 'true';
+			checkbox.required = true;
+			checkbox.id = 'alpool-personal-data-consent-' + consentControlIndex;
+
+			var label = document.createElement('label');
+			label.htmlFor = checkbox.id;
+			label.textContent = 'Я даю отдельное согласие на обработку персональных данных.';
+
+			var links = document.createElement('p');
+			links.className = 'lead-consent__links';
+			links.id = checkbox.id + '-links';
+			var consentLink = document.createElement('a');
+			consentLink.href = '/consent.html';
+			consentLink.textContent = 'Текст согласия';
+			var privacyLink = document.createElement('a');
+			privacyLink.href = '/privacy.html';
+			privacyLink.textContent = 'Политика обработки персональных данных';
+			links.appendChild(consentLink);
+			links.appendChild(document.createTextNode(' · '));
+			links.appendChild(privacyLink);
+			checkbox.setAttribute('aria-describedby', links.id);
+
+			control.appendChild(checkbox);
+			control.appendChild(label);
+			control.appendChild(links);
+
+			var actions = form.querySelector('.actions');
+			if (actions && actions.parentNode === form)
+				form.insertBefore(control, actions);
+			else
+				form.appendChild(control);
+		}
+
+		checkbox.required = true;
+		if (!versionField) {
+			versionField = document.createElement('input');
+			versionField.type = 'hidden';
+			versionField.name = 'consent_text_version';
+			versionField.value = consentTextVersion;
+			checkbox.parentNode.appendChild(versionField);
+		}
+
+		return checkbox;
+	}
+
+	function setupLeadConsentControls() {
+		Array.prototype.forEach.call(document.querySelectorAll('form[action]'), function(form) {
+			if (form.action === leadEndpoint)
+				ensureLeadConsent(form);
+		});
+	}
+
+	if (document.readyState === 'loading')
+		document.addEventListener('DOMContentLoaded', setupLeadConsentControls);
+	else
+		setupLeadConsentControls();
 
 	function getUtmParams() {
 		var params = new URLSearchParams(window.location.search);
@@ -525,6 +596,13 @@
 
 		event.preventDefault();
 
+		var consentCheckbox = ensureLeadConsent(form);
+		if (!consentCheckbox.checked) {
+			setFormStatus(form, 'Чтобы отправить вопрос, подтвердите согласие на обработку персональных данных.', true);
+			consentCheckbox.focus();
+			return;
+		}
+
 		var state = getLeadState(form);
 		if (state.submitting || form.dataset.leadSubmitting === 'true')
 			return;
@@ -598,6 +676,8 @@
 		var payload = {
 			name: name,
 			phone: phone,
+			personal_data_consent: getValue('personal_data_consent') === 'true',
+			consent_text_version: getValue('consent_text_version'),
 			email: getValue('email') || null,
 			message: getValue('message') || null,
 			form_type: form.dataset.formType || 'contact',
