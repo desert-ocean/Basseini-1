@@ -721,3 +721,14 @@
 		transition: none;
 	}
 }
+
+/* Mobile affordance for horizontally scrollable article tables */
+@media screen and (max-width: 736px) {
+	.article-shell .article-body .table-wrapper::before {
+		content: "Прокрутите таблицу по горизонтали, чтобы увидеть все столбцы";
+		display: block;
+		padding: 0.35rem 0.75rem;
+		color: #5a6872;
+		font-size: 0.85rem;
+	}
+}
