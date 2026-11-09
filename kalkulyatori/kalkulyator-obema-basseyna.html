@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Калькулятор объёма воды в бассейне — ALPOOL</title>
+	<meta name="description" content="Рассчитайте предварительный объём воды в бассейне по размерам чаши, глубине и форме. Четыре варианта геометрии, результат в м³ и литрах." />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Калькулятор объёма воды в бассейне — ALPOOL" />
+	<meta property="og:description" content="Предварительный расчёт объёма чаши в кубометрах и литрах для четырёх форм бассейна." />
+	<meta property="og:url" content="https://alpool.ru/kalkulyatori/kalkulyator-obema-basseyna.html" />
+	<meta property="og:locale" content="ru_RU" />
+	<meta name="twitter:card" content="summary" />
+	<link rel="canonical" href="https://alpool.ru/kalkulyatori/kalkulyator-obema-basseyna.html" />
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<link rel="stylesheet" href="/assets/css/calculator-volume.css" />
+</head>
+<body>
+	<div id="wrapper">
+		<header id="header">
+			<a href="/" class="logo">АЛ Пулс</a>
+		</header>
+		<nav id="nav" aria-label="Основная навигация">
+			<ul class="links">
+				<li><a href="/">Главная</a></li>
+				<li><a href="/servis/proektirovanie-basseynov.html">Проектирование</a></li>
+				<li><a href="/articles/filtratsiya-vody-v-basseyne.html">Статьи</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="tel:+74956446654" class="icon solid fa-phone"><span class="label">Телефон</span></a></li>
+				<li><a href="https://wa.me/79856446654" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>
+				<li><a href="https://t.me/desertocean" class="icon brands fa-telegram-plane"><span class="label">Telegram</span></a></li>
+			</ul>
+		</nav>
+
+		<main id="main">
+			<article class="post calculator-page">
+				<header class="major calculator-intro">
+					<span class="date">Инструменты для бассейнов</span>
+					<h1>Калькулятор объёма воды в бассейне</h1>
+					<p>Выберите форму чаши, укажите внутренние размеры и получите предварительный объём воды. Расчёт подходит для первичной оценки; для проекта важно учитывать реальную геометрию и рабочий уровень воды.</p>
+				</header>
+
+				<section class="calculator-panel" data-volume-calculator aria-label="Расчёт объёма воды в бассейне">
+					<div class="calculator-main-grid" data-calculator-ui>
+						<div class="calculator-inputs">
+							<div class="calculator-field calculator-field--shape">
+								<label for="pool-shape">Форма бассейна</label>
+								<select id="pool-shape" name="shape">
+									<option value="rectangular">Прямоугольный, постоянная глубина</option>
+									<option value="rectangular-slope">Прямоугольный, равномерный уклон дна</option>
+									<option value="circular">Круглый, постоянная глубина</option>
+									<option value="irregular">Неправильная форма</option>
+								</select>
+							</div>
+
+							<fieldset class="calculator-fields" data-shape-fields="rectangular">
+								<legend class="calculator-field__hint">Введите внутренние размеры чаши в метрах</legend>
+								<div class="calculator-field"><label for="pool-length">Длина L, м</label><input id="pool-length" data-dimension="length" type="text" inputmode="decimal" autocomplete="off" maxlength="14" required /></div>
+								<div class="calculator-field"><label for="pool-width">Ширина W, м</label><input id="pool-width" data-dimension="width" type="text" inputmode="decimal" autocomplete="off" maxlength="14" required /></div>
+								<div class="calculator-field calculator-field--wide"><label for="pool-depth">Постоянная глубина H, м</label><input id="pool-depth" data-dimension="depth" type="text" inputmode="decimal" autocomplete="off" maxlength="14" required /></div>
+							</fieldset>
+
+							<fieldset class="calculator-fields" data-shape-fields="rectangular-slope" hidden disabled>
+								<legend class="calculator-field__hint">Укажите внутренние размеры и глубину у обоих краёв</legend>
+								<div class="calculator-field"><label for="slope-length">Длина L, м</label><input id="slope-length" data-dimension="length" type="text" inputmode="decimal" autocomplete="off" maxlength="14" required /></div>
+								<div class="calculator-field"><label for="slope-width">Ширина W, м</label><input id="slope-width" data-dimension="width" type="text" inputmode="decimal" autocomplete="off" maxlength="14" required /></div>
+								<div class="calculator-field"><label for="shallow-depth">Глубина у мелкого края H₁, м</label><input id="shallow-depth" data-dimension="shallowDepth" type="text" inputmode="decimal" autocomplete="off" maxlength="14" required /></div>
+								<div class="calculator-field"><label for="deep-depth">Глубина у глубокого края H₂, м</label><input id="deep-depth" data-dimension="deepDepth" type="text" inputmode="decimal" autocomplete="off" maxlength="14" required /></div>
+							</fieldset>
+
+							<fieldset class="calculator-fields" data-shape-fields="circular" hidden disabled>
+								<legend class="calculator-field__hint">Введите внутренний диаметр и глубину</legend>
+								<div class="calculator-field"><label for="pool-diameter">Диаметр D, м</label><input id="pool-diameter" data-dimension="diameter" type="text" inputmode="decimal" autocomplete="off" maxlength="14" required /></div>
+								<div class="calculator-field"><label for="round-depth">Постоянная глубина H, м</label><input id="round-depth" data-dimension="depth" type="text" inputmode="decimal" autocomplete="off" maxlength="14" required /></div>
+							</fieldset>
+
+							<fieldset class="calculator-fields" data-shape-fields="irregular" hidden disabled>
+								<legend class="calculator-field__hint">Нужны площадь зеркала воды и средняя глубина</legend>
+								<div class="calculator-field"><label for="water-area">Площадь зеркала воды S, м²</label><input id="water-area" data-dimension="waterArea" type="text" inputmode="decimal" autocomplete="off" maxlength="14" required /></div>
+								<div class="calculator-field"><label for="average-depth">Средняя глубина Hср, м</label><input id="average-depth" data-dimension="averageDepth" type="text" inputmode="decimal" autocomplete="off" maxlength="14" required /></div>
+							</fieldset>
+
+							<p class="calculator-note calculator-note--irregular" data-irregular-note hidden>Средняя глубина должна учитывать реальный профиль дна. Для сложной геометрии результат предварительный.</p>
+							<p class="calculator-formula">Формула: <code id="volume-formula">V = L × W × H</code></p>
+
+							<div class="calculator-balance">
+								<label for="include-balance-tank"><input id="include-balance-tank" type="checkbox" aria-describedby="balance-note" />Учесть балансную ёмкость переливного бассейна (+10%)</label>
+								<p class="calculator-balance__note" id="balance-note">10% — условный коэффициент предварительной оценки, не нормативный подбор вместимости. Рабочий уровень, полезный объём, резерв и вместимость бака определяются проектом.</p>
+								<p class="calculator-balance__explanation" id="balance-explanation" hidden>Объём чаши остаётся прежним. Условные 10% показаны отдельно и прибавляются только к суммарному результату.</p>
+							</div>
+
+							<p class="calculator-error" id="volume-error" role="status" aria-live="polite">Введите размеры чаши, чтобы увидеть предварительный объём.</p>
+							<div class="calculator-actions">
+								<button type="button" class="button small" id="reset-volume-calculator">Сбросить</button>
+								<a class="calculator-help-link" href="#volume-consultation">Нужна помощь с расчётом?</a>
+							</div>
+						</div>
+
+						<aside class="calculator-summary" aria-label="Результат и схема чаши">
+							<figure class="calculator-diagram" data-diagram="rectangular">
+								<svg viewBox="0 0 360 160" role="img" aria-labelledby="diagram-rect-title">
+									<title id="diagram-rect-title">Прямоугольная чаша с постоянной глубиной</title>
+									<rect x="28" y="32" width="190" height="94" rx="5" fill="#e5f3f7" stroke="#176d8f" stroke-width="3" />
+									<path d="M28 48h190M28 110h190" stroke="#7eb7c8" stroke-width="2" stroke-dasharray="5 5" />
+									<path d="M28 18h190M28 14v9M218 14v9" stroke="#17212b" stroke-width="1.5" />
+									<text x="117" y="14" text-anchor="middle">L</text><text x="121" y="91" text-anchor="middle">W</text>
+									<path d="M248 32v94M244 32h9M244 126h9" stroke="#17212b" stroke-width="1.5" />
+									<text x="269" y="84">H</text><text x="28" y="148">Вид сверху и постоянная глубина</text>
+								</svg>
+								<figcaption>Длина × ширина × глубина</figcaption>
+							</figure>
+							<figure class="calculator-diagram" data-diagram="rectangular-slope" hidden>
+								<svg viewBox="0 0 360 160" role="img" aria-labelledby="diagram-slope-title">
+									<title id="diagram-slope-title">Прямоугольная чаша с равномерным уклоном дна</title>
+									<path d="M34 40v82h270V40" fill="#e5f3f7" stroke="#176d8f" stroke-width="3" />
+									<path d="M34 40h270M34 112l270-46" fill="none" stroke="#7eb7c8" stroke-width="2" />
+									<text x="167" y="32" text-anchor="middle">L</text><text x="15" y="82">H₁</text><text x="310" y="92">H₂</text>
+									<path d="M22 40v82M18 40h8M18 122h8M317 40v76M313 40h8M313 116h8" stroke="#17212b" stroke-width="1.5" />
+									<text x="34" y="148">Средняя глубина — (H₁ + H₂) / 2</text>
+								</svg>
+								<figcaption>Для равномерного линейного уклона дна</figcaption>
+							</figure>
+							<figure class="calculator-diagram" data-diagram="circular" hidden>
+								<svg viewBox="0 0 360 160" role="img" aria-labelledby="diagram-circle-title">
+									<title id="diagram-circle-title">Круглая чаша с постоянной глубиной</title>
+									<circle cx="112" cy="82" r="55" fill="#e5f3f7" stroke="#176d8f" stroke-width="3" />
+									<path d="M57 82h110M57 76v12M167 76v12" stroke="#17212b" stroke-width="1.5" />
+									<text x="112" y="72" text-anchor="middle">D</text>
+									<path d="M226 34v96M222 34h9M222 130h9" stroke="#17212b" stroke-width="1.5" />
+									<text x="245" y="87">H</text><text x="30" y="151">Круг в плане, постоянная глубина</text>
+								</svg>
+								<figcaption>Площадь круга × глубина</figcaption>
+							</figure>
+							<figure class="calculator-diagram" data-diagram="irregular" hidden>
+								<svg viewBox="0 0 360 160" role="img" aria-labelledby="diagram-irregular-title">
+									<title id="diagram-irregular-title">Бассейн неправильной формы: площадь зеркала и средняя глубина</title>
+									<path d="M44 47c18-17 50-12 70-7 24 6 37-4 59-3 30 2 39 20 66 19 25-1 44 15 43 35-1 19-21 31-48 28-23-3-39 7-61 6-31-1-44-17-67-12-29 6-53-4-63-22-7-14-11-33 1-44z" fill="#e5f3f7" stroke="#176d8f" stroke-width="3" />
+									<text x="163" y="82" text-anchor="middle">S — площадь зеркала</text>
+									<path d="M316 39v86M312 39h8M312 125h8" stroke="#17212b" stroke-width="1.5" /><text x="327" y="86">Hср</text>
+									<text x="40" y="151">Нужны фактическая площадь и средняя глубина</text>
+								</svg>
+								<figcaption>Для сложного контура используйте площадь зеркала воды</figcaption>
+							</figure>
+
+							<dl class="calculator-results" aria-label="Результат расчёта">
+								<div class="calculator-result"><dt>Объём воды в чаше</dt><dd><output id="basin-volume">—</output><span class="calculator-result__unit">м³</span><span class="calculator-result__liters" id="basin-liters">—</span></dd></div>
+								<div class="calculator-result" data-balance-result hidden><dt>Балансная ёмкость, условно</dt><dd><output id="balance-volume">—</output><span class="calculator-result__unit">м³</span></dd></div>
+								<div class="calculator-result calculator-result--total"><dt id="total-volume-label">Предварительный объём воды</dt><dd><output id="total-volume" aria-live="polite">—</output><span class="calculator-result__unit">м³</span><span class="calculator-result__liters" id="total-liters">—</span></dd></div>
+							</dl>
+							<p class="calculator-summary__caption">Объём чаши и условный резерв показаны отдельно: галочка не изменяет основной расчёт.</p>
+						</aside>
+					</div>
+					<noscript><p>Для расчёта необходимо включить JavaScript в браузере.</p></noscript>
+				</section>
+
+				<section class="calculator-explanations" aria-labelledby="how-volume-title">
+					<header class="calculator-section-heading">
+						<span class="date">Методика</span>
+						<h2 id="how-volume-title">Как рассчитывается объём воды в бассейне</h2>
+						<p>В формулах используют внутренние размеры чаши по уровню воды. Выберите геометрию, которая ближе к вашему бассейну, и сверьте расчёт с пояснениями ниже.</p>
+					</header>
+					<div class="geometry-cards">
+						<section class="geometry-card" aria-labelledby="geometry-rect-title">
+							<span class="geometry-card__index">01</span>
+							<h3 id="geometry-rect-title">Прямоугольная чаша, постоянная глубина</h3>
+							<p>Измерьте внутренние длину L и ширину W, затем постоянную глубину воды H. Перемножьте размеры.</p>
+							<p class="geometry-formula"><code>V = L × W × H</code></p>
+							<p><strong>Пример:</strong> 8 × 4 × 1,5 = 48 м³, или 48&nbsp;000 л.</p>
+							<p class="geometry-card__limit">Формула подходит для прямоугольного дна и примерно вертикальных стенок. При наклоне дна, скруглениях, ступенях и выступах это приближение.</p>
+						</section>
+						<section class="geometry-card" aria-labelledby="geometry-slope-title">
+							<span class="geometry-card__index">02</span>
+							<h3 id="geometry-slope-title">Прямоугольная чаша с равномерным уклоном</h3>
+							<p>Измерьте L и W, глубину у мелкого края H₁ и у глубокого H₂. Средняя глубина при равномерном уклоне равна полусумме крайних.</p>
+							<p class="geometry-formula"><code>V = L × W × (H₁ + H₂) / 2</code></p>
+							<p><strong>Пример:</strong> 10 × 4 × (1 + 2) / 2 = 60 м³, или 60&nbsp;000 л.</p>
+							<p class="geometry-card__limit">Расчёт применим к ровному линейному уклону. Если профиль меняется участками, есть площадки или ступени, одной средней глубины может быть недостаточно.</p>
+						</section>
+						<section class="geometry-card" aria-labelledby="geometry-circle-title">
+							<span class="geometry-card__index">03</span>
+							<h3 id="geometry-circle-title">Круглая чаша, постоянная глубина</h3>
+							<p>Измерьте внутренний диаметр D и глубину воды H. Сначала вычислите площадь круга, затем умножьте её на глубину.</p>
+							<p class="geometry-formula"><code>V = π × D² × H / 4</code></p>
+							<p><strong>Пример:</strong> при D = 5 м и H = 1,5 м получается около 29,45 м³ (примерно 29&nbsp;452 л).</p>
+							<p class="geometry-card__limit">Формула подходит для круглой чаши с постоянной глубиной. Наклонное дно и изменение диаметра по высоте требуют уточнения геометрии.</p>
+						</section>
+						<section class="geometry-card" aria-labelledby="geometry-irregular-title">
+							<span class="geometry-card__index">04</span>
+							<h3 id="geometry-irregular-title">Бассейн неправильной формы</h3>
+							<p>Измерьте фактическую площадь зеркала воды S и определите среднюю глубину Hср по профилю дна. Длину и ширину для этой формулы вводить не нужно.</p>
+							<p class="geometry-formula"><code>V = S × Hср</code></p>
+							<p><strong>Пример:</strong> при S = 28 м² и Hср = 1,6 м получается 44,8 м³, или 44&nbsp;800 л.</p>
+							<p class="geometry-card__limit">Средняя глубина должна учитывать реальный профиль, а площадь — контур воды, а не габариты описывающего прямоугольника. При сложной форме результат предварительный.</p>
+						</section>
+					</div>
+
+					<div class="engineering-notes">
+						<section class="engineering-note" aria-labelledby="water-depth-title">
+							<h3 id="water-depth-title">Глубина воды и строительная глубина — не одно и то же</h3>
+							<p>В расчёт подставляют вертикальное расстояние от рабочего уровня воды до внутренней поверхности дна. Строительная глубина может отсчитываться от других конструктивных отметок; на неё также влияют уровень наполнения, отделка, ступени и внутренние выступы. Для оценки объёма ориентируйтесь на фактически заполненную часть чаши.</p>
+						</section>
+						<section class="engineering-note" aria-labelledby="average-depth-title">
+							<h3 id="average-depth-title">Как определить среднюю глубину</h3>
+							<p>Средняя глубина должна представлять весь профиль дна и площади, над которыми находятся участки разной глубины. Если бассейн состоит из зон, полезно оценивать их отдельно и складывать объёмы. Простое среднее нескольких случайных замеров может исказить результат, если глубокая и мелкая части занимают разные площади.</p>
+						</section>
+						<section class="engineering-note" aria-labelledby="balance-tank-title">
+							<h3 id="balance-tank-title">Что показывает балансная ёмкость</h3>
+							<p>В переливной системе балансная ёмкость принимает и возвращает воду при изменении её уровня в бассейне и работе системы. В калькуляторе к объёму чаши можно добавить условные 10%, чтобы получить отдельный предварительный ориентир. Это допущение интерфейса, а не универсальная норма и не расчёт рабочего объёма бака.</p>
+							<p>Полезный объём, рабочие уровни и необходимый резерв определяются проектом с учётом схемы бассейна и оборудования. Суммарное значение калькулятора не заменяет такой подбор.</p>
+						</section>
+						<section class="engineering-note" aria-labelledby="calculation-limits-title">
+							<h3 id="calculation-limits-title">Почему фактический объём может отличаться</h3>
+							<p>Формулы описывают идеальную геометрию. Ступени, скамьи, ниши, скругления, уклоны, внутренние выступы и уровень наполнения меняют фактическое количество воды. Поэтому результат полезен для первичной оценки, а для сложной чаши его уточняют по чертежам, обмерам или проектному расчёту.</p>
+						</section>
+					</div>
+				</section>
+
+				<section class="calculator-use" aria-labelledby="volume-uses-title">
+					<header class="calculator-section-heading">
+						<span class="date">Практическое применение</span>
+						<h2 id="volume-uses-title">Для чего нужно знать объём бассейна</h2>
+						<p>Объём — важная исходная величина для инженерных оценок, но не единственный параметр для выбора оборудования.</p>
+					</header>
+					<div class="use-grid">
+						<section><h3>Фильтрация</h3><p>Объём помогает оценить требуемый обмен воды и рабочий диапазон системы. Для подбора также важны схема циркуляции, трубопроводы, сопротивление сети, режим использования и оборудование.</p><a href="/articles/filtratsiya-vody-v-basseyne.html">О фильтрации воды в бассейне</a></section>
+						<section><h3>Подогрев</h3><p>По объёму можно оценить количество воды, которое предстоит нагреть. Итоговое время зависит также от исходной и целевой температуры, мощности источника тепла, теплопотерь и условий эксплуатации.</p><a href="/articles/podogrev-vody-v-basseyne.html">О подогреве воды</a></section>
+						<section><h3>Водоподготовка</h3><p>Объём используют при первичных оценках дозирования и циркуляции. Фактическая обработка зависит от качества воды, выбранной технологии и рекомендаций изготовителя реагентов или оборудования.</p><a href="/articles/oborudovanie-dlya-basseyna.html">Об оборудовании бассейна</a></section>
+						<section><h3>Эксплуатация</h3><p>Объём влияет на количество воды при первоначальном наполнении и некоторых эксплуатационных расчётах. Расходы зависят также от подпитки, испарения, режима работы, энергоносителей и обслуживания.</p><a href="/articles/proektirovanie-basseynov.html">О проектировании бассейнов</a></section>
+					</div>
+					<p class="calculator-use__caveat">Один объём не определяет окончательный подбор фильтра, насоса, нагревателя или системы водоподготовки. Для этого нужны исходные данные об объекте и условиях эксплуатации.</p>
+				</section>
+			</article>
+
+			<footer id="footer" class="calculator-footer">
+				<section class="calculator-consultation" id="volume-consultation" aria-labelledby="volume-consultation-title">
+					<header>
+						<span class="date">Консультация инженера</span>
+						<h2 id="volume-consultation-title">Не уверены в расчёте? Поможем разобраться.</h2>
+						<p>Если у бассейна сложная форма, переменная глубина или вы хотите уточнить объём для подбора оборудования, оставьте заявку. Поможем разобраться с исходными данными и дальнейшими расчётами.</p>
+						<p class="calculator-context-help" id="calculator-context-help">Если расчёт заполнен, к комментарию автоматически добавятся выбранная форма, введённые размеры и предварительный объём.</p>
+					</header>
+					<form id="pool-volume-consultation-form" method="POST" action="https://api.alpool.ru/api/leads" data-form-type="calculator-volume">
+						<div class="calculator-lead-fields">
+							<div class="calculator-lead-field"><label for="calculator-lead-name">Имя</label><input id="calculator-lead-name" name="name" type="text" autocomplete="name" required /></div>
+							<div class="calculator-lead-field"><label for="calculator-lead-phone">Телефон</label><input id="calculator-lead-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required /></div>
+							<div class="calculator-lead-field calculator-lead-field--wide"><label for="calculator-lead-message">Комментарий <span>(необязательно)</span></label><textarea id="calculator-lead-message" name="message" rows="4" aria-describedby="calculator-context-help" placeholder="Опишите, что хотите уточнить"></textarea></div>
+						</div>
+						<div class="lead-consent calculator-lead-consent">
+							<input type="checkbox" id="calculator-personal-data-consent" name="personal_data_consent" value="true" required aria-describedby="calculator-personal-data-links" />
+							<label for="calculator-personal-data-consent">Я даю отдельное согласие на обработку персональных данных.</label>
+							<p class="lead-consent__links" id="calculator-personal-data-links"><a href="/consent.html" target="_blank" rel="noopener">Текст согласия</a> · <a href="/privacy.html" target="_blank" rel="noopener">Политика обработки персональных данных</a></p>
+							<input type="hidden" name="consent_text_version" value="alpool-consent-2026-11-08-v1" />
+						</div>
+						<ul class="actions calculator-submit-actions"><li><input type="submit" class="button primary large" value="Получить консультацию" /></li></ul>
+					</form>
+				</section>
+				<section class="calculator-footer-details" aria-label="Контакты ALPOOL">
+					<a class="logo" href="/">АЛ Пулс</a>
+					<p><a href="tel:+74956446654">+7 (495) 644-66-54</a> · <a href="mailto:aanufriev@list.ru">aanufriev@list.ru</a></p>
+				</section>
+			</footer>
+			<div id="copyright"><ul><li>&copy; АЛ Пулс</li><li><a href="/">На главную</a></li></ul></div>
+		</main>
+	</div>
+
+	<script src="/assets/js/calculations/pool-volume-core.js"></script>
+	<script src="/assets/js/calculators/pool-volume-calculator.js"></script>
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/jquery.scrollex.min.js"></script>
+	<script src="/assets/js/jquery.scrolly.min.js"></script>
+	<script src="/assets/js/browser.min.js"></script>
+	<script src="/assets/js/breakpoints.min.js"></script>
+	<script src="/assets/js/util.js"></script>
+	<script src="/assets/js/main.js"></script>
+</body>
+</html>
