@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Расчёт нагрева воды в бассейне — мощность и теплопотери | ALPOOL</title>
+	<meta name="description" content="Рассчитайте энергию и время нагрева воды, оцените теплопотери бассейна с учётом расположения и покрытия, мощность нагревателя и расход теплоносителя." />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Расчёт нагрева воды в бассейне — ALPOOL" />
+	<meta property="og:description" content="Предварительная оценка энергии, мощности нагрева, теплопотерь и поддержания температуры бассейна." />
+	<meta property="og:url" content="https://alpool.ru/kalkulyatori/raschet-nagreva-vody-basseyna.html" />
+	<meta property="og:locale" content="ru_RU" />
+	<meta name="twitter:card" content="summary" />
+	<link rel="canonical" href="https://alpool.ru/kalkulyatori/raschet-nagreva-vody-basseyna.html" />
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<link rel="stylesheet" href="/assets/css/calculator-volume.css" />
+	<link rel="stylesheet" href="/assets/css/calculator-pool-heating.css" />
+</head>
+<body>
+	<div id="wrapper">
+		<header id="header"><a href="/" class="logo">АЛ Пулс</a></header>
+		<nav id="nav" aria-label="Основная навигация">
+			<ul class="links"><li><a href="/">Главная</a></li><li><a href="/servis/proektirovanie-basseynov.html">Проектирование</a></li><li><a href="/articles/filtratsiya-vody-v-basseyne.html">Статьи</a></li></ul>
+			<ul class="icons"><li><a href="tel:+74956446654" class="icon solid fa-phone"><span class="label">Телефон</span></a></li><li><a href="https://wa.me/79856446654" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li><li><a href="https://t.me/desertocean" class="icon brands fa-telegram-plane"><span class="label">Telegram</span></a></li></ul>
+		</nav>
+		<main id="main">
+			<article class="post calculator-page heating-page">
+				<header class="major calculator-intro heating-intro">
+					<span class="date">Инструменты для бассейнов</span>
+					<h1>Расчёт нагрева воды в бассейне</h1>
+					<p>Оцените энергию первоначального нагрева, мощность источника тепла, время нагрева и потери с поверхности воды. Это укрупнённый расчёт для предварительного выбора, а не теплотехнический проект.</p>
+				</header>
+
+				<section class="calculator-panel heating-panel" data-heating-calculator aria-label="Расчёт нагрева и теплопотерь бассейна">
+					<h2>Исходные данные бассейна</h2>
+					<div class="heating-fieldsets">
+						<fieldset class="heating-group"><legend>Вода и геометрия</legend>
+							<div class="heating-fieldsets">
+								<div class="calculator-field"><label for="water-volume">Объём воды, м³</label><input id="water-volume" type="text" inputmode="decimal" autocomplete="off" placeholder="Например, 50" /></div>
+								<div class="calculator-field"><label for="water-area">Площадь зеркала воды, м²</label><input id="water-area" type="text" inputmode="decimal" autocomplete="off" placeholder="Например, 32" /></div>
+								<div class="calculator-field"><label for="water-start-temp">Начальная температура, °C</label><input id="water-start-temp" type="text" inputmode="decimal" autocomplete="off" placeholder="Например, 15" /></div>
+								<div class="calculator-field"><label for="water-target-temp">Требуемая температура, °C</label><input id="water-target-temp" type="text" inputmode="decimal" autocomplete="off" placeholder="Например, 28" /></div>
+							</div>
+						</fieldset>
+						<fieldset class="heating-group"><legend>Расположение и использование</legend>
+							<div class="heating-fieldsets">
+								<div class="calculator-field calculator-field--wide"><label for="pool-location">Расположение бассейна</label><select id="pool-location"><option value="">Выберите условия</option><option value="indoor">В помещении</option><option value="outdoorCovered">На улице, в полностью крытом / защищённом месте</option><option value="outdoorPartial">На улице, в частично защищённом месте</option><option value="outdoorOpen">На улице, полностью открытый</option></select><small class="calculator-field__hint" id="location-hint">Укрупнённая оценка зависит от температуры, влажности и движения воздуха.</small></div>
+								<div class="calculator-field"><label for="operation-hours">Часы эксплуатации в сутки</label><input id="operation-hours" type="text" inputmode="decimal" autocomplete="off" placeholder="Для суточного баланса" /></div>
+								<div class="calculator-field"><label for="extra-loss">Дополнительная потеря при эксплуатации, Вт/м²</label><input id="extra-loss" type="text" inputmode="decimal" autocomplete="off" value="0" /><small class="calculator-field__hint">0 — нет заданной поправки, а не подтверждение отсутствия потерь.</small></div>
+								<div class="calculator-field"><label for="cover-present">Покрытие бассейна</label><select id="cover-present"><option value="no">Нет</option><option value="yes">Есть и используется</option></select></div>
+								<div class="calculator-field"><label for="cover-hours">Часы простоя с покрытием в сутки</label><input id="cover-hours" type="text" inputmode="decimal" autocomplete="off" placeholder="Введите 0, если не используется" disabled /><small class="calculator-field__hint">Не пересекайте это время с часами эксплуатации.</small></div>
+								<div class="calculator-field"><label for="cover-reduction">Снижение потерь покрытием, %</label><input id="cover-reduction" type="text" inputmode="decimal" autocomplete="off" placeholder="По данным покрытия или проекту" disabled /><small class="calculator-field__hint">Универсальная эффективность не задаётся.</small></div>
+							</div>
+						</fieldset>
+					</div>
+					<p class="calculator-error" id="common-error" role="status" aria-live="polite">Введите объём, площадь и температуры, затем выберите условия расчёта.</p>
+
+					<div class="heating-source-fields" aria-labelledby="source-title">
+						<h3 id="source-title">Источник нагрева</h3>
+						<div class="calculator-field"><label for="heat-source">Тип оборудования</label><select id="heat-source"><option value="exchanger">Теплообменник</option><option value="electric">Электрический нагреватель</option><option value="heat-pump">Тепловой насос</option></select></div>
+						<div class="calculator-field" id="fluid-field"><label for="primary-fluid">Первичный теплоноситель</label><select id="primary-fluid"><option value="water">Вода</option><option value="glycol">Гликолевый раствор</option></select></div>
+						<div class="calculator-field" id="supply-field"><label for="primary-supply">Температура подачи первичного контура, °C</label><input id="primary-supply" type="text" inputmode="decimal" autocomplete="off" placeholder="Например, 80" /></div>
+						<div class="calculator-field" id="return-field"><label for="primary-return">Температура обратки первичного контура, °C</label><input id="primary-return" type="text" inputmode="decimal" autocomplete="off" placeholder="Например, 60" /></div>
+						<div class="calculator-field" id="cop-field" hidden><label for="heat-pump-cop">COP теплового насоса (необязательно)</label><input id="heat-pump-cop" type="text" inputmode="decimal" autocomplete="off" placeholder="Из паспорта при заданных условиях" /><small class="calculator-field__hint">COP зависит от температур воздуха и воды и режима работы.</small></div>
+						<p class="heating-note" id="source-note">Расход первичного контура рассчитывается только для воды. Для гликоля нужны его фактические теплофизические свойства.</p>
+					</div>
+
+					<div class="heating-tabs" role="tablist" aria-label="Режим расчёта нагрева">
+						<button class="heating-tab is-active" id="tab-power" type="button" role="tab" aria-selected="true" aria-controls="pane-power" data-mode="power">Мощность нагрева</button>
+						<button class="heating-tab" id="tab-time" type="button" role="tab" aria-selected="false" aria-controls="pane-time" data-mode="time">Время нагрева</button>
+						<button class="heating-tab" id="tab-maintenance" type="button" role="tab" aria-selected="false" aria-controls="pane-maintenance" data-mode="maintenance">Теплопотери и поддержание</button>
+					</div>
+					<section class="heating-pane" id="pane-power" role="tabpanel" aria-labelledby="tab-power">
+						<div class="heating-mode-grid"><div class="heating-mode-inputs">
+							<div class="calculator-field"><label for="heating-hours">Желаемое время нагрева, ч</label><input id="heating-hours" type="text" inputmode="decimal" autocomplete="off" placeholder="Например, 24" /></div>
+							<div class="calculator-field"><label for="heating-condition-power">Условия поверхности во время нагрева</label><select id="heating-condition-power"><option value="">Выберите режим</option><option value="operation">Эксплуатация без покрытия</option><option value="idle">Простой без покрытия</option><option value="covered" disabled>Простой с покрытием</option></select></div>
+							<p class="calculator-formula">E = 1,163 × V × (T<sub>кон</sub> − T<sub>нач</sub>); P<sub>идеал</sub> = E / t; P<sub>расч</sub> = E / t + P<sub>потерь</sub></p>
+							<p class="heating-note">Для расчёта с потерями используется только явно выбранный режим поверхности в период нагрева.</p>
+						</div><div class="heating-summary" aria-live="polite"><h3>Мощность для нагрева</h3>
+							<div class="heating-metric"><span>Энергия нагрева без потерь</span><strong id="power-energy">—</strong></div>
+							<div class="heating-metric"><span>Идеальная тепловая мощность</span><strong id="power-ideal">—</strong></div>
+							<div class="heating-metric"><span>Потери в выбранном режиме</span><strong id="power-loss">—</strong></div>
+							<div class="heating-metric heating-metric--primary"><span>Мощность с учётом потерь</span><strong id="power-with-loss">—</strong></div>
+							<p class="heating-note" id="power-explanation">Результаты появятся после ввода данных и времени нагрева.</p>
+						</div></div>
+					</section>
+					<section class="heating-pane" id="pane-time" role="tabpanel" aria-labelledby="tab-time" hidden>
+						<div class="heating-mode-grid"><div class="heating-mode-inputs">
+							<div class="calculator-field"><label for="available-power">Доступная тепловая мощность, кВт</label><input id="available-power" type="text" inputmode="decimal" autocomplete="off" placeholder="Из паспорта оборудования" /></div>
+							<div class="calculator-field"><label for="heating-condition-time">Условия поверхности во время нагрева</label><select id="heating-condition-time"><option value="">Выберите режим</option><option value="operation">Эксплуатация без покрытия</option><option value="idle">Простой без покрытия</option><option value="covered" disabled>Простой с покрытием</option></select></div>
+							<p class="calculator-formula">t<sub>идеал</sub> = E / P; t<sub>расч</sub> = E / (P<sub>доступ</sub> − P<sub>потерь</sub>)</p>
+						</div><div class="heating-summary" aria-live="polite"><h3>Оценка времени нагрева</h3>
+							<div class="heating-metric"><span>Энергия нагрева</span><strong id="time-energy">—</strong></div>
+							<div class="heating-metric"><span>Идеальное время без потерь</span><strong id="time-ideal">—</strong></div>
+							<div class="heating-metric"><span>Потери в выбранном режиме</span><strong id="time-loss">—</strong></div>
+							<div class="heating-metric heating-metric--primary"><span>Время с учётом потерь</span><strong id="time-with-loss">—</strong></div>
+							<p class="heating-note" id="time-explanation">Результаты появятся после ввода данных и доступной мощности.</p>
+						</div></div>
+					</section>
+					<section class="heating-pane" id="pane-maintenance" role="tabpanel" aria-labelledby="tab-maintenance" hidden>
+						<div class="heating-mode-grid"><div class="heating-mode-inputs">
+							<p class="calculator-formula">E<sub>сут</sub> = P<sub>экспл</sub>t<sub>экспл</sub> + P<sub>зеркала</sub>t<sub>простой</sub> + P<sub>покрыт</sub>t<sub>покр</sub></p>
+							<p class="heating-note">Часы эксплуатации и простоя с покрытием задаются отдельно и в сумме не превышают 24. Остаток суток — простой без покрытия.</p>
+							<div class="heating-warning">Если эффективность покрытия неизвестна, точная суточная энергия и средняя мощность не рассчитываются. Пустое значение не трактуется как нулевая потеря.</div>
+						</div><div class="heating-summary" aria-live="polite"><h3>Потери и поддержание температуры</h3>
+							<div class="heating-metric"><span>Потери при эксплуатации</span><strong id="maint-operation">—</strong></div>
+							<div class="heating-metric"><span>Из них дополнительная поправка</span><strong id="maint-extra">—</strong></div>
+							<div class="heating-metric"><span>Потери при простое без покрытия</span><strong id="maint-idle">—</strong></div>
+							<div class="heating-metric"><span>Потери при простое с покрытием</span><strong id="maint-covered">—</strong></div>
+							<div class="heating-metric"><span>Энергия потерь за сутки</span><strong id="maint-daily-energy">—</strong></div>
+							<div class="heating-metric"><span>Средняя мощность за сутки</span><strong id="maint-average">—</strong></div>
+							<div class="heating-metric heating-metric--primary"><span>Максимальная текущая мощность потерь</span><strong id="maint-maximum">—</strong></div>
+							<p class="heating-note" id="maint-explanation">Введите длительность режимов и параметры покрытия для суточного баланса.</p>
+						</div></div>
+					</section>
+
+					<section class="heating-summary heating-equipment" aria-live="polite" aria-labelledby="equipment-title">
+						<h3 id="equipment-title">Оборудование для выбранного режима</h3>
+						<div class="heating-metric heating-metric--primary"><span>Требуемая / введённая тепловая мощность</span><strong id="equipment-thermal-power">—</strong></div>
+						<div class="heating-metric" id="equipment-heat-exchanger-row"><span>Расход воды в первичном контуре</span><strong id="equipment-flow">—</strong></div>
+						<div class="heating-metric" id="equipment-heat-pump-row" hidden><span>Оценка потребляемой электрической мощности по заданному COP</span><strong id="equipment-electric-power">—</strong></div>
+						<p class="heating-note" id="equipment-explanation">По одной тепловой мощности нельзя выбрать конкретную модель оборудования.</p>
+					</section>
+					<div class="calculator-actions"><button type="button" class="button small" id="reset-heating">Сбросить расчёт</button><a class="calculator-help-link" href="#heating-consultation">Обсудить расчёт с инженером</a></div>
+				</section>
+
+				<section class="heating-reference" aria-labelledby="loss-table-title">
+					<h2 id="loss-table-title">Укрупнённые потери с поверхности воды</h2>
+					<p>Используются для предварительной оценки по заданному расположению. Это расчётные ориентиры ALPOOL, не нормативные константы и не заменяют расчёт испарения, конвекции и излучения по условиям объекта.</p>
+					<div class="heating-table-wrap" role="region" aria-label="Таблица укрупнённых удельных потерь с поверхности бассейна" tabindex="0"><table class="heating-table"><thead><tr><th>Расположение бассейна</th><th>Удельные потери, Вт/м²</th><th>Условия упрощённой оценки</th></tr></thead><tbody>
+						<tr><td>В помещении</td><td>180</td><td>Не моделируются отдельно параметры воздуха, влажность, вентиляция и движение воздуха над водой.</td></tr>
+						<tr><td>На улице, полностью крытое / защищённое место</td><td>520</td><td>Категория расположения площадки, а не эффективность покрытия зеркала воды.</td></tr>
+						<tr><td>На улице, частично защищённое место</td><td>620</td><td>Реальные потери зависят от ветра, температуры и степени защиты площадки.</td></tr>
+						<tr><td>На улице, полностью открытый</td><td>1000</td><td>Укрупнённый ориентир для открытого места; фактическое влияние ветра и погоды отдельно не рассчитывается.</td></tr>
+					</tbody></table></div>
+					<p class="heating-note"><strong>Не смешивайте параметры:</strong> q = 180/520/620/1000 Вт/м² — укрупнённый коэффициент по расположению бассейна. Для полностью крытого / защищённого места на улице используется q = 520 Вт/м²; это не означает эффективность покрытия воды. η, %, — отдельное снижение потерь фактическим покрытием зеркала; его пользователь вводит самостоятельно, и оно применяется к выбранному q. Коэффициенты не учитывают индивидуальные погодные условия, влажность и температуру воздуха, скорость ветра, активность купающихся и свойства конкретного покрытия. В одной коммерческой публикации встречается тот же набор коэффициентов; это не является независимым подтверждением их точности.</p>
+					<p class="heating-note">Методические источники о механизмах потерь: <a href="https://handbook.ashrae.org/Handbooks/A23/SI/A23_Ch06/a23_ch06_si.aspx" target="_blank" rel="noopener">ASHRAE Handbook, Indoor Swimming Pools, гл. 6</a> описывает испарение с учётом температуры воды, влажности, движения воздуха и активности; <a href="https://www.dimplex.eu/sites/g/files/emiian586/files/2024-12/Project%20planning%20handbook_Projektierungshandbuch_20241217_EN_final.pdf" target="_blank" rel="noopener">Dimplex Project Planning Handbook, раздел 3.3.3</a> показывает зависимость нагрузки наружного бассейна от температуры воды, защиты от ветра и покрытия (его покрытые значения ограничены частными бассейнами с использованием до 2 ч/сут); <a href="https://www.teploprofi.com/blog/kak-podobrat-teploobmennik-dlya-bassejna/" target="_blank" rel="noopener">коммерческий пример таблицы</a> содержит такой же набор чисел, но не рассматривается как независимая проверка.</p>
+				</section>
+
+				<section class="heating-reference" aria-labelledby="formula-table-title">
+					<h2 id="formula-table-title">Формулы и режимы расчёта</h2>
+					<div class="heating-table-wrap" role="region" aria-label="Таблица формул калькулятора" tabindex="0"><table class="heating-table"><thead><tr><th>Что рассчитываем</th><th>Формула</th><th>Пояснение</th></tr></thead><tbody>
+						<tr><td>Энергия нагрева</td><td>E = 1,163 × V × (Tкон − Tнач)</td><td>кВт·ч; без теплопотерь.</td></tr>
+						<tr><td>Мощность за заданное время</td><td>Pидеал = E / t; Pрасч = E / t + Pпотерь</td><td>кВт; второе значение учитывает выбранные постоянные потери поверхности.</td></tr>
+						<tr><td>Время при заданной мощности</td><td>tидеал = E / P; tрасч = E / (Pдоступ − Pпотерь)</td><td>Если Pдоступ ≤ Pпотерь, мощности недостаточно для нагрева в этих условиях.</td></tr>
+						<tr><td>Потери с зеркала</td><td>Pзеркала = S × q / 1000</td><td>кВт; q — укрупнённый коэффициент расположения.</td></tr>
+						<tr><td>Покрытая поверхность</td><td>Pпокрыт = Pзеркала × (1 − η/100)</td><td>Применяется только с введённым пользователем снижением η.</td></tr>
+						<tr><td>Суточный баланс</td><td>Eсут = Pэксплtэкспл + Pзеркалаtпростой + Pпокрытtпокр</td><td>кВт·ч/сут; три непересекающихся режима.</td></tr>
+						<tr><td>Средняя мощность за сутки</td><td>Pсред = Eсут / 24</td><td>Не заменяет пиковую мощность поддержания.</td></tr>
+						<tr><td>Первичный контур с водой</td><td>G = P / (1,163 × (Tподачи − Tобратки))</td><td>м³/ч; формула не применяется к гликолю без пересчёта свойств.</td></tr>
+						<tr><td>Электрическая оценка теплового насоса</td><td>Pэл = Pтепл / COP</td><td>Только если пользователь ввёл COP для расчётных условий.</td></tr>
+					</tbody></table></div>
+				</section>
+
+				<section class="heating-reference" aria-labelledby="daily-modes-title">
+					<h2 id="daily-modes-title">Периоды суток и использование покрытия</h2>
+					<div class="heating-table-wrap" role="region" aria-label="Таблица режимов теплового баланса" tabindex="0"><table class="heating-table"><thead><tr><th>Период</th><th>Потери, кВт</th><th>Как учитывается</th></tr></thead><tbody>
+						<tr><td>Эксплуатация без покрытия</td><td>Pэкспл = S × (q + qдоп) / 1000</td><td>qдоп вводит пользователь; универсальная надбавка не назначается.</td></tr>
+						<tr><td>Простой без покрытия</td><td>Pзеркала = S × q / 1000</td><td>Базовый коэффициент расположения.</td></tr>
+						<tr><td>Простой с покрытием</td><td>Pпокрыт = Pзеркала × (1 − η/100)</td><td>Считается численно только при введённом η; qдоп не применяется.</td></tr>
+						<tr><td>Остаток суток</td><td>tпростой = 24 − tэкспл − tпокр</td><td>Часы с покрытием относятся к простою; сумма часов эксплуатации и покрытия ≤ 24.</td></tr>
+					</tbody></table></div>
+					<p class="heating-note">При непрерывном поддержании нагреватель компенсирует потери текущего режима. Периодическая работа должна дополнительно учитывать допустимые колебания температуры и график оборудования.</p>
+				</section>
+
+				<section class="heating-reference" aria-labelledby="equipment-table-title">
+					<h2 id="equipment-table-title">Что показывает расчёт для разных источников тепла</h2>
+					<div class="heating-table-wrap" role="region" aria-label="Таблица источников нагрева и ограничений выбора" tabindex="0"><table class="heating-table"><thead><tr><th>Источник</th><th>Результат калькулятора</th><th>Что нужно проверить по оборудованию</th></tr></thead><tbody>
+						<tr><td>Теплообменник</td><td>Требуемая тепловая мощность; расход первичной воды по заданному перепаду температур.</td><td>Температуры, расходы и гидравлические характеристики обоих контуров, допустимые режимы и паспортную мощность.</td></tr>
+						<tr><td>Электрический нагреватель</td><td>Требуемая тепловая мощность.</td><td>Потребляемую электрическую мощность, доступное электропитание, КПД, защиту и паспортный расход через прибор.</td></tr>
+						<tr><td>Тепловой насос</td><td>Требуемая тепловая мощность; оценка электрической по введённому COP.</td><td>COP и теплопроизводительность при расчётной температуре воздуха и воды, режим оттаивания и паспортный диапазон.</td></tr>
+					</tbody></table></div>
+				</section>
+
+				<section class="heating-explain" aria-labelledby="heating-explain-title">
+					<h2 id="heating-explain-title">Как читать предварительный расчёт</h2>
+					<div class="heating-engineering-grid">
+						<article class="heating-card"><h3>1. Энергия первоначального нагрева</h3><p>Для воды принято 1,163 кВт·ч на нагрев 1 м³ на 1 °C. Например, 50 м³ при повышении температуры с 15 до 28 °C требуют E = 1,163 × 50 × 13 = 755,95 кВт·ч тепла без учёта потерь.</p></article>
+						<article class="heating-card"><h3>2. Идеальная мощность и время</h3><p>Если 755,95 кВт·ч нужно передать за 24 ч, идеальная мощность равна 755,95 / 24 ≈ 31,50 кВт. Это значение не покрывает теплопотери. При известной мощности время без потерь равно E / P; с потерями используется чистая мощность P − Pпотерь.</p></article>
+						<article class="heating-card"><h3>3. Откуда возникают потери с поверхности</h3><p>Тепло уходит через испарение, конвекцию и тепловое излучение. На испарение влияют температура воды и воздуха, влажность, движение воздуха и активность купающихся. Поэтому одна постоянная величина в Вт/м² не описывает погоду и каждый бассейн.</p></article>
+						<article class="heating-card"><h3>4. Что не входит в базовую модель</h3><p>В базовом режиме считается только поверхность воды. Потерями через стенки, дно, грунт, трубопроводы и оборудование пренебрегают. Для закрытого помещения также не вычисляются нагрузка вентиляции и осушения; эти элементы требуют отдельного теплотехнического расчёта.</p></article>
+						<article class="heating-card"><h3>5. Эксплуатация и покрытие</h3><p>Волнение и купающиеся могут увеличить испарение; дополнительная поправка вводится пользователем и не назначается автоматически. Покрытие учитывается только в заданные часы простоя. Например, при исходной оценке 5,76 кВт и пользовательском снижении 50% получится 2,88 кВт; без введённого коэффициента эффект остаётся неизвестным.</p></article>
+						<article class="heating-card"><h3>6. Суточное поддержание температуры</h3><p>Суточная энергия складывается по трём отдельным периодам. Например, при 8 ч эксплуатации, 8 ч простоя с покрытием и оставшихся 8 ч без покрытия каждую мощность умножают на длительность своего режима. Среднее за сутки не является пиковой мощностью и не гарантирует температуру в каждый момент.</p></article>
+						<article class="heating-card"><h3>7. Оборудование и теплообменник</h3><p>Для воды расход первичного теплоносителя оценивается как G = P / (1,163 × ΔT). При 40 кВт и графике 80/60 °C это около 1,72 м³/ч. Реальный теплообменник подбирают по температурам и расходам обоих контуров, перепадам и паспортной характеристике. Для гликоля нужен пересчёт по его свойствам.</p></article>
+						<article class="heating-card"><h3>8. Электронагреватель и тепловой насос</h3><p>Калькулятор показывает требуемую тепловую мощность, а не обещает конкретное электрическое потребление. Для теплового насоса электрическую мощность можно оценить как Pэл = Pтепл / COP, если пользователь введёт COP из паспорта для ожидаемых условий. COP и теплопроизводительность меняются с температурой источника и воды.</p></article>
+						<article class="heating-card heating-card--wide"><h3>Ограничение предварительной оценки</h3><p>Постоянные коэффициенты поверхности и постоянные потери во время прогрева — упрощение. Здесь нет почасовой погоды, изменения испарения при изменении температур, теплопередачи через конструкции, нагрева подпиточной воды, солнечных поступлений и характеристик конкретной установки. Для окончательного выбора оборудования необходимы исходные данные проекта, расчёт теплового баланса и проверка паспортных рабочих условий.</p></article>
+					</div>
+					<p class="heating-links">Полезные инструменты ALPOOL: <a href="/kalkulyatori/kalkulyator-obema-basseyna.html">расчёт объёма воды</a> и <a href="/kalkulyatori/podbor-filtra-i-nasosa.html">подбор фильтра и насоса</a>. Подробнее о вариантах нагрева — <a href="/articles/podogrev-vody-v-basseyne.html">в статье о подогреве бассейна</a>.</p>
+				</section>
+			</article>
+
+			<footer id="footer" class="calculator-footer">
+				<section class="calculator-consultation" id="heating-consultation" aria-labelledby="heating-consultation-title">
+					<header><span class="date">Консультация инженера</span><h2 id="heating-consultation-title">Проверим подбор оборудования</h2><p>Оставьте контакты и исходные данные расчёта — инженер поможет уточнить тепловую нагрузку и оборудование.</p><p class="calculator-context-help" id="heating-context-help">К комментарию добавятся выбранный режим, параметры бассейна и результаты расчёта.</p></header>
+					<form id="pool-heating-consultation-form" method="POST" action="https://api.alpool.ru/api/leads" data-form-type="calculator-pool-heating">
+						<div class="calculator-lead-fields">
+							<div class="calculator-lead-field"><label for="heating-lead-name">Имя</label><input id="heating-lead-name" name="name" type="text" autocomplete="name" required /></div>
+							<div class="calculator-lead-field"><label for="heating-lead-phone">Телефон</label><input id="heating-lead-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required /></div>
+							<div class="calculator-lead-field calculator-lead-field--wide"><label for="heating-lead-message">Комментарий <span>(необязательно)</span></label><textarea id="heating-lead-message" name="message" rows="4" aria-describedby="heating-context-help" placeholder="Что важно учесть при подборе"></textarea></div>
+						</div>
+						<div class="lead-consent calculator-lead-consent"><input type="checkbox" id="heating-personal-data-consent" name="personal_data_consent" value="true" required aria-describedby="heating-personal-data-links" /><label for="heating-personal-data-consent">Я даю отдельное согласие на обработку персональных данных.</label><p class="lead-consent__links" id="heating-personal-data-links"><a href="/consent.html" target="_blank" rel="noopener">Текст согласия</a> · <a href="/privacy.html" target="_blank" rel="noopener">Политика обработки персональных данных</a></p><input type="hidden" name="consent_text_version" value="alpool-consent-2026-11-08-v1" /></div>
+						<ul class="actions calculator-submit-actions"><li><input type="submit" class="button primary large" value="Получить консультацию" /></li></ul>
+					</form>
+				</section>
+				<section class="calculator-footer-details" aria-label="Контакты ALPOOL"><a class="logo" href="/">АЛ Пулс</a><p><a href="tel:+74956446654">+7 (495) 644-66-54</a> · <a href="mailto:aanufriev@list.ru">aanufriev@list.ru</a></p></section>
+			</footer>
+			<div id="copyright"><ul><li>&copy; АЛ Пулс</li><li><a href="/">На главную</a></li></ul></div>
+		</main>
+	</div>
+	<script src="/assets/js/calculations/pool-heating-core.js"></script>
+	<script src="/assets/js/calculators/pool-heating-calculator.js"></script>
+	<script src="/assets/js/jquery.min.js"></script><script src="/assets/js/jquery.scrollex.min.js"></script><script src="/assets/js/jquery.scrolly.min.js"></script><script src="/assets/js/browser.min.js"></script><script src="/assets/js/breakpoints.min.js"></script><script src="/assets/js/util.js"></script><script src="/assets/js/main.js"></script>
+</body>
+</html>

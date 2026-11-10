@@ -1,0 +1,49 @@
+.heating-page{--calculator-accent:#176d8f;--calculator-ink:#17212b;--calculator-muted:#586975}
+.heating-page .heating-intro{max-width:64rem}
+.heating-page .heating-panel{max-width:70rem}
+.heating-page .heating-fieldsets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.25rem;margin:0}
+.heating-page .heating-fieldsets>.calculator-field{min-width:0}
+.heating-page .calculator-field select,.heating-page .calculator-field input{box-sizing:border-box}
+.heating-page .heating-group{grid-column:1/-1;margin:0;padding:1rem;border:1px solid #d6e0e4;border-radius:.9rem;background:#fff}
+.heating-page .heating-group legend{padding:0 .5rem;color:#176d8f;font-weight:700}
+.heating-page .heating-tabs{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.6rem 0 1rem;border-bottom:1px solid #dce4e8}
+.heating-page .heating-tab{min-height:3rem;padding:.65rem 1rem;border:0;border-bottom:3px solid transparent;background:transparent;color:#42525d;font:inherit;font-weight:700;text-transform:none;cursor:pointer}
+.heating-page .heating-tab.is-active{border-color:#176d8f;color:#176d8f}
+.heating-page .heating-tab:focus-visible,.heating-page button:focus-visible{outline:3px solid #7fc4dd;outline-offset:2px}
+.heating-page .heating-pane[hidden],.heating-page [hidden]{display:none!important}
+.heating-page .heating-pane{padding:.5rem 0}
+.heating-page .heating-mode-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(17rem,.8fr);align-items:start;gap:1.25rem}
+.heating-page .heating-mode-inputs,.heating-page .heating-summary{min-width:0}
+.heating-page .heating-summary{padding:1.2rem;border:1px solid #dce4e8;border-radius:1rem;background:#fff;box-shadow:0 .65rem 1.8rem rgba(16,43,57,.06)}
+.heating-page .heating-summary h3{margin:0 0 .8rem;color:#17212b;font-size:1.1rem;letter-spacing:0;text-transform:none}
+.heating-page .heating-metric{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:.5rem;padding:.65rem 0;border-bottom:1px solid #e4eaed}
+.heating-page .heating-metric:last-child{border-bottom:0}
+.heating-page .heating-metric span{color:#586975;font-size:.87rem;line-height:1.45}
+.heating-page .heating-metric strong{color:#176d8f;font-size:1.2rem;text-align:right}
+.heating-page .heating-metric--primary strong{font-size:1.65rem}
+.heating-page .heating-note{margin:.7rem 0 0;color:#586975;font-size:.88rem;line-height:1.6}
+.heating-page .heating-error{min-height:1.4rem;margin:.8rem 0 0;color:#9a2d22;font-size:.9rem}
+.heating-page .heating-source-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem;padding:1rem;border:1px solid #d6e0e4;border-radius:.9rem;background:#fff}
+.heating-page .heating-source-fields h3,.heating-page .heating-source-fields>p{grid-column:1/-1;margin:0}
+.heating-page .heating-reference,.heating-page .heating-explain{width:min(100%,70rem);margin:2.25rem auto}
+.heating-page .heating-reference{padding:clamp(1rem,2.5vw,1.75rem);border:1px solid #dce4e8;border-radius:1.1rem;background:#fff;box-shadow:0 1rem 2.5rem rgba(16,43,57,.06)}
+.heating-page .heating-reference h2,.heating-page .heating-explain h2{margin-top:0;color:#17212b}
+.heating-page .heating-table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;border:1px solid #dce4e8;border-radius:.7rem;background:#fff}
+.heating-page .heating-table{width:100%;min-width:660px;margin:0;border-collapse:collapse;font-size:.86rem;line-height:1.5}
+.heating-page .heating-table th,.heating-page .heating-table td{padding:.75rem .85rem;border-bottom:1px solid #dce4e8;text-align:left;vertical-align:top}
+.heating-page .heating-table th{background:#edf3f5;color:#17212b;font-weight:700}
+.heating-page .heating-table tbody tr:nth-child(even){background:#f7f9fa}
+.heating-page .heating-table td:first-child{font-weight:600}
+.heating-page .heating-equations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+.heating-page .heating-equation{padding:.8rem;border-radius:.65rem;background:#eaf3f6;color:#17212b;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.9rem;line-height:1.55;overflow-wrap:anywhere}
+.heating-page .heating-engineering-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.heating-page .heating-card{min-width:0;padding:1.2rem 1.3rem;border:1px solid #dce4e8;border-radius:1rem;background:#f6f9fa;box-shadow:0 .6rem 1.8rem rgba(16,43,57,.05)}
+.heating-page .heating-card h3{margin:0 0 .6rem;color:#176d8f;font-size:1.08rem;letter-spacing:0;text-transform:none}
+.heating-page .heating-card p{margin:0;color:#465762;font-size:.93rem;line-height:1.65}
+.heating-page .heating-card p+p{margin-top:.7rem}
+.heating-page .heating-card--wide{grid-column:1/-1;border-left:4px solid #176d8f;background:#edf6f8}
+.heating-page .heating-warning{padding:.75rem 1rem;border-left:4px solid #bd7a16;border-radius:.4rem;background:#fff6e5;color:#704b10;line-height:1.6}
+.heating-page .heating-reference a,.heating-page .heating-card a{overflow-wrap:anywhere}
+.heating-page .heating-links{margin-top:1.5rem;line-height:1.8}
+@media(max-width:800px){.heating-page .heating-mode-grid{grid-template-columns:1fr}.heating-page .heating-engineering-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.heating-page .heating-fieldsets,.heating-page .heating-source-fields,.heating-page .heating-equations{grid-template-columns:minmax(0,1fr)}.heating-page .heating-group{grid-column:auto;padding:.85rem}.heating-page .heating-tabs{display:grid;grid-template-columns:1fr}.heating-page .heating-tab{width:100%;text-align:left}.heating-page .heating-panel{padding:1rem}.heating-page .heating-reference{padding:1rem}.heating-page .heating-table{min-width:650px}.heating-page .heating-metric strong{font-size:1.05rem}.heating-page .heating-metric--primary strong{font-size:1.4rem}}

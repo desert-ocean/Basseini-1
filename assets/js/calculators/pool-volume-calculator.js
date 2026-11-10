@@ -20,6 +20,8 @@
 	var totalLabel = root.querySelector('#total-volume-label');
 	var totalValue = root.querySelector('#total-volume');
 	var totalLiters = root.querySelector('#total-liters');
+	var heatingLinkRow = root.querySelector('[data-heating-link-row]');
+	var heatingLink = root.querySelector('#heating-calculator-link');
 	var irregularNote = root.querySelector('[data-irregular-note]');
 	var balanceExplanation = root.querySelector('#balance-explanation');
 	var resetButton = root.querySelector('#reset-volume-calculator');
@@ -56,6 +58,7 @@
 		balanceValue.textContent = '—';
 		totalValue.textContent = '—';
 		totalLiters.textContent = '—';
+		if (heatingLinkRow) heatingLinkRow.hidden = true;
 	}
 
 	function updateShapeFields() {
@@ -170,6 +173,15 @@
 			balanceValue.textContent = numberFormat.format(result.balanceTankM3);
 			totalValue.textContent = numberFormat.format(result.totalM3);
 			totalLiters.textContent = literFormat.format(result.totalLiters) + ' л';
+			if (heatingLink && heatingLinkRow) {
+				var usableHeatingVolume = result.basinM3 >= 0.000001 && result.basinM3 <= 1000000;
+				if (usableHeatingVolume) {
+					var heatingUrl = new URL('/kalkulyatori/raschet-nagreva-vody-basseyna.html', window.location.origin);
+					heatingUrl.searchParams.set('volume', String(result.basinM3));
+					heatingLink.href = heatingUrl.pathname + heatingUrl.search;
+					heatingLinkRow.hidden = false;
+				} else heatingLinkRow.hidden = true;
+			}
 			errorMessage.classList.remove('is-hint');
 			errorMessage.textContent = '';
 			results.classList.remove('is-updating');
