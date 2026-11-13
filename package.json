@@ -2,7 +2,7 @@
   "name": "alpool-static-site",
   "private": true,
   "scripts": {
-    "test:core": "node scripts/reference-tables.cjs --check && node --test tests/pool-volume-core.test.cjs tests/filter-pump-core.test.cjs tests/pool-heating-core.test.cjs tests/pool-hydraulics-core.test.cjs",
+    "test:core": "node scripts/reference-tables.cjs --check && node --test tests/pool-volume-core.test.cjs tests/filter-pump-core.test.cjs tests/pool-heating-core.test.cjs tests/pool-hydraulics-core.test.cjs tests/flow-conversion.test.cjs",
     "test:e2e": "playwright test",
     "generate:reference-tables": "node scripts/reference-tables.cjs",
     "check:reference-tables": "node scripts/reference-tables.cjs --check",
