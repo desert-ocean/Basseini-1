@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://alpool.ru/kalkulyatori/</loc></url>
   <url><loc>https://alpool.ru/</loc></url>
@@ -76,4 +76,7 @@
   <url><loc>https://alpool.ru/spravochnik/donnyy-sliv-basseyna.html</loc></url>
   <url><loc>https://alpool.ru/spravochnik/kolichestvo-forsunok.html</loc></url>
   <url><loc>https://alpool.ru/spravochnik/cirkulyaciya-vody-v-chashe.html</loc></url>
+  <url><loc>https://alpool.ru/spravochnik/avtomaticheskaya-podpitka-basseyna.html</loc></url>
+  <url><loc>https://alpool.ru/spravochnik/koagulyaciya-vody-basseyna.html</loc></url>
+  <url><loc>https://alpool.ru/spravochnik/kak-rabotaet-perelivnaya-sistema.html</loc></url>
 </urlset>

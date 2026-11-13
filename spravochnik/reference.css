@@ -25,3 +25,5 @@ main select{appearance:auto;background-image:none;padding-right:2rem}
 main footer{background:#f5f5f5;border-top:2px solid #d7dfe2;margin:40px -32px -32px;padding:26px 32px;color:#717981}
 main footer a{color:#526875}
 @media(max-width:736px){body>header>div{padding:18px 16px 0}body>header .brand{margin-bottom:16px}body>header .top-nav a{font-size:.75rem;padding:11px 13px}main{padding:28px 20px 20px}main footer{margin:36px -20px -20px;padding:22px 20px}}
+
+.diagram-labels-readable{font-size:1.125rem;line-height:1.45}
