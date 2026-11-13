@@ -1,0 +1,11 @@
+{
+  "name": "alpool-static-site",
+  "private": true,
+  "scripts": {
+    "test:core": "node --test tests/pool-volume-core.test.cjs tests/filter-pump-core.test.cjs tests/pool-heating-core.test.cjs tests/pool-hydraulics-core.test.cjs",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}
