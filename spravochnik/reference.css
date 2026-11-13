@@ -1,0 +1,27 @@
+@import url("/assets/css/main.css") layer(alpool);
+body{margin:0;background:#f1f6f8;color:#213947;font:16px/1.6 system-ui,sans-serif}*{box-sizing:border-box}a{color:#086b8b}header{background:#fff;border-bottom:1px solid #d5e2e8}header div,main{max-width:1120px;margin:auto;padding:20px}header a{margin-right:20px}main{padding:32px 20px}h1,h2,h3{line-height:1.2;color:#193e52}h1{font-size:clamp(2rem,5vw,3.3rem)}.lead{font-size:1.15rem;max-width:70ch}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}.card,.panel{background:#fff;border:1px solid #d4e2e8;border-radius:14px;padding:22px;margin:16px 0}.card{margin:0}.card h2{font-size:1.25rem}.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:15px}label{display:block;font-weight:600}input,select,button{font:inherit;border:1px solid #9bb6c1;border-radius:7px;background:#fff;padding:9px;width:100%;color:#213947}button{width:auto;cursor:pointer}input:focus,select:focus,button:focus,a:focus{outline:3px solid #59a9c6;outline-offset:2px}.results{display:flex;flex-wrap:wrap;gap:22px}.results strong{display:block;font-size:1.7rem;color:#075b7c}.hint{color:#516d79;font-size:.95rem}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;background:#fff}th,td{text-align:left;padding:9px 12px;border-bottom:1px solid #dce8ed;white-space:nowrap}svg{width:100%;max-width:580px;height:auto;display:block;margin:auto}svg text{font:14px system-ui;fill:#193e52}.error{color:#a32626}.tag{color:#467383;font-size:.85rem}footer{padding:25px 0;border-top:1px solid #cadce3;margin-top:40px} [hidden]{display:none!important}
+.brand{display:inline-block;font-weight:800;font-size:1.3rem;letter-spacing:.06em;text-decoration:none;color:#173e52}.top-nav{display:flex;gap:.4rem 1.25rem;flex-wrap:wrap;margin-top:12px}.top-nav a,footer a{display:inline-block;padding:4px 0}.catalog-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.diagram-labels{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.25rem;font-size:1rem;margin:12px 0}.diagram-labels span{display:inline-block}.table-wrap:focus{outline:3px solid #59a9c6;outline-offset:2px}.table-wrap{overscroll-behavior-x:contain}.table-wrap table{min-width:480px}#pipe-diagram svg{max-width:280px}@media(max-width:600px){.catalog-controls{grid-template-columns:1fr}.diagram-labels{justify-content:flex-start}.diagram-labels span{flex:1 1 40%}#pipe-diagram svg{max-width:220px}header div{padding:14px 20px}.top-nav a{padding:6px 3px}footer nav{display:flex;flex-wrap:wrap;gap:0 10px}}
+
+
+/* The main stylesheet supplies ALPOOL typography and shared base styles.
+   These scoped overrides retain the compact engineering controls. */
+body{font-family:"Merriweather",Georgia,serif;color:#212931;background:#1e252d}
+body>header{background:#1e252d;border:0}
+body>header>div{padding:30px 20px 0}
+body>header .brand{display:inline-block;border:3px solid #fff;color:#fff;padding:9px 14px;margin:0 0 24px;font-family:"Source Sans Pro",Helvetica,sans-serif;font-size:1.25rem;font-weight:900;letter-spacing:.075em;text-transform:uppercase;text-decoration:none}
+body>header .top-nav{background:#313942;gap:0;margin:0;display:flex}
+body>header .top-nav a{color:#fff;margin:0;padding:14px 20px;font:900 .8rem/1.5 "Source Sans Pro",Helvetica,sans-serif;letter-spacing:.075em;text-transform:uppercase;text-decoration:none;border:0}
+body>header .top-nav a:hover,body>header .top-nav a:focus-visible{background:#4b555e;color:#fff}
+main{background:#fff;color:#212931;padding:38px 32px 32px}
+main h1,main h2,main h3{font-family:"Source Sans Pro",Helvetica,sans-serif;font-weight:900;color:#212931;letter-spacing:.025em;text-transform:none}
+main p{line-height:1.75;text-align:left}
+main .lead{color:#48545d}
+main .panel,main .card{border-color:#d7e0e3;background:#f6f9f9}
+main .card{background:#fff}
+main .results strong{font-family:"Source Sans Pro",Helvetica,sans-serif;font-weight:900;color:#086b8b}
+main label{font-size:.9rem;line-height:1.5}
+main input,main select{font:400 1rem/1.5 "Source Sans Pro",Helvetica,sans-serif;letter-spacing:normal;text-transform:none}
+main select{appearance:auto;background-image:none;padding-right:2rem}
+main footer{background:#f5f5f5;border-top:2px solid #d7dfe2;margin:40px -32px -32px;padding:26px 32px;color:#717981}
+main footer a{color:#526875}
+@media(max-width:736px){body>header>div{padding:18px 16px 0}body>header .brand{margin-bottom:16px}body>header .top-nav a{font-size:.75rem;padding:11px 13px}main{padding:28px 20px 20px}main footer{margin:36px -20px -20px;padding:22px 20px}}
