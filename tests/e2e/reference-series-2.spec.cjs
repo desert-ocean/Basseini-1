@@ -15,7 +15,7 @@ test('inlet count handles unequal division, decimals, invalid and extreme inputs
 });
 test('catalog categories, links, sitemap and no external navigation',async({page})=>{
  await page.goto('/spravochnik/index.html');await page.fill('#search','связанный хлор');await expect(page.locator('[data-search]:visible')).toHaveCount(1);
- await page.fill('#search','');await page.selectOption('#category','Закладные элементы');await expect(page.locator('[data-search]:visible')).toHaveCount(3);
+ await page.fill('#search','');await page.selectOption('#category','Закладные элементы');await expect(page.locator('[data-search]:visible')).toHaveCount(4);
  const xml=await(await page.request.get('/sitemap.xml')).text();
  for(const name of pages){expect(xml).toContain('/spravochnik/'+name+'.html');await page.goto('/spravochnik/'+name+'.html');const hrefs=await page.locator('a[href]').evaluateAll(a=>a.map(x=>x.href));for(const href of new Set(hrefs)){expect(new URL(href).origin).toBe('http://127.0.0.1:4179');expect((await page.request.get(href)).status()).toBe(200)}}
 });
