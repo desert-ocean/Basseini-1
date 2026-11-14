@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Вентиляция крытого бассейна: влажность и конденсация — ALPOOL</title>
+  <meta name="description" content="Испарение воды, влажность и точка росы в помещении бассейна. Роль вентиляции, осушения и покрытия чаши.">
+  <link rel="canonical" href="https://alpool.ru/spravochnik/ventilyaciya-krytogo-basseyna.html">
+  <link rel="stylesheet" href="/spravochnik/reference.css">
+</head>
+<body>
+  <header><div><a class="brand" href="/">АЛ Пулс</a><nav class="top-nav" aria-label="Основная навигация"><a href="/">Главная</a><a href="/servis/proektirovanie-basseynov.html">Проектирование</a><a href="/spravochnik/index.html">Справочник</a><a href="/kalkulyatori/raschet-truboprovodov-basseyna.html">Калькулятор гидравлики</a></nav></div></header>
+  <main>
+    <nav aria-label="Хлебные крошки"><a href="/">Главная</a> / <a href="/spravochnik/index.html">Справочник</a> / Вентиляция крытого бассейна</nav>
+    <h1>Вентиляция крытого бассейна</h1>
+    <p class="lead">В помещении бассейна нужно управлять не только температурой воздуха, но и влагой: вода испаряется с поверхности чаши и поступает в воздух, а затем может конденсироваться на холодных конструкциях.</p>
+
+    <section class="panel">
+      <h2>Как движется влага и воздух</h2>
+      <figure>
+        <svg viewBox="0 0 900 340" role="img" aria-labelledby="vent-title vent-desc">
+          <title id="vent-title">Схема движения воздуха в помещении крытого бассейна</title>
+          <desc id="vent-desc">Наружный воздух по приточному каналу входит в помещение и направляется вдоль остекления. Воздух помещения удаляется отдельной вытяжной системой за его пределы. Осушитель забирает комнатный воздух, удаляет влагу и возвращает обработанный воздух обратно в помещение. На холодных ограждениях возможна конденсация.</desc>
+          <defs><marker id="vent-air-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#087a9b"/></marker><marker id="vent-wet-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#bd742d"/></marker></defs>
+          <path d="M80 40V280H810V40" fill="#f7fbfc" stroke="#5c7580" stroke-width="5"/>
+          <path d="M120 260H510" stroke="#087a9b" stroke-width="5"/><path d="M120 256C140 220 160 220 180 256 M230 256C250 220 270 220 290 256 M340 256C360 220 380 220 400 256" fill="none" stroke="#58a9bf" stroke-width="3"/>
+          <!-- Outdoor supply crosses the room boundary; exhaust leaves across the opposite wall -->
+          <path id="vent-outdoor-supply" d="M15 90H130V60H740V105" fill="none" stroke="#087a9b" stroke-width="7" marker-end="url(#vent-air-arrow)"/>
+          <path d="M150 112H760V165" fill="none" stroke="#087a9b" stroke-width="5" marker-end="url(#vent-air-arrow)"/>
+          <path d="M700 210V110" fill="none" stroke="#bd742d" stroke-width="5" marker-end="url(#vent-wet-arrow)"/>
+          <path id="vent-exhaust" d="M780 165V50H885" fill="none" stroke="#596c75" stroke-width="7" marker-end="url(#vent-air-arrow)"/>
+          <!-- Recirculating dehumidifier: room air in, treated air back to room -->
+          <rect x="545" y="188" width="115" height="55" rx="9" fill="#fff" stroke="#447f94" stroke-width="4"/>
+          <path id="vent-dehumidifier-intake" d="M330 244V300H500V215H545" fill="none" stroke="#447f94" stroke-width="5" stroke-dasharray="9 6" marker-end="url(#vent-air-arrow)"/>
+          <path id="vent-dehumidifier-return" d="M660 215H690V300H740V245" fill="none" stroke="#447f94" stroke-width="5" stroke-dasharray="9 6" marker-end="url(#vent-air-arrow)"/>
+          <g fill="#bd742d"><circle cx="774" cy="175" r="6"/><circle cx="774" cy="193" r="6"/><circle cx="774" cy="211" r="6"/></g>
+          <g fill="#193e52" stroke="#fff" stroke-width="6" paint-order="stroke" font-family="system-ui,sans-serif" font-size="42" font-weight="900" text-anchor="middle"><text x="110" y="88">1</text><text x="420" y="89">2</text><text x="730" y="182">3</text><text x="604" y="230">4</text><text x="790" y="80">5</text></g>
+        </svg>
+        <figcaption class="diagram-labels diagram-labels-readable"><span>1. Наружный воздух проходит по приточному каналу внутрь помещения</span><span>2. Подача вдоль холодного остекления; струю не направляют на людей</span><span>3. Вероятная зона конденсации у холодного ограждения</span><span>4. Осушитель: забор комнатного воздуха → удаление влаги → возврат обработанного воздуха</span><span>5. Вытяжка удаляет воздух из помещения наружу; схема условная, расходы задаются проектом</span></figcaption>
+      </figure>
+      <p class="hint">Схема условная и не задаёт расположение воздухораспределителей, расход воздуха или параметры оборудования.</p>
+    </section>
+
+    <section>
+      <h2>Почему появляется конденсат</h2>
+      <p>Точка росы — температура, до которой нужно охладить воздух при неизменном влагосодержании, чтобы водяной пар достиг насыщения. Если поверхность стекла, стены, покрытия или мостика холода холоднее точки росы прилегающего воздуха, на ней может выпадать конденсат.</p>
+      <p>Повышенная относительная влажность увеличивает риск конденсации на холодных поверхностях. Для защиты здания важны совместно: климатический расчёт, утепление и пароизоляция ограждений, отсутствие непрогретых участков, распределение тёплого воздуха и отвод влаги.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Вентиляция, осушение и покрытие решают разные задачи</h2>
+      <ul>
+        <li><strong>Приточно-вытяжная вентиляция</strong> обеспечивает предусмотренный воздухообмен, подачу наружного воздуха и удаление влаги и загрязнений воздуха, включая вещества, связанные с эксплуатацией бассейна; нагрузки рассчитывают для режима помещения.</li>
+        <li><strong>Осушитель</strong> снижает влагосодержание воздуха, конденсируя влагу или используя другую предусмотренную технологию. Рециркуляционный осушитель сам по себе не обеспечивает требуемый приток наружного воздуха.</li>
+        <li><strong>Покрытие чаши</strong> уменьшает испарение, когда бассейн не используется. Эффект зависит от покрытия и режима, но не отменяет воздухообмен при эксплуатации помещения.</li>
+      </ul>
+      <div class="grid" aria-label="Различия частного и общественного бассейна">
+        <article class="card"><h3>Частный бассейн</h3><p>В исходных данных учитывают периоды использования и простоя, наличие покрытия, температуру чаши, характеристики здания и режим работы оборудования.</p></article>
+        <article class="card"><h3>Общественный бассейн</h3><p>Учитывают назначение и загрузку, режимы работы, сопутствующие влажные помещения и требования действующих норм для объекта.</p></article>
+      </div>
+      <p>Оценка испарения по одной универсальной формуле не определяет полноценную вентиляционную систему: нужны климатические условия, режимы эксплуатации, параметры ограждений, остекления и внутренние тепловые нагрузки.</p>
+      <p class="hint">Для общественных плавательных бассейнов проверяют актуальную редакцию СП 310.1325800.2017 и применимых изменений. Общие решения отопления и вентиляции сверяют также с действующей редакцией СП 60.13330.2020. Нормативную применимость устанавливают по конкретному объекту.</p>
+    </section>
+
+    <section>
+      <h2>Связанные материалы ALPOOL</h2>
+      <p><a href="/articles/basseyn-v-dome.html">Бассейн в доме: что заложить в проект</a> · <a href="/articles/nakrytie-dlya-basseyna.html">Покрытие бассейна</a> · <a href="/articles/podogrev-vody-v-basseyne.html">Подогрев воды</a> · <a href="/kalkulyatori/raschet-nagreva-vody-basseyna.html">Калькулятор нагрева</a> · <a href="/spravochnik/raschet-balansnoy-emkosti.html">Балансная ёмкость и переливной контур</a></p>
+    </section>
+    <footer><nav aria-label="Разделы справочника"><a href="/spravochnik/index.html">Инженерный справочник ALPOOL</a> · <a href="/spravochnik/avtomatika-basseyna-datchiki-i-blokirovki.html">Автоматика бассейна</a> · <a href="/spravochnik/avariynye-situacii-i-zashchity-basseyna.html">Аварийные защиты</a></nav></footer>
+  </main>
+</body>
+</html>

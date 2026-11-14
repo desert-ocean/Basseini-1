@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Автоматическое дозирование реагентов бассейна — ALPOOL</title>
+  <meta name="description" content="Схема измерения pH и дезинфекции, пробоотбора, дозирующих насосов и блокировок системы бассейна.">
+  <link rel="canonical" href="https://alpool.ru/spravochnik/avtomaticheskoe-dozirovanie-reagentov.html">
+  <link rel="stylesheet" href="/spravochnik/reference.css">
+</head>
+<body>
+  <header><div><a class="brand" href="/">АЛ Пулс</a><nav class="top-nav" aria-label="Основная навигация"><a href="/">Главная</a><a href="/servis/proektirovanie-basseynov.html">Проектирование</a><a href="/spravochnik/index.html">Справочник</a><a href="/kalkulyatori/raschet-truboprovodov-basseyna.html">Калькулятор гидравлики</a></nav></div></header>
+  <main>
+    <nav aria-label="Хлебные крошки"><a href="/">Главная</a> / <a href="/spravochnik/index.html">Справочник</a> / Автоматическое дозирование</nav>
+    <h1>Автоматическое дозирование реагентов</h1>
+    <p class="lead">Станция объединяет измерительные сигналы и исполнительные устройства, но датчик, контроллер и дозирующий насос выполняют разные задачи. Без подтверждённых условий циркуляции команда на подачу реагента должна быть заблокирована предусмотренной системой защитой.</p>
+
+    <section class="panel">
+      <h2>Сначала измерение, затем управляющее действие</h2>
+      <figure>
+        <svg viewBox="0 0 1000 500" role="img" aria-labelledby="dosing-title dosing-desc">
+          <title id="dosing-title">Функциональная схема автоматического дозирования</title>
+          <desc id="dosing-desc">Часть фильтрованной воды отбирается из основного трубопровода в отдельную измерительную ветвь, проходит через ячейку с pH, ORP и опциональным анализатором свободного хлора, затем возвращается в допустимую проектом точку либо сбрасывается. Измерения поступают в контроллер; подтверждение циркуляции разрешает дозирование. Контроллер управляет отдельными насосами, подающими реагенты в разные точки контура.</desc>
+          <defs>
+            <marker id="dosing-water-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#087a9b"/></marker>
+            <marker id="dosing-chem-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#bd742d"/></marker>
+            <marker id="dosing-signal-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#596c75"/></marker>
+          </defs>
+          <!-- Main filtered circulation pipe and two independent injection points -->
+          <path id="dosing-main-flow" d="M60 395H940" stroke="#087a9b" stroke-width="9" fill="none" marker-end="url(#dosing-water-arrow)"/>
+          <text x="70" y="430" font-size="22" font-weight="700">Основной поток после фильтра</text>
+          <g fill="#fff" stroke="#447f94" stroke-width="4">
+            <rect x="100" y="355" width="150" height="80" rx="12"/><circle cx="330" cy="395" r="42"/>
+            <rect x="380" y="95" width="300" height="150" rx="14"/><rect x="745" y="40" width="210" height="110" rx="12"/>
+            <rect x="735" y="205" width="95" height="72" rx="10"/><rect x="850" y="205" width="95" height="72" rx="10"/>
+          </g>
+          <g fill="#193e52" stroke="#fff" stroke-width="6" paint-order="stroke" font-family="system-ui,sans-serif" font-size="42" font-weight="900" text-anchor="middle">
+            <text x="175" y="406">1</text><text x="330" y="409">2</text><text x="530" y="155">3</text><text x="850" y="106">4</text><text x="782" y="254">5</text><text x="897" y="254">6</text>
+          </g>
+          <!-- Side stream: takeoff, measurement cell, project-defined return -->
+          <path id="dosing-sample-branch" d="M330 353V300H460V245M600 245V300H330" stroke="#087a9b" stroke-width="6" fill="none" marker-end="url(#dosing-water-arrow)"/>
+          <text x="480" y="285" font-size="20" text-anchor="middle">Проба / возврат или сброс по проекту</text>
+          <!-- Probe sensors to controller: dashed signal lines -->
+          <g fill="#fff" stroke="#447f94" stroke-width="3"><circle cx="445" cy="115" r="22"/><circle cx="530" cy="115" r="22"/><circle cx="615" cy="115" r="22"/></g>
+          <g fill="#193e52" font-family="system-ui,sans-serif" font-size="22" font-weight="800" text-anchor="middle"><text x="445" y="122">pH</text><text x="530" y="122">ORP</text><text x="615" y="122">Cl₂*</text></g>
+          <path id="dosing-measurement-signals" d="M445 92V20H745M530 92V20M615 92V20" stroke="#596c75" stroke-width="3" stroke-dasharray="10 7" fill="none" marker-end="url(#dosing-signal-arrow)"/>
+          <!-- Circulation permissive and controller commands -->
+          <path id="dosing-circulation-permissive" d="M372 395H705V160H745" stroke="#596c75" stroke-width="4" stroke-dasharray="3 8" fill="none" marker-end="url(#dosing-signal-arrow)"/>
+          <path id="dosing-pump-commands" d="M790 150V180H782V205M900 150V180H897V205" stroke="#596c75" stroke-width="4" stroke-dasharray="3 8" fill="none" marker-end="url(#dosing-signal-arrow)"/>
+          <!-- Separate reagent lines and injection points -->
+          <path id="dosing-reagent-lines" d="M782 277V350H705V360M897 277V335H825V360" stroke="#bd742d" stroke-width="5" fill="none" marker-end="url(#dosing-chem-arrow)"/>
+          <g fill="#fff" stroke="#bd742d" stroke-width="4"><circle cx="705" cy="395" r="10"/><circle cx="825" cy="395" r="10"/></g>
+          <path d="M60 475H145" stroke="#087a9b" stroke-width="6" marker-end="url(#dosing-water-arrow)"/><text x="160" y="482" font-size="18">поток воды</text>
+          <path d="M320 475H405" stroke="#596c75" stroke-width="4" stroke-dasharray="10 7" marker-end="url(#dosing-signal-arrow)"/><text x="420" y="482" font-size="18">сигналы измерений</text>
+          <path d="M660 475H745" stroke="#596c75" stroke-width="4" stroke-dasharray="3 8" marker-end="url(#dosing-signal-arrow)"/><text x="760" y="482" font-size="18">команды / разрешение</text>
+        </svg>
+        <figcaption class="diagram-labels diagram-labels-readable"><span>1. Основной трубопровод с фильтрованной водой</span><span>2. Подтверждение циркуляции — разрешающий сигнал дозирования</span><span>3. Отдельная пробоотборная ячейка: pH, ORP и, если предусмотрено, прямой анализатор свободного хлора</span><span>4. Контроллер: принимает измерения и разрешающие сигналы, выдаёт команды насосам</span><span>5–6. Раздельные дозирующие насосы и линии; реагенты вводятся в отдельные точки, совместимость и размещение определяются проектом и паспортами</span><span>Пробу возвращают в допустимую проектом точку либо отводят предусмотренным способом; ORP не измеряет концентрацию свободного хлора напрямую.</span></figcaption>
+      </figure>
+      <p class="hint">Схема функциональная: конкретная станция может иначе выполнять пробоотбор и блокировки. Универсальные расстояния между точками ввода не задаются: учитывают совместимость реагентов, направление и смешение потока, паспорта оборудования и проектную гидравлическую схему.</p>
+    </section>
+
+    <section>
+      <h2>Что измеряет система</h2>
+      <div class="grid" aria-label="Измеряемые параметры станции дозирования">
+        <article class="card"><h3>pH</h3><p>Показатель кислотно-щелочного состояния воды.</p><p><strong>Ограничение:</strong> pH сам по себе не измеряет остаточный дезинфектант.</p></article>
+        <article class="card"><h3>Redox / ORP</h3><p>Окислительно-восстановительный потенциал, зависящий от состояния воды и измерительной цепи.</p><p><strong>Ограничение:</strong> это не прямое измерение свободного хлора. На сигнал влияют pH, состав воды, температура и состояние электрода.</p></article>
+        <article class="card"><h3>Свободный хлор</h3><p>Может измеряться отдельным датчиком прямого измерения, если такой канал предусмотрен станцией.</p><p><strong>Ограничение:</strong> метод, обслуживание, диапазон и контрольные пробы выбирают по документации оборудования.</p></article>
+      </div>
+      <p>Измерительный прибор сообщает значение, контроллер сравнивает его с заданием, а насос-дозатор физически подаёт реагент. Наличие ORP-электрода не означает, что система прямо анализирует концентрацию хлора.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Проба, ввод и блокировки</h2>
+      <ul>
+        <li>Пробоотбор должен быть представительным и стабильным: учитывают расход через ячейку, отсутствие воздуха, загрязнения датчиков и своевременную калибровку.</li>
+        <li>Пробу отбирают в точке, где она не искажена локальным концентрированным вводом реагента; фактические места выбирают по циркуляционной схеме.</li>
+        <li>Разные реагенты подают отдельными насосами и через предусмотренные для каждого реагента линии и точки ввода. Их нельзя смешивать в одной ёмкости или соединять самодельными перемычками.</li>
+        <li>Дозирование блокируют, если нет необходимого подтверждения циркуляции, сигнал измерения признан недостоверным или возникла неисправность, для которой проектом предусмотрен запрет подачи.</li>
+        <li>Контролируют состояние реагента и аварийные сигналы станции; безопасное размещение, вентиляцию, маркировку и локализацию возможной утечки проектируют под конкретные вещества и оборудование.</li>
+      </ul>
+      <p class="hint">Перечень защит зависит от станции и проекта. Проверяйте, встроены ли датчики протока, сигнализация пустой ёмкости, контроль дозатора и поведение при отказе датчика или потере питания.</p>
+    </section>
+
+    <section>
+      <h2>Связанные материалы ALPOOL</h2>
+      <p><a href="/articles/avtomaticheskaya-stanciya-dozirovaniya-himii.html">Подробный разбор автоматической станции</a> · <a href="/spravochnik/avtomatika-basseyna-datchiki-i-blokirovki.html">Датчики и блокировки бассейна</a> · <a href="/spravochnik/svobodnyy-i-svyazannyy-hlor.html">Свободный и связанный хлор</a> · <a href="/spravochnik/shchelochnost-vody.html">Щёлочность воды</a> · <a href="/spravochnik/obezzarazhivanie-vody-basseyna.html">Обеззараживание воды</a> · <a href="/spravochnik/gidravlicheskie-poteri.html">Гидравлические потери</a></p>
+    </section>
+    <footer><nav aria-label="Разделы справочника"><a href="/spravochnik/index.html">Инженерный справочник ALPOOL</a> · <a href="/spravochnik/avariynye-situacii-i-zashchity-basseyna.html">Аварийные защиты</a> · <a href="/kalkulyatori/podbor-filtra-i-nasosa.html">Подбор фильтра и насоса</a></nav></footer>
+  </main>
+</body>
+</html>
