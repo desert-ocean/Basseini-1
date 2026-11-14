@@ -4,7 +4,7 @@
   const normalize=s=>s.toLocaleLowerCase('ru').replace(/ё/g,'е').replace(/pvc[\s-]*u/g,'pvcu').replace(/[^a-zа-я0-9]+/g,' ').trim();
   function stem(word){
     if(!/^[а-я]{5,}$/.test(word)) return word;
-    return word.replace(/(иями|ами|ями|ого|ему|ыми|ими|иях|ах|ях|ов|ев|ей|ом|ем|ам|ям|ой|ий|ый|ая|ое|ые|ую|юю|а|ы|и|е|у|ю|я)$/,'');
+    return word.replace(/(иями|ами|ями|ого|ему|ыми|ими|иях|ах|ях|ов|ев|ей|ом|ем|ам|ям|ой|ий|ый|ая|ое|ые|ую|юю|а|ы|и|е|у|ю|я)$/,'').replace(/ь$/,'');
   }
   const tokens=s=>normalize(s).split(/\s+/).filter(Boolean).map(stem);
   const search=$('search'), category=$('category');
@@ -45,6 +45,12 @@
       if($('svg-flow')){$('svg-flow').textContent=`Q = ${valid?fmt(n):'—'} м³/ч`;$('svg-speed').textContent=`v = ${result?fmt(result.velocity):'—'} м/с`;$('svg-diameter').textContent=`D = ${validId?fmt(id):'—'} мм`}
     }
     series.addEventListener('change',options);diameter.addEventListener('change',render);flow.addEventListener('input',render);if(mode){mode.addEventListener('change',render);custom.addEventListener('input',render)}options();
+  }
+  const tank=document.querySelector('[data-balance-tank-interaction]');
+  if(tank){
+    const svg=tank.querySelector('[data-tank-scheme]'),buttons=[...tank.querySelectorAll('[data-tank-state]')],notes=[...tank.querySelectorAll('[data-tank-note]')];
+    const setState=state=>{svg.dataset.scenario=state;tank.querySelectorAll('[data-tank-layer]').forEach(layer=>{layer.setAttribute('display',layer.dataset.tankLayer===state?'inline':'none')});buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.tankState===state)));notes.forEach(note=>note.hidden=note.dataset.tankNote!==state)};
+    buttons.forEach(button=>button.addEventListener('click',()=>setState(button.dataset.tankState)));
   }
   const filter=$('table-filter');if(filter)filter.addEventListener('change',()=>document.querySelectorAll('tr[data-series]').forEach(row=>row.hidden=filter.value!=='all'&&row.dataset.series!==filter.value));
 })();

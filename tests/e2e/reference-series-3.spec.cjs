@@ -63,7 +63,7 @@ test('new materials are searchable, categorized and listed in sitemap',async({pa
  await expect(page.locator('[data-search]:visible')).toContainText('Автоматическая подпитка');
  await page.fill('#search','');
  await page.selectOption('#category','Переливные системы');
- await expect(page.locator('[data-search]:visible')).toHaveCount(2);
+ await expect(page.locator('[data-search]:visible')).toHaveCount(3);
  await expect(page.locator('#cards a[href="kak-rabotaet-perelivnaya-sistema.html"]')).toHaveCount(1);
 });
 
