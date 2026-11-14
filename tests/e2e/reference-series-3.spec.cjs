@@ -90,7 +90,7 @@ test('original 36 topics have searchable routes to existing ALPOOL materials',as
  }
  await page.fill('#search','');
  await page.selectOption('#category','Подогрев и теплотехника');
- await expect(page.locator('#cards article:visible')).toHaveCount(4);
+ await expect(page.locator('#cards article:visible')).toHaveCount(5); await expect(page.locator('#cards a[href="teploobmennik-basseyna.html"]')).toBeVisible();
  await page.fill('#search',''); await page.selectOption('#category','');
  for(const width of [390,768,1440]){
   await page.setViewportSize({width,height:900});

@@ -59,7 +59,7 @@ test('upper working level is below emergency overflow inlet',async({page})=>{
   ['аварийные ситуации сухой ход','avariynye-situacii-i-zashchity-basseyna.html'],
  ];
  for(const [q,href] of queries){await page.fill('#search',q);await expect(page.locator(`#cards a[href="${href}"]`),q).toBeVisible();}
- await page.fill('#search','');await page.selectOption('#category','Насосное оборудование');await expect(page.locator('#cards .card:visible')).toHaveCount(1);
+ await page.fill('#search','');await page.selectOption('#category','Насосное оборудование');await expect(page.locator('#cards .card:visible')).toHaveCount(2); await expect(page.locator('#cards a[href="chastotnoe-upravlenie-nasosom.html"]')).toBeVisible();
  const sitemap=fs.readFileSync(path.join(process.cwd(),'sitemap.xml'),'utf8');
  for(const [url] of pages)expect(sitemap).toContain(`https://alpool.ru${url}`);
 });
