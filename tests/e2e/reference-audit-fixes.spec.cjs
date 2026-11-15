@@ -9,5 +9,5 @@ test('geometry remains when flow is invalid and actual ID uses core',async({page
 });
 test('source bibliography and no outgoing links in reference',async({page})=>{
 	for(const f of ['index','truby-pvc-u','skorost-vody','gidravlicheskie-poteri']){await page.goto('/spravochnik/'+f+'.html');const external=await page.locator('a[href^="http"],a[href^="//"]').evaluateAll(links=>links.filter(link=>!link.closest('.contact-messengers')).map(link=>link.getAttribute('href')));expect(external).toEqual([]);await expect(page.locator('.contact-messengers a[href="https://wa.me/79856446654"]')).toHaveCount(1);await expect(page.locator('.contact-messengers a[href="https://t.me/desertocean"]')).toHaveCount(1)}
- await page.goto('/spravochnik/truby-pvc-u.html');await expect(page.locator('body')).toContainText('Price List 2026');await expect(page.locator('body')).toContainText('PIPEV2103206L');
+ await page.goto('/spravochnik/truby-pvc-u.html');const text=await page.locator('body').innerText();expect(text).not.toMatch(/Aliaxis|Lareter|FIP|Price List|PIPEV\d+|\bOD\b|\bID\b/i);await expect(page.locator('#pipe-results-table tbody tr')).toHaveCount(5);await expect(page.locator('tbody[data-generated="reference"] tr').first().locator('td')).toHaveCount(4);
 });

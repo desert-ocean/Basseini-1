@@ -39,7 +39,7 @@
       if($('bore')){
         $('pipe-diagram').hidden=actual;
         $('bore').setAttribute('r',String(100*x.id/x.od));
-        $('svg-od').textContent=`OD = ${fmt(x.od)} мм`;$('svg-id').textContent=`ID = ${fmt(x.id)} мм`;$('svg-wall').textContent=`Стенка = ${fmt(x.wall)} мм`;
+        $('svg-od').textContent=fmt(x.od);$('svg-id').textContent=fmt(x.id);$('svg-wall').textContent=fmt(x.wall);
         const bore=100*x.id/x.od; $('id-line').setAttribute('x1',String(140-bore));$('id-line').setAttribute('x2',String(140+bore));$('wall-line').setAttribute('x2',String(140+bore));
       }
       if($('svg-flow')){$('svg-flow').textContent=`Q = ${valid?fmt(n):'—'} м³/ч`;$('svg-speed').textContent=`v = ${result?fmt(result.velocity):'—'} м/с`;$('svg-diameter').textContent=`D = ${validId?fmt(id):'—'} мм`}
