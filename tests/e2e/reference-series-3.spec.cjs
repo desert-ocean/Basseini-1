@@ -15,9 +15,9 @@ for(const width of [390,768,1440]) test(`series 3 pages render at ${width}px`,as
   expect(response.status()).toBe(200);
   await expect(page.locator('h1')).toHaveCount(1);
   await expect(page.locator('h1')).toContainText(title.split(':')[0]);
-  await expect(page.locator('main svg[role="img"]')).toHaveCount(1);
-  await expect(page.locator('main')).toContainText(new RegExp(content,'i'));
-  expect(await page.locator('main svg text').count()).toBe(0);
+  await expect(page.locator('main svg[role="img"]')).toHaveCount(slug==='skorost-vody'?3:1);
+  if(slug==='skorost-vody')await expect(page.locator('main')).toContainText('Ориентировочная скорость');else await expect(page.locator('main')).toContainText(new RegExp(content,'i'));
+  expect(await page.locator('main > section:first-of-type svg text').count()).toBe(0);
   if(pages.slice(0,3).some(([newSlug])=>newSlug===slug))
    expect(parseFloat(await page.locator('.diagram-labels-readable').first().evaluate(el=>getComputedStyle(el).fontSize))).toBeGreaterThanOrEqual(16);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
@@ -30,7 +30,8 @@ for(const width of [390,768,1440]) test(`series 3 pages render at ${width}px`,as
 
 test('PN conditions, makeup backflow protection and overflow loop are explicit',async({page})=>{
  await page.goto('/spravochnik/truby-pvc-u.html');
- await expect(page.locator('main')).toContainText('PN10 и PN16 соответствуют номинальным значениям 10 и 16 бар для воды при 20 °C');
+ await expect(page.locator('main')).toContainText('PN10 и PN16 соответствуют номинальным значениям, установленным для условий конкретного стандарта и изделия');
+ await expect(page.locator('main')).toContainText('Допустимое рабочее давление зависит от температуры, среды, серии и исполнения трубы');
  await page.goto('/spravochnik/avtomaticheskaya-podpitka-basseyna.html');
  await expect(page.locator('main')).toContainText('исключить обратный поток воды бассейна в сеть');
  await expect(page.locator('main')).toContainText('сам по себе такой защитой не является');
@@ -49,7 +50,9 @@ test('PN conditions, makeup backflow protection and overflow loop are explicit',
  await expect(page.locator('svg[role="img"]')).toHaveAttribute('aria-label',/чаша и перелив обратно в лоток/);
  await expect(page.locator('main')).toContainText('вода из чаши снова поступает через переливной лоток');
  await page.goto('/spravochnik/skorost-vody.html');
- await expect(page.locator('h2').filter({hasText:'Всасывающая и напорная линии'})).toHaveCount(1);
+ await expect(page.locator('h2').filter({hasText:'Рекомендуемые скорости воды в трубопроводах бассейна'})).toHaveCount(1);
+ await expect(page.locator('h2').filter({hasText:'Почему высокая скорость воды не всегда выгодна'})).toHaveCount(1);
+ await expect(page.locator('h2').filter({hasText:'Как потери связаны с выбором насоса'})).toHaveCount(1);
 });
 
 test('new materials are searchable, categorized and listed in sitemap',async({page})=>{

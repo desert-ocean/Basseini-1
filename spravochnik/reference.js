@@ -42,7 +42,7 @@
         $('svg-od').textContent=fmt(x.od);$('svg-id').textContent=fmt(x.id);$('svg-wall').textContent=fmt(x.wall);
         const bore=100*x.id/x.od; $('id-line').setAttribute('x1',String(140-bore));$('id-line').setAttribute('x2',String(140+bore));$('wall-line').setAttribute('x2',String(140+bore));
       }
-      if($('svg-flow')){$('svg-flow').textContent=`Q = ${valid?fmt(n):'—'} м³/ч`;$('svg-speed').textContent=`v = ${result?fmt(result.velocity):'—'} м/с`;$('svg-diameter').textContent=`D = ${validId?fmt(id):'—'} мм`}
+      if($('svg-flow')){$('svg-flow').textContent=`Расход — ${valid?fmt(n):'—'} м³/ч`;$('svg-speed').textContent=`Скорость — ${result?fmt(result.velocity):'—'} м/с`;$('svg-diameter').textContent=`Внутренний диаметр — ${validId?fmt(id):'—'} мм`}
     }
     series.addEventListener('change',options);diameter.addEventListener('change',render);flow.addEventListener('input',render);if(mode){mode.addEventListener('change',render);custom.addEventListener('input',render)}options();
   }

@@ -39,5 +39,5 @@ test('diameter, area, flow and tabulated speeds agree with the shared core',asyn
  await expect(page.locator('#area')).toHaveText(expected.area*1e6<1000?(expected.area*1e6).toLocaleString('ru-RU',{maximumFractionDigits:1}):(expected.area*1e6).toLocaleString('ru-RU',{maximumFractionDigits:1}));
  await expect(page.locator('#velocity')).toHaveText(expected.velocity.toLocaleString('ru-RU',{maximumFractionDigits:2}));
  await page.goto('/spravochnik/skorost-vody.html');
- expect(await page.evaluate(()=>[...document.querySelectorAll('tbody tr')].every(row=>{const c=[...row.cells].map(x=>Number(x.textContent.replace(',', '.')));const x=PoolHydraulicsCore.catalogs.PN10.find(p=>p.od===c[0]);return x&&x.id===c[1]&&[5,10,20].every((q,i)=>Math.abs(PoolHydraulicsCore.pipe({flow:q,diameter:x.id}).velocity-c[i+2])<0.006)}))).toBeTruthy();
+ expect(await page.evaluate(()=>[...document.querySelectorAll('tbody[data-generated="reference"] tr')].every(row=>{const c=[...row.cells].map(x=>Number(x.textContent.replace(',', '.')));const x=PoolHydraulicsCore.catalogs.PN10.find(p=>p.od===c[0]);return x&&x.id===c[1]&&[5,10,20].every((q,i)=>Math.abs(PoolHydraulicsCore.pipe({flow:q,diameter:x.id}).velocity-c[i+2])<0.006)}))).toBeTruthy();
 });
