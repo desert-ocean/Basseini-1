@@ -2,29 +2,49 @@ const { test, expect } = require('@playwright/test');
 const fs = require('node:fs');
 const path = require('node:path');
 
-test('loss calculator uses the shared hydraulic core and marks unknown inputs incomplete', async ({ page }) => {
+test('loss calculator gets flow, speed and both PVC-U series from the shared core', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/spravochnik/gidravlicheskie-poteri.html');
   await expect(page.locator('h1')).toHaveText('Гидравлические потери в трубопроводах');
-  await expect(page.locator('#loss-reference-body tr')).toHaveCount(5);
   await expect(page.locator('#loss-warning')).toContainText('не введены потери на фильтре');
   await expect(page.locator('#loss-total')).toHaveText('—');
   await expect(page.locator('#loss-head')).toHaveText('—');
+  await expect(page.locator('#loss-diameter option[value="PN10:32"]')).toHaveCount(1);
+  await expect(page.locator('#loss-diameter option[value="PN16:63"]')).toHaveCount(1);
+  const catalogueCounts = await page.evaluate(() => ({
+    pn10: PoolHydraulicsCore.catalogs.PN10.length,
+    pn16: PoolHydraulicsCore.catalogs.PN16.length,
+    options: document.querySelectorAll('#loss-diameter option').length
+  }));
+  expect(catalogueCounts.options).toBe(catalogueCounts.pn10 + catalogueCounts.pn16);
 
   const image = page.locator('#hydraulic-loss-calculator .loss-figure img');
   await expect.poll(() => image.evaluate(img => img.complete && img.naturalWidth > 0 && img.naturalHeight > 0)).toBe(true);
-  const equipmentFields = page.locator('[data-equipment-row] input[type="text"]');
-  await expect(equipmentFields).toHaveCount(5);
-  for (let index = 0; index < 5; index += 1) await expect(equipmentFields.nth(index)).toBeHidden();
   const initial = await page.evaluate(() => {
-    const selected = PoolHydraulicsCore.catalogs.PN10.find(item => item.od === Number(document.querySelector('#loss-diameter').value));
-    const diameter = selected.id;
-    const flow = 1.5 * Math.PI * (diameter / 1000) ** 2 / 4 * 3600;
-    return PoolHydraulicsCore.pipe({ flow, diameter, length: 20 });
+    const [series, rawOd] = document.querySelector('#loss-diameter').value.split(':');
+    const selected = PoolHydraulicsCore.catalogs[series].find(item => item.od === Number(rawOd));
+    const flow = Number(document.querySelector('#loss-flow').value.replace(',', '.'));
+    return PoolHydraulicsCore.pipe({ flow, diameter: selected.id, length: 20 });
   });
+  await expect(page.locator('#loss-speed-result')).toHaveText(initial.velocity.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
   await expect(page.locator('#loss-straight')).toHaveText(`${initial.hf.toLocaleString('ru-RU', { maximumFractionDigits: 4 })} м`);
   await expect(page.locator('#loss-equivalent-length')).toHaveText('20 м');
+
+  await page.fill('#loss-flow', '4,2');
+  const changedFlow = await page.evaluate(() => {
+    const [series, rawOd] = document.querySelector('#loss-diameter').value.split(':');
+    const selected = PoolHydraulicsCore.catalogs[series].find(item => item.od === Number(rawOd));
+    return PoolHydraulicsCore.pipe({ flow: 4.2, diameter: selected.id, length: 20 });
+  });
+  await expect(page.locator('#loss-speed-result')).toHaveText(changedFlow.velocity.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+  await page.selectOption('#loss-diameter', 'PN16:63');
+  const changedDiameter = await page.evaluate(() => {
+    const selected = PoolHydraulicsCore.catalogs.PN16.find(item => item.od === 63);
+    return PoolHydraulicsCore.pipe({ flow: 4.2, diameter: selected.id, length: 20 });
+  });
+  await expect(page.locator('#loss-speed-result')).toHaveText(changedDiameter.velocity.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+  await expect(page.locator('#loss-diameter-result')).toContainText('внутренний 53,6 мм');
 
   await page.fill('#loss-filter-input', '1,2');
   const direct = await page.locator('#loss-straight').textContent();
@@ -34,10 +54,8 @@ test('loss calculator uses the shared hydraulic core and marks unknown inputs in
   await page.locator('#loss-check-valves').fill('1');
   await expect(page.locator('#loss-equivalent-length')).toHaveText('70 м');
   const expectedFit = await page.evaluate(() => {
-    const selected = PoolHydraulicsCore.catalogs.PN10.find(item => item.od === Number(document.querySelector('#loss-diameter').value));
-    const diameter = selected.id;
-    const flow = 1.5 * Math.PI * (diameter / 1000) ** 2 / 4 * 3600;
-    return PoolHydraulicsCore.pipe({ flow, diameter, length: 50 });
+    const selected = PoolHydraulicsCore.catalogs.PN16.find(item => item.od === 63);
+    return PoolHydraulicsCore.pipe({ flow: 4.2, diameter: selected.id, length: 50 });
   });
   await expect(page.locator('#loss-fitting')).toHaveText(`${expectedFit.hf.toLocaleString('ru-RU', { maximumFractionDigits: 4 })} м`);
   await expect(page.locator('#loss-total')).not.toHaveText('—');
@@ -52,13 +70,12 @@ test('loss calculator uses the shared hydraulic core and marks unknown inputs in
   await page.locator('[data-equipment-row="heat-exchanger"] input[type="text"]').fill('0,4');
   await page.locator('label[for="loss-equipment-uv"]').click();
   await page.locator('[data-equipment-row="uv"] input[type="text"]').fill('0,2');
-  await page.locator('label[for="loss-equipment-water-meter"]').click();
-  await page.locator('[data-equipment-row="water-meter"] input[type="text"]').fill('0,1');
-  await page.locator('label[for="loss-equipment-flow-meter"]').click();
-  await page.locator('[data-equipment-row="flow-meter"] input[type="text"]').fill('0,15');
+  await page.locator('label[for="loss-equipment-meter"]').click();
+  await page.locator('[data-equipment-row="meter"] input[type="text"]').fill('0,1');
   await page.locator('label[for="loss-equipment-chiller"]').click();
   await page.locator('[data-equipment-row="chiller"] input[type="text"]').fill('0,5');
-  await expect(page.locator('#loss-equipment')).toHaveText('1,35 м');
+  await expect(page.locator('[data-equipment][value="meter"]')).toHaveCount(1);
+  await expect(page.locator('#loss-equipment')).toHaveText('1,2 м');
 
   await page.selectOption('#loss-pool-type', 'overflow');
   await expect(page.locator('#loss-overflow-controls')).toBeVisible();
@@ -72,10 +89,8 @@ test('loss calculator uses the shared hydraulic core and marks unknown inputs in
   await page.selectOption('#loss-pool-type', 'skimmer');
   await expect(page.locator('#loss-overflow-controls')).toBeHidden();
 
-  await page.selectOption('#loss-diameter-mode', 'custom');
-  await page.fill('#loss-custom-diameter', '40');
-  await expect(page.locator('#loss-diameter-result')).toHaveText('40 мм');
-  await page.fill('#loss-speed', '-1');
+  await page.fill('#loss-flow', '-1');
+  await expect(page.locator('#loss-speed-result')).toHaveText('—');
   await expect(page.locator('#loss-equivalent-length')).toHaveText('—');
   await expect(page.locator('#loss-total')).toHaveText('—');
   expect(errors).toEqual([]);
@@ -88,6 +103,9 @@ test('loss article remains responsive and does not add outbound user links', asy
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/spravochnik/gidravlicheskie-poteri.html');
     await page.evaluate(() => document.fonts.ready);
+    for (const image of await page.locator('.loss-diagram img, .loss-nomogram img, .loss-figure img').all()) {
+      await expect.poll(() => image.evaluate(img => img.complete && img.naturalWidth > 0 && img.naturalHeight > 0)).toBe(true);
+    }
     const metrics = await page.evaluate(() => ({ viewport: innerWidth, document: document.documentElement.scrollWidth }));
     expect(metrics.document, `horizontal overflow at ${width}px`).toBeLessThanOrEqual(metrics.viewport);
     await expect(page.locator('#contact form[action="https://api.alpool.ru/api/leads"]')).toHaveCount(1);
