@@ -3,15 +3,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const home = fs.readFileSync('index.html', 'utf8');
-const ctaMatch = home.match(/<section class="post cta-section cta-light" aria-labelledby="tech-task-title">[\s\S]*?<\/section>/);
 const footerMatch = home.match(/<footer id="footer">[\s\S]*?<\/footer>/);
-if (!ctaMatch || !footerMatch) throw new Error('Homepage reference blocks not found');
+if (!footerMatch) throw new Error('Homepage reference footer not found');
 const groups = ['articles', 'blog', 'kalkulyatori', 'napravleniya', 'servis', 'spravochnik'];
 const files = groups.flatMap(g => fs.readdirSync(g).filter(n => n.endsWith('.html')).sort().map(n => `${g}/${n}`));
 const specialCalculators = new Set(['kalkulyatori/kalkulyator-obema-basseyna.html','kalkulyatori/podbor-filtra-i-nasosa.html','kalkulyatori/raschet-nagreva-vody-basseyna.html','kalkulyatori/raschet-truboprovodov-basseyna.html']);
 const ctaBegin = '<!-- BEGIN ALPOOL SHARED TASK CTA -->', ctaEnd = '<!-- END ALPOOL SHARED TASK CTA -->';
 const footerBegin = '<!-- BEGIN ALPOOL SHARED INQUIRY -->', footerEnd = '<!-- END ALPOOL SHARED INQUIRY -->';
-const sharedCta = `${ctaBegin}\n${ctaMatch[0]}\n${ctaEnd}`;
 let footerHtml = footerMatch[0];
 // Keep #footer and #contact as existing navigation targets; form IDs are namespaced
 // to coexist with the calculators' purpose-specific consultation forms.
@@ -29,23 +27,32 @@ for (const file of files) {
     if (start < 0 || finish < start) throw new Error(`${file}: invalid shared markers`);
     return text.slice(0,start) + replacement + text.slice(finish + end.length);
   };
-  if (html.includes(ctaBegin) || html.includes(footerBegin)) {
-    html = replaceMarked(html, ctaBegin, ctaEnd, sharedCta);
+  const removeMarked = (text, begin, end) => {
+    const start = text.indexOf(begin), finish = text.indexOf(end);
+    if (start < 0 && finish < 0) return text;
+    if (start < 0 || finish < start || text.indexOf(begin, start + begin.length) >= 0) throw new Error(`${file}: invalid shared markers`);
+    let after = finish + end.length;
+    if (text.startsWith('\r\n', after)) after += 2;
+    else if (text.startsWith('\n', after)) after += 1;
+    return text.slice(0,start) + text.slice(after);
+  };
+  html = removeMarked(html, ctaBegin, ctaEnd);
+  if (html.includes(footerBegin) || html.includes(footerEnd)) {
     html = replaceMarked(html, footerBegin, footerEnd, sharedFooter);
   } else if (specialCalculators.has(file)) {
     if (!/<footer id="footer"/.test(html)) throw new Error(`${file}: calculator form missing`);
     html = html.replace('<footer id="footer"', '<footer id="calculator-context-footer"');
     if (!html.includes('</main>')) throw new Error(`${file}: main not found`);
-    html = html.replace('</main>', `${sharedCta}\n</main>\n${sharedFooter}`);
+    html = html.replace('</main>', `</main>\n${sharedFooter}`);
   } else if (file.startsWith('spravochnik/')) {
     if (/<footer id="footer"/.test(html) || !html.includes('</main>')) throw new Error(`${file}: unexpected structure`);
-    html = html.replace('</main>', `${sharedCta}\n</main>\n${sharedFooter}`);
+    html = html.replace('</main>', `</main>\n${sharedFooter}`);
     html = html.replace('</body>', `${dependencies}</body>`);
   } else {
     const oldFooter = /<footer id="footer">[\s\S]*?<\/footer>/;
     if (!oldFooter.test(html)) throw new Error(`${file}: footer not found`);
     if (!html.includes('</main>')) throw new Error(`${file}: main not found`);
-    html = html.replace('</main>', `${sharedCta}\n</main>`).replace(oldFooter, sharedFooter);
+    html = html.replace(oldFooter, sharedFooter);
   }
   if (html !== before) { changed++; pending.push([file,html]); if (process.argv.includes('--check')) console.error(`Out of date: ${file}`); }
 }

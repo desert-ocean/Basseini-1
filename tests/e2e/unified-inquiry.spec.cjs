@@ -6,11 +6,11 @@ const groups = ['articles', 'blog', 'kalkulyatori', 'napravleniya', 'servis', 's
 const pages = groups.flatMap(group => fs.readdirSync(group)
 	.filter(name => name.endsWith('.html'))
 	.map(name => `/${group}/${name}`));
-const sharedIds = ['tech-task-title', 'contact-title', 'unified-name', 'unified-phone', 'unified-email',
+const sharedIds = ['contact-title', 'unified-name', 'unified-phone', 'unified-email',
 	'unified-message', 'unified-lead-files', 'unified-lead-files-help', 'unified-lead-files-selected',
 	'unified-alpool-personal-data-consent-home', 'unified-alpool-personal-data-consent-home-links'];
 
-test('every target contains one shared form with unique shared IDs and reference links', async ({ page }) => {
+test('every target keeps one shared inquiry form and has no separate task CTA', async ({ page }) => {
 	test.setTimeout(180000);
 	const pageErrors = [];
 	page.on('pageerror', error => pageErrors.push(error.message));
@@ -18,18 +18,20 @@ test('every target contains one shared form with unique shared IDs and reference
 		await page.goto(url);
 		const footer = page.locator('#footer');
 		await expect(footer.locator('#contact-title'), url).toHaveText('Задайте вопрос специалисту');
-		await expect(page.locator('#tech-task-title'), url).toHaveCount(1);
+		await expect(page.locator('[aria-labelledby="tech-task-title"]'), url).toHaveCount(0);
 		await expect(footer.locator('form[action="https://api.alpool.ru/api/leads"]'), url).toHaveCount(1);
+		await expect(footer.locator('a[href^="tel:"]'), url).toHaveCount(1);
+		await expect(footer.locator('a[href^="mailto:"]'), url).toHaveCount(1);
+		await expect(footer.locator('.contact-messengers a'), url).toHaveCount(2);
 		const duplicateSharedIds = await page.evaluate(ids => ids.filter(id => document.querySelectorAll(`[id="${id}"]`).length !== 1), sharedIds);
 		expect(duplicateSharedIds, url).toEqual([]);
-		await expect(page.locator('#tech-task-title').locator('..').locator('..').locator('a[href="/tehnicheskoe-zadanie/"]'), url).toHaveCount(1);
+		await expect(footer.locator('a[href="/tehnicheskoe-zadanie/"]'), url).toHaveCount(1);
 	}
 	expect(pageErrors).toEqual([]);
 });
 
 test('shared blocks use the same computed styles as the homepage', async ({ page }) => {
-	const cta = 'section[aria-labelledby="tech-task-title"]';
-	const selectors = ['#footer', '#contact-title', '#footer .contact-form-section header p', '#footer label', '#footer input[type="tel"]', '#footer .contact-cta', cta, `${cta} > div`, `${cta} .section-label`, '#tech-task-title', `${cta} p:nth-of-type(2)`, `${cta} p:nth-of-type(3)`, `${cta} ul.actions`, `${cta} ul.actions li`, `${cta} a.button`];
+	const selectors = ['#footer', '#contact-title', '#footer .contact-form-section header p', '#footer label', '#footer input[type="tel"]', '#footer .contact-cta'];
 	const readStyles = async () => page.evaluate(selectorsToRead => selectorsToRead.map(selector => {
 		const style = getComputedStyle(document.querySelector(selector));
 		return Object.fromEntries(['fontFamily', 'fontSize', 'fontWeight', 'lineHeight', 'color', 'backgroundColor', 'borderRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'display', 'gridTemplateColumns', 'gap', 'alignItems', 'alignSelf', 'justifyItems', 'textAlign', 'borderColor', 'borderWidth', 'width'].map(property => [property, style[property]]));
@@ -38,19 +40,18 @@ test('shared blocks use the same computed styles as the homepage', async ({ page
 		await page.setViewportSize({ width, height: 1000 });
 		await page.goto('/');
 		await page.evaluate(() => document.fonts.ready);
+		await expect(page.locator('[aria-labelledby="tech-task-title"]')).toHaveCount(1);
 		const homepage = await readStyles();
 		const homeFooterShot = path.join('.test-artifacts', 'unified-inquiry', `home-footer-${width}.png`);
-		const homeTaskShot = path.join('.test-artifacts', 'unified-inquiry', `home-task-${width}.png`);
 		fs.mkdirSync(path.dirname(homeFooterShot), { recursive: true });
 		await page.locator('#footer').screenshot({ path: homeFooterShot });
-		await page.locator('section[aria-labelledby="tech-task-title"]').screenshot({ path: homeTaskShot });
 		await page.goto('/spravochnik/truby-pvc-u.html');
 		await page.evaluate(() => document.fonts.ready);
+		await expect(page.locator('[aria-labelledby="tech-task-title"]')).toHaveCount(0);
 		expect(await readStyles(), `shared component styles at ${width}px`).toEqual(homepage);
 		await page.locator('#footer').screenshot({ path: path.join('.test-artifacts', 'unified-inquiry', `reference-footer-${width}.png`) });
-		await page.locator('section[aria-labelledby="tech-task-title"]').screenshot({ path: path.join('.test-artifacts', 'unified-inquiry', `reference-task-${width}.png`) });
 	}
-	await page.locator('section[aria-labelledby="tech-task-title"] a[href="/tehnicheskoe-zadanie/"]').click();
+	await page.locator('#footer a[href="/tehnicheskoe-zadanie/"]').click();
 	await expect(page).toHaveURL(/\/tehnicheskoe-zadanie\/$/);
 });
 
