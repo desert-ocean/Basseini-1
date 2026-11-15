@@ -20,7 +20,7 @@ test('UTF-8 content, categories, metadata, sitemap and local links',async({page}
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://alpool.ru/spravochnik/'+file);
   expect(sitemap).toContain('https://alpool.ru/spravochnik/'+file);
   for(const href of await page.locator('a[href]').evaluateAll(as=>as.map(a=>a.getAttribute('href')))){
-   if(href.startsWith('http')||href.startsWith('#'))continue;
+   if(href.startsWith('http')||href.startsWith('#')||href.startsWith('tel:')||href.startsWith('mailto:'))continue;
    const target=new URL(href,page.url());const resolved=target.pathname==='/'?'index.html':target.pathname.slice(1);
    expect(fs.existsSync(resolved),`${file}: ${href}`).toBeTruthy();
   }

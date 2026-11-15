@@ -508,18 +508,21 @@
 	display: none !important;
 }
 
-#footer.calculator-footer {
+#calculator-context-footer {
 	display: block;
-	padding: clamp(1.5rem, 4vw, 3rem);
-	background: #edf2f4;
-	color: #17212b;
+	position: relative;
+	width: calc(100% - 4rem);
+	max-width: 72rem;
+	margin: 0 auto;
+	background: #f5f5f5;
+	color: #909498;
 }
 
-#footer.calculator-footer > section {
+#calculator-context-footer > section {
 	width: 100%;
 }
 
-#footer .calculator-consultation {
+#calculator-context-footer .calculator-consultation {
 	max-width: 70rem;
 	margin: 0 auto;
 	padding: clamp(1.25rem, 3vw, 2.5rem);
@@ -529,22 +532,22 @@
 	box-shadow: 0 1rem 2.5rem rgba(16, 43, 57, 0.07);
 }
 
-#footer .calculator-consultation header {
+#calculator-context-footer .calculator-consultation header {
 	max-width: 58rem;
 	margin: 0 0 1.5rem;
 }
 
-#footer .calculator-consultation h2 {
+#calculator-context-footer .calculator-consultation h2 {
 	color: var(--calculator-ink);
 	font-size: clamp(1.8rem, 3vw, 2.8rem);
 	line-height: 1.1;
 }
 
-#footer .calculator-consultation header p {
+#calculator-context-footer .calculator-consultation header p {
 	color: var(--calculator-muted);
 }
 
-#footer .calculator-context-help {
+#calculator-context-footer .calculator-context-help {
 	font-size: 0.86rem !important;
 	line-height: 1.55 !important;
 }
@@ -604,45 +607,45 @@
 	border-color: var(--calculator-accent) !important;
 }
 
-#footer .calculator-lead-consent {
+#calculator-context-footer .calculator-lead-consent {
 	margin: 1rem 0 0;
 	padding: 0.9rem 0 0;
 	border-top: 1px solid #e0e7ea;
 }
 
-#footer .calculator-lead-consent input[type="checkbox"] + label {
+#calculator-context-footer .calculator-lead-consent input[type="checkbox"] + label {
 	color: var(--calculator-ink);
 }
 
-#footer .calculator-lead-consent input[type="checkbox"] + label::before {
+#calculator-context-footer .calculator-lead-consent input[type="checkbox"] + label::before {
 	border-color: #71818a;
 }
 
-#footer .calculator-lead-consent input[type="checkbox"]:checked + label::before {
+#calculator-context-footer .calculator-lead-consent input[type="checkbox"]:checked + label::before {
 	background-color: var(--calculator-accent);
 	border-color: var(--calculator-accent);
 }
 
-#footer .calculator-lead-consent input[type="checkbox"]:focus-visible + label::before {
+#calculator-context-footer .calculator-lead-consent input[type="checkbox"]:focus-visible + label::before {
 	outline: 3px solid rgba(23, 109, 143, 0.35);
 	outline-offset: 2px;
 }
 
-#footer .calculator-lead-consent .lead-consent__links {
+#calculator-context-footer .calculator-lead-consent .lead-consent__links {
 	margin: 0.45rem 0 0 2.8rem;
 	font-size: 0.8rem !important;
 	line-height: 1.5 !important;
 }
 
-#footer .calculator-lead-consent .lead-consent__links a {
+#calculator-context-footer .calculator-lead-consent .lead-consent__links a {
 	color: var(--calculator-accent);
 }
 
-#footer .calculator-submit-actions {
+#calculator-context-footer .calculator-submit-actions {
 	margin: 1.2rem 0 0;
 }
 
-#footer .calculator-submit-actions input[type="submit"] {
+#calculator-context-footer .calculator-submit-actions input[type="submit"] {
 	min-height: 3.2rem;
 	padding: 0 1.8rem;
 	background: var(--calculator-accent) !important;
@@ -650,7 +653,7 @@
 	color: #ffffff !important;
 }
 
-#footer .calculator-footer-details {
+#calculator-context-footer .calculator-footer-details {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -660,16 +663,16 @@
 	color: var(--calculator-muted);
 }
 
-#footer .calculator-footer-details .logo {
+#calculator-context-footer .calculator-footer-details .logo {
 	color: var(--calculator-ink);
 }
 
-#footer .calculator-footer-details p {
+#calculator-context-footer .calculator-footer-details p {
 	margin: 0;
 	font-size: 0.85rem;
 }
 
-#footer .calculator-footer-details a:not(.logo) {
+#calculator-context-footer .calculator-footer-details a:not(.logo) {
 	color: var(--calculator-accent);
 }
 
@@ -703,11 +706,11 @@
 		margin-top: 0.25rem;
 	}
 
-	#footer.calculator-footer {
+	#calculator-context-footer {
 		padding: 1rem;
 	}
 
-	#footer .calculator-footer-details {
+	#calculator-context-footer .calculator-footer-details {
 		align-items: flex-start;
 		flex-direction: column;
 	}

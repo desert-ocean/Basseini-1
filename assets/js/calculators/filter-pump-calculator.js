@@ -113,7 +113,7 @@
 	$('purpose').addEventListener('change',calculate);
 	standardSelect.addEventListener('change',function(){if(standardSelect.value!=='custom')customInput.value='';calculate();});
 	customInput.addEventListener('input',calculate);
-	var form=document.querySelector('#footer form');
+	var form=document.querySelector('#calculator-context-footer form');
 	if(form)form.addEventListener('submit',function(){
 		var userText=form.elements.message.value.split(marker)[0].trim();
 		var chosen=activeMode==='auto'?autoChoice:diameterChoice;

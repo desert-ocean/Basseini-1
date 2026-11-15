@@ -288,40 +288,60 @@
                     </a>
                     </div>
                 </section>
-</main><footer id="footer">
+<!-- BEGIN ALPOOL SHARED TASK CTA -->
+<section class="post cta-section cta-light" aria-labelledby="tech-task-title">
+					<div>
+						<p class="section-label">Электронное техническое задание</p>
+						<h2 id="tech-task-title">Заполните техническое задание на бассейн онлайн</h2>
+						<p>Заполните электронное техническое задание на строительство бассейна онлайн. Это поможет точно рассчитать стоимость, подобрать оборудование и подготовить проект под ваш участок и бюджет.</p>
+						<p>Техническое задание на бассейн ускоряет расчет стоимости бассейна и упрощает проектирование бассейна с учетом параметров участка и пожеланий по оборудованию.</p>
+					</div>
+					<ul class="actions special">
+						<li><a href="/tehnicheskoe-zadanie/" class="button large">Заполнить ТЗ</a></li>
+					</ul>
+				</section>
+<!-- END ALPOOL SHARED TASK CTA -->
+</main><!-- BEGIN ALPOOL SHARED INQUIRY -->
+<footer id="footer">
 				<section id="contact" class="contact-form-section" aria-labelledby="contact-title">
 					<header>
 						<span class="date">Контакты</span>
-						<h2 id="contact-title">Получить персональную консультацию</h2>
-						<p>Оставьте заявку — свяжемся, уточним параметры объекта и предложим следующий шаг.</p>
+						<h2 id="contact-title">Задайте вопрос специалисту</h2>
+						<p>Опишите свою задачу в свободной форме. Можно приложить фотографию, схему или чертёж, но это необязательно.<br /><br />Не нужно заранее разбираться в технических деталях — поможем определить, что необходимо для решения вашего вопроса.</p>
 					</header>
 					<form method="POST" action="https://api.alpool.ru/api/leads">
 						<div class="fields">
 							<div class="field">
-								<label for="name">Имя</label>
-								<input type="text" name="name" id="name" placeholder="Ваше имя" autocomplete="name" />
+								<label for="unified-name">Имя</label>
+								<input type="text" name="name" id="unified-name" placeholder="Ваше имя" autocomplete="name" />
 							</div>
 							<div class="field">
-								<label for="phone">Телефон</label>
-								<input type="tel" name="phone" id="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required />
+								<label for="unified-phone">Телефон</label>
+								<input type="tel" name="phone" id="unified-phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required />
 							</div>
 							<div class="field">
-								<label for="email">Email</label>
-								<input type="email" name="email" id="email" placeholder="Ваш email" autocomplete="email" />
+								<label for="unified-email">Email</label>
+								<input type="email" name="email" id="unified-email" placeholder="Ваш email" autocomplete="email" />
 							</div>
 							<div class="field">
-								<label for="message">Сообщение</label>
-								<textarea name="message" id="message" rows="4" placeholder="Коротко опишите объект, желаемый формат бассейна и удобный способ связи"></textarea>
+								<label for="unified-message">Сообщение</label>
+								<textarea name="message" id="unified-message" rows="4" placeholder="Опишите ваш вопрос или задачу и удобный способ связи"></textarea>
 							</div>
 							<div class="field lead-file-field">
-								<label for="lead-files">Прикрепить файлы</label>
-								<input type="file" name="files" id="lead-files" multiple accept=".jpg,.jpeg,.png,.webp,.pdf,.doc,.docx,.xls,.xlsx,.dwg,.dxf" aria-describedby="lead-files-help lead-files-selected" />
-								<p id="lead-files-help" class="lead-file-help">До 10 файлов, не более 25 МБ каждый.<br />JPG, PNG, WEBP, PDF, DOC, DOCX, XLS, XLSX, DWG, DXF.</p>
-								<p id="lead-files-selected" class="lead-file-list" role="status" aria-live="polite" hidden></p>
+								<label for="unified-lead-files">Прикрепить файлы</label>
+								<input type="file" name="files" id="unified-lead-files" multiple accept=".jpg,.jpeg,.png,.webp,.pdf,.doc,.docx,.xls,.xlsx,.dwg,.dxf" aria-describedby="unified-lead-files-help unified-lead-files-selected" />
+								<p id="unified-lead-files-help" class="lead-file-help">До 10 файлов, не более 25 МБ каждый.<br />JPG, PNG, WEBP, PDF, DOC, DOCX, XLS, XLSX, DWG, DXF.</p>
+								<p id="unified-lead-files-selected" class="lead-file-list" role="status" aria-live="polite" hidden></p>
 							</div>
 						</div>
+						<div class="lead-consent">
+							<input type="checkbox" id="unified-alpool-personal-data-consent-home" name="personal_data_consent" value="true" required aria-describedby="unified-alpool-personal-data-consent-home-links" />
+							<label for="unified-alpool-personal-data-consent-home">Я даю отдельное согласие на обработку персональных данных.</label>
+							<p class="lead-consent__links" id="unified-alpool-personal-data-consent-home-links"><a href="/consent.html" target="_blank" rel="noopener">Текст согласия</a> · <a href="/privacy.html" target="_blank" rel="noopener">Политика обработки персональных данных</a></p>
+							<input type="hidden" name="consent_text_version" value="alpool-consent-2026-11-08-v1" />
+						</div>
 						<ul class="actions">
-							<li><input type="submit" class="button primary large" value="Отправить заявку" /></li>
+							<li><input type="submit" class="button primary large" value="Отправить вопрос" /></li>
 						</ul>
 					</form>
 				</section>
@@ -353,6 +373,7 @@
 						</div>
 					</section>
 				</section>
-			</footer><div id="copyright"><ul><li>&copy; АЛ Пулс</li><li>Design: <a href="https://t.me/desertocean">Desert Ocean</a></li></ul></div></div>
+			</footer>
+<!-- END ALPOOL SHARED INQUIRY --><div id="copyright"><ul><li>&copy; АЛ Пулс</li><li>Design: <a href="https://t.me/desertocean">Desert Ocean</a></li></ul></div></div>
 		<script src="../assets/js/jquery.min.js"></script><script src="../assets/js/jquery.scrollex.min.js"></script><script src="../assets/js/jquery.scrolly.min.js"></script><script src="../assets/js/browser.min.js"></script><script src="../assets/js/breakpoints.min.js"></script><script src="../assets/js/util.js"></script><script src="../assets/js/main.js"></script></body></html>
 

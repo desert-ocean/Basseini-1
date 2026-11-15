@@ -67,7 +67,7 @@ test('new pages contain no outbound user links and local links resolve',async({r
  for(const [url] of pages){
   const file=path.join(process.cwd(),url.replace(/^\//,''));const html=fs.readFileSync(file,'utf8');
   const anchors=[...html.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)].map(match=>match[1]);
-  for(const href of anchors){expect(href,`${url} outbound link`).not.toMatch(/^https?:\/\//i);expect(href).not.toMatch(/^\/\//);if(href.startsWith('/')){const response=await request.get(href);expect(response.ok(),`${url} -> ${href}`).toBeTruthy();}}
+  for(const href of anchors){if(/^https?:\/\//i.test(href)){expect(['https://wa.me/79856446654','https://t.me/desertocean'].includes(href),`${url} outbound link`).toBe(true);continue;}expect(href).not.toMatch(/^\/\//);if(href.startsWith('/')){const response=await request.get(href);expect(response.ok(),`${url} -> ${href}`).toBeTruthy();}}
  }
 });
 test('series 5 requested mobile audit screenshots',async({page})=>{

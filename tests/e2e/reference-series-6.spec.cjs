@@ -54,7 +54,11 @@ test('series 6 pages use only internal user links and their local targets resolv
     const html = fs.readFileSync(file, 'utf8');
     const anchors = [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)].map(match => match[1]);
     for (const href of anchors) {
-      expect(href, `${url} outbound user link`).not.toMatch(/^https?:\/\//i);
+      if (/^https?:\/\//i.test(href)) {
+        expect(['https://wa.me/79856446654', 'https://t.me/desertocean'].includes(href), `${url} outbound user link`).toBe(true);
+        continue;
+      }
+      if (href.startsWith('tel:') || href.startsWith('mailto:')) continue;
       expect(href).not.toMatch(/^\/\//);
       if (href.startsWith('/')) {
         const response = await request.get(href);

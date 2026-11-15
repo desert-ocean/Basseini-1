@@ -27,3 +27,14 @@ main footer a{color:#526875}
 @media(max-width:736px){body>header>div{padding:18px 16px 0}body>header .brand{margin-bottom:16px}body>header .top-nav a{font-size:.75rem;padding:11px 13px}main{padding:28px 20px 20px}main footer{margin:36px -20px -20px;padding:22px 20px}}
 
 .diagram-labels-readable{font-size:1.125rem;line-height:1.45}
+
+/* Use the same ALPOOL component styles as the homepage, without changing the
+   engineering page's unlayered typography and control styles. */
+#footer,#footer *,main>section[aria-labelledby="tech-task-title"],main>section[aria-labelledby="tech-task-title"] *{all:revert-layer}
+#footer{font:300 1rem/2.375 "Source Sans Pro",Helvetica,sans-serif;color:#2d343b}
+main>section[aria-labelledby="tech-task-title"]{font:300 1rem/2.375 "Source Sans Pro",Helvetica,sans-serif;color:#3f454b}
+main>section[aria-labelledby="tech-task-title"] h2{font:900 clamp(2rem,4vw,3.7rem)/1.05 "Source Sans Pro",Helvetica,sans-serif;letter-spacing:-.02em;color:#17212b;text-transform:none}
+main>section[aria-labelledby="tech-task-title"] p{font-size:1rem;line-height:1.85;letter-spacing:-.01em}
+main>section[aria-labelledby="tech-task-title"]{position:relative;left:50%;transform:translateX(-50%);width:calc(100vw - 4rem);max-width:72rem;padding:5.5rem 4rem 4.5rem;border-top:2px solid #eee}
+@media(max-width:736px){main>section[aria-labelledby="tech-task-title"]{padding:3.25rem 1.5rem 2.75rem}main>section[aria-labelledby="tech-task-title"] h2{font-size:2.2rem}}
+@media(max-width:480px){main>section[aria-labelledby="tech-task-title"]{width:100vw;max-width:none}}
