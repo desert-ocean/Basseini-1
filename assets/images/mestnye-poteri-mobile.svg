@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="1540" viewBox="0 0 780 1540" role="img" aria-labelledby="t d">
+<title id="t">Местные потери напора в трубопроводе</title><desc id="d">Пять типичных элементов с местными сопротивлениями: уголок 90 градусов, тройник, заужение, задвижка и обратный клапан.</desc>
+<rect width="780" height="1540" fill="#f5f9fa"/>
+<text x="390.0" y="65" text-anchor="middle" font-family="Arial,sans-serif" font-size="36" font-weight="700" fill="#123650">Где возникают местные потери</text>
+<text x="390.0" y="105" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" fill="#456272">Повороты, переходы и арматура</text>
+<rect x="34" y="165" width="712" height="218" rx="23" fill="white" stroke="#d2e3eb" stroke-width="2"/>
+<g transform="translate(68 200) scale(0.9)"><path d="M25 32 H110 Q138 32 138 60 V116" stroke="#a9dfe9" stroke-width="38" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 32 H110 Q138 32 138 60 V116" stroke="#1688ac" stroke-width="27" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M47 32 h38 m-12 -11 l12 11 -12 11" fill="none" stroke="white" stroke-width="4" stroke-linecap="round"/></g>
+<text x="344" y="237" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#173a53">Уголок 90°</text>
+<text x="344" y="285" font-family="Arial,sans-serif" font-size="24" fill="#476271">Поток поворачивает,</text>
+<text x="344" y="320" font-family="Arial,sans-serif" font-size="24" fill="#476271">возникают местные потери</text>
+<rect x="34" y="410" width="712" height="218" rx="23" fill="white" stroke="#d2e3eb" stroke-width="2"/>
+<g transform="translate(68 445) scale(0.9)"><path d="M22 75 H228 M125 75 V18" stroke="#a9dfe9" stroke-width="38" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 75 H228 M125 75 V18" stroke="#1688ac" stroke-width="27" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M42 75h46l-13 -11m13 11l-13 11M125 65V33l-10 12m10-12l10 12" fill="none" stroke="white" stroke-width="4" stroke-linejoin="round"/></g>
+<text x="344" y="482" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#173a53">Тройник</text>
+<text x="344" y="530" font-family="Arial,sans-serif" font-size="24" fill="#476271">Разделение или слияние</text>
+<text x="344" y="565" font-family="Arial,sans-serif" font-size="24" fill="#476271">потоков создаёт потери</text>
+<rect x="34" y="655" width="712" height="218" rx="23" fill="white" stroke="#d2e3eb" stroke-width="2"/>
+<g transform="translate(68 690) scale(0.9)"><path d="M20 70 H84 L125 70 L167 70 H230" stroke="#a9dfe9" stroke-width="38" fill="none" stroke-linecap="round"/><path d="M20 70 H83 L112 70" stroke="#1688ac" stroke-width="26" fill="none" stroke-linecap="round"/><path d="M112 56 L145 64 L167 64 H230 V76 H167 L145 76 L112 84Z" fill="#1688ac" stroke="#0f6e93" stroke-width="2"/><path d="M42 70h43m-13-10l13 10-13 10M185 70h28m-11-8l11 8-11 8" stroke="white" stroke-width="4" fill="none"/></g>
+<text x="344" y="727" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#173a53">Заужение</text>
+<text x="344" y="775" font-family="Arial,sans-serif" font-size="24" fill="#476271">Меняется скорость воды,</text>
+<text x="344" y="810" font-family="Arial,sans-serif" font-size="24" fill="#476271">появляется сопротивление</text>
+<rect x="34" y="900" width="712" height="218" rx="23" fill="white" stroke="#d2e3eb" stroke-width="2"/>
+<g transform="translate(68 935) scale(0.9)"><path d="M20 75 H230" stroke="#a9dfe9" stroke-width="38" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 75 H230" stroke="#1688ac" stroke-width="27" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M90 48 L125 75 L90 102Z M160 48 L125 75 L160 102Z" fill="#f7b451" stroke="#bd761c" stroke-width="4"/><path d="M125 46V22H165" stroke="#bd761c" stroke-width="5" fill="none"/><rect x="155" y="10" width="24" height="19" rx="5" fill="#f7b451" stroke="#bd761c" stroke-width="3"/></g>
+<text x="344" y="972" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#173a53">Задвижка</text>
+<text x="344" y="1020" font-family="Arial,sans-serif" font-size="24" fill="#476271">Проходная арматура</text>
+<text x="344" y="1055" font-family="Arial,sans-serif" font-size="24" fill="#476271">создаёт сопротивление</text>
+<rect x="34" y="1145" width="712" height="218" rx="23" fill="white" stroke="#d2e3eb" stroke-width="2"/>
+<g transform="translate(68 1180) scale(0.9)"><path d="M20 75 H230" stroke="#a9dfe9" stroke-width="38" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 75 H230" stroke="#1688ac" stroke-width="27" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="76" y="38" width="98" height="75" rx="15" fill="#f9eedf" stroke="#d08b32" stroke-width="5"/><path d="M95 75 H155" stroke="#c6862d" stroke-width="5"/><path d="M106 55 L138 75 L106 95Z" fill="#edaf58" stroke="#b8751d" stroke-width="3"/><path d="M148 52 V98" stroke="#b8751d" stroke-width="5"/></g>
+<text x="344" y="1217" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#173a53">Обратный клапан</text>
+<text x="344" y="1265" font-family="Arial,sans-serif" font-size="24" fill="#476271">Клапан препятствует</text>
+<text x="344" y="1300" font-family="Arial,sans-serif" font-size="24" fill="#476271">обратному потоку</text>
+<text x="390.0" y="1415" text-anchor="middle" font-family="Arial,sans-serif" font-size="29" font-weight="700" fill="#173a53">Почему это важно</text>
+<text x="390.0" y="1460" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" fill="#476271">Местные потери добавляются к потерям</text>
+<text x="390.0" y="1493" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" fill="#476271">на прямых участках трубопровода.</text>
+</svg>
