@@ -4,6 +4,15 @@ const assert = require('node:assert/strict');
 const core = require('../assets/js/calculations/filter-pump-core.js');
 const input = (poolPurpose='Частный') => ({volumeM3:65,turnoverHours:4,filtrationRate:25,poolPurpose});
 
+test('circulation flow uses volume divided by turnover time and rejects invalid values', () => {
+	for (const [volume, hours, expected] of [[24,6,4],[36,6,6],[48,6,8],[60,6,10],[90,6,15],[48,4,12]]) {
+		assert.equal(core.circulationFlow(volume,hours),expected);
+	}
+	for (const [volume,hours] of [[0,6],[-1,6],[48,0],[48,-1],[NaN,6],[48,Infinity],[1e308,1e-308]]) {
+		assert.throws(() => core.circulationFlow(volume,hours),RangeError);
+	}
+});
+
 test('keeps the exact fourteen standard diameters', () => {
 	assert.deepEqual(core.DIAMETERS_MM,[350,400,500,600,650,750,800,900,1000,1200,1400,1600,1800,2000]);
 });

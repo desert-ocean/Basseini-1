@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 620" width="820" height="620" role="img" aria-labelledby="waterTitle waterDescription">
+  <title id="waterTitle">Схема циркуляционного водообмена бассейна</title>
+  <desc id="waterDescription">Вода из бассейна поступает в насос, проходит через фильтр и возвращается обратно в чашу. Стрелки показывают непрерывную циркуляцию.</desc>
+  <defs>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b8edf8"/>
+      <stop offset="1" stop-color="#58bcd4"/>
+    </linearGradient>
+    <linearGradient id="tank" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7fbfd"/>
+      <stop offset="1" stop-color="#dcecf2"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1 L10 6 L1 11" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .heading{font:700 32px Arial,Helvetica,sans-serif; fill:#113b57}
+      .detail{font:500 25px Arial,Helvetica,sans-serif; fill:#315d73}
+      .pipe-back{fill:none;stroke:#b9dfe9;stroke-width:28;stroke-linejoin:round;stroke-linecap:round}
+      .pipe{fill:none;stroke:#187f9e;stroke-width:19;stroke-linejoin:round;stroke-linecap:round}
+      .arrow{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <!-- Clean schematic without a visible heading or formula -->
+  <rect width="820" height="620" rx="32" fill="#f4f8fa"/>
+  <rect x="24" y="24" width="772" height="572" rx="26" fill="#fff" stroke="#e3edf2" stroke-width="2"/>
+
+  <!-- Intake / return pipe circuit -->
+  <path class="pipe-back" d="M207 320 V406 Q207 426 227 426 H285"/>
+  <path class="pipe" d="M207 320 V406 Q207 426 227 426 H285"/>
+  <path class="pipe-back" d="M418 426 H485"/>
+  <path class="pipe" d="M418 426 H485"/>
+  <path class="pipe-back" d="M621 426 H672 Q700 426 700 398 V189 Q700 170 681 170 H612"/>
+  <path class="pipe" d="M621 426 H672 Q700 426 700 398 V189 Q700 170 681 170 H612"/>
+  <path class="arrow" d="M236 426 H268"/>
+  <path class="arrow" d="M434 426 H466"/>
+  <path class="arrow" d="M700 355 V323"/>
+  <path class="arrow" d="M669 170 H639"/>
+
+  <!-- Pool with visible water and return nozzle -->
+  <rect x="100" y="100" width="520" height="226" rx="36" fill="#edf8fc" stroke="#286d87" stroke-width="7"/>
+  <path d="M119 176 Q139 164 159 176 T199 176 T239 176 T279 176 T319 176 T359 176 T399 176 T439 176 T479 176 T519 176 T559 176 T601 176 V288 Q601 306 579 306 H141 Q119 306 119 284Z" fill="url(#water)"/>
+  <path d="M120 176 Q140 164 160 176 T200 176 T240 176 T280 176 T320 176 T360 176 T400 176 T440 176 T480 176 T520 176 T560 176 T600 176" stroke="#1399b5" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M600 174 H558" stroke="#fff" stroke-width="7" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <text class="heading" x="358" y="146" text-anchor="middle">БАССЕЙН</text>
+  <text class="detail" x="358" y="260" text-anchor="middle">Вода возвращается в чашу</text>
+
+  <!-- Pump -->
+  <circle cx="352" cy="426" r="66" fill="#e9f4f8" stroke="#267e9b" stroke-width="7"/>
+  <circle cx="352" cy="426" r="35" fill="#a9dfe9" stroke="#267e9b" stroke-width="5"/>
+  <path d="M352 397 Q381 404 369 428 Q356 449 337 438 Q319 424 339 414 Q354 408 352 397Z" fill="#187f9e"/>
+  <circle cx="352" cy="426" r="8" fill="#fff"/>
+  <text class="heading" x="352" y="533" text-anchor="middle">Насос</text>
+
+  <!-- Filter -->
+  <rect x="493" y="352" width="125" height="148" rx="38" fill="url(#tank)" stroke="#267e9b" stroke-width="7"/>
+  <rect x="528" y="333" width="55" height="23" rx="8" fill="#267e9b"/>
+  <path d="M512 423 H599" stroke="#1b98b2" stroke-width="5" stroke-dasharray="12 9"/>
+  <path d="M509 459 Q526 444 544 459 T580 459 T604 459" fill="none" stroke="#d9a35e" stroke-width="9" stroke-linecap="round"/>
+  <text class="heading" x="557" y="533" text-anchor="middle">Фильтр</text>
+  <text class="detail" x="410" y="580" text-anchor="middle">Непрерывная циркуляция воды</text>
+</svg>

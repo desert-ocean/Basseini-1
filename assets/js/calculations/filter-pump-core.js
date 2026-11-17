@@ -16,7 +16,13 @@
 		['volumeM3', 'turnoverHours', 'filtrationRate'].forEach(function (key) {
 			if (!Number.isFinite(input[key]) || input[key] <= 0) throw new RangeError(key + ' must be a positive finite number');
 		});
-		var flow = input.volumeM3 / input.turnoverHours;
+		return circulationFlow(input.volumeM3, input.turnoverHours);
+	}
+
+	function circulationFlow(volumeM3, turnoverHours) {
+		if (!Number.isFinite(volumeM3) || volumeM3 <= 0) throw new RangeError('volumeM3 must be a positive finite number');
+		if (!Number.isFinite(turnoverHours) || turnoverHours <= 0) throw new RangeError('turnoverHours must be a positive finite number');
+		var flow = volumeM3 / turnoverHours;
 		if (!Number.isFinite(flow) || flow <= 0) throw new RangeError('Circulation flow is outside the supported range');
 		return flow;
 	}
@@ -116,5 +122,6 @@
 	}
 
 	return { DIAMETERS_MM: DIAMETERS_MM.slice(), BACKWASH_RATE: BACKWASH_RATE,
-		MAX_FILTER_COUNT: MAX_FILTER_COUNT, calculate: calculate, calculateForDiameter: calculateForDiameter };
+		MAX_FILTER_COUNT: MAX_FILTER_COUNT, circulationFlow: circulationFlow,
+		calculate: calculate, calculateForDiameter: calculateForDiameter };
 }));
