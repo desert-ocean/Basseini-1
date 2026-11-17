@@ -21,10 +21,10 @@
   svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
   const left=56,right=12,top=18,bottom=54,plotW=width-left-right,plotH=height-top-bottom;
   const x=q=>left+q/50*plotW;
-  const speedMax=5,minHead=1e-5,maxHead=1e5;
-  const y=kind==='speed'?v=>top+plotH-(v/speedMax)*plotH:v=>top+plotH-(Math.log10(Math.max(minHead,Math.min(maxHead,v)))-Math.log10(minHead))/(Math.log10(maxHead)-Math.log10(minHead))*plotH;
-  const yTicks=kind==='speed'?[0,1,2,3,4,5]:[1e-5,1e-3,.1,10,1000,100000];
-  const yLabels=kind==='speed'?yTicks.map(String):['0,00001','0,001','0,1','10','1 000','100 000'];
+  const speedMax=5,minHead=1,maxHead=25;
+  const y=kind==='speed'?v=>top+plotH-(v/speedMax)*plotH:v=>top+plotH-((v-minHead)/(maxHead-minHead))*plotH;
+  const yTicks=kind==='speed'?[0,1,2,3,4,5]:[1,5,10,15,20,25];
+  const yLabels=yTicks.map(String);
   const clipId=`${svgId}-clip`;
   let out=`<title>${kind==='speed'?'Скорость воды в зависимости от расхода':'Потери напора на 100 метрах трубы в зависимости от расхода'}</title><defs><clipPath id="${clipId}"><rect x="${left}" y="${top}" width="${plotW}" height="${plotH}"/></clipPath></defs>`;
   for(let i=0;i<=5;i++){const q=i*10,xx=x(q);out+=`<path d="M${xx} ${top}V${top+plotH}" stroke="#dce8ed"/>`+svgText(xx,top+plotH+18,String(q),'text-anchor="middle"');}
@@ -60,24 +60,32 @@
   const selected=current(),status=$('speed-curve-status');
   if(!selected){status.textContent='Введите положительный расход и корректный внутренний диаметр. Расчётные точки пока не показаны.';updateLoss(null);return}
   drawChart('speed-curve-chart','speed-curve-legend','speed',selected);drawChart('loss-curve-chart','loss-curve-legend','loss',selected);
-  if(selected.flow>50)status.textContent=`Рабочий расход ${fmt(selected.flow)} м³/ч выше показанного диапазона графиков (0–50 м³/ч); расчёт по введённым значениям отображается в таблицах.`;
-  else if(selected.pipe.velocity>5||selected.pipe.hf100<1e-5||selected.pipe.hf100>1e5)status.textContent='Значение рабочей точки выбранной трубы находится за границами соответствующей вертикальной шкалы; численный результат остаётся доступен в таблице.';
-  else status.textContent=`Рабочая точка: ${fmt(selected.flow)} м³/ч; скорость ${fmt(selected.pipe.velocity)} м/с; потери ${fmt(selected.pipe.hf100,4)} м на 100 м прямой трубы.`;
+  const notes=[];
+  if(selected.flow>50)notes.push(`Рабочий расход ${fmt(selected.flow)} м³/ч выше диапазона графиков (0–50 м³/ч).`);
+  if(selected.pipe.velocity>5)notes.push(`Скорость ${fmt(selected.pipe.velocity)} м/с выше шкалы графика скорости (0–5 м/с); точное значение приведено в таблице.`);
+  if(selected.pipe.hf100<1||selected.pipe.hf100>25)notes.push(`Потери выбранной трубы — ${fmt(selected.pipe.hf100,4)} м на 100 м; рабочая точка находится ${selected.pipe.hf100<1?'ниже':'выше'} шкалы графика потерь (1–25 м). Численное значение приведено отдельно.`);
+  status.textContent=notes.length?notes.join(' '):`Рабочая точка: ${fmt(selected.flow)} м³/ч; скорость ${fmt(selected.pipe.velocity)} м/с; потери ${fmt(selected.pipe.hf100,4)} м на 100 м прямой трубы.`;
   updateLoss(selected);
  }
  function updateLoss(selected){
-  const error=els.error,length=parse(els.length.value),staticValue=parse($('static-head').value),mode=$('static-mode').value,counts=[...document.querySelectorAll('[data-zeta]')];
-  let zeta=0,valid=Number.isFinite(length)&&length>=0&&length<=100000&&Number.isFinite(staticValue)&&staticValue>=0&&staticValue<=10000;
+  const error=els.error,length=parse(els.length.value),staticEnabled=$('static-enabled').value==='yes',staticValue=parse($('static-head').value),mode=$('static-mode').value,counts=[...document.querySelectorAll('[data-zeta]')];
+  $('static-head-controls').hidden=!staticEnabled;
+  let zeta=0,valid=Number.isFinite(length)&&length>=0&&length<=100000;
   counts.forEach(input=>{const count=parse(input.value);if(!Number.isInteger(count)||count<0||count>10000)valid=false;else zeta+=count*Number(input.dataset.zeta)});
   if(!selected)valid=false;
   if(!valid){error.textContent='Проверьте расход, диаметр, длину и неотрицательное целое количество фитингов.';['loss-speed','loss-hf100','loss-linear','loss-local','loss-total','loss-with-static'].forEach(id=>$(id).textContent='—');return}
   try{
    const result=core.line({flow:selected.flow,segments:[{flow:selected.flow,diameter:selected.diameter,length,zeta}]});
-   error.textContent='';$('loss-speed').textContent=fmt(result.items[0].velocity);$('loss-hf100').textContent=fmt(result.items[0].hf100,4);$('loss-linear').textContent=fmt(result.linear,4);$('loss-local').textContent=fmt(result.local,4);$('loss-total').textContent=fmt(result.total,4);$('loss-static').textContent=fmt(staticValue);$('static-status').textContent=mode==='none'?'не включён':mode==='plus'?'прибавлен по выбранной схеме':'вычтен по выбранной схеме';
-   $('loss-with-static').textContent=mode==='none'?'—':fmt(result.total+(mode==='plus'?staticValue:-staticValue),4);
+   error.textContent='';$('loss-speed').textContent=fmt(result.items[0].velocity);$('loss-hf100').textContent=fmt(result.items[0].hf100,4);$('loss-linear').textContent=fmt(result.linear,4);$('loss-local').textContent=fmt(result.local,4);$('loss-total').textContent=fmt(result.total,4);
+   if(!staticEnabled){$('loss-static').textContent='0';$('static-status').textContent='нет — статическая составляющая равна 0';$('loss-with-static').textContent=fmt(result.total,4);return}
+   if(!Number.isFinite(staticValue)||staticValue<0||staticValue>10000){$('loss-static').textContent='—';$('static-status').textContent='введите неотрицательную разницу уровней';$('loss-with-static').textContent='—';return}
+   $('loss-static').textContent=fmt(staticValue);
+   if(mode==='none'){$('static-status').textContent='выберите направление по расчётной схеме';$('loss-with-static').textContent='—';return}
+   $('static-status').textContent=mode==='plus'?'прибавлен по выбранной схеме':'вычтен по выбранной схеме';
+   $('loss-with-static').textContent=fmt(result.total+(mode==='plus'?staticValue:-staticValue),4);
   }catch(e){error.textContent=e.message;['loss-speed','loss-hf100','loss-linear','loss-local','loss-total','loss-with-static'].forEach(id=>$(id).textContent='—')}
  }
- [els.flow,els.series,els.diameter,els.mode,els.custom,els.length,$('static-head'),$('static-mode'),...document.querySelectorAll('[data-zeta]')].filter(Boolean).forEach(el=>el.addEventListener(el.tagName==='SELECT'?'change':'input',update));
+ [els.flow,els.series,els.diameter,els.mode,els.custom,els.length,$('static-enabled'),$('static-head'),$('static-mode'),...document.querySelectorAll('[data-zeta]')].filter(Boolean).forEach(el=>el.addEventListener(el.tagName==='SELECT'?'change':'input',update));
  let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(update,100)});
  update();
 })();

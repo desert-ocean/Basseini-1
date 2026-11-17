@@ -32,12 +32,14 @@ test('UTF-8 content, categories, metadata, sitemap and local links',async({page}
  for(const cat of await page.locator('[data-category]').evaluateAll(es=>es.map(e=>e.dataset.category)))expect(categories).toContain(cat);
  await page.fill('#search','внутренний диаметр');await expect(page.locator('[data-search]:visible')).toHaveCount(1);
 });
-test('diameter, area, flow and tabulated speeds agree with the shared core',async({page})=>{
+test('PVC-U results agree with the shared core and speed article no longer has the sample table',async({page})=>{
  await page.goto('/spravochnik/truby-pvc-u.html');
  await page.selectOption('#diameter','50');
  const expected=await page.evaluate(()=>{const x=PoolHydraulicsCore.catalogs.PN10.find(p=>p.od===50);return PoolHydraulicsCore.pipe({flow:20,diameter:x.id})});
  await expect(page.locator('#area')).toHaveText(expected.area*1e6<1000?(expected.area*1e6).toLocaleString('ru-RU',{maximumFractionDigits:1}):(expected.area*1e6).toLocaleString('ru-RU',{maximumFractionDigits:1}));
  await expect(page.locator('#velocity')).toHaveText(expected.velocity.toLocaleString('ru-RU',{maximumFractionDigits:2}));
  await page.goto('/spravochnik/skorost-vody.html');
- expect(await page.evaluate(()=>[...document.querySelectorAll('tbody[data-generated="reference"] tr')].every(row=>{const c=[...row.cells].map(x=>Number(x.textContent.replace(',', '.')));const x=PoolHydraulicsCore.catalogs.PN10.find(p=>p.od===c[0]);return x&&x.id===c[1]&&[5,10,20].every((q,i)=>Math.abs(PoolHydraulicsCore.pipe({flow:q,diameter:x.id}).velocity-c[i+2])<0.006)}))).toBeTruthy();
+ await expect(page.getByRole('heading',{name:'Таблица скоростей по типовым трубам'})).toHaveCount(0);
+ await expect(page.locator('tbody[data-generated="reference"]')).toHaveCount(0);
+ await expect(page.locator('#loss-curve-chart')).toBeVisible();
 });

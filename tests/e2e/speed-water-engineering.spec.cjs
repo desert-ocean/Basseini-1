@@ -15,6 +15,10 @@ test('speed article graphs and line-loss block use shared hydraulic core',async(
  await expect(page.locator('#loss-curve-chart polyline')).toHaveCount(16);
  await expect(page.locator('#speed-curve-chart circle')).toHaveCount(1);
  await expect(page.locator('#loss-curve-chart circle')).toHaveCount(1);
+ expect(await page.locator('#loss-curve-chart').evaluate(svg=>[...svg.querySelectorAll('text')].map(x=>x.textContent))).toEqual(expect.arrayContaining(['1','5','10','15','20','25']));
+ expect(await page.locator('#loss-curve-chart g[clip-path]').getAttribute('clip-path')).toContain('url(#loss-curve-chart-clip)');
+ await expect(page.getByRole('heading',{name:'Таблица скоростей по типовым трубам'})).toHaveCount(0);
+ await expect(page.getByRole('heading',{name:'Исходные данные и границы применения'})).toHaveCount(0);
 
  const expected=await page.evaluate(()=>PoolHydraulicsCore.line({flow:20,segments:[{flow:20,diameter:57,length:10,zeta:0}]}));
  await expect(page.locator('#loss-linear')).toHaveText(expected.linear.toLocaleString('ru-RU',{maximumFractionDigits:4}));
@@ -27,12 +31,39 @@ test('speed article graphs and line-loss block use shared hydraulic core',async(
  await expect(page.locator('#loss-local')).toHaveText(oneElbow.local.toLocaleString('ru-RU',{maximumFractionDigits:4}));
  await expect(page.locator('#loss-total')).toHaveText(oneElbow.total.toLocaleString('ru-RU',{maximumFractionDigits:4}));
 
+ await expect(page.locator('#static-enabled')).toHaveValue('no');
+ await expect(page.locator('#static-head-controls')).toBeHidden();
+ await expect(page.locator('#loss-static')).toHaveText('0');
+ await expect(page.locator('#loss-with-static')).toHaveText(oneElbow.total.toLocaleString('ru-RU',{maximumFractionDigits:4}));
+ await page.selectOption('#static-enabled','yes');
+ await expect(page.locator('#static-head-controls')).toBeVisible();
+ await expect(page.locator('#loss-with-static')).toHaveText('—');
+ await expect(page.locator('#static-status')).toContainText('введите');
  await page.fill('#static-head','1,2');
  await expect(page.locator('#loss-with-static')).toHaveText('—');
  await page.selectOption('#static-mode','plus');
  await expect(page.locator('#loss-with-static')).toHaveText((oneElbow.total+1.2).toLocaleString('ru-RU',{maximumFractionDigits:4}));
  await page.selectOption('#static-mode','minus');
  await expect(page.locator('#loss-with-static')).toHaveText((oneElbow.total-1.2).toLocaleString('ru-RU',{maximumFractionDigits:4}));
+ await page.selectOption('#static-enabled','no');
+ await expect(page.locator('#static-head-controls')).toBeHidden();
+ await expect(page.locator('#loss-static')).toHaveText('0');
+ await expect(page.locator('#loss-with-static')).toHaveText(oneElbow.total.toLocaleString('ru-RU',{maximumFractionDigits:4}));
+
+ await page.selectOption('#series','PN10');
+ await page.selectOption('#diameter','32');
+ await page.fill('#flow','1');
+ const below=await page.evaluate(()=>PoolHydraulicsCore.pipe({flow:1,diameter:28.8,length:100}));
+ await expect(page.locator('#loss-curve-chart circle')).toHaveCount(0);
+ await expect(page.locator('#loss-hf100')).toHaveText(below.hf100.toLocaleString('ru-RU',{maximumFractionDigits:4}));
+ await expect(page.locator('#speed-curve-status')).toContainText('ниже шкалы графика потерь');
+ await page.fill('#flow','10');
+ const above=await page.evaluate(()=>PoolHydraulicsCore.pipe({flow:10,diameter:28.8,length:100}));
+ await expect(page.locator('#loss-curve-chart circle')).toHaveCount(0);
+ await expect(page.locator('#loss-hf100')).toHaveText(above.hf100.toLocaleString('ru-RU',{maximumFractionDigits:4}));
+ await expect(page.locator('#speed-curve-status')).toContainText('выше шкалы графика потерь');
+ await page.selectOption('#diameter','63');
+ await page.fill('#flow','20');
 
  await page.selectOption('#series','PN16');
  await page.selectOption('#diameter','63');
@@ -51,7 +82,7 @@ test('speed article graphs and line-loss block use shared hydraulic core',async(
  await expect(page.locator('#loss-total')).toHaveText('—');
  expect(errors).toEqual([]);
  const text=await page.locator('main').innerText();
- expect(text).not.toMatch(/\bOD\b|\bID\b|Aliaxis|Lareter|FIP/i);
+ expect(text).not.toMatch(/\bOD\b|\bID\b|Aliaxis|Lareter|FIP|Исходные данные и границы применения|poterinapora\.jpeg|poteri-na-filtre\.jpg/i);
 });
 
 test('speed article remains readable and fits common viewports',async({page})=>{
