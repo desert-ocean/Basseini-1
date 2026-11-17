@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 930" width="1280" height="930" role="img" aria-labelledby="t d"><title id="t">Напор насоса и рабочая точка</title><desc id="d">Система циркуляции бассейна с насосом и фильтром и иллюстративный график пересечения характеристик насоса и системы</desc><defs><style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#14354d} .heading{font-size:28px;font-weight:700}.label{font-size:25px;font-weight:700}.sub{font-size:22px}.small{font-size:19px}.axis{stroke:#829fac;stroke-width:3;fill:none}.grid{stroke:#d5e2e9;stroke-width:2;fill:none}.pumpCurve{stroke:#087daa;stroke-width:8;fill:none;stroke-linecap:round}.systemCurve{stroke:#c37523;stroke-width:8;fill:none;stroke-linecap:round}.dash{stroke:#a35a20;stroke-width:3;stroke-dasharray:9 8}.flow{stroke:#0784aa;stroke-width:31;stroke-linecap:round;fill:none}.pipeHalo{stroke:#d6edf3;stroke-width:43;stroke-linecap:round;fill:none}
+</style><marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="10" markerHeight="10" orient="auto"><path d="M1 1 L11 6 L1 11" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round"/></marker></defs><rect width="1280" height="930" fill="#f5f9fb"/><g transform="translate(70 50) scale(1)">
+ <rect x="0" y="0" width="1140" height="275" rx="28" fill="#edf6f9"/>
+ <path class="pipeHalo" d="M125 103 H1020"/><path class="flow" d="M125 103 H1020"/>
+ <circle cx="125" cy="103" r="62" fill="#cce7ef" stroke="#478fa8" stroke-width="9"/>
+ <path d="M90 109 Q108 92 126 107 T161 107" stroke="#499bb9" stroke-width="6" fill="none"/>
+ <rect x="410" y="58" width="110" height="93" rx="16" fill="#e3a355" stroke="#b97527" stroke-width="5"/>
+ <circle cx="465" cy="104" r="31" fill="none" stroke="#fff4e8" stroke-width="6"/>
+ <path d="M453 125 L471 83 L480 108 Z" fill="#fff4e8"/>
+ <rect x="720" y="32" width="132" height="154" rx="28" fill="#d3e6ed" stroke="#4b90a8" stroke-width="7"/>
+ <rect x="761" y="15" width="52" height="17" rx="6" fill="#4b90a8"/>
+ <path d="M746 143 Q762 124 784 144 T828 144" stroke="#d6a36e" stroke-width="8" fill="none"/>
+ <path d="M886 103 H1000" stroke="white" stroke-width="7" marker-end="url(#arrow)"/>
+ <text x="125" y="216" text-anchor="middle" class="label">Бассейн</text>
+ <text x="465" y="216" text-anchor="middle" class="label">Насос</text>
+ <text x="786" y="216" text-anchor="middle" class="label">Фильтр</text>
+ <text x="1010" y="245" text-anchor="end" class="sub">Потери в трубах</text>
+ </g><g transform="translate(65 360)"><rect width="1150" height="480" rx="24" fill="#fff" stroke="#dceaf0" stroke-width="2"/><path class="grid" d="M76 124.0 H1126 M338.5 30 V406"/><path class="grid" d="M76 218.0 H1126 M601.0 30 V406"/><path class="grid" d="M76 312.0 H1126 M863.5 30 V406"/><path class="axis" d="M76 30 V406 H1126"/><text x="601" y="461" class="sub" text-anchor="middle">Расход, м³/ч</text><text x="29" y="218" class="sub" transform="rotate(-90 29 218)" text-anchor="middle">Напор, м</text><path class="pumpCurve" d="M118.0 75.1 Q359.5 109.0 601.0 221.8 Q863.5 334.6 1084.0 372.2"/><path class="systemCurve" d="M118.0 372.2 Q380.5 345.8 601.0 221.8 Q853.0 93.9 1084.0 63.8"/><circle cx="601.0" cy="221.8" r="13" fill="white" stroke="#824519" stroke-width="6"/><path class="dash" d="M601.0 235.8 V406 M76 221.8 H587.0"/><g font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700">
+  <line x1="92" y1="51" x2="140" y2="51" stroke="#087daa" stroke-width="7"/><text x="152" y="58">Характеристика насоса</text>
+  <line x1="766" y1="51" x2="814" y2="51" stroke="#c37523" stroke-width="7"/><text x="826" y="58">Характеристика системы</text>
+  </g></g><rect x="450" y="790" width="380" height="64" rx="20" fill="#fff2e5" stroke="#e4ba8e" stroke-width="2"/><text x="640" y="830" text-anchor="middle" class="label" fill="#8c4a11">Рабочая точка</text><text x="640" y="898" text-anchor="middle" class="small">Схема иллюстрирует принцип, не является паспортной характеристикой насоса</text></svg>

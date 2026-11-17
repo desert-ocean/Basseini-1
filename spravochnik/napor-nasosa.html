@@ -1,4 +1,130 @@
-<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Как понять напор насоса — ALPOOL</title><meta name="description" content="Что означает напор насоса и как связать его с расходом и сопротивлением системы."><link rel="canonical" href="https://alpool.ru/spravochnik/napor-nasosa.html"><link rel="stylesheet" href="/spravochnik/reference.css"></head><body><header><div><a class="brand" href="/">АЛ Пулс</a><nav class="top-nav" aria-label="Основная навигация"><a href="/">Главная</a><a href="/servis/proektirovanie-basseynov.html">Проектирование</a><a href="/spravochnik/index.html">Справочник</a><a href="/kalkulyatori/raschet-truboprovodov-basseyna.html">Калькулятор гидравлики</a></nav></div></header><main><nav aria-label="Хлебные крошки"><a href="/">Главная</a> / <a href="/spravochnik/index.html">Справочник</a> / Как понять напор насоса</nav><h1>Как понять напор насоса</h1><p class="lead">Что означает напор насоса и как связать его с расходом и сопротивлением системы.</p><section class="panel"><h2>Напор — энергия на единицу веса воды</h2><svg viewBox="0 0 500 140" role="img" aria-label="Насос подаёт воду через фильтр и трубопровод"><circle cx="100" cy="70" r="30" fill="#dceef2" stroke="#447f94" stroke-width="5"/><path d="M130 70H450 M435 55l15 15-15 15" fill="none" stroke="#087a9b" stroke-width="5"/><rect x="255" y="45" width="55" height="50" fill="#dfa05a"/></svg><p class="diagram-labels"><span>Насос</span><span>Фильтр</span><span>→ вода</span></p><p>Напор H выражают в метрах водяного столба. Он описывает прирост полной удельной энергии воды через насос, а не только высоту подъёма.</p></section><section><h2>Рабочая точка</h2><p>Расход и напор находят на пересечении характеристики насоса и характеристики системы. Учитывают потери труб и фитингов, оборудования и необходимую статическую составляющую конкретной схемы.</p><p>В открытой схеме разность уровней может создавать статический напор. В полностью заполненном замкнутом контуре высоты сами по себе не складывают как подъём. Для всасывания отдельно проверяют доступный и требуемый NPSH.</p><p>Пример: если расчётная система требует H = 8 м при Q = 10 м³/ч, паспортная кривая должна обеспечивать рабочую точку вблизи этих значений. Максимальный напор при нулевом расходе не подтверждает эту точку.</p><p>Источник: ASHRAE Handbook — HVAC Systems and Equipment, Centrifugal Pumps, 2020. <a href="/kalkulyatori/raschet-truboprovodov-basseyna.html">Калькулятор гидравлики</a> · <a href="/kalkulyatori/podbor-filtra-i-nasosa.html">Подбор фильтра и насоса</a></p></section><footer><nav aria-label="Разделы справочника"><a href="/spravochnik/index.html">Инженерный справочник ALPOOL</a> · <a href="/spravochnik/truby-pvc-u.html">Трубы PVC-U</a> · <a href="/spravochnik/skorost-vody.html">Скорость воды</a> · <a href="/spravochnik/gidravlicheskie-poteri.html">Гидравлические потери</a></nav><p><a href="/kalkulyatori/raschet-truboprovodov-basseyna.html">Калькулятор гидравлики</a> · <a href="/articles/filtratsiya-vody-v-basseyne.html">Фильтрация воды в бассейне</a></p></footer></main>
+<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Как понять напор насоса — ALPOOL</title><meta name="description" content="Что означает напор насоса и как связать его с расходом и сопротивлением системы."><link rel="canonical" href="https://alpool.ru/spravochnik/napor-nasosa.html"><link rel="stylesheet" href="/spravochnik/reference.css"><style>
+  .pump-head-article .diagram-frame { margin: 1.5rem 0; }
+  .pump-head-diagram { display: block; width: 100%; max-width: 100%; }
+  .pump-head-diagram img { display: block; width: 100%; height: auto; }
+  .pump-head-article .data-note { border-left: 4px solid #c37523; padding: .75rem 1rem; background: #fff8ef; }
+  .pump-head-article .selection-steps { padding-left: 1.5rem; }
+  .pump-head-article .formula { overflow-wrap: anywhere; font-size: 1.1rem; font-weight: 700; }
+  .pump-curve-figure { max-width: 100%; }
+  .prime11-chart { display:block; width:100%; max-width:100%; height:auto; }
+  .pump-head-table-wrap { width:100%; max-width:100%; overflow-x:auto; }
+  .pump-head-table-wrap table { width:100%; table-layout:fixed; }
+  .pump-head-table-wrap th, .pump-head-table-wrap td { white-space:normal; overflow-wrap:anywhere; }
+  @media (max-width: 600px) {
+    .pump-head-article .diagram-frame { margin-inline: 0; }
+    .pump-head-diagram, .pump-head-diagram img, .prime11-chart { max-width:100%; }
+    .prime11-chart .chart-title { font-size:34px; }
+    .prime11-chart .chart-ticks { font-size:28px; }
+    .prime11-chart .chart-axis-label { font-size:30px; }
+    .prime11-chart .chart-point-labels { font-size:26px; }
+    .prime11-chart .chart-note { font-size:20px; }
+    .pump-head-table-wrap table { font-size:.82rem; }
+    .pump-head-table-wrap th, .pump-head-table-wrap td { padding:.4rem .3rem; }
+  }
+</style>
+</head><body>
+<header><div><a class="brand" href="/">АЛ Пулс</a><nav class="top-nav" aria-label="Основная навигация"><a href="/">Главная</a><a href="/servis/proektirovanie-basseynov.html">Проектирование</a><a href="/spravochnik/index.html">Справочник</a><a href="/kalkulyatori/raschet-truboprovodov-basseyna.html">Калькулятор гидравлики</a></nav></div></header>
+<main class="pump-head-article">
+  <nav aria-label="Хлебные крошки"><a href="/">Главная</a> / <a href="/spravochnik/index.html">Справочник</a> / Как понять напор насоса</nav>
+  <h1>Как понять напор насоса</h1>
+  <p class="lead">Напор насоса связан с расходом и сопротивлением системы. Для подбора важно найти рабочую точку, а не ориентироваться только на максимальные значения в каталоге.</p>
+
+  <section class="panel">
+    <h2>Что такое напор насоса</h2>
+    <p>Напор — это удельная энергия, которую насос передаёт жидкости. Для воды его обычно выражают в метрах водяного столба. Давление показывает силу, действующую на площадь, и измеряется, например, в паскалях или барах; напор выражает энергию потока на единицу веса. Для воды 1 м водяного столба соответствует примерно 9,8 кПа; точное соотношение зависит от плотности жидкости.</p>
+    <p>В циркуляционной системе бассейна насос создаёт перепад энергии, необходимый для движения воды и преодоления сопротивления прямых труб, поворотов, тройников, кранов, обратных клапанов, фильтра с загрузкой, теплообменника, УФ-установки и другого оборудования. Статический перепад напоров учитывают, если он действительно присутствует в выбранной гидравлической схеме.</p>
+    <p>Паспортный напор 10 м не означает, что насос предназначен только для физического подъёма воды на высоту 10 м. В замкнутом циркуляционном контуре вода возвращается в ту же чашу, поэтому геодезические составляющие восходящего и нисходящего участков обычно компенсируются. Высоты участков труб нельзя механически складывать. Разность уровней свободных поверхностей учитывают отдельно, когда схема включает разные резервуары или уровни воды.</p>
+  </section>
+
+  <section>
+    <h2>Почему при увеличении потерь напора уменьшается производительность</h2>
+    <p>У обычного центробежного насоса при постоянной частоте вращения напор обычно снижается по мере роста расхода. Система, наоборот, требует большего напора при увеличении расхода из-за возрастания гидравлического сопротивления. Фактический режим устанавливается там, где эти характеристики уравновешиваются.</p>
+    <p>Если фильтрующая загрузка загрязняется, сопротивление фильтра растёт. Насос с постоянной скоростью вращения переходит в другую рабочую точку, и расход через фильтр, как правило, уменьшается. Аналогично влияют узкие или длинные трубопроводы, арматура и дополнительные элементы водоподготовки.</p>
+    <p>Поэтому нельзя выбирать насос только по максимальной производительности из каталога: это значение относится к определённым условиям и не гарантирует требуемый расход при сопротивлении конкретной системы.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Что такое рабочая точка насоса</h2>
+    <p>Насосная характеристика показывает, какой напор насос может создать при разных расходах. Характеристика системы показывает, какой напор требуется системе при тех же расходах. Их пересечение задаёт фактический рабочий режим:</p>
+    <p class="formula" aria-label="Напор насоса как функция расхода равен напору системы при рабочем расходе">H<sub>насоса</sub>(Q) = H<sub>системы</sub>(Q)</p>
+    <p>Подготовленная ниже схема показывает принцип работы циркуляционного контура и условное пересечение характеристик. Её кривые иллюстративные: это не паспортный график и по их координатам нельзя подбирать модель насоса.</p>
+    <figure class="diagram-frame">
+      <picture class="pump-head-diagram">
+        <source media="(max-width: 600px)" srcset="/assets/images/napor-nasosa-mobile.svg" type="image/svg+xml" width="720" height="1120">
+        <img src="/assets/images/napor-nasosa-desktop.svg" alt="Схема циркуляции воды через бассейн, насос и фильтр; условное пересечение характеристики насоса и сопротивления системы обозначает рабочую точку" loading="lazy" decoding="async" width="1280" height="930">
+      </picture>
+      <figcaption>Схема объясняет принцип и не является характеристикой конкретного насоса.</figcaption>
+    </figure>
+    <p>Характеристика системы зависит от всей конфигурации труб, арматуры, фильтра и оборудования. Её изменяют при переключении ветвей, промывке фильтра, изменении загрязнения загрузки и расхода. Статическую составляющую включают в расчёт только для соответствующих начальной и конечной точек системы.</p>
+  </section>
+
+  <section>
+    <h2>Как читать характеристику насоса на примере BADU Prime 11</h2>
+    <p>На паспортном графике по горизонтали отложен расход Q, м³/ч, а по вертикали — напор H, м вод. ст. При увеличении расхода характеристика центробежного насоса снижается. У BADU Prime 11 максимальный напор в таблице паспорта составляет 13,6 м; это значение при закрытом расходе не заменяет рабочую точку.</p>
+    <figure class="diagram-frame pump-curve-figure">
+      <svg class="prime11-chart" viewBox="0 0 720 480" role="img" aria-labelledby="prime11-title prime11-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="prime11-title">Ориентировочная паспортная характеристика BADU Prime 11</title>
+        <desc id="prime11-desc">Убывающая зависимость напора от расхода, ориентировочно считанная с графика производителя. Четыре отмеченные точки связаны с таблицей ниже.</desc>
+        <rect x="0" y="0" width="720" height="480" rx="18" fill="#f5f9fb"/>
+        <text class="chart-title" x="90" y="28" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#173e53">BADU Prime 11 · паспортная кривая</text>
+        <g stroke="#d6e2e8" stroke-width="1">
+          <path d="M90 60H660 M90 90H660 M90 120H660 M90 150H660 M90 180H660 M90 210H660 M90 240H660 M90 270H660 M90 300H660 M90 330H660 M90 360H660"/>
+          <path d="M90 60V360 M153 60V360 M217 60V360 M280 60V360 M343 60V360 M407 60V360 M470 60V360 M533 60V360 M597 60V360 M660 60V360"/>
+        </g>
+        <g stroke="#234d62" stroke-width="2" fill="none"><path d="M90 60V360H660"/></g>
+        <g class="chart-ticks" fill="#234d62" font-family="Arial,sans-serif" font-size="15" text-anchor="end">
+          <text x="80" y="365">0</text><text x="80" y="305">4</text><text x="80" y="245">8</text><text x="80" y="185">12</text><text x="80" y="125">16</text>
+        </g>
+        <g class="chart-ticks" fill="#234d62" font-family="Arial,sans-serif" font-size="15" text-anchor="middle">
+          <text x="90" y="383">0</text><text x="217" y="383">4</text><text x="343" y="383">8</text><text x="470" y="383">12</text><text x="597" y="383">16</text>
+          <text class="chart-axis-label" x="375" y="420" font-size="18" font-weight="700">Расход, м³/ч</text>
+        </g>
+        <text class="chart-axis-label" x="25" y="210" transform="rotate(-90 25 210)" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#234d62">Напор, м вод. ст.</text>
+        <path d="M90 156 C145 161 190 177 232 180 S323 224 409 240 S500 292 554 300 S590 326 610 336" fill="none" stroke="#087daa" stroke-width="6" stroke-linecap="round"/>
+        <g fill="#fff" stroke="#824519" stroke-width="4" font-family="Arial,sans-serif" font-weight="700" font-size="15" text-anchor="middle">
+          <circle cx="232" cy="180" r="11"/><circle cx="409" cy="240" r="11"/><circle cx="554" cy="300" r="11"/><circle cx="597" cy="330" r="11"/>
+        </g>
+        <g class="chart-point-labels" fill="#173e53" font-family="Arial,sans-serif" font-size="13" font-weight="700">
+          <text x="246" y="170">1</text><text x="423" y="230">2</text><text x="568" y="290">3</text><text x="611" y="320">4</text>
+        </g>
+        <text class="chart-note" x="90" y="455" font-family="Arial,sans-serif" font-size="14" fill="#526d7b">Ориентировочная оцифровка кривой производителя;</text><text class="chart-note" x="90" y="474" font-family="Arial,sans-serif" font-size="14" fill="#526d7b">точки не являются паспортной таблицей.</text>
+      </svg>
+      <figcaption>Кривая считывается ориентировочно с графика SPECK. По мере роста сопротивления системы рабочая точка смещается к меньшему расходу.</figcaption>
+    </figure>
+    <div class="pump-head-table-wrap" role="region" aria-label="Ориентировочные точки характеристики BADU Prime 11" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Напор, м вод. ст.</th><th scope="col">Производительность, м³/ч</th></tr></thead>
+        <tbody>
+          <tr><td>≈ 12</td><td>≈ 4,5</td></tr>
+          <tr><td>≈ 8</td><td>≈ 10,1</td></tr>
+          <tr><td>≈ 4</td><td>≈ 14,7</td></tr>
+          <tr><td>≈ 2</td><td>≈ 16,0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="hint">Значения приведены ориентировочно по графику насосной характеристики BADU Prime 11. Источник для проверки: технический паспорт SPECK BADU Prime, документ 766.2100.080, редакция 04/2025; график Prime 7–20, страница 5. Характеристика на графике не заменяет проверку актуального паспорта выбранного исполнения и фактических условий системы.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Как подобрать насос для бассейна</h2>
+    <ol class="selection-steps">
+      <li>Определить объём бассейна и расчётное время водообмена.</li>
+      <li>Рассчитать требуемый расход циркуляционной системы.</li>
+      <li>Предварительно выбрать диаметры труб и проверить скорость воды.</li>
+      <li>Определить потери напора в трубах, арматуре, фильтре и дополнительном оборудовании.</li>
+      <li>Учесть статический перепад, если он есть в рассматриваемой схеме.</li>
+      <li>Наложить характеристику системы на паспортный график конкретной модели и найти рабочую точку.</li>
+      <li>Проверить, что насос обеспечивает необходимый расход при расчётном напоре, а также проверить условия всасывания и запас NPSH.</li>
+    </ol>
+    <p><strong>Насос выбирают по необходимому расходу при рабочем напоре, а не по максимальным паспортным м³/ч.</strong></p>
+  </section>
+
+  <section>
+    <h2>Материалы для расчёта</h2>
+    <p><a href="/spravochnik/vodoobmen-basseyna.html">Определить необходимый расход циркуляции</a> · <a href="/spravochnik/gidravlicheskie-poteri.html">Рассчитать гидравлические потери</a> · <a href="/spravochnik/skorost-vody.html">Проверить скорость воды в трубах</a> · <a href="/spravochnik/truby-pvc-u.html">Подобрать диаметр трубы PVC-U</a></p>
+  </section>
+</main>
+
 <!-- BEGIN ALPOOL SHARED INQUIRY -->
 <footer id="footer">
 				<section id="contact" class="contact-form-section" aria-labelledby="contact-title">
