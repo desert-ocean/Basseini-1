@@ -1,4 +1,172 @@
-<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Что такое щёлочность воды — ALPOOL</title><meta name="description" content="Как общая щёлочность связана с устойчивостью pH в бассейне."><link rel="canonical" href="https://alpool.ru/spravochnik/shchelochnost-vody.html"><link rel="stylesheet" href="/spravochnik/reference.css"></head><body><header><div><a class="brand" href="/">АЛ Пулс</a><nav class="top-nav" aria-label="Основная навигация"><a href="/">Главная</a><a href="/servis/proektirovanie-basseynov.html">Проектирование</a><a href="/spravochnik/index.html">Справочник</a><a href="/kalkulyatori/raschet-truboprovodov-basseyna.html">Калькулятор гидравлики</a></nav></div></header><main><nav aria-label="Хлебные крошки"><a href="/">Главная</a> / <a href="/spravochnik/index.html">Справочник</a> / Что такое щёлочность воды</nav><h1>Что такое щёлочность воды</h1><p class="lead">Как общая щёлочность связана с устойчивостью pH в бассейне.</p><section class="panel"><h2>Буфер для pH</h2><svg viewBox="0 0 500 150" role="img" aria-label="Буферная способность воды влияет на изменение pH"><rect x="65" y="45" width="370" height="60" rx="12" fill="#dceef2" stroke="#447f94" stroke-width="3"/><path d="M35 75h75m-12-12 12 12-12 12 M390 75h75m-12-12 12 12-12 12" fill="none" stroke="#087a9b" stroke-width="4"/><circle cx="250" cy="75" r="22" fill="#dfa05a"/></svg><p class="diagram-labels"><span>Изменение состава воды →</span><span>Буферная способность</span><span>→ изменение pH</span></p><p>Общая щёлочность характеризует способность воды нейтрализовать кислоту; в бассейне она связана с буферной устойчивостью pH.</p></section><section><h2>Что означает результат</h2><p>Щёлочность и pH — разные показатели. Один только pH не показывает буферную способность, а одна щёлочность не определяет безопасность воды. Показатель обычно выражают в мг/л в пересчёте на CaCO₃; это не измерение содержания кальция.</p><p>Используйте метод тест-набора и учитывайте состав подпиточной воды, обработку и материалы. Цели и порядок корректировки выбирают для конкретной системы и применимых требований. Не смешивайте реагенты и не рассчитывайте дозу только по объёму бассейна.</p><p>Источник: USGS, Alkalinity and Water, раздел определения щёлочности, 2026; CDC, Model Aquatic Health Code Annex, 5-е изд., 2024. <a href="/articles/balans-ph-vody-v-basseyne.html">Баланс pH</a> · <a href="/spravochnik/svobodnyy-i-svyazannyy-hlor.html">Показатели хлора</a></p></section><footer><nav aria-label="Разделы справочника"><a href="/spravochnik/index.html">Инженерный справочник ALPOOL</a> · <a href="/spravochnik/truby-pvc-u.html">Трубы PVC-U</a> · <a href="/spravochnik/skorost-vody.html">Скорость воды</a> · <a href="/spravochnik/gidravlicheskie-poteri.html">Гидравлические потери</a></nav><p><a href="/kalkulyatori/raschet-truboprovodov-basseyna.html">Калькулятор гидравлики</a> · <a href="/articles/filtratsiya-vody-v-basseyne.html">Фильтрация воды в бассейне</a></p></footer></main>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Щёлочность воды в бассейне: влияние на pH и коррекция — ALPOOL</title>
+<meta name="description" content="Что показывает общая щёлочность воды в бассейне, как она связана с pH, как измерить и скорректировать показатель. Примеры расчётов и калькулятор реагентов и водозамены.">
+<link rel="canonical" href="https://alpool.ru/spravochnik/shchelochnost-vody.html">
+<link rel="stylesheet" href="/spravochnik/reference.css">
+<style>
+.alkalinity-article{min-width:0}
+.alkalinity-article .article-figure{margin:1.2rem auto;max-width:900px;text-align:center}
+.alkalinity-article .article-figure img{display:block;width:100%;height:auto}
+.alkalinity-article .article-figure figcaption{font-size:.9rem;color:#516d79;margin-top:.55rem}
+.alkalinity-article .toc{background:#f6f9f9;border:1px solid #d4e2e8;border-radius:12px;padding:1rem 1.25rem}
+.alkalinity-article .toc ol{columns:2;column-gap:2rem;margin-bottom:0}
+.alkalinity-article .toc li{break-inside:avoid;margin:.25rem 0}
+.alkalinity-article .article-callout{padding:.9rem 1.1rem;border-left:4px solid #147b9b;background:#edf5f7;margin:1rem 0}
+.alkalinity-article .article-warning{border-left-color:#bd762a;background:#fff8ed}
+.alkalinity-article .table-wrap{max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain}
+.alkalinity-article .table-scroll-hint{font-size:.85rem;color:#516d79;margin:.35rem 0}
+.alkalinity-article table{min-width:620px}
+.alkalinity-article .norm-table{min-width:700px;table-layout:fixed}
+.alkalinity-article .norm-table th,.alkalinity-article .norm-table td{white-space:normal;overflow-wrap:anywhere}
+.alkalinity-article .norm-table th:first-child{width:28%}
+.alkalinity-article .norm-table th:nth-child(2){width:34%}
+.alkalinity-article .norm-table th:nth-child(3){width:38%}
+.alkalinity-article .reagent-table{min-width:760px;table-layout:fixed}
+.alkalinity-article .reagent-table th,.alkalinity-article .reagent-table td{white-space:normal;overflow-wrap:anywhere;vertical-align:top}
+.alkalinity-article .example-table{min-width:0}
+.alkalinity-article .example-table th,.alkalinity-article .example-table td{white-space:normal}
+#alkalinity-calculator{--alk-accent:#147b9b;background:#f6f9f9;border:1px solid #d4e2e8;border-radius:14px;padding:1rem;margin:1.5rem 0}
+#alkalinity-calculator .alk-mode-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:1rem 0}
+#alkalinity-calculator .alk-mode-tabs button{width:100%;height:100%;font:700 .93rem/1.35 system-ui,sans-serif;padding:.65rem .5rem;border-color:#9bb6c1}
+#alkalinity-calculator .alk-mode-tabs button[aria-pressed="true"]{background:#147b9b;color:#fff;border-color:#147b9b}
+#alkalinity-calculator .alk-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#alkalinity-calculator .alk-form label{min-width:0;font:600 .9rem/1.45 system-ui,sans-serif}
+#alkalinity-calculator input,#alkalinity-calculator select{width:100%;max-width:100%;min-width:0;box-sizing:border-box;margin-top:.3rem}
+#alkalinity-calculator [data-result]{padding:.85rem 1rem;margin:.9rem 0 0;background:#eaf4f7;border-left:4px solid var(--alk-accent);font-weight:700}
+#alkalinity-calculator [data-result].is-error{border-color:#bd762a;background:#fff8ed;color:#6a4219}
+#alkalinity-calculator .alk-caution{font-size:.91rem;color:#48545d}
+#alkalinity-calculator [data-liquid-parameter][hidden]{display:none}
+#alkalinity-calculator .alk-cost-table{min-width:0;table-layout:fixed;margin-top:.75rem}
+#alkalinity-calculator .alk-cost-table th{width:68%;white-space:normal}
+#alkalinity-calculator .alk-cost-table td{width:32%;white-space:normal;text-align:right;font-variant-numeric:tabular-nums}
+@media(max-width:700px){.alkalinity-article .toc ol{columns:1}#alkalinity-calculator .alk-mode-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}#alkalinity-calculator .alk-form{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:701px){.alkalinity-article .table-scroll-hint{display:none}}
+@media(max-width:420px){main{padding-left:16px;padding-right:16px}.alkalinity-article>footer{margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px}#alkalinity-calculator{padding:.8rem}#alkalinity-calculator .alk-form{grid-template-columns:1fr}#alkalinity-calculator .alk-mode-tabs{gap:.35rem}#alkalinity-calculator .alk-mode-tabs button{font-size:.82rem}}
+</style>
+</head>
+<body>
+<header><div><a class="brand" href="/">АЛ Пулс</a><nav class="top-nav" aria-label="Основная навигация"><a href="/">Главная</a><a href="/servis/proektirovanie-basseynov.html">Проектирование</a><a href="/spravochnik/index.html">Справочник</a><a href="/kalkulyatori/raschet-truboprovodov-basseyna.html">Калькулятор гидравлики</a></nav></div></header>
+<main class="alkalinity-article">
+<nav aria-label="Хлебные крошки"><a href="/">Главная</a> / <a href="/spravochnik/index.html">Справочник</a> / Щёлочность воды</nav>
+<h1>Щёлочность воды в бассейне: нормы, влияние на pH и способы коррекции</h1>
+<p class="lead">Общая щёлочность показывает, насколько вода сопротивляется добавлению кислоты. Показатель помогает объяснить, почему pH в одном бассейне меняется резко, а в другом реагирует медленнее, и почему одной настройки pH иногда недостаточно.</p>
+<figure class="article-figure">
+<img src="/assets/images/shchelochnos.jpg" alt="Известковые отложения на плиточной облицовке бассейна; на их образование влияют совместно pH, кальциевая жёсткость, температура и состав воды." width="954" height="477" fetchpriority="high">
+<figcaption>Отложения на облицовке — повод проверить весь водный баланс. По одному виду налёта нельзя определить общую щёлочность.</figcaption>
+</figure>
+<p>Чтобы корректировать воду осмысленно, измеряйте общую щёлочность отдельно от pH и жёсткости, проверяйте подпиточную воду и учитывайте применяемые реагенты. Ниже разобраны химический смысл показателя, осторожная интерпретация российских требований, расчёты дозы и водозамены, а также калькулятор четырёх типовых задач.</p>
+<nav class="toc" aria-label="Содержание статьи"><strong>Содержание</strong><ol>
+<li><a href="#meaning">Что такое общая щёлочность</a></li><li><a href="#norms">Российские нормы и рекомендации</a></li><li><a href="#influence">На что влияет показатель</a></li><li><a href="#high">Повышенная щёлочность</a></li><li><a href="#lower">Как понизить щёлочность</a></li><li><a href="#raise">Как повысить щёлочность</a></li><li><a href="#chemistry">Как выбрать реагент</a></li><li><a href="#measure">Измерение и контроль</a></li><li><a href="#calculator">Калькулятор щёлочности</a></li><li><a href="#examples">Расчётные примеры</a></li><li><a href="#mistakes">Частые ошибки</a></li><li><a href="#routine">Практический алгоритм</a></li>
+</ol></nav>
+<section id="meaning">
+<h2>Что такое общая щёлочность воды</h2>
+<p>Общая щёлочность (Total Alkalinity, TA) — измеряемая способность воды нейтрализовать добавляемую кислоту до заданной конечной точки анализа. В бассейне она главным образом связана с гидрокарбонатами и карбонатами, но в зависимости от состава воды в результат титрования могут вносить вклад и другие буферные компоненты, например фосфаты, бораты и цианураты.</p>
+<p>Результат обычно выражают в <strong>мг/л в пересчёте на CaCO₃</strong>. Это эквивалентная единица: показатель не говорит, сколько твёрдого карбоната кальция растворено в воде.</p>
+<h3>Щёлочность — не pH и не жёсткость</h3>
+<p>pH описывает активность ионов водорода и показывает текущее кислотно-щелочное состояние. Общая щёлочность показывает резерв нейтрализации кислоты. Общая и кальциевая жёсткость связаны с содержанием многовалентных катионов, прежде всего кальция и магния. Поэтому вода может иметь нормальный pH и при этом слишком низкую или высокую щёлочность.</p>
+<p>В карбонатной системе протекают взаимосвязанные равновесия, которые часто записывают сокращённо:</p>
+<p class="article-callout"><strong>CO₂ + H₂O ⇌ H₂CO₃ ⇌ HCO₃⁻ + H⁺ ⇌ CO₃²⁻ + 2H⁺</strong></p>
+<p>Это схема нескольких равновесий, а не одна элементарная реакция. Когда в воду поступает кислота, часть гидрокарбонатов принимает протоны и превращается в растворённый CO₂/угольную кислоту. Поэтому общая щёлочность уменьшается. При аэрации CO₂ может уходить в воздух: pH при этом обычно растёт, но аэрация почти не возвращает нейтрализованный кислотой запас щёлочности.</p>
+<figure class="article-figure"><picture><source media="(max-width: 600px)" srcset="/assets/images/shchelochnost-vody-mobile.svg" type="image/svg+xml"><img src="/assets/images/shchelochnost-vody-desktop.svg" alt="Схема буферной ёмкости общей щёлочности: низкая щёлочность допускает более резкое изменение pH, подходящая сглаживает колебания, высокая может затруднять снижение pH. Графики схематичные." width="1280" height="715" loading="lazy" decoding="async"></picture><figcaption>Общая щёлочность помогает буферировать pH, но не удерживает его на одном значении. Схема не задаёт нормативный диапазон.</figcaption></figure>
+</section>
+<section id="norms">
+<h2>Российские нормы и рабочие ориентиры</h2>
+<div class="article-callout article-warning"><strong>Для общей щёлочности нельзя переносить в статью универсальный обязательный диапазон 80–120 мг/л.</strong> В проверенных действующих санитарных таблицах для общественных бассейнов не найден единый числовой предел TA, применимый ко всем бассейнам. Это не отменяет измерений и проектной настройки водного баланса.</div>
+<p class="table-scroll-hint">На телефоне таблицу можно прокручивать по горизонтали.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Область применения нормативных документов"><table class="norm-table"><thead><tr><th>Документ</th><th>Что подтверждено</th><th>Как применять к щёлочности</th></tr></thead><tbody>
+<tr><td>СП 2.1.4284-26, действует с 01.09.2026</td><td>Санитарные правила для эксплуатации объектов и услуг; включают требования к общественным бассейнам.</td><td>Соблюдать применимые требования к качеству воды и программе производственного контроля. Не трактовать рекомендуемый диапазон TA как обязательную санитарную норму.</td></tr>
+<tr><td>ГОСТ Р 70688-2023</td><td>Общие требования к системам водоподготовки; Росстандарт указывает область применения для организаций и ИП, а также применение при добровольной сертификации.</td><td>Стандарт заменил положения раздела 5 ГОСТ Р 53491.1-2009. Проверять требования конкретного проекта и применимость процедуры подтверждения соответствия.</td></tr>
+<tr><td>ГОСТ Р 53491.1-2009</td><td>Действующий стандарт для общественных бассейнов с пресной водой; домашние бассейны исключены из области применения.</td><td>Раздел 5 заменён ГОСТ Р 70688-2023. В тексте стандарта указаны контроль TA и периодичность; в разных местах встречаются разные интервалы, поэтому их нельзя выдавать за единый график без проверки программы и актуальной редакции.</td></tr>
+<tr><td>ГОСТ Р 53491.2-2012</td><td>Действующий стандарт безопасности для общественных бассейнов; домашние бассейны не являются его областью.</td><td>Положения раздела 8 заменены ГОСТ Р 70688-2023. Не использовать старое положение как самостоятельное универсальное правило для частного бассейна.</td></tr>
+<tr><td>ГОСТ Р 58458-2026</td><td>Принят Росстандартом, дата введения в действие — 01.01.2027.</td><td>На дату этой редакции ещё не действует; после вступления в силу необходимо проверить его текст и применимость.</td></tr>
+</tbody></table></div>
+<p>В эксплуатационных руководствах встречается ориентир <strong>80–120 мг/л CaCO₃</strong>, но это не универсальный российский норматив. Рекомендуемая цель может отличаться в зависимости от дезинфектанта, подпиточной воды, облицовки, температуры, жёсткости и модели водного баланса. Для частного бассейна это лишь отправная точка: корректируйте её по измерениям и требованиям оборудования. Для общественного объекта ориентируйтесь на действующие санитарные правила, проект и утверждённую программу производственного контроля.</p>
+</section>
+<section id="influence"><h2>На что влияет общая щёлочность</h2>
+<ul><li><strong>Стабильность pH.</strong> При низком буферном запасе небольшое поступление кислоты или щёлочного реагента может вызвать заметный сдвиг pH. Высокая TA увеличивает количество кислоты, необходимое для изменения равновесия.</li>
+<li><strong>Расход реагентов.</strong> При высокой TA pH может снижаться медленно или снова расти после удаления CO₂ аэрацией. Избыточное дозирование без измерений создаёт риск резкого падения pH и перерасхода реагента.</li>
+<li><strong>Обеззараживание.</strong> Для хлорсодержащих систем pH влияет на соотношение активных форм свободного хлора. TA воздействует косвенно — через устойчивость pH; сама TA не показывает концентрацию дезинфектанта.</li>
+<li><strong>Отложения и коррозионные риски.</strong> Карбонатные отложения зависят от сочетания pH, кальциевой жёсткости, температуры, растворённых солей и газообмена. Ни высокая, ни низкая TA сами по себе не доказывают причину налёта или коррозии.</li>
+<li><strong>Оборудование и автоматика.</strong> Колебания pH меняют режим дозирования. Высокая буферность может увеличить расход кислоты, а слишком низкая — сделать регулирование чувствительным. Сопоставляйте датчики с контрольным анализом.</li></ul>
+<p>Оценивайте TA вместе с pH, кальциевой жёсткостью и температурой. Отдельно разобраны <a href="/articles/balans-ph-vody-v-basseyne.html">баланс pH</a> и <a href="/spravochnik/svobodnyy-i-svyazannyy-hlor.html">свободный и связанный хлор</a>.</p></section>
+<section id="high"><h2>Повышенная щёлочность: причины и признаки</h2>
+<p>Проверьте подпиточную воду: если в ней много гидрокарбонатов, TA бассейна будет возвращаться вверх после водозамен и обычных корректировок. Показатель меняется и при внесении карбонатных/гидрокарбонатных препаратов, а также при накоплении растворённых веществ и небольшом водообмене.</p>
+<p>Высокая TA может проявляться сочетанием признаков: pH трудно снижать, кислоты расходуется больше ожидаемого, а после аэрации или работы водопадов pH снова поднимается. Это не диагноз: похожее поведение вызывают ошибки pH-электрода, неправильно приготовленные растворы и другие процессы.</p>
+<p>Повторите анализ независимым тестом; запишите pH и TA до внесения реагента и после перемешивания. Сверьте журнал дозирования, состав подпитки и режимы аэрации. Налёт оценивайте по совокупности показателей насыщения, а не по TA отдельно.</p></section>
+<section id="lower"><h2>Как понизить общую щёлочность</h2>
+<h3>Частичная замена воды</h3>
+<p>Водозамена работает, если свежая вода имеет более низкую TA. Измерьте оба образца: если подпиточная вода имеет такую же или более высокую щёлочность, простая замена не поможет. При идеальном смешении расчётная доля замены:</p>
+<p class="article-callout"><strong>Доля замены = (TAтек − TAцель) / (TAтек − TAподпитки)</strong></p>
+<p>Реальная система не всегда идеально смешивает и сразу выводит заданную долю. Учитывайте допустимый режим слива, балансный объём, канализацию, повторный нагрев и последующую настройку химии. Сравните полную стоимость водозамены с реагентной коррекцией.</p>
+<h3>Кислотные реагенты</h3>
+<p>Соляная кислота HCl, серная кислота H₂SO₄ и гидросульфат натрия NaHSO₄ снижают щёлочность, когда кислота нейтрализует гидрокарбонатный буфер. Стехиометрия даёт теоретическую потребность, но не учитывает полностью буферные компоненты, концентрацию продукта, перемешивание, pH, температуру и требования оборудования.</p>
+<ul><li><strong>HCl.</strong> Не вносит сульфат, но увеличивает содержание хлоридов. Учитывайте их накопление и совместимость материалов теплообменников, насосов и арматуры.</li>
+<li><strong>H₂SO₄.</strong> Жидкий реагент; повышает концентрацию сульфатов. Плотность и массовая доля берутся с паспорта продукта.</li>
+<li><strong>NaHSO₄.</strong> Сухой реагент, удобный для дозирования по массе, но также вносит сульфаты.</li></ul>
+<p>Кислоту выбирают по документам на конкретный продукт и оборудованию. Не используйте бытовые или технические кислоты неизвестного состава.</p>
+<h3>Кислотная коррекция и аэрация</h3>
+<p>При контролируемом процессе кислотой снижают pH и TA, затем аэрацией удаляют часть растворённого CO₂. pH может подняться без существенного восстановления нейтрализованной TA. Это не основание опускать pH до произвольного низкого значения: между этапами нужны измерения и подходящая схема циркуляции.</p>
+<h3>Подготовка подпиточной воды</h3>
+<p>Если исходная вода стабильно имеет высокую щёлочность, оцените обратный осмос, декарбонизацию или смешение с водой подтверждённого состава. Решение оправдано при постоянной потребности в коррекции или высокой стоимости слива и нагрева. Проект учитывает производительность, состав стока и изменение прочих показателей после обработки.</p></section>
+<section id="raise"><h2>Как повысить щёлочность</h2>
+<p>Для повышения TA обычно применяют гидрокарбонат натрия NaHCO₃. Он увеличивает буферность преимущественно за счёт гидрокарбонатов и обычно действует на pH мягче, чем карбонат натрия. Вносите поэтапно и повторно измеряйте результат после перемешивания.</p>
+<p>Карбонат натрия Na₂CO₃ заметнее повышает pH и одновременно увеличивает TA. Его рассматривают, когда нужно корректировать оба показателя, но при уже высоком pH он может ухудшить ситуацию. Гидроксид натрия NaOH — сильное основание; не подменяйте им соду без технологического расчёта и процедуры безопасного дозирования.</p>
+<p>Расчёт зависит от объёма, требуемого изменения TA и чистоты продукта. Теоретическое количество не отменяет инструкцию производителя и контрольный анализ.</p></section>
+<section id="chemistry"><h2>Какую химию выбрать</h2>
+<p class="table-scroll-hint">На телефоне таблицу можно прокручивать по горизонтали.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Сравнение реагентов для коррекции общей щёлочности"><table class="reagent-table"><thead><tr><th>Реагент</th><th>Назначение</th><th>Преимущества</th><th>Ограничения</th></tr></thead><tbody>
+<tr><td>HCl</td><td>Снижение TA</td><td>Нет накопления сульфата от самого реагента</td><td>Хлориды; едкие пары и ожог; совместимость материалов</td></tr>
+<tr><td>H₂SO₄</td><td>Снижение TA</td><td>Дозируемая жидкая форма</td><td>Накопление сульфатов; параметры только по паспорту продукта</td></tr>
+<tr><td>NaHSO₄</td><td>Снижение TA</td><td>Сухую форму удобно взвешивать</td><td>Внесение сульфатов; растворение по инструкции</td></tr>
+<tr><td>NaHCO₃</td><td>Повышение TA</td><td>Предсказуемый буферный эффект</td><td>Внесение натрия; коррекция поэтапно</td></tr>
+<tr><td>Na₂CO₃</td><td>Повышение pH и TA</td><td>Может скорректировать оба показателя</td><td>Риск чрезмерного повышения pH</td></tr>
+</tbody></table></div>
+<p>В частном бассейне важны понятная маркировка и проверяемая концентрация. На общественном объекте нужны технологическая карта, паспорт продукта, дозирующее оборудование и процедура безопасности. Для автоматической станции проверьте совместимость реагента с насосом-дозатором, трубками, инжектором и датчиками. Не смешивайте концентраты в одной ёмкости.</p></section>
+<section id="measure"><h2>Как измерять общую щёлочность</h2>
+<p>Распространённый метод — титрование пробы кислотой до заданной конечной точки с индикатором или фотометрическим определением. Капельный тест подходит для оперативного контроля, а фотометрическая или лабораторная методика дают лучшую повторяемость при соблюдении процедуры. Полоски годятся главным образом для ориентировочной оценки: учитывайте диапазон и шаг шкалы конкретного набора.</p>
+<p>Отберите представительную пробу в чистую посуду; соблюдайте объём, дозу реагента, перемешивание и время считывания по инструкции. Если результат неожиданный, повторите анализ свежей пробой и другим набором. TA определяют отдельным тестом: pH-электрод и ORP не заменяют титрование.</p>
+<p><strong>Единицы:</strong> для разбавленной воды 1 ppm ≈ 1 мг/л; 1 мг-экв/л = 50,04 мг/л в пересчёте на CaCO₃. Перевод из немецких градусов и ммоль/л выполняйте только зная, какую именно характеристику и шкалу использует тест.</p>
+<div class="article-callout">Частоту контроля выбирают по типу бассейна, нагрузке и рабочей программе. Для частного бассейна полезно наблюдать в динамике исходную, подпиточную и чашевую воду; общественный объект контролируют по утверждённой программе и применимым санитарным правилам.</div></section>
+<section id="calculator"><h2>Калькулятор щёлочности бассейна</h2>
+<p>Выберите задачу. Вычисления выполняются локально в браузере; введённые значения никуда не отправляются.</p>
+<div id="alkalinity-calculator" aria-label="Инженерный калькулятор общей щёлочности">
+<div class="alk-mode-tabs" role="group" aria-label="Режим расчёта"><button type="button" data-mode-button="raise" aria-pressed="true">Повысить NaHCO₃</button><button type="button" data-mode-button="lower" aria-pressed="false">Снизить реагентом</button><button type="button" data-mode-button="replace" aria-pressed="false">Заменить воду</button><button type="button" data-mode-button="compare" aria-pressed="false">Сравнить затраты</button></div>
+<section data-mode-panel="raise"><h3>Повышение гидрокарбонатом натрия</h3><div class="alk-form">
+<label>Объём бассейна, м³<input name="volume" type="text" inputmode="decimal" value="50"></label><label>Текущая щёлочность, мг/л CaCO₃<input name="current" type="text" inputmode="decimal" value="40"></label><label>Целевая щёлочность, мг/л CaCO₃<input name="target" type="text" inputmode="decimal" value="100"></label><label>Чистота продукта NaHCO₃, %<input name="purity" type="text" inputmode="decimal" value="100"></label></div><p data-result role="status" aria-live="polite">Расчётная оценка появится при корректных данных.</p></section>
+<section data-mode-panel="lower" hidden><h3>Снижение кислотным реагентом</h3><div class="alk-form">
+<label>Объём бассейна, м³<input name="volume" type="text" inputmode="decimal" value="100"></label><label>Текущая щёлочность, мг/л CaCO₃<input name="current" type="text" inputmode="decimal" value="180"></label><label>Целевая щёлочность, мг/л CaCO₃<input name="target" type="text" inputmode="decimal" value="130"></label>
+<label>Реагент<select name="reagent"><option value="HCl">Соляная кислота HCl</option><option value="H2SO4">Серная кислота H₂SO₄</option><option value="NaHSO4">Гидросульфат натрия NaHSO₄</option></select></label><label>Массовая концентрация / чистота, %<input name="strength" type="text" inputmode="decimal" placeholder="По паспорту продукта"></label><label data-liquid-parameter>Плотность жидкого реагента, кг/л<input name="density" type="text" inputmode="decimal" placeholder="По паспорту продукта"></label></div>
+<p class="alk-caution">Для жидкой кислоты показываются масса раствора и ориентировочный объём по введённой плотности. Для сухого NaHSO₄ укажите чистоту/массовую долю.</p><p data-result role="status" aria-live="polite">Введите характеристики конкретного реагента.</p></section>
+<section data-mode-panel="replace" hidden><h3>Частичная замена воды</h3><div class="alk-form">
+<label>Объём бассейна, м³<input name="volume" type="text" inputmode="decimal" value="50"></label><label>Текущая щёлочность, мг/л CaCO₃<input name="current" type="text" inputmode="decimal" value="200"></label><label>Целевая щёлочность, мг/л CaCO₃<input name="target" type="text" inputmode="decimal" value="120"></label><label>Щёлочность подпиточной воды, мг/л CaCO₃<input name="makeup" type="text" inputmode="decimal" value="40"></label></div>
+<p class="alk-caution">Модель предполагает идеальное смешение, неизменный состав подпитки и отсутствие нового образования/удаления буферных компонентов. Расчёт не подтверждает допустимость слива.</p><p data-result role="status" aria-live="polite">Расчётная оценка появится при корректных данных.</p></section>
+<section data-mode-panel="compare" hidden><h3>Сравнение прямых затрат: реагент или водозамена</h3><div class="alk-form">
+<label>Объём бассейна, м³<input name="volume" type="text" inputmode="decimal" value="100"></label><label>Текущая щёлочность, мг/л CaCO₃<input name="current" type="text" inputmode="decimal" value="180"></label><label>Целевая щёлочность, мг/л CaCO₃<input name="target" type="text" inputmode="decimal" value="130"></label><label>Щёлочность подпиточной воды, мг/л CaCO₃<input name="makeup" type="text" inputmode="decimal" value="40"></label>
+<label>Кислотный реагент<select name="reagent"><option value="HCl">Соляная кислота HCl</option><option value="H2SO4">Серная кислота H₂SO₄</option><option value="NaHSO4">Гидросульфат натрия NaHSO₄</option></select></label><label>Массовая концентрация / чистота, %<input name="strength" type="text" inputmode="decimal" placeholder="По паспорту продукта"></label><label data-liquid-parameter>Плотность жидкого реагента, кг/л<input name="density" type="text" inputmode="decimal" placeholder="По паспорту продукта"></label>
+<label>Тариф на воду, руб/м³<input name="water" type="text" inputmode="decimal"></label><label>Тариф на водоотведение, руб/м³<input name="sewer" type="text" inputmode="decimal"></label><label>Стоимость реагента, руб/кг<input name="chemical" type="text" inputmode="decimal"></label><label>Температура подпиточной воды, °C<input name="source-temperature" type="text" inputmode="decimal"></label><label>Температура воды в бассейне, °C<input name="pool-temperature" type="text" inputmode="decimal"></label><label>Стоимость тепловой энергии, руб/кВт·ч<input name="energy" type="text" inputmode="decimal"></label><label>КПД нагрева, %<input name="efficiency" type="text" inputmode="decimal"></label></div>
+<table class="alk-cost-table" aria-label="Раздельные расчётные затраты"><tbody data-cost-table></tbody></table><p data-result role="status" aria-live="polite">Заполните тарифы, температуры и паспортные параметры реагента.</p>
+<p class="alk-caution">Водозамена включает тариф воды и водоотведения. Повторный нагрев считается только для более холодной подпитки. Охлаждение, коррекция остальных показателей, труд и общие расходы не включены.</p></section>
+<p class="article-callout article-warning"><strong>Это предварительная стехиометрическая оценка, не инструкция по внесению.</strong> Рассчитанное количество кислоты не является безопасной разовой дозой. Корректируйте воду по технологической инструкции, поэтапно и с повторным анализом. Кислоты нельзя смешивать с хлорсодержащими препаратами.</p>
+</div></section>
+<section id="examples"><h2>Расчётные примеры</h2><p>Примеры показывают материальный баланс по заданным данным, а не готовую инструкцию по внесению.</p>
+<h3>Пример 1. Повысить TA гидрокарбонатом натрия</h3><p>Бассейн 50 м³, текущая TA — 40 мг/л CaCO₃, цель — 100 мг/л. Разница 60 мг/л. Эквивалент CaCO₃: 60 × 50 / 1000 = 3,00 кг. Теоретическая масса чистого NaHCO₃: 3,00 × 84,01/50,04 = <strong>5,04 кг</strong>. Для товарного продукта учитывают чистоту из паспорта.</p>
+<h3>Пример 2. Частично заменить воду</h3><p>Объём 50 м³, текущая TA — 200 мг/л, подпиточная вода — 40 мг/л, цель — 120 мг/л. Доля: (200 − 120)/(200 − 40) = 0,5. Расчётная замена — <strong>25 м³, или 50%</strong>. Если щёлочность подпитки равна или выше цели, такой цели этой заменой не достичь.</p>
+<h3>Пример 3. Снизить TA соляной кислотой</h3><p>Объём 100 м³, снижение с 180 до 130 мг/л — 50 мг/л. Эквивалент CaCO₃: 50 × 100 / 1000 = 5,00 кг. Теоретическая масса чистого HCl: 5,00 × 36,46/50,04 = <strong>3,64 кг</strong>. Для раствора с массовой долей 30%: 3,64/0,30 ≈ <strong>12,2 кг товарного раствора</strong>. Перевести массу в литры можно только по фактической плотности продукта.</p>
+<div class="article-callout article-warning">Эти 12,2 кг раствора нельзя автоматически вносить за один приём. Нужны проверка pH, паспорт реагента, процедура дозирования и повторный анализ после перемешивания.</div></section>
+<section id="mistakes"><h2>Частые ошибки коррекции</h2><ul><li>Исправлять TA настройкой только pH или наоборот.</li><li>Добавлять NaHCO₃ без измерения и расчёта разницы.</li><li>Менять воду, не измерив её щёлочность.</li><li>Вносить весь расчётный объём кислоты за один раз.</li><li>Игнорировать накопление хлоридов или сульфатов.</li><li>Путать общую щёлочность с кальциевой жёсткостью.</li><li>Считать, что аэрация восстановит TA после кислоты.</li></ul><p>Работайте в средствах защиты, следуйте паспорту безопасности и инструкции оборудования. Концентрированные кислоты едкие. Никогда не смешивайте кислотные и хлорсодержащие реагенты: возможно выделение токсичного газа.</p></section>
+<section id="routine"><h2>Практический алгоритм</h2><ol><li>Измерьте pH и общую щёлочность чашевой и подпиточной воды.</li><li>При неожиданном результате повторите тест свежей пробой и проверьте единицы.</li><li>Оцените жёсткость, температуру, дезинфектант и материалы; найдите причину отклонения.</li><li>Выберите реагент, водозамену или подготовку подпитки.</li><li>Рассчитайте предварительную потребность и проверьте безопасность процедуры.</li><li>Корректируйте поэтапно по проекту/инструкции, затем повторите анализ.</li><li>Зафиксируйте результат и проверьте, не возвращается ли отклонение.</li></ol><p>Общая щёлочность — часть картины водного баланса. Она не заменяет контроль pH, дезинфектанта, кальциевой жёсткости и настройку конкретной системы.</p></section>
+<section id="sources"><h2>Нормативные документы и техническая литература</h2><p>Статус и область применения сверялись по карточкам Росстандарта и официальному опубликованию санитарных правил. Национальные стандарты нельзя автоматически приравнивать к обязательному санитарному пределу.</p><ul>
+<li>СП 2.1.4284-26, утверждён постановлением Главного государственного санитарного врача РФ от 02.06.2026 № 20, действует с 01.09.2026; требования к объектам и услугам, включая общественные бассейны.</li>
+<li>ГОСТ Р 70688-2023 «Бассейны для плавания. Подготовка воды. Общие требования», введён 01.09.2023; Росстандарт указывает замену раздела 5 ГОСТ Р 53491.1-2009 и раздела 8 ГОСТ Р 53491.2-2012.</li>
+<li>ГОСТ Р 53491.1-2009 «Бассейны. Подготовка воды. Часть 1. Общие требования»; не распространяется на домашние бассейны.</li>
+<li>ГОСТ Р 53491.2-2012 «Бассейны. Подготовка воды. Часть 2. Требования безопасности»; положения раздела 8 заменены ГОСТ Р 70688-2023.</li>
+<li>ГОСТ Р 58458-2026 «Бассейны для плавания. Общие технические требования и методы испытаний», принят; дата введения — 01.01.2027.</li>
+<li>ANSI/PHTA/ICC-11 2019, <em>American National Standard for Water Quality in Public Pools and Spas</em>, раздел общей щёлочности: целевые рекомендации зависят от дезинфектанта и не являются российскими требованиями.</li></ul>
+<p>Связанные темы: <a href="/articles/balans-ph-vody-v-basseyne.html">баланс pH</a>, <a href="/spravochnik/svobodnyy-i-svyazannyy-hlor.html">свободный и связанный хлор</a>, <a href="/articles/filtratsiya-vody-v-basseyne.html">фильтрация воды</a>.</p></section>
+<footer><nav aria-label="Разделы справочника"><a href="/spravochnik/index.html">Инженерный справочник ALPOOL</a> · <a href="/spravochnik/truby-pvc-u.html">Трубы PVC-U</a> · <a href="/spravochnik/skorost-vody.html">Скорость воды</a> · <a href="/spravochnik/gidravlicheskie-poteri.html">Гидравлические потери</a></nav><p><a href="/kalkulyatori/raschet-truboprovodov-basseyna.html">Калькулятор гидравлики</a> · <a href="/articles/filtratsiya-vody-v-basseyne.html">Фильтрация воды в бассейне</a></p></footer>
+</main>
 <!-- BEGIN ALPOOL SHARED INQUIRY -->
 <footer id="footer">
 				<section id="contact" class="contact-form-section" aria-labelledby="contact-title">
@@ -72,4 +240,4 @@
 					</section>
 				</section>
 			</footer>
-<!-- END ALPOOL SHARED INQUIRY --><script src="/spravochnik/reference.js" defer></script><script src="/assets/js/jquery.min.js"></script><script src="/assets/js/jquery.scrollex.min.js"></script><script src="/assets/js/jquery.scrolly.min.js"></script><script src="/assets/js/browser.min.js"></script><script src="/assets/js/breakpoints.min.js"></script><script src="/assets/js/util.js"></script><script src="/assets/js/main.js"></script></body></html>
+<!-- END ALPOOL SHARED INQUIRY --><script src="/assets/js/calculations/pool-alkalinity-core.js"></script><script src="/spravochnik/alkalinity-tool.js" defer></script><script src="/spravochnik/reference.js" defer></script><script src="/assets/js/jquery.min.js"></script><script src="/assets/js/jquery.scrollex.min.js"></script><script src="/assets/js/jquery.scrolly.min.js"></script><script src="/assets/js/browser.min.js"></script><script src="/assets/js/breakpoints.min.js"></script><script src="/assets/js/util.js"></script><script src="/assets/js/main.js"></script></body></html>
