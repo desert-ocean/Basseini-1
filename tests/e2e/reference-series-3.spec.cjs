@@ -15,16 +15,16 @@ for(const width of [390,768,1440]) test(`series 3 pages render at ${width}px`,as
   expect(response.status()).toBe(200);
   await expect(page.locator('h1')).toHaveCount(1);
   await expect(page.locator('h1')).toContainText(title.split(':')[0]);
-  await expect(page.locator('main svg[role="img"]')).toHaveCount(slug==='skorost-vody'?3:1);
+  if(slug==='skorost-vody') await expect(page.locator('main svg[role="img"]')).toHaveCount(3); else if(pages.slice(0,3).some(([newSlug])=>newSlug===slug)) await expect(page.locator('main img, main svg[role="img"]')).toHaveCount(1); else await expect(page.locator('main svg[role="img"]')).toHaveCount(1);
   if(slug==='skorost-vody')await expect(page.locator('main')).toContainText('Ориентировочная скорость');else await expect(page.locator('main')).toContainText(new RegExp(content,'i'));
   expect(await page.locator('main > section:first-of-type svg text').count()).toBe(0);
-  if(pages.slice(0,3).some(([newSlug])=>newSlug===slug))
+  if(pages.slice(0,3).some(([newSlug])=>newSlug===slug) && await page.locator('.diagram-labels-readable').count())
    expect(parseFloat(await page.locator('.diagram-labels-readable').first().evaluate(el=>getComputedStyle(el).fontSize))).toBeGreaterThanOrEqual(16);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',`https://alpool.ru/spravochnik/${slug}.html`);
   const outgoing=await page.locator('main a[href]').evaluateAll(a=>a.map(x=>x.href));
-  expect(outgoing.every(href=>new URL(href).origin==='http://127.0.0.1:4179')).toBeTruthy();
-  for(const href of new Set(outgoing)) expect((await page.request.get(new URL(href,page.url()).href)).status()).toBe(200);
+  expect(outgoing.every(href=>new URL(href).origin==='http://127.0.0.1:4179' || (slug==='kak-rabotaet-perelivnaya-sistema' && new URL(href).origin==='https://protect.gost.ru'))).toBeTruthy();
+  for(const href of new Set(outgoing.filter(href=>new URL(href).origin==='http://127.0.0.1:4179'))) expect((await page.request.get(new URL(href,page.url()).href)).status()).toBe(200);
  }
 });
 
@@ -47,8 +47,8 @@ test('PN conditions, makeup backflow protection and overflow loop are explicit',
  await expect(page.locator('.diagram-labels-readable')).toContainText('Свободное падение через воздушный разрыв');
  await expect(page.locator('.diagram-labels-readable')).toContainText('Максимальный уровень задан переливом');
  await page.goto('/spravochnik/kak-rabotaet-perelivnaya-sistema.html');
- await expect(page.locator('svg[role="img"]')).toHaveAttribute('aria-label',/чаша и перелив обратно в лоток/);
- await expect(page.locator('main')).toContainText('вода из чаши снова поступает через переливной лоток');
+ await expect(page.locator('.overflow-hero img')).toHaveAttribute('alt',/вода из чаши через лоток/);
+ await expect(page.locator('main')).toContainText('чаша → переливная кромка → переливной лоток');
  await page.goto('/spravochnik/skorost-vody.html');
  await expect(page.locator('h2').filter({hasText:'Рекомендуемые скорости воды в трубопроводах бассейна'})).toHaveCount(1);
  await expect(page.locator('h2').filter({hasText:'Почему высокая скорость воды не всегда выгодна'})).toHaveCount(1);

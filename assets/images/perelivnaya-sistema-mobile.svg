@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="1130" viewBox="0 0 420 1130" role="img" aria-labelledby="title desc">
+<title id="title">Переливная система бассейна — мобильная схема</title>
+<desc id="desc">Вертикальная последовательность: чаша, переливной лоток, балансная ёмкость, насос, фильтр, дополнительная обработка и подающие форсунки с возвратом в чашу.</desc>
+<defs>
+ <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#127c9c"/></marker>
+ <marker id="arrowSoft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#127c9c"/></marker>
+ <pattern id="water" width="26" height="14" patternUnits="userSpaceOnUse"><path d="M0 7 Q6 1 13 7 T26 7" fill="none" stroke="#64b5ca" stroke-width="1.5" opacity=".45"/></pattern>
+ <style><![CDATA[
+ text{font-family:Arial,'DejaVu Sans',sans-serif;fill:#183b4b} .head{font-size:28px;font-weight:700} .sub{font-size:15px;fill:#547585} .node{font-size:19px;font-weight:700} .small{font-size:14px;fill:#547585} .tiny{font-size:12px;fill:#547585} .pipe{fill:none;stroke:#127c9c;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)} .accent{stroke:#e29844;fill:none;stroke-width:3} ]]></style>
+</defs>
+<rect width="420" height="1130" rx="18" fill="#f6fafb"/>
+<text x="24" y="39" font-size="22" font-weight="700">Переливная система</text>
+<text x="24" y="65" font-size="14" fill="#547585">Путь воды в бассейне</text>
+<!-- loop line on right -->
+<path d="M350 1000 H383 V143 H354" fill="none" stroke="#79b9ca" stroke-width="3.5" stroke-dasharray="8 7" marker-end="url(#arrowSoft)"/>
+<text x="210" y="1044" font-size="14" fill="#547585" text-anchor="middle">возврат воды в чашу</text>
+<!-- pool card -->
+<rect x="24" y="91" width="324" height="137" rx="14" fill="white" stroke="#bcd4dc" stroke-width="2"/>
+<text x="45" y="121" class="node">1. Чаша бассейна</text>
+<path d="M46 159 Q61 151 77 159 T108 159 T139 159 T170 159 T201 159 T232 159 T263 159 T294 159 T325 159" fill="none" stroke="#1685a2" stroke-width="3.5"/>
+<path d="M46 163 H326 V204 H46 Z" fill="#d3edf4"/>
+<path d="M46 163 H326 V204 H46 Z" fill="url(#water)"/>
+<text x="47" y="145" class="small">Вода переливается с поверхности</text>
+<!-- gutter -->
+<path d="M185 228 V261" class="pipe"/>
+<rect x="24" y="267" width="324" height="91" rx="14" fill="white" stroke="#bcd4dc" stroke-width="2"/>
+<text x="45" y="298" class="node">2. Переливной лоток</text>
+<text x="45" y="323" class="small">Сбор поверхностной воды</text>
+<g stroke="#39778d" stroke-width="3"><path d="M255 314 h70 M259 308 v12 M273 308 v12 M287 308 v12 M301 308 v12 M315 308 v12"/></g>
+<!-- tank -->
+<path d="M185 358 V392" class="pipe"/>
+<text x="205" y="383" class="tiny">самотёком</text>
+<rect x="24" y="398" width="324" height="112" rx="14" fill="white" stroke="#bcd4dc" stroke-width="2"/>
+<text x="45" y="428" class="node">3. Балансная ёмкость</text>
+<text x="45" y="452" class="small">Принимает воду, компенсирует</text>
+<text x="45" y="470" class="small">колебания объёма</text>
+<rect x="266" y="426" width="58" height="64" rx="3" fill="#e8f4f7" stroke="#39778d" stroke-width="2.5"/>
+<path d="M268 452 Q281 447 294 452 T322 452 V488 H268 Z" fill="#a9dce8"/>
+<!-- pump -->
+<path d="M185 510 V547" class="pipe"/>
+<rect x="24" y="553" width="324" height="86" rx="14" fill="white" stroke="#bcd4dc" stroke-width="2"/>
+<circle cx="70" cy="596" r="23" fill="#fcead6" stroke="#d18b36" stroke-width="3"/>
+<path d="M58 603 Q81 567 82 606 Q66 590 58 603" fill="none" stroke="#be7929" stroke-width="3"/>
+<text x="111" y="587" class="node">4. Циркуляционный</text><text x="111" y="611" class="node">насос</text>
+<!-- filter -->
+<path d="M185 639 V673" class="pipe"/>
+<rect x="24" y="679" width="324" height="86" rx="14" fill="white" stroke="#bcd4dc" stroke-width="2"/>
+<path d="M54 698 Q54 690 63 690 H87 Q96 690 96 698 V743 Q96 752 87 752 H63 Q54 752 54 743 Z" fill="#e6f2f6" stroke="#39778d" stroke-width="2.5"/>
+<path d="M56 730 H94 V744 Q94 749 86 749 H64 Q56 749 56 744 Z" fill="#e8c68f"/>
+<text x="111" y="716" class="node">5. Фильтрация</text>
+<text x="111" y="741" class="small">Удаление загрязнений</text>
+<!-- treatment -->
+<path d="M185 765 V799" class="pipe"/>
+<rect x="24" y="805" width="324" height="88" rx="14" fill="white" stroke="#bcd4dc" stroke-width="2"/>
+<circle cx="74" cy="849" r="23" fill="#fcead6" stroke="#d18b36" stroke-width="3"/>
+<path d="M74 833 v31 M62 840 l24 17 M86 840 l-24 17" stroke="#c8832d" stroke-width="2.5"/>
+<text x="114" y="838" class="node">6. Обработка воды*</text>
+<text x="114" y="862" class="small">Подогрев, обеззараживание</text>
+<!-- return -->
+<path d="M185 893 V928" class="pipe"/>
+<rect x="24" y="934" width="324" height="84" rx="14" fill="white" stroke="#bcd4dc" stroke-width="2"/>
+<text x="45" y="966" class="node">7. Подающие форсунки</text>
+<text x="45" y="991" class="small">Возврат очищенной воды в чашу</text>
+<text x="24" y="1059" class="small">* Состав и порядок узлов определяет проект.</text>
+<text x="24" y="1090" font-size="13" font-weight="700" fill="#39778d">ALPOOL · инженерный справочник</text>
+</svg>
