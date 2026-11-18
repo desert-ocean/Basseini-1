@@ -1,12 +1,164 @@
 <!doctype html>
 <html lang="ru">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Коагуляция воды в бассейне — ALPOOL</title><meta name="description" content="Зачем применяют коагуляцию в бассейне и как фильтр удаляет образовавшиеся хлопья загрязнений."><link rel="canonical" href="https://alpool.ru/spravochnik/koagulyaciya-vody-basseyna.html"><link rel="stylesheet" href="/spravochnik/reference.css"></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Коагуляция воды в бассейне: дозировка и точка впрыска | ALPOOL</title><meta name="description" content="Как работает коагуляция воды бассейна, где вводить коагулянт и как рассчитать непрерывную подачу и разовую дозу по инструкции препарата."><link rel="canonical" href="https://alpool.ru/spravochnik/koagulyaciya-vody-basseyna.html"><link rel="stylesheet" href="/spravochnik/reference.css"></head>
 <body><header><div><a class="brand" href="/">АЛ Пулс</a><nav class="top-nav" aria-label="Основная навигация"><a href="/">Главная</a><a href="/servis/proektirovanie-basseynov.html">Проектирование</a><a href="/spravochnik/index.html">Справочник</a><a href="/kalkulyatori/raschet-truboprovodov-basseyna.html">Калькулятор гидравлики</a></nav></div></header>
-<main><nav aria-label="Хлебные крошки"><a href="/">Главная</a> / <a href="/spravochnik/index.html">Справочник</a> / Коагуляция воды</nav><h1>Коагуляция воды в бассейне</h1><p class="lead">Коагуляция помогает объединить мелкие частицы в более крупные хлопья, которые можно отделить фильтрацией.</p>
-<section class="panel"><h2>От мелких частиц к фильтруемым хлопьям</h2><svg viewBox="0 0 520 190" role="img" aria-label="Мелкие частицы объединяются в хлопья и задерживаются фильтром"><circle cx="75" cy="66" r="6" fill="#d98b3a"/><circle cx="102" cy="90" r="5" fill="#d98b3a"/><circle cx="72" cy="116" r="5" fill="#d98b3a"/><circle cx="130" cy="62" r="4" fill="#d98b3a"/><path d="M150 92h98" stroke="#087a9b" stroke-width="5"/><path d="m235 82 15 10-15 10" fill="none" stroke="#087a9b" stroke-width="5"/><circle cx="305" cy="88" r="17" fill="#e2a257"/><circle cx="330" cy="72" r="12" fill="#e2a257"/><circle cx="335" cy="102" r="13" fill="#e2a257"/><rect x="390" y="40" width="75" height="100" rx="8" fill="#dff1f5" stroke="#447f94" stroke-width="5"/><path d="M401 65h53 M401 83h53 M401 101h53 M401 119h53" stroke="#447f94" stroke-width="4"/></svg><p class="diagram-labels diagram-labels-readable"><span>Мелкие частицы</span><span>→ коагуляция и хлопьеобразование →</span><span>Фильтр</span></p><p>Реагент дестабилизирует часть мелкодисперсных примесей, после чего частицы могут объединяться в хлопья. Фильтр задерживает их в соответствии со своей конструкцией и рабочим режимом.</p></section>
-<section><h2>Ограничения применения</h2><p>Коагулянт не заменяет циркуляцию, исправную фильтрацию и контроль качества воды. Применимость зависит от типа фильтра, реагента, режима дозирования, состава воды и указаний производителя оборудования и препарата.</p><p>Не задавайте дозу только по объёму бассейна и не смешивайте реагенты. Перед применением проверьте совместимость с системой, инструкцию конкретного препарата и допустимый режим фильтрации. При неверном применении возможны помутнение, отложения и нарушение работы фильтра.</p><p><a href="/articles/filtratsiya-vody-v-basseyne.html">Фильтрация воды в бассейне</a> · <a href="/spravochnik/obratnaya-promyvka-filtra.html">Обратная промывка фильтра</a> · <a href="/spravochnik/shchelochnost-vody.html">Щёлочность воды</a></p></section>
-<footer><nav aria-label="Разделы справочника"><a href="/spravochnik/index.html">Инженерный справочник ALPOOL</a> · <a href="/spravochnik/avtomaticheskaya-podpitka-basseyna.html">Автоматическая подпитка</a> · <a href="/spravochnik/kak-rabotaet-perelivnaya-sistema.html">Переливная система</a></nav></footer></main>
-<!-- BEGIN ALPOOL SHARED INQUIRY -->
+<style>
+#coagulation-article .coagulation-figure{margin:1.25rem auto 1.75rem;max-width:900px;text-align:center}
+#coagulation-article .coagulation-figure picture{display:block;width:100%}
+#coagulation-article .coagulation-figure img{display:block;width:100%;max-width:100%;height:auto;margin:0 auto;object-fit:contain}
+#coagulation-article .coagulation-figure figcaption{margin:.65rem auto 0;max-width:72ch;color:#516d79;font-size:.92rem}
+#coagulation-article .coagulation-toc{padding:1rem 1.25rem;background:#f6f9f9;border:1px solid #d4e2e8;border-radius:12px}
+#coagulation-article .coagulation-toc ol{margin:.5rem 0 0;padding-left:1.35rem}
+#coagulation-article .coagulation-table-wrap{width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-inline:contain}
+#coagulation-article .coagulation-table{min-width:560px}
+#coagulation-article .coagulation-table th,#coagulation-article .coagulation-table td{white-space:normal;vertical-align:top}
+#coagulation-article .coagulation-note{padding:.8rem 1rem;border-left:4px solid #147b9b;background:#edf5f7}
+#coagulation-calculator{--coag-accent:#147b9b}
+#coagulation-calculator .coag-mode-buttons{display:flex;flex-wrap:wrap;gap:.65rem;margin:1rem 0}
+#coagulation-calculator .coag-mode-buttons button{width:auto;min-height:2.75rem}
+#coagulation-calculator .coag-mode-buttons button[aria-pressed="true"]{background:#147b9b;border-color:#147b9b;color:#fff}
+#coagulation-calculator .coag-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#coagulation-calculator .coag-fields label{display:block;min-width:0}
+#coagulation-calculator .coag-fields input{width:100%;max-width:100%;box-sizing:border-box}
+#coagulation-calculator .coag-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;margin:1rem 0}
+#coagulation-calculator .coag-result{min-width:0;padding:.75rem;background:#edf5f7;border-radius:9px}
+#coagulation-calculator .coag-result span{display:block;color:#516d79;font-size:.88rem}
+#coagulation-calculator .coag-result output{display:block;color:#075b7c;font:800 1.2rem/1.35 "Source Sans Pro",Helvetica,sans-serif;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+#coagulation-calculator .coag-status{min-height:1.5em;margin:.75rem 0;color:#31515e}
+#coagulation-calculator .coag-status.is-error{color:#a32626}
+#coagulation-calculator .coag-warning{padding:.8rem 1rem;border-left:4px solid #b26d24;background:#fff8ed}
+#coagulation-calculator .coag-example{margin:.25rem 0 1rem}
+@media(max-width:600px){#coagulation-calculator .coag-fields{grid-template-columns:1fr}#coagulation-calculator.panel{padding:16px}}
+</style>
+<main>
+<nav aria-label="Хлебные крошки"><a href="/">Главная</a> / <a href="/spravochnik/index.html">Справочник</a> / Коагуляция воды</nav>
+<article id="coagulation-article">
+<h1>Коагуляция воды в бассейне: дозировка и точка впрыска</h1>
+<p class="lead">Коагулянт помогает песчаному фильтру задерживать очень мелкие загрязнения, которые проходят через загрузку в виде устойчивой взвеси. Но результат зависит не от «побольше реагента», а от совместимости препарата, дозы, перемешивания и режима фильтра.</p>
+<figure class="coagulation-figure">
+  <picture>
+    <source media="(max-width: 600px)" srcset="/assets/images/koagulyaciya-vody-basseyna-mobile.svg" type="image/svg+xml" width="440" height="1290">
+    <img src="/assets/images/koagulyaciya-vody-basseyna-desktop.svg" width="1280" height="760" alt="Схема коагуляции: мелкие частицы объединяются в более крупные хлопья, которые задерживает фильтрующая загрузка" loading="eager" decoding="async">
+  </picture>
+  <figcaption>Коагуляция помогает фильтру улавливать мелкую взвесь, но сама по себе не заменяет фильтрацию и обеззараживание.</figcaption>
+</figure>
+<nav class="coagulation-toc" aria-label="Содержание статьи">
+  <strong>Содержание</strong>
+  <ol>
+    <li><a href="#purpose">Для чего нужна коагуляция</a></li>
+    <li><a href="#reagents">Какие реагенты применяются</a></li>
+    <li><a href="#injection">Где организовать впрыск</a></li>
+    <li><a href="#dose">Как рассчитать расход</a></li>
+    <li><a href="#calculator">Калькулятор расхода коагулянта</a></li>
+    <li><a href="#operation">Практика эксплуатации</a></li>
+  </ol>
+</nav>
+
+<section id="purpose">
+  <h2>Для чего нужна коагуляция</h2>
+  <p>При обычной фильтрации часть коллоидных и мелкодисперсных частиц может не задерживаться загрузкой. Коагулянт дестабилизирует их: частицы легче сближаются и объединяются. Следующее укрупнение агрегатов — хлопьеобразование, или флокуляция. В бассейне эти процессы идут совместно, а образовавшиеся хлопья затем должны быть задержаны фильтром либо удалены предусмотренным технологией способом.</p>
+  <p>Правильно настроенная коагуляция помогает уменьшить мутность и улучшить удаление взвешенных загрязнений. Она не обеззараживает воду, не компенсирует слабую циркуляцию и не исправляет неисправную или неподходящую фильтровальную установку. Если причина мутности — например, водоросли, растворённые вещества или ошибка химического режима, один коагулянт проблему не решит.</p>
+</section>
+
+<section id="reagents">
+  <h2>Какие реагенты применяются</h2>
+  <p>Название «коагулянт» не означает один и тот же состав. Перед подбором проверьте форму препарата, содержание действующего компонента, назначение, способ внесения и совместимость с фильтром.</p>
+  <div class="coagulation-table-wrap" tabindex="0" role="region" aria-label="Таблица типов коагулянтов">
+    <table class="coagulation-table">
+      <thead><tr><th scope="col">Тип препарата</th><th scope="col">Где применяется</th><th scope="col">Что учитывать</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Полихлорид алюминия (PAC)</th><td>Непрерывная микродозировка перед совместимым фильтром; режим задаётся продуктом и схемой.</td><td>Различаются концентрация и основность растворов; ориентируйтесь на паспорт именно выбранного PAC.</td></tr>
+        <tr><th scope="row">Сульфат алюминия</th><td>Реагент для коагуляции, обычно в отдельном технологическом режиме.</td><td>Нужны правильные pH, доза, растворение и организация удаления осадка; режимы PAC к нему не переносят.</td></tr>
+        <tr><th scope="row">Полимерный флокулянт</th><td>Некоторые схемы хлопьеобразования или специальные обработки.</td><td>Это не синоним солей алюминия; совместимость, форма и дозу определяет инструкция продукта.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="injection">
+  <h2>Где организовать впрыск</h2>
+  <p>Для типовой непрерывной коагуляции с песчаной или совместимой стеклянной загрузкой маршрут выглядит так: <strong>чаша → циркуляционный насос → точка впрыска → участок смешивания → фильтр → дальнейшая обработка → чаша</strong>. Для многих препаратов точку дозирования располагают в напорном трубопроводе после насоса и перед фильтром. Поток перемешивает реагент, а насос не разбивает уже образовавшиеся хлопья.</p>
+  <p>Точку не выбирают по одному универсальному расстоянию. Нужное перемешивание и время до фильтра зависят от реагента, скорости и диаметра трубы, наличия смесителя и самой схемы. Следуйте паспорту препарата и проекту; не вводите реагент в линию всасывания или непосредственно через насос, если это не предусмотрено изготовителем. Учитывайте места отбора проб и последовательность подачи других реагентов.</p>
+  <p>Дозирующий насос блокируют при остановке циркуляции: сигнал расхода или подтверждённой работы насоса должен отключать подачу реагента. Инжекционный узел, трубки и уплотнения выбирают по химической стойкости; предусматривают обратный клапан и защиту от обратного потока. Для картриджных, диатомитовых и мембранных систем совместимость проверяют отдельно: осадок способен забить или повредить фильтрующий элемент.</p>
+  <p class="coagulation-note">Разовое внесение для осаждения загрязнений в чаше — другой технологический режим. Его нельзя подменять настройкой непрерывного дозатора: важны инструкции к препарату, циркуляция, фильтрация и последующее удаление осадка.</p>
+</section>
+
+<section id="dose">
+  <h2>Как рассчитать расход коагулянта</h2>
+  <h3>Непрерывное дозирование</h3>
+  <p>Производительность дозатора считают по текущему расходу циркуляционной воды и паспортной дозе на единицу прошедшего потока:</p>
+  <p><strong>D = Q × d</strong>, где D — подача препарата, мл/ч; Q — циркуляционный расход, м³/ч; d — дозировка препарата, мл/м³ воды.</p>
+  <p>Например, при Q = 30 м³/ч и условной дозировке d = 0,5 мл/м³ насос должен подавать 15 мл/ч. Значение 0,5 здесь только учебный пример, не рекомендация для любого коагулянта. Суточный расход при работе t часов равен D × t. Объём чаши для этой формулы не нужен: он пригодится, чтобы оценить условный период прохождения объёма через систему.</p>
+  <h3>Разовое дозирование</h3>
+  <p>Если инструкция задаёт разовую дозу на объём воды бассейна, количество препарата считают как <strong>M = V × d</strong>: M — миллилитры препарата, V — объём чаши, м³, d — паспортная дозировка, мл/м³. Для бассейна 40 м³ при условной дозе 10 мл/м³ получится 400 мл. Это арифметический пример, а не назначение дозы неизвестного средства.</p>
+</section>
+
+<section id="calculator" class="panel">
+  <h2>Калькулятор расхода коагулянта</h2>
+  <p>Введите дозу из инструкции конкретного препарата. Калькулятор не выбирает реагент и не оценивает его концентрацию или разбавление.</p>
+  <div id="coagulation-calculator">
+    <div class="coag-mode-buttons" role="group" aria-label="Режим расчёта">
+      <button type="button" data-coag-mode-button="continuous" aria-pressed="true">Непрерывное дозирование</button>
+      <button type="button" data-coag-mode-button="single" aria-pressed="false">Разовая обработка</button>
+    </div>
+    <section data-coag-mode-panel="continuous" aria-labelledby="continuous-title">
+      <h3 id="continuous-title">Подача по циркуляционному расходу</h3>
+      <div class="coag-fields">
+        <label for="coag-pool-volume">Объём бассейна, м³
+          <input id="coag-pool-volume" name="poolVolume" type="number" min="0.01" step="any" value="60" inputmode="decimal">
+        </label>
+        <label for="coag-flow">Циркуляционный расход, м³/ч
+          <input id="coag-flow" name="flow" type="number" min="0.01" step="any" value="15" inputmode="decimal">
+        </label>
+        <label for="coag-continuous-dose">Доза по паспорту, мл/м³
+          <input id="coag-continuous-dose" name="dose" type="number" min="0" step="any" placeholder="Введите дозировку">
+        </label>
+        <label for="coag-runtime">Работа циркуляции, ч/сут
+          <input id="coag-runtime" name="runtime" type="number" min="0" max="24" step="any" value="12" inputmode="decimal">
+        </label>
+      </div>
+      <button type="button" class="coag-example" data-coag-example="continuous" data-values='{"poolVolume":"60","flow":"15","dose":"0.5","runtime":"12"}'>Показать условный пример</button>
+      <div class="coag-results" aria-label="Результат непрерывного расчёта">
+        <div class="coag-result"><span>Подача насоса</span><output data-pump-mlh>—</output></div>
+        <div class="coag-result"><span>Подача насоса</span><output data-pump-lh>—</output></div>
+        <div class="coag-result"><span>Расход препарата</span><output data-daily-ml>—</output></div>
+        <div class="coag-result"><span>Расход препарата</span><output data-daily-l>—</output></div>
+        <div class="coag-result"><span>Условный период объёма чаши</span><output data-turnover>—</output></div>
+      </div>
+      <p class="coag-status" data-coag-status role="status" aria-live="polite"></p>
+    </section>
+    <section data-coag-mode-panel="single" aria-labelledby="single-title" hidden>
+      <h3 id="single-title">Разовая дозировка на объём чаши</h3>
+      <div class="coag-fields">
+        <label for="coag-single-volume">Объём бассейна, м³
+          <input id="coag-single-volume" name="poolVolume" type="number" min="0.01" step="any" value="40" inputmode="decimal">
+        </label>
+        <label for="coag-single-dose">Доза по паспорту, мл/м³
+          <input id="coag-single-dose" name="dose" type="number" min="0" step="any" placeholder="Введите дозировку">
+        </label>
+      </div>
+      <button type="button" class="coag-example" data-coag-example="single" data-values='{"poolVolume":"40","dose":"10"}'>Показать условный пример</button>
+      <div class="coag-results" aria-label="Результат разового расчёта">
+        <div class="coag-result"><span>Количество препарата</span><output data-single-ml>—</output></div>
+        <div class="coag-result"><span>Количество препарата</span><output data-single-l>—</output></div>
+      </div>
+      <p class="coag-status" data-coag-status role="status" aria-live="polite"></p>
+    </section>
+    <p class="coag-warning"><strong>Важно:</strong> дозировку берите из инструкции конкретного препарата. Расчёт не определяет безопасную дозу, не заменяет контроль воды и не учитывает разбавление рабочего раствора.</p>
+  </div>
+</section>
+
+<section id="operation">
+  <h2>Практика эксплуатации</h2>
+  <p>Оценивайте эффект по прозрачности и мутности воды вместе с перепадом давления, расходом и состоянием фильтра. После накопления осадка фильтру может потребоваться промывка по его инструкции; не ждите, что хлопья исчезнут сами. Проверьте pH и остальные параметры, которые указаны для конкретного препарата: эффективность коагуляции зависит от состава воды и кислотности.</p>
+  <p>Передозировка не ускоряет очистку: избыток реагента способен ухудшить прозрачность, увеличить нагрузку на загрузку и нарушить работу фильтра. Если вода не проясняется, сначала проверьте фактический расход, режим фильтрации, исправность оборудования, способ дозирования и подходящий ли реагент используется. Не смешивайте концентраты и не готовьте совместные растворы, если изготовители прямо не разрешают это.</p>
+  <p>Для общественных бассейнов область применения и требования сверяют с проектом и действующей редакцией стандартов. ГОСТ Р 53491.1-2009 распространяется на общественные пресноводные бассейны, а не домашние; п. 9.3.3 рассматривает режимы и места ввода коагулянта. ГОСТ Р 70688-2023 заменил часть раздела 5 прежнего стандарта, поэтому перед проектным применением проверяют конкретные положения и их область действия. Значения дозы всё равно берут из документации реагента.</p>
+  <p class="hint">Источники для инженерной проверки: Росстандарт, ГОСТ Р 53491.1-2009 «Бассейны. Подготовка воды. Часть 1. Общие требования», пп. 9.3.3.3–9.3.3.5 (общественные бассейны); Росстандарт, ГОСТ Р 70688-2023 «Бассейны для плавания. Подготовка воды. Общие требования» (действует с 01.09.2023); Pool Water Treatment Advisory Group, <i>Polyaluminium chloride (PAC) dosing</i>, Technical Note TN24, 2014, с. 1–2 — рекомендации относятся к PAC и не являются нормой РФ.</p>
+  <p>Коагуляция работает тогда, когда подобраны реагент, паспортная доза и место впрыска, а фильтр способен принять и удержать образовавшиеся агрегаты. Если меняете препарат или схему, начинайте с проверки инструкции и измеряемых параметров, а не с увеличения подачи наугад.</p>
+</section>
+</article>
+<footer><nav aria-label="Разделы справочника"><a href="/spravochnik/index.html">Инженерный справочник ALPOOL</a> · <a href="/articles/filtratsiya-vody-v-basseyne.html">Фильтрация воды в бассейне</a> · <a href="/spravochnik/obratnaya-promyvka-filtra.html">Обратная промывка фильтра</a> · <a href="/spravochnik/gidravlicheskie-poteri.html">Гидравлические потери</a></nav></footer>
+</main><!-- BEGIN ALPOOL SHARED INQUIRY -->
 <footer id="footer">
 				<section id="contact" class="contact-form-section" aria-labelledby="contact-title">
 					<header>
@@ -79,4 +231,4 @@
 					</section>
 				</section>
 			</footer>
-<!-- END ALPOOL SHARED INQUIRY --><script src="/assets/js/jquery.min.js"></script><script src="/assets/js/jquery.scrollex.min.js"></script><script src="/assets/js/jquery.scrolly.min.js"></script><script src="/assets/js/browser.min.js"></script><script src="/assets/js/breakpoints.min.js"></script><script src="/assets/js/util.js"></script><script src="/assets/js/main.js"></script></body></html>
+<!-- END ALPOOL SHARED INQUIRY --><script src="/assets/js/jquery.min.js"></script><script src="/assets/js/jquery.scrollex.min.js"></script><script src="/assets/js/jquery.scrolly.min.js"></script><script src="/assets/js/browser.min.js"></script><script src="/assets/js/breakpoints.min.js"></script><script src="/assets/js/util.js"></script><script src="/assets/js/main.js"></script><script src="/assets/js/calculations/pool-coagulation-core.js"></script><script src="/spravochnik/coagulation-calculator.js"></script></body></html>
