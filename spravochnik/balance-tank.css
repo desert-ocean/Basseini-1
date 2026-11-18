@@ -1,0 +1,51 @@
+.balance-article .lead { font-size: 1.12rem; }
+.balance-figure { margin: 1.5rem auto 2rem; text-align: center; }
+.balance-figure img { display: block; width: 100%; height: auto; max-width: 100%; margin: 0 auto; }
+.balance-figure figcaption { margin: .65rem auto 0; max-width: 70ch; color: #59666d; font-size: .92rem; line-height: 1.5; }
+.balance-article .toc { padding: 1.2rem 1.5rem; border: 1px solid #dbe6e9; border-radius: .75rem; background: #f6fafb; }
+.balance-article .toc ol { columns: 2; column-gap: 2.5rem; margin-bottom: 0; }
+.balance-article .toc li { break-inside: avoid; margin: .3rem 0; }
+.balance-article .table-wrap { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+.balance-article table { width: 100%; border-collapse: collapse; }
+.balance-article th, .balance-article td { padding: .65rem .75rem; vertical-align: top; }
+.balance-article .formula { padding: 1rem 1.2rem; border-left: 3px solid #1882a2; background: #f3f8fa; overflow-wrap: anywhere; }
+.balance-article .note { padding: .85rem 1rem; border-radius: .5rem; background: #f3f8fa; }
+.balance-calculator { margin: 2rem 0; padding: 1.2rem; border: 1px solid #d9e5e9; border-radius: .8rem; background: #f7fafb; }
+.balance-calculator__switch { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+.balance-calculator__switch button[aria-pressed="true"] { background: #147d9b; color: #fff; }
+.balance-calculator [hidden] { display: none !important; }
+.balance-calculator__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem 1rem; }
+.balance-calculator__grid label { display: block; min-width: 0; font-size: .9rem; font-weight: 600; }
+.balance-calculator input, .balance-calculator select { display: block; box-sizing: border-box; width: 100%; min-height: 2.7rem; margin-top: .3rem; padding: .5rem .65rem; border: 1px solid #becdd2; border-radius: .35rem; background: #fff; color: #20292e; font: inherit; }
+.balance-calculator input[type="checkbox"] { display: inline-block; width: auto; min-height: auto; margin: 0 .45rem 0 0; vertical-align: middle; }
+.balance-calculator .check-label { display: block; margin: .8rem 0; font-weight: 500; }
+.balance-calculator__section { margin: 1rem 0; padding: 1rem; border: 1px solid #e0e8ea; border-radius: .6rem; background: #fff; }
+.balance-calculator__section h3 { margin-top: 0; }
+.balance-calculator__results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin: 1rem 0; }
+.balance-calculator__result { min-width: 0; padding: .8rem; border: 1px solid #d8e4e8; border-radius: .5rem; background: #fff; }
+.balance-calculator__result span { display: block; color: #56656b; font-size: .85rem; }
+.balance-calculator__result output { display: block; margin-top: .3rem; color: #087a9b; font-size: 1.15rem; font-weight: 700; }
+.balance-calculator__error { color: #a32626; font-weight: 600; }
+.balance-calculator__status { margin: .8rem 0; padding: .75rem 1rem; border-radius: .45rem; background: #eaf5ee; }
+.balance-calculator__status[data-state="warning"] { background: #fff2dc; }
+.balance-calculator__diagram { display: block; width: min(100%, 34rem); height: auto; margin: 1.25rem auto; }
+.balance-calculator__diagram text { fill: #23343b; font: 13px Arial, sans-serif; }
+.balance-calculator__diagram .tank-shell { fill: #f9fcfd; stroke: #477d91; stroke-width: 4; }
+.balance-calculator__diagram .water { fill: #cdebf1; }
+.balance-calculator__diagram .level-normal { stroke: #147d9b; stroke-width: 3; }
+.balance-calculator__diagram .level-min { stroke: #b23a36; stroke-width: 2; stroke-dasharray: 7 5; }
+.balance-calculator__diagram .level-max { stroke: #147d9b; stroke-width: 2; stroke-dasharray: 7 5; }
+.balance-calculator__diagram .level-overflow { stroke: #bd742d; stroke-width: 3; stroke-dasharray: 4 4; }
+.balance-calculator__diagram .zone { fill: #f4e4d2; opacity: .8; }
+.balance-article details { margin: .5rem 0; }
+.balance-article details summary { cursor: pointer; font-weight: 600; }
+@media (max-width: 760px) {
+  .balance-article .toc ol { columns: 1; }
+  .balance-calculator__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .balance-calculator { padding: .85rem; }
+  .balance-calculator__grid, .balance-calculator__results { grid-template-columns: minmax(0, 1fr); }
+  .balance-calculator__section { padding: .75rem; }
+  .balance-figure { margin-inline: 0; }
+}
