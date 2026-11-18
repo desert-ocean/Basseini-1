@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc"><title id="title">Сетка донных подающих форсунок бассейна 10 на 5 метров с шагом 2,5 метра</title><desc id="desc">План прямоугольного бассейна размером 10 на 5 метров. Восемь донных подающих форсунок расположены в два ряда по четыре. Межосевое расстояние по длине и ширине 2,5 метра, отступы от стен 1,25 метра. Предварительная геометрическая раскладка, не норматив.</desc><defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f6fbfe"/><stop offset="1" stop-color="#ffffff"/></linearGradient><linearGradient id="water" x2="0" y2="1"><stop stop-color="#d8f3fa"/><stop offset="1" stop-color="#edfaff"/></linearGradient><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0c82aa"/></marker><marker id="dim" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#557888"/></marker></defs><style>
+text{font-family:DejaVu Sans,Arial,sans-serif;fill:#133447} .h{font-size:30px;font-weight:700} .sub{font-size:17px;fill:#547286}.lbl{font-size:19px;font-weight:700}.sm{font-size:15px}.tiny{font-size:13px}.muted{fill:#58788b}.num{font-size:24px;font-weight:700;fill:#096d87}.white{fill:white}.blue{fill:#087eaa}.water{fill:#e9f8fd}.foot{font-size:14px;fill:#607a89} .dash{stroke-dasharray:8 7}</style>
+<rect x="1" y="1" width="1198" height="758" rx="26" fill="url(#bg)" stroke="#d8e8ee"/>
+<text x="52" y="68" class="h">Донные подающие форсунки</text><text x="52" y="100" class="sub">Пример предварительной раскладки: бассейн 10 × 5 м</text>
+<rect x="46" y="145" width="828" height="522" rx="20" fill="white" stroke="#d8e8ee"/>
+<!-- geometric plan, pool 640x320 -->
+<rect x="128" y="255" width="640" height="320" rx="12" fill="url(#water)" stroke="#2594b5" stroke-width="5"/>
+<!-- grid nodes x208,368,528,688, y335,495 -->
+<g stroke="#84cadd" stroke-width="1.5" stroke-dasharray="8 8"><path d="M208 255V575 M368 255V575 M528 255V575 M688 255V575 M128 335H768 M128 495H768"/></g>
+<!-- nozzles -->
+<g fill="#087ea8" stroke="white" stroke-width="4"><circle cx="208" cy="335" r="16"/><circle cx="368" cy="335" r="16"/><circle cx="528" cy="335" r="16"/><circle cx="688" cy="335" r="16"/><circle cx="208" cy="495" r="16"/><circle cx="368" cy="495" r="16"/><circle cx="528" cy="495" r="16"/><circle cx="688" cy="495" r="16"/></g>
+<g fill="none" stroke="#55bdd5" stroke-width="2" opacity=".9"><circle cx="208" cy="335" r="30"/><circle cx="368" cy="335" r="30"/><circle cx="528" cy="335" r="30"/><circle cx="688" cy="335" r="30"/><circle cx="208" cy="495" r="30"/><circle cx="368" cy="495" r="30"/><circle cx="528" cy="495" r="30"/><circle cx="688" cy="495" r="30"/></g>
+<!-- horizontal dimensions -->
+<g stroke="#557888" stroke-width="1.6" fill="none"><path d="M128 236V208 M768 236V208 M128 216H768" marker-start="url(#dim)" marker-end="url(#dim)"/><path d="M208 287V274 M368 287V274 M208 280H368" marker-start="url(#dim)" marker-end="url(#dim)"/></g>
+<rect x="414" y="187" width="74" height="29" rx="9" fill="white"/><text x="451" y="208" text-anchor="middle" class="lbl">10 м</text>
+<rect x="255" y="260" width="68" height="26" rx="8" fill="white"/><text x="289" y="279" text-anchor="middle" class="sm">2,5 м</text>
+<!-- vertical dims -->
+<g stroke="#557888" stroke-width="1.6" fill="none"><path d="M786 255H820 M786 575H820 M811 255V575" marker-start="url(#dim)" marker-end="url(#dim)"/><path d="M156 335H177 M156 495H177 M166 335V495" marker-start="url(#dim)" marker-end="url(#dim)"/></g>
+<rect x="790" y="394" width="43" height="30" rx="8" fill="white"/><text x="811" y="416" class="lbl" text-anchor="middle">5 м</text>
+<rect x="133" y="394" width="65" height="28" rx="8" fill="white"/><text x="166" y="414" class="sm" text-anchor="middle">2,5 м</text>
+<!-- 1.25 offset legend -->
+<g stroke="#557888" stroke-width="1.5" fill="none"><path d="M128 593V608 M208 593V608 M128 601H208" marker-start="url(#dim)" marker-end="url(#dim)"/></g>
+<text x="168" y="629" text-anchor="middle" class="sm">1,25 м</text><text x="335" y="618" class="sm muted">Отступ от стен — ½ шага</text>
+<!-- right card -->
+<rect x="898" y="145" width="254" height="522" rx="20" fill="#eaf6fa" stroke="#cce4ec"/>
+<text x="920" y="190" class="lbl">Результат</text>
+<text x="920" y="250" class="num">8 форсунок</text>
+<text x="920" y="282" class="sm">4 точки × 2 ряда</text>
+<line x1="920" y1="309" x2="1129" y2="309" stroke="#c7dfe8"/>
+<text x="920" y="348" class="lbl">Шаг по осям</text>
+<text x="920" y="381" class="num">2,5 м</text>
+<text x="920" y="412" class="sm">в обоих направлениях</text>
+<line x1="920" y1="446" x2="1129" y2="446" stroke="#c7dfe8"/>
+<text x="920" y="482" class="lbl">Дополнительно</text>
+<text x="920" y="516" class="sm">Проверить расход</text>
+<text x="920" y="541" class="sm">на каждую форсунку,</text>
+<text x="920" y="566" class="sm">гидравлику ветвей</text>
+<text x="920" y="591" class="sm">и зоны перемешивания.</text>
+<text x="52" y="713" class="foot">Шаг 2,5 м — ориентир проектной практики ALPOOL, не универсальная норма. План не в масштабе для монтажа.</text>
+<text x="1146" y="736" text-anchor="end" class="foot">ALPOOL · alpool.ru</text>
+</svg>

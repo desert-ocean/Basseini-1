@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc"><title id="title">Стеновая подающая форсунка бассейна: высота установки</title><desc id="desc">Схематичный разрез бассейна. Стеновая подающая форсунка находится ниже рабочего зеркала воды. Диапазон 200–400 мм указан как предварительный ориентир для типовых частных бассейнов, не норматив. Подающая струя направлена в чашу.</desc><defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f6fbfe"/><stop offset="1" stop-color="#ffffff"/></linearGradient><linearGradient id="water" x2="0" y2="1"><stop stop-color="#d8f3fa"/><stop offset="1" stop-color="#edfaff"/></linearGradient><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0c82aa"/></marker><marker id="dim" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#557888"/></marker></defs><style>
+text{font-family:DejaVu Sans,Arial,sans-serif;fill:#133447} .h{font-size:30px;font-weight:700} .sub{font-size:17px;fill:#547286}.lbl{font-size:19px;font-weight:700}.sm{font-size:15px}.tiny{font-size:13px}.muted{fill:#58788b}.num{font-size:24px;font-weight:700;fill:#096d87}.white{fill:white}.blue{fill:#087eaa}.water{fill:#e9f8fd}.foot{font-size:14px;fill:#607a89} .dash{stroke-dasharray:8 7}</style>
+<rect x="1" y="1" width="1198" height="718" rx="26" fill="url(#bg)" stroke="#d8e8ee"/>
+<text x="52" y="68" class="h">Стеновая подающая форсунка</text><text x="52" y="100" class="sub">Высота от рабочего уровня воды до оси форсунки</text>
+<rect x="53" y="140" width="790" height="480" rx="22" fill="#fff" stroke="#d8e8ee"/>
+<!-- pool section, right side wall -->
+<path d="M140 200 L140 543 Q140 564 160 564 H766 V200" fill="none" stroke="#829ba9" stroke-width="18" stroke-linejoin="round"/>
+<rect x="149" y="204" width="608" height="350" fill="url(#water)"/>
+<path d="M149 204 H757" stroke="#1a95bd" stroke-width="5"/>
+<path d="M155 212 Q200 205 245 212 T335 212 T425 212 T515 212 T605 212 T695 212" stroke="#65bfd9" stroke-width="2" fill="none" opacity=".75"/>
+<text x="175" y="185" class="lbl">Рабочее зеркало воды</text>
+<path d="M364 190 L364 205" stroke="#50798d" stroke-width="1.5"/>
+<!-- nozzle on right wall -->
+<rect x="742" y="274" width="28" height="56" rx="7" fill="#2f819d" stroke="#11556e" stroke-width="3"/>
+<rect x="718" y="286" width="25" height="31" rx="8" fill="#def1f6" stroke="#227f9b" stroke-width="3"/>
+<circle cx="728" cy="302" r="7" fill="#077fa7"/>
+<!-- jet direction leftwards -->
+<path d="M713 301 C635 298 572 302 497 314" stroke="#0c82aa" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+<path d="M701 310 Q608 344 535 360" stroke="#55b9d4" stroke-width="3" fill="none" marker-end="url(#arrow)" opacity=".8"/>
+<path d="M700 292 Q630 257 564 254" stroke="#55b9d4" stroke-width="3" fill="none" marker-end="url(#arrow)" opacity=".8"/>
+<text x="400" y="398" class="sm muted">Поток очищенной воды в чашу</text>
+<path d="M476 378 L510 330" fill="none" stroke="#7294a6" stroke-width="1.5"/>
+<!-- dim water level to nozzle center: 98 units schematic -->
+<line x1="783" y1="204" x2="822" y2="204" stroke="#557888" stroke-width="1.5"/>
+<line x1="783" y1="302" x2="822" y2="302" stroke="#557888" stroke-width="1.5"/>
+<line x1="804" y1="210" x2="804" y2="296" stroke="#557888" stroke-width="2" marker-start="url(#dim)" marker-end="url(#dim)"/>
+<rect x="430" y="458" width="267" height="60" rx="14" fill="#fff" stroke="#d0e6ee"/>
+<text x="450" y="483" class="sm muted">Не измерять от борта:</text><text x="450" y="505" class="sm">отсчёт ведут от зеркала</text>
+<!-- side card -->
+<rect x="865" y="140" width="280" height="480" rx="22" fill="#eaf6fa" stroke="#cce4ec"/>
+<text x="890" y="186" class="lbl">Ориентир</text>
+<text x="890" y="234" class="num">200–400 мм</text>
+<text x="890" y="261" class="sm">ниже зеркала воды</text>
+<line x1="890" y1="287" x2="1120" y2="287" stroke="#c7dfe8"/>
+<text x="890" y="323" class="lbl">Проверить</text>
+<text x="890" y="354" class="sm">• глубину чаши</text>
+<text x="890" y="384" class="sm">• направление струй</text>
+<text x="890" y="414" class="sm">• расположение скиммеров</text>
+<text x="890" y="444" class="sm">• паспорт форсунки</text>
+<line x1="890" y1="472" x2="1120" y2="472" stroke="#c7dfe8"/>
+<text x="890" y="508" class="sm muted">Это практика для части</text>
+<text x="890" y="531" class="sm muted">частных бассейнов,</text>
+<text x="890" y="554" class="sm muted">не требование ГОСТ.</text>
+<text x="54" y="669" class="foot">Схема условная, не в масштабе. Окончательные отметки задаются проектом и характеристиками изделия.</text>
+<text x="1137" y="669" text-anchor="end" class="foot">ALPOOL · alpool.ru</text>
+</svg>
