@@ -360,7 +360,18 @@
 		var time = positive(desiredHours, 'desiredHours', MAX_HOURS);
 		var energy = heatingEnergy((input.geometry || poolGeometry(input)).volumeM3, input.initialTempC, input.targetTempC);
 		if (energy === 0) return { idealPowerKw: 0, requiredPowerKw: 0, simulation: simulateHeating(input, 0.000001, time) };
-		var lo = 0;
+		var daily = calculateDailyBalance(input);
+		if (daily.unknownCoveredLoss) {
+			return {
+				idealPowerKw: energy / time,
+				requiredPowerKw: null,
+				simulation: { reached: false, achievable: null, hours: null, reason: 'cover-data-missing', sourceEnergyKWh: null, netLossEnergyKWh: null },
+				reason: 'cover-data-missing'
+			};
+		}
+		var lo = 0.000001;
+		var minimumPowerSimulation = simulateHeating(input, lo, time);
+		if (minimumPowerSimulation.reached) return { idealPowerKw: energy / time, requiredPowerKw: lo, simulation: minimumPowerSimulation, reason: null };
 		var hi = Math.max(1, energy / time);
 		var sim = simulateHeating(input, hi, time);
 		while (!sim.reached && hi < MAX_POWER_KW) { hi *= 2; sim = simulateHeating(input, hi, time); }

@@ -179,6 +179,47 @@ test('simulation reaches target with sufficient power and otherwise reports non-
 	assert.equal(required.simulation.reached, true);
 });
 
+test('missing cover data is returned as a distinct calculation state without masking invalid power', () => {
+	const open = { ...base, initialTempC: 7, targetTempC: 28, coverHoursPerDay: 12 };
+	assert.equal(core.calculateDailyBalance(open).unknownCoveredLoss, false);
+	assert.ok(core.requiredHeatingPower(open, 24).requiredPowerKw > 0);
+
+	for (const coverInput of [
+		{ coverFraction: 1, coverU_Wm2K: null, coverEvaporationFraction: null, coverHoursPerDay: 12 },
+		{ coverFraction: 1, coverU_Wm2K: 1, coverEvaporationFraction: null, coverHoursPerDay: 12 },
+		{ coverFraction: 1, coverU_Wm2K: null, coverEvaporationFraction: 0.1, coverHoursPerDay: 12 },
+		{ coverFraction: 1, coverU_Wm2K: null, coverEvaporationFraction: null, coverHoursPerDay: 24 }
+	]) {
+		const input = { ...open, ...coverInput };
+		assert.equal(core.calculateDailyBalance(input).unknownCoveredLoss, true);
+		assert.equal(core.requiredHeatingPower(input, 24).reason, 'cover-data-missing');
+		assert.equal(core.simulateHeating(input, 30, 24).reason, 'cover-data-missing');
+	}
+
+	const known = { ...open, coverFraction: 1, coverU_Wm2K: 1, coverEvaporationFraction: 0.1, coverHoursPerDay: 12 };
+	assert.equal(core.calculateDailyBalance(known).unknownCoveredLoss, false);
+	assert.ok(core.requiredHeatingPower(known, 24).requiredPowerKw > 0);
+
+	const noCoverHours = { ...open, coverFraction: 1, coverU_Wm2K: null, coverEvaporationFraction: null, coverHoursPerDay: 0 };
+	assert.equal(core.calculateDailyBalance(noCoverHours).unknownCoveredLoss, false);
+	assert.ok(core.requiredHeatingPower(noCoverHours, 24).requiredPowerKw > 0);
+	assert.throws(() => core.simulateHeating(open, 0, 24), RangeError);
+	assert.throws(() => core.simulateHeating(open, -1, 24), RangeError);
+});
+
+test('power search stays within the strict positive simulation boundary when surroundings nearly supply the full heat', () => {
+	const warmRoom = {
+		...base, lengthM: 1, widthM: 1, averageDepthM: 1, waterTempC: 8,
+		airTempC: 30, relativeHumidityPercent: 60, windMs: 0.2, alphaWm2K: 4.1,
+		effectiveRadiantTempC: 20, initialTempC: 7, targetTempC: 8, coverHoursPerDay: 0
+	};
+	const result = core.requiredHeatingPower(warmRoom, 24);
+	assert.equal(result.reason, null);
+	assert.equal(result.simulation.reached, true);
+	assert.ok(result.requiredPowerKw >= 0.000001);
+	assert.ok(Math.abs(result.simulation.energyBalanceResidualKWh) < 0.00001);
+});
+
 test('independent one-second energy integration closes the 48 m3 initial-heating balance', () => {
 	const input = { ...base, airTempC: 30, relativeHumidityPercent: 60, pressureKpa: 101.325, windMs: 0.2, alphaWm2K: 4.1, effectiveRadiantTempC: 30, initialTempC: 7, targetTempC: 28 };
 	const selected = core.requiredHeatingPower(input, 24);

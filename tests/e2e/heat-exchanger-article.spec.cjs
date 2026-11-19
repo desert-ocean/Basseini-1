@@ -96,11 +96,51 @@ test('heat calculator presents coherent results and remains usable at desktop, t
 	await page.locator('#hx-cover-on').check();
 	await expect(page.locator('#hx-cover-results')).toBeVisible();
 	await expect(page.locator('#hx-cover-results-table')).toBeHidden();
-	await expect(page.locator('#hx-cover-results-message')).toContainText('подтверждённые U');
-	await page.locator('#hx-cover-percent').fill('100');
-	await page.locator('#hx-cover-hours').fill('12');
-	await page.locator('#hx-cover-evap-fraction').fill('0.1');
+	await expect(page.locator('#hx-cover-input-message')).toHaveText('Для расчёта с покрытием укажите коэффициент теплопередачи U и остаточную долю испарения.');
+	await expect(page.locator('#hx-cover-results-message')).toContainText('укажите коэффициент теплопередачи U');
+	await expect(page.locator('#hx-error')).toHaveText('');
+	await expect(page.locator('#hx-area-result')).toHaveText('1 м²');
+	await expect(page.locator('#hx-energy-ideal')).toHaveText('23,26 кВт·ч');
+	await expect(page.locator('#hx-primary-result-label')).toHaveText('Доступная мощность системы');
+	await expect(page.locator('#hx-heat-result')).toHaveText('0,1 кВт');
+	await expect(page.locator('#hx-duration-result')).toContainText('Недостаточно данных о покрытии');
+	await expect(page.locator('#hx-source-energy')).toContainText('Недостаточно данных о покрытии');
+	await expect(page.locator('#hx-chart-heat').locator('..')).toBeHidden();
 	await page.locator('#hx-cover-u').fill('1');
+	await expect(page.locator('#hx-cover-input-message')).toBeVisible();
+	await expect(page.locator('#hx-error')).toHaveText('');
+	await page.locator('#hx-cover-u').fill('');
+	await page.locator('#hx-cover-evap-fraction').fill('0.1');
+	await expect(page.locator('#hx-cover-input-message')).toBeVisible();
+	await expect(page.locator('#hx-error')).toHaveText('');
+	await page.locator('#hx-cover-evap-fraction').fill('');
+	await page.locator('#hx-cover-hours').fill('0');
+	await expect(page.locator('#hx-cover-input-message')).toBeHidden();
+	await expect(page.locator('#hx-cover-results')).toBeHidden();
+	await expect(page.locator('#hx-error')).toHaveText('');
+	await expect(page.locator('#hx-source-energy')).not.toContainText('Недостаточно данных');
+	await page.locator('#hx-cover-hours').fill('24');
+	await expect(page.locator('#hx-cover-input-message')).toBeVisible();
+	await page.locator('#hx-cover-hours').fill('12');
+	await expect(page.locator('#hx-cover-input-message')).toBeVisible();
+	await expect(page.locator('#hx-error')).toHaveText('');
+	await page.locator('#hx-available-power').fill('0');
+	await expect(page.locator('#hx-available-power-error')).toContainText('Мощность должна быть больше нуля');
+	await page.locator('#hx-available-power').fill('-1');
+	await expect(page.locator('#hx-available-power-error')).toContainText('Мощность должна быть больше нуля');
+	await page.locator('#hx-available-power').fill('0.1');
+	await expect(page.locator('#hx-error')).toHaveText('');
+	await expect(page.locator('#hx-cover-input-message')).toBeVisible();
+	await page.getByRole('tab', { name: 'Подобрать мощность по времени' }).click();
+	await page.locator('#hx-cover-percent').fill('100');
+	await page.locator('#hx-cover-u').fill('1');
+	await expect(page.locator('#hx-cover-input-message')).toBeVisible();
+	await page.locator('#hx-cover-evap-fraction').fill('0.1');
+	await expect(page.locator('#hx-cover-input-message')).toBeHidden();
+	await expect(page.locator('#hx-error')).toHaveText('');
+	await page.locator('#hx-cover-hours').fill('24');
+	await expect(page.locator('#hx-covered-hours')).toHaveText('24 ч/сут');
+	await page.locator('#hx-cover-hours').fill('12');
 	await expect(page.locator('#hx-error')).toHaveText('');
 	await page.locator('#hx-cover-results > summary').click();
 	await expect(page.locator('#hx-cover-results-table')).toBeVisible();
@@ -110,9 +150,20 @@ test('heat calculator presents coherent results and remains usable at desktop, t
 	await page.locator('#hx-cover-settings > summary').click();
 	await expect(page.locator('#hx-cover-u')).toHaveValue('1');
 	await page.locator('#hx-cover-settings > summary').click();
+	await page.locator('#hx-cover-evap-fraction').fill('');
+	await expect(page.locator('#hx-cover-input-message')).toBeVisible();
 	await page.locator('#hx-cover-on').uncheck();
 	await expect(page.locator('#hx-cover-results')).toBeHidden();
 	await expect(page.locator('#hx-cover-results-table')).toBeHidden();
+	await expect(page.locator('#hx-cover-input-message')).toBeHidden();
+	await expect(page.locator('#hx-error')).toHaveText('');
+	await expect(page.locator('#hx-source-energy')).not.toContainText('Недостаточно данных');
+	await page.locator('#hx-cover-on').check();
+	await expect(page.locator('#hx-cover-u')).toHaveValue('1');
+	await expect(page.locator('#hx-cover-evap-fraction')).toHaveValue('');
+	await expect(page.locator('#hx-cover-input-message')).toBeVisible();
+	await expect(page.locator('#hx-error')).toHaveText('');
+	await page.locator('#hx-cover-on').uncheck();
 
 	await page.locator('#hx-environment').selectOption('indoor');
 	await page.locator('#hx-air').fill('30');
@@ -122,6 +173,7 @@ test('heat calculator presents coherent results and remains usable at desktop, t
 	await expect(page.locator('#hx-warnings')).toContainText('Возможна конденсация влаги с выделением тепла');
 	await page.locator('#hx-initial').fill('7');
 	await page.locator('#hx-target').fill('8');
+	await expect(page.locator('#hx-error')).toHaveText('');
 	await expect(page.locator('#hx-evap')).toContainText('0 кВт');
 	await expect(page.locator('#hx-conv')).toContainText('теплопоступление');
 	await expect(page.locator('#hx-rad')).toContainText('теплопоступление');
@@ -163,6 +215,11 @@ test('heat calculator presents coherent results and remains usable at desktop, t
 
 	const tocTargets = await page.locator('.hx-toc a').evaluateAll((links) => links.map((link) => link.getAttribute('href')));
 	for (const target of tocTargets) await expect(page.locator(target)).toHaveCount(1);
+	await expect(page.locator('.hx-toc a[href="#examples"]')).toHaveCount(0);
+	await expect(page.locator('#saunus > h2')).toHaveText('Методика расчёта теплопотерь бассейна: формулы и примеры');
+	await expect(page.locator('.hx-method-table--summary thead')).toContainText('Что рассчитывается');
+	await expect(page.locator('.hx-method-table--summary thead')).toContainText('Как учитывается в калькуляторе');
+	await expect(page.locator('.hx-method-table--summary table tr')).toHaveCount(7);
 	await expect(page.locator('#unified-phone')).toBeAttached();
 	await expect(page.locator('.contact-cta a[href="/tehnicheskoe-zadanie/"]')).toBeAttached();
 
@@ -171,6 +228,11 @@ test('heat calculator presents coherent results and remains usable at desktop, t
 		await page.waitForTimeout(100);
 		const dimensions = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
 		expect(dimensions.scroll).toBeLessThanOrEqual(dimensions.client + 1);
+		const methodTable = page.locator('.hx-method-table--summary');
+		await expect(methodTable).toBeVisible();
+		const methodDimensions = await methodTable.evaluate((el) => ({ scroll: el.scrollWidth, client: el.clientWidth }));
+		expect(methodDimensions.scroll).toBeLessThanOrEqual(methodDimensions.client + 1);
+		await methodTable.screenshot({ path: testInfo.outputPath('heat-exchanger-method-table-' + width + '.png') });
 		if (width === 390) {
 			const resultRows = await page.locator('#hx-main-results tbody tr').evaluateAll((rows) => rows.map((row) => { const label = row.querySelector('th').getBoundingClientRect(); const value = row.querySelector('td').getBoundingClientRect(); return { labelRight: label.right, valueLeft: value.left }; }));
 			for (const row of resultRows) expect(row.labelRight).toBeLessThanOrEqual(row.valueLeft + 1);
@@ -192,7 +254,6 @@ test('heat calculator presents coherent results and remains usable at desktop, t
 		}
 		await page.screenshot({ path: testInfo.outputPath('heat-exchanger-results-' + width + '.png'), fullPage: true });
 		await page.locator('.hx-results').first().screenshot({ path: testInfo.outputPath('heat-exchanger-results-table-' + width + '.png') });
-		await page.locator('.hx-charts').screenshot({ path: testInfo.outputPath('heat-exchanger-charts-' + width + '.png') });
 	}
 	await page.locator('#hx-air').fill('15');
 	await expect(page.locator('#hx-chart-air').locator('..').locator('.hx-line-row--current')).toHaveCount(1);

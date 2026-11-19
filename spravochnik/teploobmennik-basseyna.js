@@ -241,10 +241,13 @@
 			var idealEnergy = core.heatingEnergy(geometry.volumeM3, initial, target);
 			var current = core.surfaceComponents(input);
 			var daily = core.calculateDailyBalance(input);
+			var coverDataMissing = daily.unknownCoveredLoss;
+			var coverAffectsSchedule = input.coverFraction > 0 && input.coverHoursPerDay > 0;
+			get('hx-cover-input-message').hidden = !coverDataMissing;
 			var mode = root.getAttribute('data-mode') || 'power';
 			var heatWarnings = current.warnings.slice();
 			var heatResult, activeDuration, availablePower = null;
-			if (daily.unknownCoveredLoss) heatWarnings = heatWarnings.concat(daily.covered.warnings);
+			if (coverDataMissing) heatWarnings.push('Для расчёта с покрытием укажите коэффициент теплопередачи U и остаточную долю испарения.');
 			if (mode === 'power') {
 				activeDuration = number('hx-heat-time');
 				if (activeDuration <= 0) inputFailure(get('hx-heat-time'), 'Время нагрева должно быть больше нуля.');
@@ -253,7 +256,7 @@
 				text('hx-duration-result', fmt(activeDuration, 'ч'));
 				text('hx-primary-result-label', 'Мощность для нагрева');
 				text('hx-primary-result-help', 'Полезная тепловая мощность, которую нужно передавать воде, чтобы достичь заданной температуры за выбранное время.');
-				text('hx-heat-result', fmt(heatResult.requiredPowerKw, 'кВт'));
+				text('hx-heat-result', heatResult.reason === 'cover-data-missing' ? 'Недостаточно данных о покрытии' : fmt(heatResult.requiredPowerKw, 'кВт'));
 				if (activeDuration > 48) heatWarnings.push('Время нагрева превышает 48 часов. Для более быстрого выхода на заданную температуру увеличьте мощность или уменьшите теплопотери. 48 часов — ориентир, не нормативный предел.');
 				if (heatResult.requiredPowerKw == null && heatResult.reason !== 'cover-data-missing') heatWarnings.push('Не удалось подобрать мощность в пределах расчётной модели. Проверьте исходные данные и параметры покрытия.');
 			} else {
@@ -262,47 +265,47 @@
 				if (availablePower > 100000) inputFailure(get('hx-available-power'), 'Проверьте введённую мощность подогрева.');
 				var limit = number('hx-sim-hours');
 				if (limit <= 0) inputFailure(get('hx-sim-hours'), 'Период проверки должен быть больше нуля.');
-				heatResult = core.simulateHeating(Object.assign({}, input, { initialTempC: initial, targetTempC: target }), availablePower, limit);
+				heatResult = coverDataMissing ? { reached: false, reason: 'cover-data-missing', sourceEnergyKWh: null, netLossEnergyKWh: null } : core.simulateHeating(Object.assign({}, input, { initialTempC: initial, targetTempC: target }), availablePower, limit);
 				activeDuration = heatResult.reached ? heatResult.hours : limit;
-				text('hx-duration-label', heatResult.reached ? 'Расчётное время достижения температуры' : 'Период моделирования без достижения цели');
-				text('hx-duration-result', heatResult.reached ? fmt(heatResult.hours, 'ч') : 'Цель не достигнута за ' + fmt(limit, 'ч'));
+				text('hx-duration-label', heatResult.reached || heatResult.reason === 'cover-data-missing' ? 'Расчётное время достижения температуры' : 'Период моделирования без достижения цели');
+				text('hx-duration-result', heatResult.reached ? fmt(heatResult.hours, 'ч') : heatResult.reason === 'cover-data-missing' ? 'Недостаточно данных о покрытии' : 'Цель не достигнута за ' + fmt(limit, 'ч'));
 				text('hx-primary-result-label', 'Доступная мощность системы');
 				text('hx-primary-result-help', 'Мощность, фактически передаваемая воде; она не равна автоматически потреблению источника или паспортной мощности теплообменника.');
 				text('hx-heat-result', fmt(availablePower, 'кВт'));
 				if (!heatResult.reached && heatResult.reason !== 'cover-data-missing') heatWarnings.push('При указанной мощности бассейн не достигает заданной температуры. Возможно, мощность ниже нагрузки поддержания или период моделирования недостаточен.');
 			}
 			if (mode === 'time' && heatResult.reached && heatResult.hours > 48) heatWarnings.push('Время нагрева превышает 48 часов. Для более быстрого выхода на заданную температуру потребуется увеличить доступную тепловую мощность или уменьшить теплопотери.');
-			if (heatResult.reason === 'cover-data-missing') heatWarnings.push('Для расчёта нагрева с покрытием укажите подтверждённые U и остаточную долю испарения либо отключите покрытие.');
+			if (heatResult.reason === 'cover-data-missing' && !coverDataMissing) heatWarnings.push('Для расчёта с покрытием укажите коэффициент теплопередачи U и остаточную долю испарения.');
 			if (((heatResult.simulation && heatResult.simulation.condensationPossible) || heatResult.condensationPossible) && !heatWarnings.some(function (message) { return message === core.CONDENSATION_WARNING; })) heatWarnings.push(core.CONDENSATION_WARNING);
 			var simulation = heatResult.simulation || heatResult;
 			var targetReached = mode === 'power' ? !!simulation.reached : !!heatResult.reached;
 			var targetReachedHours = mode === 'power' ? simulation.hours : heatResult.hours;
-			var sourceEnergy = simulation.sourceEnergyKWh;
-			var netEnergy = simulation.netLossEnergyKWh;
+			var sourceEnergy = simulation.sourceEnergyKWh == null ? null : simulation.sourceEnergyKWh;
+			var netEnergy = simulation.netLossEnergyKWh == null ? null : simulation.netLossEnergyKWh;
 			text('hx-area-result', fmt(geometry.areaM2, 'м²'));
 			text('hx-volume-result', fmt(geometry.volumeM3, 'м³'));
 			text('hx-initial-result', fmt(initial, '°C'));
 			text('hx-target-result', fmt(target, '°C'));
 			text('hx-energy-ideal', fmt(idealEnergy, 'кВт·ч'));
-			text('hx-source-energy-label', mode === 'time' && !heatResult.reached ? 'Тепло от системы за период проверки' : 'Всего тепла от системы');
-			text('hx-net-energy-label', Number.isFinite(netEnergy) && netEnergy < 0 ? 'Теплопоступления за время нагрева' : 'Потери за время нагрева');
+			text('hx-source-energy-label', coverDataMissing ? 'Всего тепла от системы' : mode === 'time' && !heatResult.reached ? 'Тепло от системы за период проверки' : 'Всего тепла от системы');
+			text('hx-net-energy-label', coverDataMissing ? 'Тепловой баланс за время нагрева' : Number.isFinite(netEnergy) && netEnergy < 0 ? 'Теплопоступления за время нагрева' : 'Потери за время нагрева');
 			if (mode === 'time' && !heatResult.reached && netEnergy >= 0) text('hx-net-energy-label', 'Потери за период проверки');
 			if (mode === 'time' && !heatResult.reached && netEnergy < 0) text('hx-net-energy-label', 'Теплопоступления за период проверки');
-			text('hx-net-energy', fmt(netEnergy, 'кВт·ч'));
-			text('hx-source-energy', fmt(sourceEnergy, 'кВт·ч'));
+			text('hx-net-energy', coverDataMissing ? 'Недостаточно данных о покрытии' : fmt(netEnergy, 'кВт·ч'));
+			text('hx-source-energy', coverDataMissing ? 'Недостаточно данных о покрытии' : fmt(sourceEnergy, 'кВт·ч'));
 			var maintenance = daily.peakRequiredPowerKw == null ? Math.max(0, daily.openPowerKw || 0) : daily.peakRequiredPowerKw;
-			text('hx-current-loss', fmt(maintenance, 'кВт'));
+			text('hx-current-loss', coverDataMissing ? 'Открытый режим: ' + fmt(Math.max(0, daily.openPowerKw || 0), 'кВт') + '; с покрытием — недостаточно данных' : fmt(maintenance, 'кВт'));
 			text('hx-evap', signedFlow(current.componentsKw.evaporation, 'кВт'));
 			text('hx-conv', signedFlow(current.componentsKw.convection, 'кВт'));
 			text('hx-rad', signedFlow(current.componentsKw.radiation, 'кВт'));
 			var additional = current.componentsKw.structure + current.componentsKw.makeup + current.componentsKw.batherCarryout + (current.componentsKw.coverTransfer || 0);
 			var gains = current.componentsKw.solarGain + current.componentsKw.occupantsGain;
-			text('hx-additional-losses', signedFlow(additional, 'кВт'));
+			text('hx-additional-losses', coverDataMissing ? 'Недостаточно данных о покрытии' : signedFlow(additional, 'кВт'));
 			text('hx-gains', signedFlow(-gains, 'кВт'));
 			text('hx-total-load', signedFlow(current.lossKw, 'кВт'));
 			var mirrorLoad = current.componentsKw.evaporation + current.componentsKw.convection + current.componentsKw.radiation + (current.componentsKw.coverTransfer || 0);
-			text('hx-specific-load', signedFlow(mirrorLoad * 1000 / geometry.areaM2, 'Вт/м²') + ' по площади зеркала');
-			text('hx-loss-state', input.coverFraction > 0 ? 'Учтены открытая и покрытая части по введённым характеристикам.' : 'Показаны потоки открытого зеркала при заданных условиях.');
+			text('hx-specific-load', coverDataMissing ? 'Недостаточно данных о покрытии' : signedFlow(mirrorLoad * 1000 / geometry.areaM2, 'Вт/м²') + ' по площади зеркала');
+			text('hx-loss-state', coverDataMissing ? 'Показаны рассчитываемые потоки открытой части; итог с покрытием неизвестен до ввода его характеристик.' : input.coverFraction > 0 ? 'Учтены открытая и покрытая части по введённым характеристикам.' : 'Показаны потоки открытого зеркала при заданных условиях.');
 			text('hx-humidity', fmt(current.humidity.xAirKgKg * 1000, 'г/кг'));
 			text('hx-sat-humidity', fmt(current.humidity.xSatKgKg * 1000, 'г/кг'));
 			text('hx-dewpoint', fmt(current.humidity.dewPointC, '°C'));
@@ -310,11 +313,11 @@
 			text('hx-engineering-alpha', fmt(input.alphaWm2K, 'Вт/(м²·К)'));
 			text('hx-engineering-radiant', fmt(input.effectiveRadiantTempC, '°C'));
 			text('hx-engineering-limits', current.warnings.length ? current.warnings.join(' ') : 'Для выбранных условий ограничивающих предупреждений нет.');
-			text('hx-main-explanation', mode === 'time' && !targetReached ? 'Энергия нагрева воды показывает тепло для повышения её температуры до цели; фактически переданное тепло и тепловой обмен рассчитаны только за период проверки. Мощность системы — заданная полезная мощность в воду, а мощность поддержания компенсирует текущую нагрузку при целевой температуре. Цель не достигнута: проверьте мощность или исходные условия.' : netEnergy < 0 ? 'Энергия нагрева воды нужна для повышения температуры; теплопоступления из окружающей среды уменьшают нагрузку. Мощность для нагрева — полезная мощность, передаваемая воде за выбранное время. Мощность поддержания компенсирует текущую чистую нагрузку после достижения цели.' : 'Энергия нагрева воды нужна для повышения температуры; потери за время нагрева — интегральный тепловой обмен с окружающей средой за весь период. Всего тепла от системы складывается из изменения энергии воды и этого теплообмена. Мощность для нагрева нужна для достижения цели за выбранное время, а мощность поддержания компенсирует текущую нагрузку после нагрева.');
-			get('hx-cover-results').hidden = !checked('hx-cover-on');
-			get('hx-cover-results-table').hidden = !checked('hx-cover-on') || !daily.covered.valid;
-			get('hx-cover-results-message').hidden = !checked('hx-cover-on') || daily.covered.valid;
-			if (checked('hx-cover-on')) {
+			text('hx-main-explanation', coverDataMissing ? 'Энергия нагрева воды рассчитана. Итоговые энергия и мощность нагрева с покрытием, а также его экономия будут определены после ввода U и остаточной доли испарения.' : mode === 'time' && !targetReached ? 'Энергия нагрева воды показывает тепло для повышения её температуры до цели; фактически переданное тепло и тепловой обмен рассчитаны только за период проверки. Мощность системы — заданная полезная мощность в воду, а мощность поддержания компенсирует текущую нагрузку при целевой температуре. Цель не достигнута: проверьте мощность или исходные условия.' : netEnergy < 0 ? 'Энергия нагрева воды нужна для повышения температуры; теплопоступления из окружающей среды уменьшают нагрузку. Мощность для нагрева — полезная мощность, передаваемая воде за выбранное время. Мощность поддержания компенсирует текущую чистую нагрузку после достижения цели.' : 'Энергия нагрева воды нужна для повышения температуры; потери за время нагрева — интегральный тепловой обмен с окружающей средой за весь период. Всего тепла от системы складывается из изменения энергии воды и этого теплообмена. Мощность для нагрева нужна для достижения цели за выбранное время, а мощность поддержания компенсирует текущую нагрузку после нагрева.');
+			get('hx-cover-results').hidden = !coverAffectsSchedule;
+			get('hx-cover-results-table').hidden = !coverAffectsSchedule || !daily.covered.valid;
+			get('hx-cover-results-message').hidden = !coverAffectsSchedule || daily.covered.valid;
+			if (coverAffectsSchedule) {
 				text('hx-open-loss', fmt(daily.openPowerKw, 'кВт'));
 				text('hx-covered-loss', fmt(daily.coveredPowerKw, 'кВт'));
 				text('hx-covered-hours', fmt(daily.coveredHours, 'ч/сут'));
@@ -324,7 +327,7 @@
 				text('hx-scheduled-savings-percent', fmt(daily.scheduledSavingsPercent, '%'));
 				text('hx-peak-power', fmt(daily.peakRequiredPowerKw, 'кВт'));
 				text('hx-cover-full-day', fmt(daily.fullDaySavingsKWh, 'кВт·ч/сут при покрытии 24 ч'));
-				text('hx-cover-results-message', 'Укажите подтверждённые U и остаточную долю испарения. Тип изделия сам по себе не задаёт расчётную эффективность.');
+				text('hx-cover-results-message', 'Для расчёта с покрытием укажите коэффициент теплопередачи U и остаточную долю испарения.');
 			}
 			var exchangeTemps = ['hx-primary-supply','hx-primary-return','hx-pool-inlet','hx-pool-outlet'].map(function (id) { return number(id, { optional: true }); });
 			var primaryFlow = number('hx-primary-flow', { optional: true });
@@ -379,7 +382,8 @@
 			var seriesTemperatures = series.map(function (point) { return point.temperatureC; });
 			var temperatureMin = Math.min.apply(Math, [initial, target].concat(seriesTemperatures)) - 1;
 			var temperatureMax = Math.max.apply(Math, [initial, target].concat(seriesTemperatures)) + 1;
-			text('hx-chart-heat-note', 'Вода: ' + fmt(initial, '°C') + ' → ' + fmt(target, '°C') + (targetReached ? '; цель достигнута через ' + fmt(targetReachedHours, 'ч') : '; цель не достигнута в показанный период. Линия рассчитана численным моделированием.'));
+			text('hx-chart-heat-note', coverDataMissing ? 'График нагрева с покрытием появится после ввода его теплотехнических характеристик.' : 'Вода: ' + fmt(initial, '°C') + ' → ' + fmt(target, '°C') + (targetReached ? '; цель достигнута через ' + fmt(targetReachedHours, 'ч') : '; цель не достигнута в показанный период. Линия рассчитана численным моделированием.'));
+			get('hx-chart-heat').closest('.hx-chart').hidden = coverDataMissing;
 			drawLine('hx-chart-heat', 'Изменение температуры воды во время нагрева', series.map(function (point) { return { x: point.hours, y: point.temperatureC }; }), 0, endTime, temperatureMin, temperatureMax, 'Время нагрева, ч', 'Температура воды, °C', { targetY: target, reachedX: targetReached ? targetReachedHours : null, reachedXLabel: null });
 			lastOutput = { geometry: geometry, input: input, initial: initial, target: target, energy: idealEnergy, current: current, daily: daily, heat: heatResult, mode: mode, duration: activeDuration, requiredPower: mode === 'power' ? heatResult.requiredPowerKw : availablePower, sourceEnergy: sourceEnergy, netEnergy: netEnergy };
 			renderCopyText(lastOutput);
