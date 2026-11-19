@@ -317,6 +317,8 @@
 		var points = [{ hours: 0, temperatureC: temperature }];
 		var reached = temperature >= target;
 		var condensationPossible = false;
+		var sourceEnergyKWh = 0;
+		var netLossEnergyKWh = 0;
 		while (elapsed < maxHours && !reached) {
 			var dt = Math.min(stepHours, maxHours - elapsed);
 			var hourOfDay = ((elapsed + dt / 2) % 24 + 24) % 24;
@@ -326,17 +328,32 @@
 			var covered = coverHours > 0 && offset < coverHours;
 			var instantaneous = Object.assign({}, input, { geometry: geom, waterTempC: temperature, coverFraction: covered ? (input.coverFraction || 0) : 0, structureLossKw: 0, makeupM3Day: 0, batherCarryoutM3Day: 0, occupants: 0, occupantGainW: 0 });
 			var losses = surfaceComponents(instantaneous);
-			if (!losses.valid) return { reached: false, achievable: null, hours: null, finalTempC: temperature, series: points, reason: 'cover-data-missing' };
+			if (!losses.valid) return { reached: false, achievable: null, hours: null, finalTempC: temperature, series: points, reason: 'cover-data-missing', sourceEnergyKWh: sourceEnergyKWh, netLossEnergyKWh: netLossEnergyKWh };
 			if (losses.condensationPossible) condensationPossible = true;
 			var continuousOtherKw = (input.structureLossKw || 0) + ((input.makeupM3Day || 0) + (input.batherCarryoutM3Day || 0)) * WATER_KWH_PER_M3_K * (temperature - (input.makeupTempC == null ? input.airTempC : input.makeupTempC)) / 24 - (input.occupants || 0) * (input.occupantGainW || 0) / 1000;
-			var netKw = power - losses.lossKw - continuousOtherKw;
-			temperature += netKw * dt / (WATER_KWH_PER_M3_K * geom.volumeM3);
-			elapsed += dt;
-			if (temperature >= target) { temperature = target; reached = true; }
+			var netLossKw = losses.lossKw + continuousOtherKw;
+			var netKw = power - netLossKw;
+			var usedDt = dt;
+			var nextTemperature = temperature + netKw * dt / (WATER_KWH_PER_M3_K * geom.volumeM3);
+			if (netKw > 0 && nextTemperature >= target) {
+				usedDt = (target - temperature) * WATER_KWH_PER_M3_K * geom.volumeM3 / netKw;
+				nextTemperature = target;
+				reached = true;
+			}
+			sourceEnergyKWh += power * usedDt;
+			netLossEnergyKWh += netLossKw * usedDt;
+			elapsed += usedDt;
+			temperature = nextTemperature;
 			if (points.length < 400 && (Math.round(elapsed * 12) % 6 === 0 || reached)) points.push({ hours: elapsed, temperatureC: temperature });
 			if (temperature < 0 || temperature > 60) break;
 		}
-		return { reached: reached, achievable: reached, hours: reached ? elapsed : null, finalTempC: temperature, series: points, reason: reached ? null : 'target-not-reached-within-limit', condensationPossible: condensationPossible };
+		if (points[points.length - 1].hours < elapsed - 1e-9) {
+			var endPoint = { hours: elapsed, temperatureC: temperature };
+			if (points.length >= 400) points[points.length - 1] = endPoint;
+			else points.push(endPoint);
+		}
+		var waterEnergyKWh = WATER_KWH_PER_M3_K * geom.volumeM3 * (temperature - start);
+		return { reached: reached, achievable: reached, hours: reached ? elapsed : null, finalTempC: temperature, series: points, reason: reached ? null : 'target-not-reached-within-limit', condensationPossible: condensationPossible, sourceEnergyKWh: sourceEnergyKWh, netLossEnergyKWh: netLossEnergyKWh, waterEnergyKWh: waterEnergyKWh, energyBalanceResidualKWh: sourceEnergyKWh - netLossEnergyKWh - waterEnergyKWh };
 	}
 
 	function requiredHeatingPower(input, desiredHours) {

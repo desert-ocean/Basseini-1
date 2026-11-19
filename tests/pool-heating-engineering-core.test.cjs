@@ -22,6 +22,23 @@ test('initial heat-up energy uses the water heat capacity approximation', () => 
 	close(core.heatingEnergy(48, 7, 28), 1172.304, 0.001);
 });
 
+test('1 m3 reference heat-up uses the reproducible full input set and strict energy tolerance', () => {
+	const input = {
+		shape: 'rectangle', lengthM: 1, widthM: 1, averageDepthM: 1,
+		initialTempC: 8, targetTempC: 28, waterTempC: 28,
+		environment: 'outdoor', airTempC: 20, relativeHumidityPercent: 60, pressureKpa: 101.325,
+		windMs: 1, alphaWm2K: 4.07, effectiveRadiantTempC: 20, emissivity: 0.96, radiationModel: 'stefan',
+		solarGainWm2: 0, coverFraction: 0, coverHoursPerDay: 0, coverStartHour: 20,
+		structureLossKw: 0, makeupM3Day: 0, makeupTempC: 10, batherCarryoutM3Day: 0, occupants: 0, occupantGainW: 0
+	};
+	input.geometry = core.poolGeometry(input);
+	const result = core.requiredHeatingPower(input, 24);
+	close(result.requiredPowerKw, 1.1482600566563406, 1e-8);
+	close(result.simulation.sourceEnergyKWh, 27.5582413597515, 1e-8);
+	close(result.simulation.netLossEnergyKWh, 4.2982413597514, 1e-8);
+	assert.ok(Math.abs(result.simulation.energyBalanceResidualKWh) < 1e-8);
+});
+
 test('psychrometric humidity ratio uses vapor pressure and barometric pressure', () => {
 	const state = core.humidityState(27, 30, 60, 101.325);
 	close(state.xSatKgKg, 0.02265, 0.0001);
@@ -198,6 +215,8 @@ test('independent one-second energy integration closes the 48 m3 initial-heating
 	assert.ok(Math.abs(elapsedSeconds / 3600 - 24) <= 0.04);
 	assert.ok(environmentIntoWaterKWh > 0);
 	assert.ok(Math.abs(suppliedKWh + environmentIntoWaterKWh - storedKWh) <= 0.08, `${suppliedKWh} + ${environmentIntoWaterKWh} != ${storedKWh}`);
+	assert.ok(Math.abs(selected.simulation.energyBalanceResidualKWh) < 0.01, `integrated residual ${selected.simulation.energyBalanceResidualKWh} kWh`);
+	close(selected.simulation.sourceEnergyKWh - selected.simulation.netLossEnergyKWh, storedKWh, 0.01);
 	close(storedKWh, 1172.304, 0.08);
 });
 
