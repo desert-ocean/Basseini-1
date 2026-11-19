@@ -220,7 +220,10 @@ test('heat calculator presents coherent results and remains usable at desktop, t
 	await expect(page.locator('.hx-method-table--summary thead')).toContainText('Что рассчитывается');
 	await expect(page.locator('.hx-method-table--summary thead')).toContainText('Как учитывается в калькуляторе');
 	await expect(page.locator('.hx-method-table--summary table tr')).toHaveCount(7);
-	await expect(page.locator('#unified-phone')).toBeAttached();
+	await expect(page.locator('#phone')).toBeAttached();
+	await expect(page.locator('#lead-files')).toBeAttached();
+	await expect(page.locator('#alpool-personal-data-consent-home')).toBeAttached();
+	await expect(page.locator('#contact form')).toHaveAttribute('action', 'https://api.alpool.ru/api/leads');
 	await expect(page.locator('.contact-cta a[href="/tehnicheskoe-zadanie/"]')).toBeAttached();
 
 	for (const width of [390, 768, 1440]) {
