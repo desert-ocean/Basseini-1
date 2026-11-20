@@ -1,0 +1,107 @@
+.bottom-drain {
+  max-width: 1080px;
+}
+
+.bottom-drain__toc,
+.bottom-drain__note,
+.bottom-drain__warning {
+  padding: 1rem 1.2rem;
+  border-radius: 0.6rem;
+  background: #f2f8fa;
+}
+
+.bottom-drain__toc ol {
+  margin-bottom: 0;
+}
+
+.bottom-drain__figure {
+  margin: 1.5rem 0 2rem;
+}
+
+.bottom-drain__figure picture,
+.bottom-drain__figure img {
+  display: block;
+  width: 100%;
+}
+
+.bottom-drain__figure img {
+  height: auto;
+  border-radius: 0.75rem;
+}
+
+.bottom-drain__figure figcaption {
+  margin-top: 0.65rem;
+  color: #526879;
+  font-size: 0.92rem;
+}
+
+.bottom-drain__table-wrap {
+  margin: 1.25rem 0;
+}
+
+.bottom-drain table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.bottom-drain th,
+.bottom-drain td {
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+.bottom-drain__warning {
+  border-left: 4px solid #b84c3f;
+  background: #fff6f3;
+}
+
+@media (max-width: 600px) {
+  .bottom-drain__table-wrap {
+    overflow: visible;
+  }
+
+  .bottom-drain table,
+  .bottom-drain tbody,
+  .bottom-drain tr,
+  .bottom-drain th,
+  .bottom-drain td {
+    display: block;
+    width: 100%;
+  }
+
+  .bottom-drain tr {
+    margin-bottom: 0.9rem;
+    padding: 0.75rem;
+    border: 1px solid #d8e5ea;
+    border-radius: 0.55rem;
+  }
+
+  .bottom-drain thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+
+  .bottom-drain td,
+  .bottom-drain th {
+    padding: 0.3rem 0;
+    border: 0;
+  }
+
+  .bottom-drain td::before {
+    display: block;
+    margin-bottom: 0.15rem;
+    color: #526879;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .bottom-drain td:nth-of-type(1)::before { content: "Устройство"; }
+  .bottom-drain td:nth-of-type(2)::before { content: "Принцип и применение"; }
+  .bottom-drain td:nth-of-type(3)::before { content: "Ограничения"; }
+}

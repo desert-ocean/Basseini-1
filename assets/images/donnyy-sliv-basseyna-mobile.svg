@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="1040" viewBox="0 0 420 1040" role="img" aria-labelledby="title desc"><title id="title">Донный слив бассейна: устройство и безопасность</title><desc id="desc">Принципиальная схема двух защищённых донных водозаборов, объединённых во всасывающую линию. Не монтажный чертёж.</desc>
+<defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M1 1 L8 4.5 L1 8" fill="none" stroke="#087c9b" stroke-width="1.6" stroke-linecap="round"/></marker><pattern id="tile" width="24" height="18" patternUnits="userSpaceOnUse"><path d="M0 17 H24 M23 0 V18" stroke="#d4e8ee" fill="none" stroke-width="1"/></pattern></defs>
+<rect width="100%" height="100%" fill="#f8fbfd"/>
+<text x="22" y="43" font-family="Arial, sans-serif" font-size="29" font-weight="700" text-anchor="start" fill="#12314d">Донный слив</text>
+<text x="22" y="76" font-family="Arial, sans-serif" font-size="29" font-weight="700" text-anchor="start" fill="#12314d">бассейна</text>
+<text x="22" y="106" font-family="Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#597184">Устройство и безопасность</text>
+<rect x="15" y="132" width="390" height="352" rx="18" fill="white" stroke="#c6dfea" stroke-width="1.5"/>
+<text x="35" y="164" font-family="Arial, sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#12314d">Разрез чаши</text>
+<text x="35" y="186" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#597184">Два защищённых водозабора</text>
+<rect x="50" y="223" width="320" height="103" rx="0" fill="#e8f6f9" stroke="none" stroke-width="1"/>
+<path d="M50 223 Q80 217 110 223 T170 223 T230 223 T370 223" stroke="#0c9d9c" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M50 215 V334 H370 V215" stroke="#4f8398" stroke-width="7" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="89.16" y="320.88" width="71.68" height="10.24" rx="3.84" fill="#ffffff" stroke="#087c9b" stroke-width="1.472"/>
+<path d="M95.816 323.44 L95.816 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M103.112 323.44 L103.112 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M110.408 323.44 L110.408 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M117.704 323.44 L117.704 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M125.0 323.44 L125.0 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M132.296 323.44 L132.296 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M139.592 323.44 L139.592 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M146.888 323.44 L146.888 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M154.184 323.44 L154.184 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<rect x="101.32" y="331.12" width="47.36" height="23.68" rx="2.56" fill="#deedf2" stroke="#5f9eae" stroke-width="1.28"/>
+<path d="M114.76 343.28 L114.76 354.8 L135.24 354.8 L135.24 343.28" stroke="#087c9b" stroke-width="1.92" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M107.08 298.48 V316.4" stroke="#0c9d9c" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arr)"/>
+<path d="M125.0 298.48 V316.4" stroke="#0c9d9c" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arr)"/>
+<path d="M142.92000000000002 298.48 V316.4" stroke="#0c9d9c" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arr)"/>
+<rect x="259.15999999999997" y="320.88" width="71.68" height="10.24" rx="3.84" fill="#ffffff" stroke="#087c9b" stroke-width="1.472"/>
+<path d="M265.816 323.44 L265.816 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M273.112 323.44 L273.112 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M280.408 323.44 L280.408 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M287.704 323.44 L287.704 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M295.0 323.44 L295.0 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M302.296 323.44 L302.296 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M309.592 323.44 L309.592 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M316.888 323.44 L316.888 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<path d="M324.184 323.44 L324.184 328.56" stroke="#6b9baa" stroke-width="1.28" fill="none" stroke-linecap="round"/>
+<rect x="271.32" y="331.12" width="47.36" height="23.68" rx="2.56" fill="#deedf2" stroke="#5f9eae" stroke-width="1.28"/>
+<path d="M284.76 343.28 L284.76 354.8 L305.24 354.8 L305.24 343.28" stroke="#087c9b" stroke-width="1.92" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M277.08 298.48 V316.4" stroke="#0c9d9c" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arr)"/>
+<path d="M295.0 298.48 V316.4" stroke="#0c9d9c" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arr)"/>
+<path d="M312.92 298.48 V316.4" stroke="#0c9d9c" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arr)"/>
+<path d="M125 355 V414" stroke="#4f8398" stroke-width="12" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M125 357 L125 414" stroke="#8fd5df" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M295 355 V414" stroke="#4f8398" stroke-width="12" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M295 357 L295 414" stroke="#8fd5df" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M125 414 H367" stroke="#4f8398" stroke-width="12" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M130 414 L367 414" stroke="#8fd5df" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M212 414 L247 414" stroke="#087c9b" stroke-width="2.7" fill="none" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="33" y="451" font-family="Arial, sans-serif" font-size="15" font-weight="600" text-anchor="start" fill="#12314d">Общая всасывающая линия →</text>
+<text x="33" y="473" font-family="Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#597184">к насосной системе</text>
+<rect x="15" y="505" width="390" height="106" rx="14" fill="white" stroke="#c6dfea" stroke-width="1.2"/>
+<circle cx="47" cy="538" r="18" fill="#e8f6f9" stroke="#087c9b" stroke-width="1.3"/>
+<text x="47" y="544" font-family="Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle" fill="#087c9b">01</text>
+<text x="77" y="545" font-family="Arial, sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#12314d">Забор воды</text>
+<text x="31" y="574" font-family="Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#597184">Через защитную решётку</text>
+<text x="31" y="595" font-family="Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#597184">в корпус донного слива.</text>
+<rect x="15" y="627" width="390" height="106" rx="14" fill="white" stroke="#c6dfea" stroke-width="1.2"/>
+<circle cx="47" cy="660" r="18" fill="#e8f6f9" stroke="#087c9b" stroke-width="1.3"/>
+<text x="47" y="666" font-family="Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle" fill="#087c9b">02</text>
+<text x="77" y="667" font-family="Arial, sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#12314d">Гидравлика</text>
+<text x="31" y="696" font-family="Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#597184">Расход и диаметр труб</text>
+<text x="31" y="717" font-family="Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#597184">определяются расчётом.</text>
+<rect x="15" y="749" width="390" height="106" rx="14" fill="white" stroke="#c6dfea" stroke-width="1.2"/>
+<circle cx="47" cy="782" r="18" fill="#e8f6f9" stroke="#087c9b" stroke-width="1.3"/>
+<text x="47" y="788" font-family="Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle" fill="#087c9b">03</text>
+<text x="77" y="789" font-family="Arial, sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#12314d">Безопасность</text>
+<text x="31" y="818" font-family="Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#597184">Защита от присасывания</text>
+<text x="31" y="839" font-family="Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#597184">подбирается для всей системы.</text>
+<rect x="15" y="883" width="390" height="137" rx="14" fill="#e7f0f4" stroke="none" stroke-width="1"/>
+<text x="31" y="912" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#12314d">Важно</text>
+<text x="31" y="939" font-family="Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#12314d">Схема условная, не для монтажа.</text>
+<text x="31" y="960" font-family="Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#12314d">Нельзя использовать бассейн, если</text>
+<text x="31" y="981" font-family="Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#12314d">крышка отсутствует или повреждена.</text>
+<text x="31" y="1002" font-family="Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#12314d">Конфигурацию определяет проект.</text>
+</svg>
