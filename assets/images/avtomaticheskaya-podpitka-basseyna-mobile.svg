@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="1260" viewBox="0 0 440 1260" role="img" aria-labelledby="title desc">
+  <title id="title">Автоматическая подпитка бассейна</title>
+  <desc id="desc">Водопроводная вода проходит устройство защиты от обратного потока и клапан. Открытый выпуск заканчивается выше края балансного резервуара, образуя воздушный разрыв. Датчик уровня управляет клапаном, отдельная линия отводит воду при переполнении.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#118f99"/></marker>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d8f2f7"/><stop offset="1" stop-color="#c2edf2"/></linearGradient>
+    <linearGradient id="banner" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#13929a"/><stop offset="1" stop-color="#0b8d94"/></linearGradient>
+  </defs>
+  <rect width="440" height="1260" fill="#fff"/>
+  <text x="220" y="43" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="28" font-weight="800" fill="#0d224a">Автоматическая подпитка</text>
+  <text x="220" y="75" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="16" fill="#314a72">Контроль уровня и безопасная подача воды</text>
+  <rect x="12" y="104" width="416" height="626" rx="20" fill="#f8fdfe" stroke="#52b8c0" stroke-width="2"/>
+  <rect x="12" y="104" width="416" height="48" rx="20" fill="url(#head)" stroke="#52b8c0" stroke-width="2"/>
+  <text x="36" y="137" font-family="Arial,DejaVu Sans,sans-serif" font-size="25" font-weight="800" fill="#0d224a">Как работает система</text>
+  <text x="220" y="181" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#0d224a">Питьевой водопровод</text>
+  <path d="M35 216H74M122 216H158M215 216H245V270" fill="none" stroke="#118f99" stroke-width="7" marker-end="url(#arrow)"/>
+  <rect x="74" y="198" width="48" height="36" rx="6" fill="#fff" stroke="#397d98" stroke-width="3"/>
+  <path d="M80 216H87L96 206L103 226L112 206L118 216" fill="none" stroke="#397d98" stroke-width="2.5"/>
+  <rect x="158" y="198" width="57" height="36" rx="6" fill="#e0a04c" stroke="#9b5e16" stroke-width="3"/>
+  <text x="98" y="257" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="13" font-weight="700" fill="#0d224a">Защита потока</text>
+  <text x="186" y="257" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="13" font-weight="700" fill="#0d224a">Клапан</text>
+  <circle cx="245" cy="268" r="5" fill="#fff" stroke="#397d98" stroke-width="3"/>
+  <path d="M245 275V326" fill="none" stroke="#397d98" stroke-width="4" stroke-dasharray="7 7" marker-end="url(#arrow)"/>
+  <text x="306" y="286" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="13" font-weight="700" fill="#314a72">Воздушный</text>
+  <text x="306" y="303" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="13" font-weight="700" fill="#314a72">разрыв</text>
+  <path d="M80 326V480H358V326" fill="none" stroke="#397d98" stroke-width="6"/>
+  <rect x="85" y="405" width="268" height="70" fill="#d8f2f7"/>
+  <line x1="85" y1="405" x2="353" y2="405" stroke="#9b5e16" stroke-width="4" stroke-dasharray="10 8"/>
+  <text x="205" y="394" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="14" font-weight="700" fill="#9b5e16">Рабочий уровень</text>
+  <circle cx="320" cy="399" r="9" fill="#e0a04c" stroke="#9b5e16" stroke-width="3"/>
+  <path d="M320 390V184H215" fill="none" stroke="#9b5e16" stroke-width="3" stroke-dasharray="8 6"/>
+  <text x="315" y="205" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="12" fill="#9b5e16">Сигнал датчика</text>
+  <path d="M358 354H395V405" fill="none" stroke="#118f99" stroke-width="6" marker-end="url(#arrow)"/>
+  <text x="314" y="345" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#0d224a">Аварийный перелив</text>
+  <rect x="28" y="510" width="384" height="58" rx="14" fill="#eef9fb" stroke="#52b8c0" stroke-width="2"/>
+  <text x="220" y="534" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="16" font-weight="700" fill="#0d224a">1. Уровень снизился</text>
+  <text x="220" y="555" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="14" fill="#314a72">Датчик передал запрос на подпитку</text>
+  <rect x="28" y="579" width="384" height="58" rx="14" fill="#eef9fb" stroke="#52b8c0" stroke-width="2"/>
+  <text x="220" y="603" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="16" font-weight="700" fill="#0d224a">2. Клапан открылся</text>
+  <text x="220" y="624" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="14" fill="#314a72">Вода свободно поступает в резервуар</text>
+  <rect x="28" y="648" width="384" height="58" rx="14" fill="#eef9fb" stroke="#52b8c0" stroke-width="2"/>
+  <text x="220" y="672" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="16" font-weight="700" fill="#0d224a">3. Уровень восстановился</text>
+  <text x="220" y="693" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="14" fill="#314a72">Клапан закрылся</text>
+  <rect x="12" y="750" width="416" height="278" rx="20" fill="#f8fdfe" stroke="#52b8c0" stroke-width="2"/>
+  <rect x="12" y="750" width="416" height="50" rx="20" fill="url(#head)" stroke="#52b8c0" stroke-width="2"/>
+  <text x="34" y="783" font-family="Arial,DejaVu Sans,sans-serif" font-size="22" font-weight="800" fill="#0d224a">Что важно предусмотреть</text>
+  <text x="30" y="835" font-family="Arial,DejaVu Sans,sans-serif" font-size="15" fill="#314a72">• защита питьевого водопровода</text>
+  <text x="30" y="875" font-family="Arial,DejaVu Sans,sans-serif" font-size="15" fill="#314a72">• рабочие и аварийные датчики</text>
+  <text x="30" y="915" font-family="Arial,DejaVu Sans,sans-serif" font-size="15" fill="#314a72">• ограничение времени подачи</text>
+  <text x="30" y="955" font-family="Arial,DejaVu Sans,sans-serif" font-size="15" fill="#314a72">• безопасный перелив и сигнализация</text>
+  <rect x="12" y="1048" width="416" height="184" rx="22" fill="url(#banner)"/>
+  <circle cx="52" cy="1140" r="24" fill="#fff" opacity=".96"/>
+  <path d="M40 1140L49 1149L65 1130" fill="none" stroke="#118f99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="88" y="1097" font-family="Arial,DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#fff"><tspan x="88" dy="0">Подпитка поддерживает уровень,</tspan><tspan x="88" dy="24">но не заменяет поиск утечек</tspan><tspan x="88" dy="24">и контроль расхода воды.</tspan></text>
+</svg>
