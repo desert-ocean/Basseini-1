@@ -1,0 +1,37 @@
+.chemical-dosing-page { overflow-x: clip; }
+.dosing-guide { min-width: 0; }
+.dosing-toc, .dosing-note, .dosing-sources { margin: 1.2rem 0; padding: 1rem 1.2rem; border: 1px solid #d4e2e8; border-radius: 12px; background: #f5f9fa; }
+.dosing-toc ol { columns: 2; column-gap: 2rem; margin: .6rem 0 0; padding-left: 1.3rem; }
+.dosing-toc li { break-inside: avoid; margin: .2rem 0; }
+.dosing-note { border-left: 4px solid #bd762a; background: #fff8ed; }
+.dosing-figure { width: 100%; max-width: 100%; margin: 1.25rem auto 1.6rem; }
+.dosing-figure picture { display: block; width: 100%; }
+.dosing-figure img { display: block; width: 100%; max-width: 100%; height: auto; }
+.dosing-figure figcaption { margin-top: .65rem; color: #526879; font-size: .92rem; }
+.dosing-flow { display: grid; grid-template-columns: repeat(9, auto); align-items: center; justify-content: space-between; gap: .4rem; margin: 1rem 0; padding: .9rem; border-radius: 10px; background: #edf5f7; color: #193e52; text-align: center; }
+.dosing-flow span { font-weight: 700; }
+.dosing-flow b { color: #087a9b; }
+.dosing-table-wrap { width: 100%; max-width: 100%; min-width: 0; margin: 1rem 0; overflow-x: auto; overscroll-behavior-inline: contain; }
+.dosing-table { width: 100%; min-width: 880px; table-layout: fixed; border-collapse: collapse; }
+.dosing-table th, .dosing-table td { vertical-align: top; white-space: normal; overflow-wrap: anywhere; }
+.dosing-table th { color: #193e52; background: #edf5f7; }
+.dosing-table td { line-height: 1.5; }
+.dosing-protection-table { min-width: 760px; }
+.dosing-equipment-list li, .dosing-errors li { margin: .6rem 0; }
+.dosing-compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1rem 0; }
+.dosing-compare article { min-width: 0; padding: 1rem 1.1rem; border: 1px solid #d4e2e8; border-radius: 12px; background: #f8fbfc; }
+.dosing-compare h3 { margin-top: 0; }
+.dosing-sources li { margin: .55rem 0; overflow-wrap: anywhere; }
+@media (max-width: 900px) {
+  .dosing-toc ol { columns: 1; }
+  .dosing-flow { grid-template-columns: 1fr; gap: .2rem; }
+  .dosing-flow b { transform: rotate(90deg); }
+  .dosing-compare { grid-template-columns: 1fr; }
+  .dosing-table-wrap { overflow: visible; }
+  .dosing-table, .dosing-table tbody, .dosing-table tr, .dosing-table th, .dosing-table td { display: block; width: 100%; }
+  .dosing-table { min-width: 0; }
+  .dosing-table thead { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
+  .dosing-table tr { margin-bottom: .85rem; padding: .7rem; border: 1px solid #d8e5ea; border-radius: .55rem; }
+  .dosing-table td { padding: .35rem 0; border: 0; }
+  .dosing-table td::before { display: block; margin-bottom: .1rem; color: #526879; font-size: .8rem; font-weight: 700; content: attr(data-label); }
+}

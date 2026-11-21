@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 850" role="img" aria-labelledby="title desc">
+<title id="title">Автоматическое дозирование реагентов: цикл управления и защита</title>
+<desc id="desc">Верхняя схема показывает путь пробы через датчики к контроллеру, далее к раздельным дозаторам и точкам впрыска. Нижняя схема показывает проверки протока, сигнала датчика, времени и дозы, останов при отказе, отдельные ёмкости и сигнализацию уровня.</desc>
+<defs>
+<marker id="water-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#087a9b"/></marker>
+<marker id="chem-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#bd762a"/></marker>
+<marker id="logic-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#526879"/></marker>
+<style>
+ text{font-family:Arial,"DejaVu Sans",sans-serif;fill:#193e52}.title{font-size:25px;font-weight:700}.head{font-size:21px;font-weight:700}.label{font-size:19px}.small{font-size:17px}.bold{font-weight:700}
+ .card{fill:#fff;stroke:#b8d0d9;stroke-width:2}.blue{fill:#e8f5f8;stroke:#4a8798;stroke-width:2}.gold{fill:#fff4e4;stroke:#c58b49;stroke-width:2}.green{fill:#eaf5f0;stroke:#538c73;stroke-width:2}.red{fill:#fff0ed;stroke:#be786e;stroke-width:2}
+</style>
+</defs>
+<rect width="1000" height="850" rx="20" fill="#f5f9fa"/>
+<text class="title" x="24" y="38">Автоматическое дозирование реагентов</text>
+<text class="head" x="24" y="70">1. Измерение → решение → подача → повторный контроль</text>
+<g>
+<rect class="blue" x="20" y="90" width="175" height="190" rx="14"/>
+<text class="head" x="107" y="123" text-anchor="middle">Проба воды</text><text class="label" x="107" y="153" text-anchor="middle">Проточная</text><text class="label" x="107" y="178" text-anchor="middle">измерительная</text><text class="label" x="107" y="203" text-anchor="middle">ячейка</text>
+<rect x="38" y="222" width="64" height="38" rx="8" fill="#fff" stroke="#4a8798" stroke-width="2"/><rect x="111" y="222" width="68" height="38" rx="8" fill="#fff" stroke="#4a8798" stroke-width="2"/><text class="small bold" x="70" y="247" text-anchor="middle">pH</text><text class="small bold" x="145" y="247" text-anchor="middle">Cl₂</text>
+<rect class="card" x="215" y="90" width="165" height="190" rx="14"/>
+<text class="head" x="297" y="128" text-anchor="middle">Контроллер</text><text class="label" x="297" y="165" text-anchor="middle">сравнивает</text><text class="label" x="297" y="191" text-anchor="middle">измерения</text><rect class="green" x="229" y="218" width="137" height="46" rx="9"/><text class="small bold" x="297" y="238" text-anchor="middle">проток</text><text class="small bold" x="297" y="258" text-anchor="middle">подтверждён</text>
+<rect class="gold" x="400" y="90" width="205" height="190" rx="14"/>
+<text class="head" x="502" y="126" text-anchor="middle">Дозаторы</text><rect x="416" y="148" width="80" height="78" rx="10" fill="#fff" stroke="#c58b49" stroke-width="2"/><rect x="508" y="148" width="80" height="78" rx="10" fill="#fff" stroke="#c58b49" stroke-width="2"/><circle cx="456" cy="171" r="14" fill="#f2d9b9" stroke="#bd762a" stroke-width="2"/><circle cx="548" cy="171" r="14" fill="#f2d9b9" stroke="#bd762a" stroke-width="2"/><text class="small bold" x="456" y="205" text-anchor="middle">pH</text><text class="small bold" x="548" y="205" text-anchor="middle">дезинфектант</text><text class="small" x="502" y="252" text-anchor="middle">раздельные линии</text>
+<rect class="blue" x="625" y="90" width="145" height="190" rx="14"/>
+<text class="head" x="697" y="132" text-anchor="middle">Впрыск</text><text class="label" x="697" y="169" text-anchor="middle">в отдельные</text><text class="label" x="697" y="194" text-anchor="middle">точки</text><text class="small" x="697" y="233" text-anchor="middle">по схеме</text><text class="small" x="697" y="255" text-anchor="middle">и расчёту</text>
+<rect class="green" x="790" y="90" width="190" height="190" rx="14"/>
+<text class="head" x="885" y="132" text-anchor="middle">Контур и чаша</text><path d="M820 170h130v62H820z" fill="#d7eef4" stroke="#4a8798" stroke-width="2"/><path d="M820 194q32-14 65 0t65 0" fill="none" stroke="#087a9b" stroke-width="4"/><text class="small" x="885" y="259" text-anchor="middle">перемешать и измерить снова</text>
+<path d="M195 183H205M380 183H390M605 183H615M770 183H780" fill="none" stroke="#526879" stroke-width="3" marker-end="url(#logic-arrow)"/>
+</g>
+<rect class="card" x="20" y="300" width="960" height="78" rx="12"/>
+<text class="small bold" x="40" y="328">Поток после фильтра: отбор представительной пробы → раздельные точки впрыска → возврат в чашу</text>
+<path d="M55 354H943" fill="none" stroke="#087a9b" stroke-width="7" marker-end="url(#water-arrow)"/><circle cx="300" cy="354" r="10" fill="#fff" stroke="#087a9b" stroke-width="3"/><circle cx="665" cy="354" r="10" fill="#fff" stroke="#bd762a" stroke-width="3"/><circle cx="730" cy="354" r="10" fill="#fff" stroke="#bd762a" stroke-width="3"/>
+<path d="M108 300V282" fill="none" stroke="#087a9b" stroke-width="3" marker-end="url(#water-arrow)"/><path d="M456 226V289H665V344M548 226V300H730V344" fill="none" stroke="#bd762a" stroke-width="3" marker-end="url(#chem-arrow)"/>
+<text class="head" x="24" y="420">2. Защита от передозировки: проверка перед разрешением</text>
+<g>
+<rect class="card" x="20" y="440" width="170" height="82" rx="12"/><text class="label bold" x="105" y="472" text-anchor="middle">Проток</text><text class="small" x="105" y="499" text-anchor="middle">подтверждён?</text>
+<rect class="card" x="207" y="440" width="170" height="82" rx="12"/><text class="label bold" x="292" y="472" text-anchor="middle">Датчик</text><text class="small" x="292" y="499" text-anchor="middle">исправен?</text>
+<rect class="card" x="394" y="440" width="205" height="82" rx="12"/><text class="label bold" x="496" y="472" text-anchor="middle">Лимиты подачи</text><text class="small" x="496" y="499" text-anchor="middle">время и доза?</text>
+<rect class="green" x="616" y="440" width="160" height="82" rx="12"/><text class="label bold" x="696" y="472" text-anchor="middle">Все «да»</text><text class="small" x="696" y="499" text-anchor="middle">можно дозировать</text>
+<rect class="red" x="793" y="440" width="187" height="82" rx="12"/><text class="label bold" x="886" y="472" text-anchor="middle">Ошибка / «нет»</text><text class="small" x="886" y="499" text-anchor="middle">стоп и тревога</text>
+<path d="M190 481H198M377 481H385M599 481H607M776 481H784" fill="none" stroke="#526879" stroke-width="3" marker-end="url(#logic-arrow)"/>
+<text class="small" x="500" y="552" text-anchor="middle">Сомнительный сигнал или исчерпанный лимит → безопасное состояние и проверка до возврата</text>
+</g>
+<rect class="gold" x="20" y="580" width="960" height="232" rx="14"/>
+<text class="head" x="40" y="615">Раздельные ёмкости, сигнал уровня и независимые линии</text>
+<g>
+<path d="M55 663h105v91H55zM70 663v-13h75v13" fill="#fff" stroke="#c58b49" stroke-width="2"/><text class="small bold" x="107" y="694" text-anchor="middle">Ёмкость</text><text class="small" x="107" y="718" text-anchor="middle">pH + уровень</text>
+<circle cx="220" cy="707" r="29" fill="#fff" stroke="#c58b49" stroke-width="3"/><text class="small bold" x="220" y="713" text-anchor="middle">насос</text>
+<path d="M160 707H185M249 707H314" fill="none" stroke="#bd762a" stroke-width="4" marker-end="url(#chem-arrow)"/><path d="M278 695l14 12-14 12" fill="none" stroke="#bd762a" stroke-width="3"/><text class="small" x="282" y="744" text-anchor="middle">клапан</text><text class="small bold" x="336" y="713">точка 1</text>
+<path d="M420 663h105v91H420zM435 663v-13h75v13" fill="#fff" stroke="#c58b49" stroke-width="2"/><text class="small bold" x="472" y="694" text-anchor="middle">Ёмкость</text><text class="small" x="472" y="718" text-anchor="middle">дез. + уровень</text>
+<circle cx="585" cy="707" r="29" fill="#fff" stroke="#c58b49" stroke-width="3"/><text class="small bold" x="585" y="713" text-anchor="middle">насос</text>
+<path d="M525 707H550M614 707H679" fill="none" stroke="#bd762a" stroke-width="4" marker-end="url(#chem-arrow)"/><path d="M643 695l14 12-14 12" fill="none" stroke="#bd762a" stroke-width="3"/><text class="small" x="647" y="744" text-anchor="middle">клапан</text><text class="small bold" x="701" y="713">точка 2</text>
+<rect class="card" x="790" y="650" width="170" height="119" rx="12"/><text class="small bold" x="875" y="680" text-anchor="middle">Разнести реагенты</text><text class="small" x="875" y="710" text-anchor="middle">не объединять</text><text class="small" x="875" y="735" text-anchor="middle">линии и впрыск</text><text class="small" x="875" y="758" text-anchor="middle">проверять клапаны</text>
+</g>
+<text class="small" x="40" y="790">Пределы и алгоритм отказа задают проект и паспорт станции; схему адаптируют под конкретную гидравлику.</text>
+</svg>
