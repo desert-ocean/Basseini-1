@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 870" role="img" aria-labelledby="title desc">
+  <title id="title">Четыре разные функции обработки бассейновой воды</title>
+  <desc id="desc">Последовательные смысловые блоки: фильтрация удаляет частицы, окисление изменяет загрязнители, обеззараживание инактивирует восприимчивые микроорганизмы, остаточный хлор или бром защищает воду в чаше.</desc>
+  <rect width="520" height="870" rx="22" fill="#f5f9fa"/>
+  <text x="26" y="48" fill="#193e52" font-family="Arial,sans-serif" font-size="24" font-weight="700">Четыре разные функции</text>
+  <g font-family="Arial,sans-serif" text-anchor="middle">
+    <rect x="28" y="78" width="464" height="150" rx="16" fill="#e5f1f4" stroke="#147b9b" stroke-width="2"/><text x="260" y="112" fill="#193e52" font-size="18" font-weight="700">1. ФИЛЬТРАЦИЯ</text><text x="260" y="151" fill="#193e52" font-size="17">Задерживает часть взвеси и частиц.</text><text x="260" y="184" fill="#516d79" font-size="15">Не обеззараживает весь объём и не даёт остатка.</text>
+    <path d="M260 231V252" stroke="#147b9b" stroke-width="3"/><path d="M252 245L260 255L268 245" fill="none" stroke="#147b9b" stroke-width="3"/>
+    <rect x="28" y="263" width="464" height="150" rx="16" fill="#fff3df" stroke="#bc7728" stroke-width="2"/><text x="260" y="297" fill="#193e52" font-size="18" font-weight="700">2. ОКИСЛЕНИЕ</text><text x="260" y="336" fill="#193e52" font-size="17">Химически изменяет часть загрязнений.</text><text x="260" y="369" fill="#516d79" font-size="15">Не означает уничтожение каждого патогена.</text>
+    <path d="M260 416V437" stroke="#147b9b" stroke-width="3"/><path d="M252 430L260 440L268 430" fill="none" stroke="#147b9b" stroke-width="3"/>
+    <rect x="28" y="448" width="464" height="150" rx="16" fill="#f0eafd" stroke="#7054a1" stroke-width="2"/><text x="260" y="482" fill="#193e52" font-size="18" font-weight="700">3. ОБЕЗЗАРАЖИВАНИЕ</text><text x="260" y="521" fill="#193e52" font-size="17">Инактивирует чувствительные микроорганизмы.</text><text x="260" y="554" fill="#516d79" font-size="15">Результат зависит от дозы и условий контакта.</text>
+    <path d="M260 601V622" stroke="#147b9b" stroke-width="3"/><path d="M252 615L260 625L268 615" fill="none" stroke="#147b9b" stroke-width="3"/>
+    <rect x="28" y="633" width="464" height="185" rx="16" fill="#e6f4eb" stroke="#398358" stroke-width="2"/><text x="260" y="667" fill="#193e52" font-size="18" font-weight="700">4. ОСТАТОЧНАЯ ЗАЩИТА</text><text x="260" y="706" fill="#193e52" font-size="17">Свободный хлор или бром остаётся</text><text x="260" y="733" fill="#193e52" font-size="17">в чаше и реагирует на новый занос.</text><text x="260" y="773" fill="#516d79" font-size="15">УФ и озон обычно такого остатка не дают.</text>
+  </g>
+  <text x="28" y="847" fill="#516d79" font-family="Arial,sans-serif" font-size="13">Функции могут быть распределены между разными ступенями.</text>
+</svg>

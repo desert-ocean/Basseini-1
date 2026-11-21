@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Два варианта озонной и ультрафиолетовой обработки бассейновой воды</title>
+  <desc id="desc">Верхняя панель: обычная обработка с озоновым контактом, газоотделением и деструктором отходящего газа, подтверждённым снижением растворённого озона, опциональным УФ, контролем остаточного озона и остаточным дезинфектантом. Нижняя панель: специально рассчитанный O3/UV AOP, где растворённый озон присутствует в УФ-реакторе, затем его остаток контролируют и удаляют перед поддержанием остаточного дезинфектанта. Схемы функциональные и не универсальны.</desc>
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#147b9b"/></marker><style>text{font-family:Arial,sans-serif}.title{fill:#193e52;font-size:25px;font-weight:700}.sub{fill:#516d79;font-size:15px}.head{fill:#193e52;font-size:18px;font-weight:700}.label{fill:#193e52;font-size:14px}.small{fill:#516d79;font-size:12px}.box{rx:12;stroke-width:2}.flow{stroke:#147b9b;stroke-width:3;marker-end:url(#arr)}.branch{stroke:#7054a1;stroke-width:2.5;stroke-dasharray:7 5;marker-end:url(#arr)}</style></defs>
+  <rect width="1200" height="900" rx="24" fill="#f5f9fa"/>
+  <text x="38" y="45" class="title">Озон и УФ: два разных проектных режима</text>
+  <text x="38" y="73" class="sub">Функциональные примеры; порядок и оборудование подтверждают расчётом и характеристиками системы.</text>
+  <rect x="25" y="96" width="1150" height="350" rx="18" fill="#fff" stroke="#c4d8df" stroke-width="2"/>
+  <text x="48" y="130" class="head">А. Обычная комбинированная обработка</text>
+  <g text-anchor="middle">
+    <rect class="box" x="42" y="166" width="135" height="82" fill="#e5f1f4" stroke="#147b9b"/><text class="label" x="109" y="198">Фильтрация</text><text class="small" x="109" y="222">подготовка потока</text>
+    <path class="flow" d="M180 207H202"/>
+    <rect class="box" x="210" y="166" width="145" height="82" fill="#fff3df" stroke="#bc7728"/><text class="label" x="282" y="195">Озон +</text><text class="label" x="282" y="216">контакт</text><text class="small" x="282" y="236">расчёт по проекту</text>
+    <path class="flow" d="M358 207H378"/>
+    <rect class="box" x="386" y="166" width="145" height="82" fill="#f0eafd" stroke="#7054a1"/><text class="label" x="458" y="195">Газоотделение</text><text class="small" x="458" y="218">отходящий газ —</text><text class="small" x="458" y="235">на деструктор</text>
+    <path class="flow" d="M534 207H555"/>
+    <rect class="box" x="563" y="166" width="145" height="82" fill="#fff" stroke="#7054a1"/><text class="label" x="635" y="194">Снижение O₃</text><text class="small" x="635" y="217">растворённый O₃:</text><text class="small" x="635" y="235">подтвердить отдельно</text>
+    <path class="flow" d="M711 207H732"/>
+    <rect class="box" x="740" y="166" width="130" height="82" fill="#f0eafd" stroke="#7054a1"/><text class="label" x="805" y="198">УФ</text><text class="small" x="805" y="222">если предусмотрен</text>
+    <path class="flow" d="M873 207H894"/>
+    <rect class="box" x="902" y="166" width="130" height="82" fill="#fff" stroke="#7054a1"/><text class="label" x="967" y="196">Контроль O₃</text><text class="small" x="967" y="220">после последней</text><text class="small" x="967" y="237">озоновой ступени</text>
+    <path class="flow" d="M1035 207H1054"/>
+    <rect class="box" x="1062" y="166" width="96" height="82" fill="#e6f4eb" stroke="#398358"/><text class="small" x="1110" y="192">остаточный</text><text class="label" x="1110" y="212">Cl / Br</text><text class="small" x="1110" y="233">→ чаша</text>
+  </g>
+  <path class="branch" d="M458 166V148H380"/><rect x="264" y="133" width="114" height="30" rx="8" fill="#f0eafd" stroke="#7054a1"/><text x="321" y="153" text-anchor="middle" class="small">деструктор газа</text>
+  <text x="48" y="289" class="sub">Важно: газоотделение само по себе не подтверждает удаление растворённого озона. Остаток проверяют перед возвратом воды.</text>
+  <text x="48" y="315" class="sub">Остаточный дезинфектант поддерживают в чаше отдельно от озонной и УФ ступеней.</text>
+  <rect x="25" y="468" width="1150" height="392" rx="18" fill="#fff" stroke="#c4d8df" stroke-width="2"/>
+  <text x="48" y="503" class="head">Б. Специально рассчитанная система O₃/UV AOP</text>
+  <text x="48" y="528" class="sub">В отличие от обычной схемы, в УФ-реактор намеренно подают воду с рассчитанным растворённым O₃.</text>
+  <g text-anchor="middle">
+    <rect class="box" x="55" y="570" width="175" height="86" fill="#fff3df" stroke="#bc7728"/><text class="label" x="142" y="602">Озон + контакт</text><text class="small" x="142" y="628">доза и время заданы</text><text class="small" x="142" y="645">проектом</text>
+    <path class="flow" d="M234 613H277"/>
+    <rect class="box" x="287" y="570" width="220" height="86" fill="#f0eafd" stroke="#7054a1"/><text class="label" x="397" y="600">УФ-реактор O₃/UV</text><text class="small" x="397" y="624">рассчитанный растворённый</text><text class="small" x="397" y="642">озон присутствует в реакторе</text>
+    <path class="flow" d="M511 613H554"/>
+    <rect class="box" x="564" y="570" width="195" height="86" fill="#fff" stroke="#7054a1"/><text class="label" x="661" y="600">Остаточный O₃</text><text class="small" x="661" y="624">измерить и подтвердить</text><text class="small" x="661" y="642">его снижение / удаление</text>
+    <path class="flow" d="M763 613H806"/>
+    <rect class="box" x="816" y="570" width="155" height="86" fill="#e6f4eb" stroke="#398358"/><text class="label" x="893" y="601">Остаточный</text><text class="label" x="893" y="623">дезинфектант</text><text class="small" x="893" y="643">Cl / Br по проекту</text>
+    <path class="flow" d="M975 613H1018"/>
+    <rect class="box" x="1028" y="570" width="105" height="86" fill="#e6f4eb" stroke="#398358"/><text class="label" x="1080" y="610">Чаша</text><text class="small" x="1080" y="635">контроль воды</text>
+  </g>
+  <rect x="55" y="694" width="332" height="73" rx="12" fill="#f0eafd" stroke="#7054a1" stroke-width="2"/><text x="76" y="723" class="label">Отдельный газовый контур</text><text x="76" y="748" class="small">Газоотделение и деструктор отходящего O₃</text>
+  <path class="branch" d="M142 570V543H388V681" fill="none"/>
+  <text x="414" y="716" class="sub">AOP требует расчёта дозы O₃ и УФ, времени контакта, расхода и качества воды,</text><text x="414" y="742" class="sub">а также подтверждения эффективности и контроля остаточного озона после реактора.</text>
+  <text x="55" y="807" class="small">Обычная последовательность «озонатор → любая УФ-лампа» сама по себе не является доказанным AOP.</text>
+</svg>

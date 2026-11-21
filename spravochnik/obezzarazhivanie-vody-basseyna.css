@@ -1,0 +1,37 @@
+.disinfection-guide{min-width:0}
+.disinfection-toc,.disinfection-guide .notice,.disinfection-guide .source-note{margin:1.2rem 0;padding:1rem 1.2rem;border:1px solid #d4e2e8;border-radius:12px;background:#f5f9fa}
+.disinfection-toc ol{columns:2;column-gap:2rem;margin:.6rem 0 0;padding-left:1.3rem}
+.disinfection-toc li{break-inside:avoid;margin:.2rem 0}
+.disinfection-guide .notice{border-left:4px solid #bd762a;background:#fff8ed}
+.disinfection-guide .notice h2{margin-top:0}
+.disinfection-guide .hint,.disinfection-guide .source-note{color:#516d79;font-size:.94rem}
+.disinfection-guide .guide-figure{margin:1.4rem auto 1.8rem;max-width:100%;text-align:center}
+.disinfection-guide .guide-figure picture{display:block;width:100%}
+.disinfection-guide .guide-figure img{display:block;width:100%;height:auto;max-width:100%;margin:auto}
+.disinfection-guide .guide-figure figcaption{max-width:80ch;margin:.65rem auto 0;color:#516d79;font-size:.92rem}
+.disinfection-guide .function-list{display:grid;grid-template-columns:minmax(12rem,.75fr) minmax(0,2fr);gap:.35rem 1rem;padding:1rem 1.2rem;border-radius:12px;background:#f5f9fa}
+.disinfection-guide .function-list dt{font-weight:700;color:#193e52}
+.disinfection-guide .function-list dd{margin:0 0 .65rem}
+.disinfection-guide .table-wrap{width:100%;max-width:100%;min-width:0;margin:1.1rem 0;overflow-x:auto;overscroll-behavior-inline:contain}
+.disinfection-guide table{width:100%;min-width:850px;border-collapse:collapse;table-layout:fixed}
+.disinfection-guide th,.disinfection-guide td{white-space:normal;vertical-align:top;overflow-wrap:anywhere}
+.disinfection-guide th{background:#edf5f7;color:#193e52}
+.disinfection-guide .compatibility-table{min-width:760px}
+.disinfection-guide .compatibility-table th:nth-child(1){width:19%}
+.disinfection-guide .compatibility-table th:nth-child(2){width:25%}
+.disinfection-guide .compatibility-table th:nth-child(3){width:56%}
+.disinfection-guide .method-table{min-width:1120px}
+.disinfection-guide .method-table th:nth-child(1){width:13%}
+.disinfection-guide .method-table th:nth-child(2){width:15%}
+.disinfection-guide .method-table th:nth-child(3){width:13%}
+.disinfection-guide .method-table th:nth-child(4){width:17%}
+.disinfection-guide .method-table th:nth-child(5){width:12%}
+.disinfection-guide .method-table th:nth-child(6){width:12%}
+.disinfection-guide .method-table th:nth-child(7){width:18%}
+.disinfection-guide .source-note li{margin:.45rem 0}
+@media(max-width:700px){
+ .disinfection-toc ol{columns:1}
+ .disinfection-guide .function-list{grid-template-columns:1fr;gap:.15rem}
+ .disinfection-guide .function-list dd{margin-bottom:.8rem}
+ .disinfection-guide .table-wrap::after{content:"Таблицу можно прокручивать по горизонтали";display:block;padding:.35rem 0;color:#516d79;font-size:.82rem;text-align:left}
+}
