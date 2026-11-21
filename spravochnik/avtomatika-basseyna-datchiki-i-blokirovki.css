@@ -1,0 +1,110 @@
+.automation-sensors-page {
+  overflow-x: clip;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.automation-guide__toc,
+.automation-guide__note,
+.automation-guide__example {
+  padding: 1rem 1.2rem;
+  border-radius: 0.65rem;
+  background: #f2f8fa;
+}
+
+.automation-guide__toc ol,
+.automation-guide__note p,
+.automation-guide__example p:last-child {
+  margin-bottom: 0;
+}
+
+.automation-guide__table-wrap {
+  margin: 1.25rem 0;
+}
+
+.automation-guide__table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.automation-guide__table th,
+.automation-guide__table td {
+  overflow-wrap: anywhere;
+  white-space: normal;
+  vertical-align: top;
+}
+
+.automation-guide__diagram {
+  margin: 0;
+}
+
+.automation-guide__diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.automation-guide__diagram figcaption {
+  margin-top: 0.65rem;
+  color: #526879;
+  font-size: 0.92rem;
+}
+
+.automation-guide__signal-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 0.4rem 1rem;
+  margin: 1rem 0 0;
+}
+
+.automation-guide__case {
+  margin: 1rem 0;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid #1683a0;
+  background: #f6f9f9;
+}
+
+@media (max-width: 600px) {
+  .automation-guide__table,
+  .automation-guide__table tbody,
+  .automation-guide__table tr,
+  .automation-guide__table th,
+  .automation-guide__table td {
+    display: block;
+    width: 100%;
+  }
+
+  .automation-guide__table tr {
+    margin-bottom: 0.85rem;
+    padding: 0.7rem;
+    border: 1px solid #d8e5ea;
+    border-radius: 0.55rem;
+  }
+
+  .automation-guide__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+
+  .automation-guide__table td {
+    padding: 0.3rem 0;
+    border: 0;
+  }
+
+  .automation-guide__table td::before {
+    display: block;
+    margin-bottom: 0.12rem;
+    color: #526879;
+    font-size: 0.8rem;
+    font-weight: 700;
+    content: attr(data-label);
+  }
+}
