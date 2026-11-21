@@ -1,0 +1,113 @@
+.pump-guide__toc,
+.pump-guide__formula,
+.pump-guide__note {
+  margin: 1.25rem 0;
+  padding: 1rem 1.2rem;
+  border-radius: 0.65rem;
+  background: #f2f8fa;
+}
+
+.pump-guide__toc ol,
+.pump-guide__note p:last-child {
+  margin-bottom: 0;
+}
+
+.pump-guide__formula {
+  border-left: 4px solid #147b9b;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.pump-guide__formula code {
+  color: #193e52;
+  font: inherit;
+}
+
+.pump-guide__table-wrap {
+  width: 100%;
+  min-width: 0;
+  margin: 1.25rem 0;
+}
+
+.pump-guide__table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+.pump-guide__table th,
+.pump-guide__table td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+.pump-guide__table th:first-child {
+  width: 72%;
+}
+
+.pump-guide__table td:last-child {
+  width: 28%;
+  font-variant-numeric: tabular-nums;
+}
+
+.pump-guide__table .pump-guide__total {
+  background: #edf5f7;
+  font-weight: 700;
+}
+
+.pump-guide__note {
+  border: 1px solid #d7e5e9;
+}
+
+.pump-guide__note h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 600px) {
+  .pump-guide__table,
+  .pump-guide__table tbody,
+  .pump-guide__table tr,
+  .pump-guide__table th,
+  .pump-guide__table td {
+    display: block;
+    width: 100%;
+  }
+
+  .pump-guide__table tr {
+    margin-bottom: 0.75rem;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid #d8e5ea;
+    border-radius: 0.5rem;
+  }
+
+  .pump-guide__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+
+  .pump-guide__table td {
+    padding: 0.35rem 0;
+    border: 0;
+  }
+
+  .pump-guide__table th:first-child,
+  .pump-guide__table td:last-child {
+    width: 100%;
+  }
+
+  .pump-guide__table td::before {
+    display: block;
+    margin-bottom: 0.12rem;
+    color: #526879;
+    font-size: 0.82rem;
+    font-weight: 700;
+    content: attr(data-label);
+  }
+}
