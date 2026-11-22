@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 650" role="img" aria-labelledby="title desc">
+  <title id="title">Давление чистого и загрязнённого фильтра</title>
+  <desc id="desc">Запишите базовое давление после промывки. Рост примерно на 0,5 атмосферы — эксплуатационный сигнал для проверки, но не универсальный норматив. Сравнивайте при одинаковом расходе и соблюдайте паспортный предел.</desc>
+  <rect width="390" height="650" rx="20" fill="#f5f9fa"/>
+  <text x="195" y="40" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#173e52">КОНТРОЛЬ ДАВЛЕНИЯ</text>
+  <rect x="16" y="60" width="358" height="222" rx="16" fill="#fff" stroke="#c7dbe2" stroke-width="2"/>
+  <text x="195" y="94" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#173e52">ПОСЛЕ ПРОМЫВКИ</text>
+  <circle cx="195" cy="174" r="55" fill="#f7fbfc" stroke="#2d829a" stroke-width="5"/>
+  <path d="M195 174l26-26" stroke="#173e52" stroke-width="6" stroke-linecap="round"/><circle cx="195" cy="174" r="7" fill="#173e52"/>
+  <text x="195" y="254" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#173e52">Запишите базу P₀</text>
+  <rect x="16" y="300" width="358" height="222" rx="16" fill="#fff" stroke="#d8bd91" stroke-width="2"/>
+  <text x="195" y="334" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#173e52">РОСТ СОПРОТИВЛЕНИЯ</text>
+  <circle cx="195" cy="414" r="55" fill="#fff8eb" stroke="#ba7a27" stroke-width="5"/>
+  <path d="M195 414l34-35" stroke="#173e52" stroke-width="6" stroke-linecap="round"/><circle cx="195" cy="414" r="7" fill="#173e52"/>
+  <text x="195" y="494" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#173e52">P₀ + ≈0,5 атм</text>
+  <rect x="16" y="540" width="358" height="88" rx="14" fill="#e3f2f6"/>
+  <text x="195" y="570" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#173e52">Сравнивайте при том же расходе.</text>
+  <text x="195" y="596" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#173e52">Ориентир — не норматив.</text>
+  <text x="195" y="618" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#8a4f18">Не превышайте паспортный предел</text>
+</svg>

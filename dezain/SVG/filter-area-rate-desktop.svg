@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
+  <title id="title">Площадь фильтрации и скорость</title>
+  <desc id="desc">При одинаковом расходе воды меньшая скорость фильтрации требует большей площади. Пример: Q равно 30 кубическим метрам в час; при 20 метрах в час площадь 1,5 квадратного метра, при 40 метрах в час — 0,75 квадратного метра.</desc>
+  <rect width="1200" height="440" rx="24" fill="#f5f9fa"/>
+  <text x="600" y="48" text-anchor="middle" font-family="Arial,sans-serif" font-size="29" font-weight="700" fill="#173e52">ОДИН РАСХОД — РАЗНАЯ ПЛОЩАДЬ ФИЛЬТРАЦИИ</text>
+  <rect x="470" y="70" width="260" height="48" rx="24" fill="#e3f2f6" stroke="#2d829a" stroke-width="2"/>
+  <text x="600" y="102" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#173e52">Q = 30 м³/ч</text>
+  <rect x="32" y="140" width="550" height="260" rx="18" fill="#fff" stroke="#c7dbe2" stroke-width="2"/>
+  <rect x="618" y="140" width="550" height="260" rx="18" fill="#fff" stroke="#c7dbe2" stroke-width="2"/>
+  <text x="307" y="182" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#173e52">МЕНЬШАЯ СКОРОСТЬ</text>
+  <text x="893" y="182" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#173e52">БОЛЬШАЯ СКОРОСТЬ</text>
+  <path d="M85 252h90m-18-14 18 14-18 14" fill="none" stroke="#087a9b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M670 252h90m-18-14 18 14-18 14" fill="none" stroke="#087a9b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="205" y="218" width="205" height="88" rx="18" fill="#eaf5f7" stroke="#2d829a" stroke-width="4"/>
+  <rect x="795" y="218" width="110" height="88" rx="18" fill="#eaf5f7" stroke="#2d829a" stroke-width="4"/>
+  <path d="M218 277h179M808 277h84" stroke="#c19a52" stroke-width="13" stroke-linecap="round"/>
+  <text x="307" y="246" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e52">СЛОЙ ФИЛЬТРА</text>
+  <text x="850" y="246" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#173e52">СЛОЙ</text>
+  <text x="307" y="350" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" fill="#173e52">v = 20 м/ч → S = 1,50 м²</text>
+  <text x="893" y="350" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" fill="#173e52">v = 40 м/ч → S = 0,75 м²</text>
+  <text x="600" y="425" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" fill="#516d79">S = Q / v • значения площади — расчётный пример</text>
+</svg>

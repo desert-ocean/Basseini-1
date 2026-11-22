@@ -11,7 +11,10 @@ const allowedGovernmentDocuments=new Set([
  'https://protect.gost.ru/gost/details/eeede1d2-988b-45ea-bbf3-f6e675289da3',
  'https://protect.gost.ru/gost/details/8b41e17b-8c22-4cc7-a575-6fc24608d1b5',
  'https://02.rospotrebnadzor.ru/upload/iblock/749/td3cen07sl6tt5sp3z9kpc09onwb10br/SP_2.1.4284_26.pdf',
- 'https://publication.pravo.gov.ru/document/0001202606020088'
+ 'https://publication.pravo.gov.ru/document/0001202606020088',
+ 'https://publication.pravo.gov.ru/Document/View/0001202012310005',
+ 'https://publication.pravo.gov.ru/Document/View/0001202102050027',
+ 'https://publication.pravo.gov.ru/Document/View/0001202102030022'
 ]);
 const root=process.cwd(),skip=new Set(['.git','.worktrees','node_modules','.test-artifacts','.tmp-edge','seo-rewrite']);
 function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{if(skip.has(e.name)||e.name.startsWith('.'))return [];const p=path.join(dir,e.name);return e.isDirectory()?walk(p):/\.(html|js)$/i.test(e.name)?[p]:[]})}

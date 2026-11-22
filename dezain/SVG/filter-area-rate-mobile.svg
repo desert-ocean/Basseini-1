@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 650" role="img" aria-labelledby="title desc">
+  <title id="title">Площадь фильтрации и скорость</title>
+  <desc id="desc">При одинаковом расходе 30 кубических метров в час скорость 20 метров в час требует площади 1,5 квадратного метра, а скорость 40 метров в час — 0,75 квадратного метра.</desc>
+  <rect width="390" height="650" rx="20" fill="#f5f9fa"/>
+  <text x="195" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#173e52">ОДИН РАСХОД — РАЗНАЯ ПЛОЩАДЬ</text>
+  <rect x="65" y="60" width="260" height="46" rx="23" fill="#e3f2f6" stroke="#2d829a" stroke-width="2"/>
+  <text x="195" y="90" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#173e52">Q = 30 м³/ч</text>
+  <rect x="16" y="122" width="358" height="225" rx="16" fill="#fff" stroke="#c7dbe2" stroke-width="2"/>
+  <text x="195" y="158" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#173e52">МЕНЬШАЯ СКОРОСТЬ</text>
+  <path d="M42 231h55m-14-12 14 12-14 12" fill="none" stroke="#087a9b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="112" y="197" width="168" height="72" rx="14" fill="#eaf5f7" stroke="#2d829a" stroke-width="4"/>
+  <path d="M122 245h148" stroke="#c19a52" stroke-width="12" stroke-linecap="round"/>
+  <text x="196" y="225" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#173e52">СЛОЙ ФИЛЬТРА</text>
+  <text x="195" y="315" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" fill="#173e52">v = 20 м/ч → S = 1,50 м²</text>
+  <rect x="16" y="363" width="358" height="225" rx="16" fill="#fff" stroke="#c7dbe2" stroke-width="2"/>
+  <text x="195" y="399" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#173e52">БОЛЬШАЯ СКОРОСТЬ</text>
+  <path d="M42 472h55m-14-12 14 12-14 12" fill="none" stroke="#087a9b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="145" y="438" width="102" height="72" rx="14" fill="#eaf5f7" stroke="#2d829a" stroke-width="4"/>
+  <path d="M155 486h82" stroke="#c19a52" stroke-width="12" stroke-linecap="round"/>
+  <text x="196" y="466" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#173e52">СЛОЙ</text>
+  <text x="195" y="556" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" fill="#173e52">v = 40 м/ч → S = 0,75 м²</text>
+  <text x="195" y="625" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#516d79">S = Q / v</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
+  <title id="title">Давление чистого и загрязнённого фильтра</title>
+  <desc id="desc">Показания сравнивают при одинаковом расходе. После промывки записывают базовое давление. Рост примерно на 0,5 атмосферы — практический ориентир проверки, не нормативный предел; паспортное давление корпуса не превышают.</desc>
+  <rect width="1200" height="460" rx="24" fill="#f5f9fa"/>
+  <text x="600" y="48" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#173e52">МАНОМЕТР: ЧИСТЫЙ ФИЛЬТР И РОСТ СОПРОТИВЛЕНИЯ</text>
+  <rect x="32" y="82" width="540" height="284" rx="18" fill="#fff" stroke="#c7dbe2" stroke-width="2"/>
+  <rect x="628" y="82" width="540" height="284" rx="18" fill="#fff" stroke="#c7dbe2" stroke-width="2"/>
+  <text x="302" y="124" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#173e52">ПОСЛЕ ПРОМЫВКИ</text>
+  <text x="898" y="124" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#173e52">ПРИ ЗАГРЯЗНЕНИИ</text>
+  <circle cx="302" cy="224" r="62" fill="#f7fbfc" stroke="#2d829a" stroke-width="5"/>
+  <circle cx="898" cy="224" r="62" fill="#fff8eb" stroke="#ba7a27" stroke-width="5"/>
+  <path d="M302 224l31-31M898 224l38-42" stroke="#173e52" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="302" cy="224" r="7" fill="#173e52"/><circle cx="898" cy="224" r="7" fill="#173e52"/>
+  <path d="M302 170v10M356 224h-10M248 224h10M898 170v10M952 224h-10M844 224h10" stroke="#173e52" stroke-width="3"/>
+  <text x="302" y="316" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#173e52">P₀ — записать базу</text>
+  <text x="898" y="316" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#173e52">P₀ + ≈0,5 атм</text>
+  <path d="M430 224h100m-18-14 18 14-18 14" fill="none" stroke="#087a9b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="394" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#173e52">СРАВНИВАЙТЕ ПРИ СОПОСТАВИМОМ РАСХОДЕ И ПОЛОЖЕНИИ АРМАТУРЫ</text>
+  <text x="600" y="430" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" fill="#516d79">≈0,5 атм — практический ориентир проверки, не общий норматив промывки</text>
+  <text x="600" y="472" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#8a4f18">Не превышайте максимальное рабочее давление из паспорта корпуса фильтра</text>
+</svg>
