@@ -1,0 +1,244 @@
+/* Catalog-only presentation. Other handbook articles continue to use reference.css. */
+.reference-hub-page {
+	--reference-ink: #212931;
+	--reference-muted: #526875;
+	--reference-blue: #086b8b;
+	--reference-line: #d7e0e3;
+	color: var(--reference-ink);
+}
+
+.reference-hub-page .reference-breadcrumb {
+	margin: 0 0 1.5rem;
+	font-size: .95rem;
+}
+
+.reference-hub-page .major {
+	margin-bottom: 2rem;
+}
+
+.reference-hub-page .major h1 {
+	margin-bottom: .55rem;
+}
+
+.reference-hub-page .major p {
+	max-width: 68ch;
+	margin: 0;
+	color: var(--reference-muted);
+	font-size: 1.08rem;
+}
+
+.reference-hub-page .reference-catalog-tools {
+	margin: 0 0 2rem;
+	padding: 1.5rem;
+	background: #f6f9f9;
+}
+
+.reference-hub-page .reference-catalog-tools h2,
+.reference-hub-page .reference-materials > h2 {
+	margin: 0 0 1rem;
+	font-size: 1.35rem;
+}
+
+.reference-hub-page .catalog-controls {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1.15rem;
+}
+
+.reference-hub-page .catalog-controls label {
+	min-width: 0;
+	font-size: .88rem;
+}
+
+.reference-hub-page .catalog-controls input,
+.reference-hub-page .catalog-controls select {
+	display: block;
+	width: 100%;
+	min-height: 3rem;
+	margin-top: .45rem;
+	border: 1px solid #b9cbd1;
+	border-radius: 6px;
+	background-color: #fff;
+	color: var(--reference-ink);
+	font: 400 1rem/1.4 "Source Sans Pro", Helvetica, sans-serif;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+.reference-hub-page .reference-search-count {
+	min-height: 1.6em;
+	margin: .8rem 0 0;
+	color: var(--reference-muted);
+	font-size: .92rem;
+}
+
+.reference-hub-page .reference-materials {
+	margin-top: 2rem;
+}
+
+.reference-hub-page .reference-card-grid {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	align-items: stretch;
+	gap: 1.35rem;
+}
+
+.reference-hub-page .reference-card {
+	min-width: 0;
+	min-height: 100%;
+	padding: 1.15rem;
+	border: 1px solid var(--reference-line);
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 5px 18px rgb(24 58 74 / 5%);
+	transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.reference-hub-page .reference-card[hidden],
+.reference-hub-page .reference-empty[hidden] {
+	display: none;
+}
+
+.reference-hub-page .reference-card:hover {
+	border-color: #a9c8d1;
+	box-shadow: 0 10px 26px rgb(24 58 74 / 10%);
+	transform: translateY(-2px);
+}
+
+.reference-hub-page .reference-card .reference-card__art {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 3 / 2;
+	margin: 0 0 1rem;
+	border: 1px solid #e1eaed;
+	border-radius: 5px;
+	background: #f3f8f9;
+	object-fit: contain;
+}
+
+.reference-hub-page .reference-card__body {
+	display: flex;
+	min-height: 12.5rem;
+	flex: 1;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.reference-hub-page .reference-card__category {
+	display: inline-block;
+	margin-bottom: .4rem;
+	color: #517280;
+	font: 700 .78rem/1.4 "Source Sans Pro", Helvetica, sans-serif;
+	letter-spacing: .045em;
+}
+
+.reference-hub-page .reference-card h2 {
+	margin: 0 0 .55rem;
+	font-size: 1.2rem;
+	line-height: 1.22;
+}
+
+.reference-hub-page .reference-card h2 a {
+	color: var(--reference-ink);
+	text-decoration: none;
+}
+
+.reference-hub-page .reference-card h2 a:hover {
+	color: var(--reference-blue);
+	text-decoration: underline;
+	text-underline-offset: .15em;
+}
+
+.reference-hub-page .reference-card p {
+	margin: 0 0 1.1rem;
+	color: #52616a;
+	font-size: .92rem;
+	line-height: 1.58;
+}
+
+.reference-hub-page .reference-card__action {
+	width: auto;
+	min-height: 2.8rem;
+	margin: auto 0 0;
+	padding: .7rem 1.1rem;
+	font-size: .76rem;
+}
+
+.reference-hub-page .reference-empty {
+	margin: 1rem 0;
+	padding: 1rem 1.15rem;
+	border-left: 4px solid #178e9e;
+	background: #eef6f7;
+	color: var(--reference-muted);
+}
+
+.reference-hub-page .hint {
+	margin: 1.5rem 0;
+}
+
+.reference-hub-page > .panel:not(.reference-catalog-tools) {
+	margin-top: 2rem;
+}
+
+.reference-hub-page > footer:not(#footer) {
+	margin-top: 1.5rem;
+}
+
+.reference-hub-page a:focus-visible,
+.reference-hub-page input:focus-visible,
+.reference-hub-page select:focus-visible {
+	outline: 3px solid #178e9e;
+	outline-offset: 3px;
+}
+
+.reference-catalog-page #backToTop.catalog-back-to-top--positioned {
+	bottom: auto;
+	transform: none;
+}
+
+.reference-catalog-page #backToTop.catalog-back-to-top--positioned:hover,
+.reference-catalog-page #backToTop.catalog-back-to-top--positioned:focus-visible {
+	transform: translateY(-0.15rem);
+}
+
+@media (max-width: 736px) {
+	.reference-hub-page .major p {
+		font-size: 1rem;
+	}
+
+	.reference-hub-page .reference-catalog-tools {
+		padding: 1.15rem;
+	}
+
+	.reference-hub-page .catalog-controls {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 600px) {
+	.reference-hub-page .reference-card-grid {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 1rem;
+	}
+
+	.reference-hub-page .reference-card {
+		padding: .9rem;
+	}
+
+	.reference-hub-page .reference-card__body {
+		min-height: 0;
+	}
+
+	.reference-hub-page .reference-card h2 {
+		font-size: 1.15rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.reference-hub-page .reference-card {
+		transition: none;
+	}
+
+	.reference-hub-page .reference-card:hover {
+		transform: none;
+	}
+}
