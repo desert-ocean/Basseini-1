@@ -5183,6 +5183,131 @@ input[type="submit"]:hover {
 	text-align: center;
 }
 
+.engineering-reference {
+	background: #eef3f4 !important;
+	border-top: 1px solid #dce6e9;
+	border-bottom: 1px solid #dce6e9;
+}
+
+.engineering-reference__layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr);
+	grid-template-areas:
+		"heading visual"
+		"copy visual"
+		"consultation visual";
+	align-items: start;
+	column-gap: 3rem;
+	row-gap: 1rem;
+}
+
+.engineering-reference__heading {
+	grid-area: heading;
+}
+
+.engineering-reference__heading .date {
+	color: #1885a0;
+}
+
+.engineering-reference__heading h2 {
+	margin: 0.35rem 0 0.75rem;
+	font-size: 2.2rem;
+	line-height: 1.12;
+}
+
+.engineering-reference__lead {
+	font-size: 1.12rem;
+	font-weight: 600;
+}
+
+.engineering-reference__visual {
+	grid-area: visual;
+	margin: 0.25rem 0 0;
+}
+
+.engineering-reference__visual img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 0.65rem;
+	box-shadow: 0 1rem 2.5rem rgba(14, 44, 58, 0.16);
+}
+
+.engineering-reference__copy {
+	grid-area: copy;
+}
+
+.engineering-reference__copy p:last-of-type {
+	margin-bottom: 1.25rem;
+}
+
+.engineering-reference__statement {
+	font-weight: 700;
+	color: #173d50;
+}
+
+.engineering-reference__button {
+	white-space: normal;
+	text-align: center;
+}
+
+.engineering-reference__consultation {
+	grid-area: consultation;
+	padding: 1.25rem 1.4rem;
+	background: #fff;
+	border-left: 3px solid #1b829d;
+	border-radius: 0.35rem;
+}
+
+.engineering-reference__consultation h3 {
+	margin: 0 0 0.7rem;
+	font-size: 1.2rem;
+}
+
+.engineering-reference__consultation p {
+	margin-bottom: 0.7rem;
+}
+
+.engineering-reference__phone {
+	margin: 0.8rem 0 0 !important;
+	font-size: 0.85rem;
+}
+
+@media screen and (max-width: 980px) {
+	.engineering-reference__layout {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-areas:
+			"heading"
+			"visual"
+			"copy"
+			"consultation";
+		gap: 1.25rem;
+	}
+
+	.engineering-reference__visual {
+		width: min(calc(100% - 5rem), 40rem);
+		margin: 0 auto 0 0;
+	}
+}
+
+@media screen and (max-width: 736px) {
+	.engineering-reference__consultation {
+		padding: 1.1rem calc(1.15rem + 3.5rem) 1.1rem 1.15rem;
+	}
+
+	.engineering-reference__heading h2 {
+		font-size: 1.9rem;
+	}
+
+	.engineering-reference__lead {
+		font-size: 1rem;
+	}
+
+	.engineering-reference__button {
+		width: 100%;
+	}
+}
+
 .value-grid {
 	display: grid;
 	grid-template-columns: repeat(5, minmax(0, 1fr));
