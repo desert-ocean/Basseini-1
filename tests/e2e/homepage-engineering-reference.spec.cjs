@@ -15,14 +15,38 @@ for (const width of [390, 768, 1440]) {
 			.toHaveAttribute('src', '/assets/images/alpool-spravochnik.svg');
 		await expect(section.locator('.engineering-reference__visual img')).toHaveAttribute('alt', /Инженерный справочник ALPOOL/);
 		await expect(section.locator('a[href="/spravochnik/"]')).toHaveText('Перейти в инженерный справочник');
-		await expect(section.locator('a[href="tel:+74956446654"]').first()).toHaveText('Задать вопрос инженеру');
-		await expect(section.locator('.engineering-reference__phone a[href="tel:+74956446654"]')).toHaveText('+7 (495) 644-66-54');
+		await expect(page.locator('#nav a[href="/blog/blog.html"], #navPanel a[href="/blog/blog.html"]').first()).toHaveText('Статьи');
+		await expect(page.locator('#nav a[href="/spravochnik/"], #navPanel a[href="/spravochnik/"]').first()).toHaveText('Справочник');
+		const contactLink = section.getByRole('link', { name: 'Задать вопрос инженеру' });
+		await expect(contactLink).toHaveAttribute('href', '#contact');
+		await expect(section.getByText('Телефон ALPOOL: +7 (495) 644-66-54')).toHaveCount(0);
 		await expect(section.getByText('Первичная консультация по конкретному техническому вопросу бесплатная.')).toBeVisible();
 		await expect(section.locator('a[href*="kalkulyatori"]')).toHaveCount(0);
 		await expect(page.locator('#contact form')).toBeAttached();
 		await expect(page.locator('a[href="/tehnicheskoe-zadanie/"]')).toHaveCount(2);
 		await expect(page.request.get('/spravochnik/').then(response => response.status())).resolves.toBe(200);
+		await expect(page.request.get('/blog/blog.html').then(response => response.status())).resolves.toBe(200);
 		await expect(page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).resolves.toBe(true);
+		await section.screenshot({ path: `.test-artifacts/homepage-engineering-reference-${width}.png` });
+		if (width <= 980) {
+			await page.locator('#navPanelToggle').click();
+			await expect(page.locator('#navPanel')).toHaveAttribute('aria-hidden', 'false');
+			await expect(page.locator('#navPanel a[href="/blog/blog.html"]')).toHaveText('Статьи');
+			await page.locator('#navPanelToggle').click();
+		}
+		await contactLink.click();
+		const contactHeading = page.locator('#contact-title');
+		await expect(contactHeading).toBeInViewport();
+		await expect.poll(() => contactHeading.evaluate(element => element.getBoundingClientRect().top)).toBeGreaterThanOrEqual(0);
+		await expect.poll(() => contactHeading.evaluate(element => element.getBoundingClientRect().top)).toBeLessThan(await page.evaluate(() => innerHeight));
+		if (width <= 980) {
+			const overlapsMenu = await page.evaluate(() => {
+				const heading = document.querySelector('#contact-title').getBoundingClientRect();
+				const menu = document.querySelector('#navPanelToggle').getBoundingClientRect();
+				return heading.left < menu.right && heading.right > menu.left && heading.top < menu.bottom && heading.bottom > menu.top;
+			});
+			expect(overlapsMenu).toBe(false);
+		}
 
 		const bounds = await section.locator('.engineering-reference__layout').evaluate(element => {
 			const heading = element.querySelector('.engineering-reference__heading').getBoundingClientRect();
@@ -37,8 +61,16 @@ for (const width of [390, 768, 1440]) {
 			expect(bounds.visualTop).toBeGreaterThan(bounds.headingTop);
 			expect(bounds.copyTop).toBeGreaterThan(bounds.visualTop);
 		}
-
-		await section.screenshot({ path: `.test-artifacts/homepage-engineering-reference-${width}.png` });
 		expect(errors).toEqual([]);
 	});
 }
+
+test('contact anchor works without JavaScript', async ({ browser }) => {
+	const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 900 } });
+	const page = await context.newPage();
+	await page.goto('/');
+	await page.locator('.engineering-reference__contact-link').click();
+	await expect.poll(() => page.evaluate(() => location.hash)).toBe('#contact');
+	await expect(page.locator('#contact-title')).toBeInViewport();
+	await context.close();
+});

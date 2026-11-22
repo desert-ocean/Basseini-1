@@ -5268,11 +5268,6 @@ input[type="submit"]:hover {
 	margin-bottom: 0.7rem;
 }
 
-.engineering-reference__phone {
-	margin: 0.8rem 0 0 !important;
-	font-size: 0.85rem;
-}
-
 @media screen and (max-width: 980px) {
 	.engineering-reference__layout {
 		grid-template-columns: minmax(0, 1fr);
