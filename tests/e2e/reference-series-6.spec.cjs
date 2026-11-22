@@ -17,8 +17,25 @@ for (const [url, title] of pages) {
       await expect(page).toHaveTitle(title);
       await expect(page.locator('h1')).toHaveCount(1);
       await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', `https://alpool.ru${url}`);
-      await expect(page.locator('main svg[role=img]')).toBeVisible();
-      await expect(page.locator('figcaption.diagram-labels')).toBeVisible();
+      if (url === '/spravochnik/elektrobezopasnost-basseyna.html') {
+        const diagrams = page.locator('main picture img');
+        await expect(diagrams).toHaveCount(4);
+        for (let i = 0; i < 4; i++) {
+          const image = diagrams.nth(i);
+          await expect(image).toBeVisible();
+          await expect(image).toHaveAttribute('alt', /\S+/);
+          const naturalWidth = await image.evaluate(node => node.naturalWidth);
+          expect(naturalWidth, `diagram ${i} loaded at ${width}px`).toBeGreaterThan(0);
+          const currentSrc = await image.evaluate(node => node.currentSrc);
+          expect(currentSrc).toContain(width <= 600 ? '-mobile.svg' : '-desktop.svg');
+        }
+        await expect(diagrams.nth(3)).toHaveAttribute('alt', /защитного аппарата, PE и уравнивания потенциалов/);
+      } else {
+        await expect(page.locator('main svg[role=img]')).toBeVisible();
+      }
+      const captions = page.locator('figcaption.diagram-labels');
+      await expect(captions).toHaveCount(url === '/spravochnik/elektrobezopasnost-basseyna.html' ? 4 : 1);
+      await expect(captions.first()).toBeVisible();
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
       expect(overflow, `horizontal overflow at ${width}px`).toBe(false);
       const file = path.join(process.cwd(), '.test-artifacts', 'series-6', `${path.basename(url, '.html')}-${width}.png`);

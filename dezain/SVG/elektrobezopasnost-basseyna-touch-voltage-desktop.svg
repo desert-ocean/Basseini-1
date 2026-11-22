@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Опасная разность потенциалов и совместная работа защиты</title>
+  <desc id="desc">Слева показана возможная разность потенциалов между одновременно доступными проводящими частями при неисправности. Справа защитный аппарат отключает рабочие проводники при предусмотренных условиях, а PE и дополнительное уравнивание потенциалов остаются непрерывными и связаны с защитной системой здания.</desc>
+  <defs>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#cf6b2c"/></marker>
+    <marker id="arrow-blue" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#087a9b"/></marker>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#17394c}
+      .title{font-size:28px;font-weight:700}.paneltitle{font-size:22px;font-weight:700}.label{font-size:17px;font-weight:700}.small{font-size:14px}.body{font-size:16px}.water{fill:#e0f3f6;stroke:#438ca0;stroke-width:4}.box{fill:#fff;stroke:#438ca0;stroke-width:3}.orangebox{fill:#fff6ed;stroke:#cf8a4e;stroke-width:3}.greenbox{fill:#e9f5f0;stroke:#23846a;stroke-width:3}.blue{fill:none;stroke:#087a9b;stroke-width:5}.green{fill:none;stroke:#23846a;stroke-width:5}.bond{fill:none;stroke:#23846a;stroke-width:4;stroke-dasharray:10 7}.orange{fill:none;stroke:#cf6b2c;stroke-width:4;stroke-dasharray:9 7}.panel{fill:#f2f8fa;stroke:#d4e5e9;stroke-width:2}.card{fill:#fff;stroke:#d4e5e9;stroke-width:3}
+    </style>
+  </defs>
+  <rect class="panel" x="12" y="12" width="1176" height="676" rx="18"/>
+  <text class="title" x="40" y="55">Напряжение прикосновения и совместная работа защиты</text>
+
+  <rect class="card" x="30" y="82" width="550" height="580" rx="18"/>
+  <text class="paneltitle" x="58" y="124">Возможная разность потенциалов</text>
+  <text class="body" x="58" y="158">Условный сценарий неисправности</text>
+  <rect class="orangebox" x="72" y="190" width="165" height="62" rx="10"/>
+  <text class="label" x="154" y="216" text-anchor="middle">Поручень</text>
+  <text class="small" x="154" y="239" text-anchor="middle">доступная часть A</text>
+  <rect class="orangebox" x="370" y="190" width="165" height="62" rx="10"/>
+  <text class="label" x="452" y="216" text-anchor="middle">Металлическая ниша</text>
+  <text class="small" x="452" y="239" text-anchor="middle">доступная часть B</text>
+  <path class="orange" d="M154 258V280H452V258"/>
+  <path d="M154 270V290M452 270V290" stroke="#cf6b2c" stroke-width="3"/>
+  <rect x="267" y="262" width="72" height="38" rx="18" fill="#fff" stroke="#cf6b2c" stroke-width="2"/>
+  <text class="label" x="303" y="287" text-anchor="middle" fill="#b85d25">ΔU</text>
+  <rect class="water" x="70" y="320" width="470" height="158" rx="12"/>
+  <path d="M72 345H538" stroke="#438ca0" stroke-width="4"/>
+  <text class="label" x="305" y="405" text-anchor="middle">Чаша / вода</text>
+  <text class="body" x="58" y="525">При неисправности потенциалы одновременно доступных</text>
+  <text class="body" x="58" y="550">частей могут различаться. Это возможность, а не неизбежный</text>
+  <text class="body" x="58" y="575">результат любой неисправности.</text>
+  <text class="small" x="58" y="620">Схема не предлагает проверять напряжение прикосновением.</text>
+
+  <rect class="card" x="620" y="82" width="550" height="580" rx="18"/>
+  <text class="paneltitle" x="648" y="124">Меры защиты работают совместно</text>
+  <text class="small" x="648" y="153">Условная функциональная схема, не монтажный чертёж</text>
+
+  <rect class="box" x="648" y="180" width="92" height="84" rx="9"/>
+  <text class="label" x="694" y="216" text-anchor="middle">Щит</text>
+  <text class="small" x="694" y="241" text-anchor="middle">питание</text>
+
+  <rect class="box" x="774" y="174" width="156" height="98" rx="9"/>
+  <text class="label" x="852" y="198" text-anchor="middle">Защитный аппарат</text>
+  <text class="small" x="852" y="220" text-anchor="middle">УЗО / автомат</text>
+  <path d="M790 237H824M840 237H914M790 257H914" stroke="#087a9b" stroke-width="4" fill="none"/>
+  <circle cx="824" cy="237" r="4" fill="#087a9b"/><circle cx="840" cy="237" r="4" fill="#087a9b"/>
+  <text class="small" x="795" y="234">L</text><text class="small" x="795" y="254">N</text>
+  <path class="blue" d="M740 237H790M914 237H967M740 257H790M914 257H967"/>
+  <path d="M954 231L967 237L954 243M954 251L967 257L954 263" fill="#087a9b"/>
+
+  <rect class="box" x="967" y="180" width="176" height="84" rx="9"/>
+  <text class="label" x="1055" y="211" text-anchor="middle">Оборудование</text>
+  <text class="small" x="1055" y="237" text-anchor="middle">корпус класса I</text>
+
+  <rect class="orangebox" x="1000" y="315" width="112" height="52" rx="8"/>
+  <text class="label" x="1056" y="338" text-anchor="middle">Корпус</text>
+  <text class="small" x="1056" y="358" text-anchor="middle">PE-клемма</text>
+  <path class="green" d="M1055 264V315M1055 367V445H970"/>
+  <path class="orange" marker-end="url(#arrow-orange)" d="M922 237V300H1055V315"/>
+
+  <rect class="box" x="648" y="340" width="145" height="62" rx="8"/>
+  <text class="label" x="720" y="367" text-anchor="middle">Поручень</text>
+  <text class="small" x="720" y="389" text-anchor="middle">по проекту</text>
+  <rect class="box" x="816" y="340" width="154" height="62" rx="8"/>
+  <text class="label" x="893" y="367" text-anchor="middle">Ниша светильника</text>
+  <text class="small" x="893" y="389" text-anchor="middle">по конструкции</text>
+  <path class="bond" d="M720 402V445H795M893 402V445H850"/>
+  <rect class="greenbox" x="750" y="445" width="220" height="58" rx="9"/>
+  <text class="label" x="860" y="470" text-anchor="middle">Местная шина</text>
+  <text class="small" x="860" y="491" text-anchor="middle">дополнительное уравнивание</text>
+  <path class="green" d="M970 474H1018V520"/>
+  <rect class="greenbox" x="965" y="520" width="178" height="58" rx="9"/>
+  <text class="label" x="1054" y="545" text-anchor="middle">PE / ГЗШ здания</text>
+  <text class="small" x="1054" y="566" text-anchor="middle">защитная система</text>
+
+  <text class="small" x="648" y="580">Стрелка показывает условный ток повреждения.</text>
+  <text class="small" x="648" y="600">Аппарат отключает L и N при предусмотренных условиях.</text>
+  <text class="small" x="648" y="620">PE и защитные связи остаются непрерывными.</text>
+  <text class="small" x="648" y="640">Все меры работают совместно.</text>
+</svg>

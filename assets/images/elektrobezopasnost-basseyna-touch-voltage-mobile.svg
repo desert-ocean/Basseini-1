@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 1510" role="img" aria-labelledby="title desc">
+  <title id="title">Возможная разность потенциалов и совместные меры защиты</title>
+  <desc id="desc">Первая панель показывает возможную разность потенциалов между доступными металлическими частями. Вторая показывает, что защитный аппарат отключает рабочие проводники, а PE и уравнивание потенциалов связаны с защитной системой здания и остаются непрерывными.</desc>
+  <defs>
+    <marker id="arrow-orange" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#cf6b2c"/></marker>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#17394c}.title{font-size:21px;font-weight:700}.heading{font-size:19px;font-weight:700}.label{font-size:16px;font-weight:700}.small{font-size:13px}.body{font-size:15px}.panel{fill:#f2f8fa;stroke:#d4e5e9;stroke-width:2}.card{fill:#fff;stroke:#d4e5e9;stroke-width:3}.orangebox{fill:#fff6ed;stroke:#cf8a4e;stroke-width:3}.box{fill:#fff;stroke:#438ca0;stroke-width:3}.greenbox{fill:#e9f5f0;stroke:#23846a;stroke-width:3}.water{fill:#e0f3f6;stroke:#438ca0;stroke-width:4}.blue{fill:none;stroke:#087a9b;stroke-width:4}.green{fill:none;stroke:#23846a;stroke-width:4}.bond{fill:none;stroke:#23846a;stroke-width:4;stroke-dasharray:8 6}.orange{fill:none;stroke:#cf6b2c;stroke-width:4;stroke-dasharray:8 6}
+    </style>
+  </defs>
+  <rect class="panel" x="8" y="8" width="404" height="1494" rx="16"/>
+  <text class="title" x="24" y="48">Напряжение прикосновения</text>
+
+  <rect class="card" x="22" y="72" width="376" height="420" rx="16"/>
+  <text class="heading" x="42" y="110">Возможная разность потенциалов</text>
+  <text class="body" x="42" y="139">Условный сценарий неисправности</text>
+  <rect class="orangebox" x="40" y="164" width="145" height="58" rx="9"/>
+  <text class="label" x="112" y="188" text-anchor="middle">Поручень</text>
+  <text class="small" x="112" y="209" text-anchor="middle">часть A</text>
+  <rect class="orangebox" x="235" y="164" width="145" height="58" rx="9"/>
+  <text class="label" x="307" y="188" text-anchor="middle">Металлическая ниша</text>
+  <text class="small" x="307" y="209" text-anchor="middle">часть B</text>
+  <path class="orange" d="M112 232V251H265V232"/>
+  <rect x="152" y="234" width="72" height="36" rx="16" fill="#fff" stroke="#cf6b2c" stroke-width="2"/>
+  <text class="label" x="188" y="258" text-anchor="middle" fill="#b85d25">ΔU</text>
+  <rect class="water" x="40" y="286" width="340" height="100" rx="10"/>
+  <path d="M42 309H378" stroke="#438ca0" stroke-width="4"/>
+  <text class="label" x="210" y="352" text-anchor="middle">Чаша / вода</text>
+  <text class="body" x="42" y="416">При неисправности разность потенциалов</text>
+  <text class="body" x="42" y="440">между доступными частями возможна,</text>
+  <text class="body" x="42" y="464">но не возникает неизбежно.</text>
+
+  <rect class="card" x="22" y="514" width="376" height="968" rx="16"/>
+  <text class="heading" x="42" y="552">Защита работает совместно</text>
+  <text class="small" x="42" y="578">Условная схема по проекту</text>
+
+  <rect class="box" x="42" y="610" width="100" height="64" rx="9"/>
+  <text class="label" x="92" y="638" text-anchor="middle">Щит</text>
+  <text class="small" x="92" y="658" text-anchor="middle">L / N</text>
+  <rect class="box" x="158" y="600" width="112" height="84" rx="9"/>
+  <text class="label" x="214" y="627" text-anchor="middle">УЗО /</text>
+  <text class="label" x="214" y="648" text-anchor="middle">аппарат</text>
+  <text class="small" x="214" y="670" text-anchor="middle">по проекту</text>
+  <rect class="box" x="286" y="610" width="96" height="64" rx="9"/>
+  <text class="label" x="334" y="638" text-anchor="middle">Нагрузка</text>
+  <text class="small" x="334" y="658" text-anchor="middle">класс I</text>
+  <path class="blue" d="M142 628H158M270 628H286M142 653H158M270 653H286"/>
+  <text class="small" x="146" y="620">L</text><text class="small" x="146" y="674">N</text>
+  <text class="small" x="42" y="704">Аппарат размыкает L/N при условиях срабатывания.</text>
+
+  <rect class="box" x="236" y="744" width="130" height="70" rx="9"/>
+  <text class="label" x="301" y="772" text-anchor="middle">Корпус</text>
+  <text class="small" x="301" y="795" text-anchor="middle">клемма PE</text>
+  <path class="green" d="M334 674V744M334 814H301V916H219"/>
+  <path class="orange" marker-end="url(#arrow-orange)" d="M270 628V724H301V744"/>
+  <text class="small" x="44" y="741" fill="#b85d25">Условный путь тока повреждения:</text>
+  <text class="small" x="44" y="761" fill="#b85d25">рабочий проводник → корпус → PE</text>
+
+  <rect class="box" x="42" y="838" width="144" height="58" rx="9"/>
+  <text class="label" x="114" y="863" text-anchor="middle">Поручень</text>
+  <text class="small" x="114" y="884" text-anchor="middle">по проекту</text>
+  <rect class="box" x="226" y="838" width="156" height="58" rx="9"/>
+  <text class="label" x="304" y="863" text-anchor="middle">Ниша светильника</text>
+  <text class="small" x="304" y="884" text-anchor="middle">по проекту</text>
+  <path class="bond" d="M114 896V916H168M304 896V916H220"/>
+  <rect class="greenbox" x="92" y="916" width="196" height="72" rx="10"/>
+  <text class="label" x="190" y="944" text-anchor="middle">Местная шина</text>
+  <text class="small" x="190" y="968" text-anchor="middle">дополнительное уравнивание</text>
+  <path class="green" d="M288 952H330V1024"/>
+  <rect class="greenbox" x="226" y="1024" width="156" height="70" rx="10"/>
+  <text class="label" x="304" y="1052" text-anchor="middle">PE / ГЗШ</text>
+  <text class="small" x="304" y="1076" text-anchor="middle">система здания</text>
+  <text class="body" x="42" y="1142">PE и уравнивание соединены с защитной</text>
+  <text class="body" x="42" y="1167">системой здания. PE не разрывают.</text>
+  <text class="body" x="42" y="1220">Уравнивание, PE и предусмотренное</text>
+  <text class="body" x="42" y="1245">отключение снижают риск совместно;</text>
+  <text class="body" x="42" y="1270">одна шина не гарантирует безопасность.</text>
+  <text class="small" x="42" y="1335">Аппарат не установлен в PE; изображённый</text>
+  <text class="small" x="42" y="1357">путь повреждения условный и упрощённый.</text>
+</svg>
