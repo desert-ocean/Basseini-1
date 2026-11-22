@@ -5,7 +5,7 @@ const path = require('node:path');
 const pages = [
   ['/spravochnik/obezzarazhivanie-vody-basseyna.html', 'Обеззараживание воды бассейна: хлор, УФ и озон — ALPOOL'],
   ['/spravochnik/avtomaticheskoe-dozirovanie-reagentov.html', 'Автоматическое дозирование реагентов бассейна — ALPOOL'],
-  ['/spravochnik/ventilyaciya-krytogo-basseyna.html', 'Вентиляция крытого бассейна: влажность и конденсация — ALPOOL'],
+  ['/spravochnik/ventilyaciya-krytogo-basseyna.html', 'Вентиляция крытого бассейна: нормы и расчёт воздухообмена — ALPOOL'],
   ['/spravochnik/elektrobezopasnost-basseyna.html', 'Электробезопасность бассейна: зоны и защиты — ALPOOL'],
 ];
 
@@ -30,12 +30,24 @@ for (const [url, title] of pages) {
           expect(currentSrc).toContain(width <= 600 ? '-mobile.svg' : '-desktop.svg');
         }
         await expect(diagrams.nth(3)).toHaveAttribute('alt', /защитного аппарата, PE и уравнивания потенциалов/);
+      } else if (url === '/spravochnik/ventilyaciya-krytogo-basseyna.html') {
+        const diagrams = page.locator('main picture img');
+        await expect(diagrams).toHaveCount(3);
+        for (let i = 0; i < 3; i++) {
+          const image = diagrams.nth(i);
+          await expect(image).toBeVisible();
+          await expect(image).toHaveAttribute('alt', /\S+/);
+          const naturalWidth = await image.evaluate(node => node.naturalWidth);
+          expect(naturalWidth, `diagram ${i} loaded at ${width}px`).toBeGreaterThan(0);
+          const currentSrc = await image.evaluate(node => node.currentSrc);
+          expect(currentSrc).toContain(width <= 600 ? '-mobile.svg' : '-desktop.svg');
+        }
       } else {
         await expect(page.locator('main svg[role=img]')).toBeVisible();
       }
       const captions = page.locator('figcaption.diagram-labels');
-      await expect(captions).toHaveCount(url === '/spravochnik/elektrobezopasnost-basseyna.html' ? 4 : 1);
-      await expect(captions.first()).toBeVisible();
+      await expect(captions).toHaveCount(url === '/spravochnik/elektrobezopasnost-basseyna.html' ? 4 : (url === '/spravochnik/ventilyaciya-krytogo-basseyna.html' ? 0 : 1));
+      if (await captions.count()) await expect(captions.first()).toBeVisible();
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
       expect(overflow, `horizontal overflow at ${width}px`).toBe(false);
       const file = path.join(process.cwd(), '.test-artifacts', 'series-6', `${path.basename(url, '.html')}-${width}.png`);
@@ -95,11 +107,11 @@ test('dosing reference distinguishes ORP from direct free chlorine measurement',
   await expect(page.locator('figcaption')).toContainText('Пробу возвращают в допустимую проектом точку либо отводят');
 });
 
-test('ventilation diagram distinguishes outdoor air, exhaust and dehumidifier recirculation', async ({ page }) => {
+test('ventilation article uses responsive engineering diagrams and explains compliant dehumidification', async ({ page }) => {
   await page.goto('/spravochnik/ventilyaciya-krytogo-basseyna.html');
-  for (const id of ['vent-outdoor-supply', 'vent-exhaust', 'vent-dehumidifier-intake', 'vent-dehumidifier-return']) {
-    await expect(page.locator(`#${id}`), `ventilation diagram: ${id}`).toHaveCount(1);
-  }
-  await expect(page.locator('main')).toContainText('удаление влаги и загрязнений воздуха, включая');
-  await expect(page.locator('main')).toContainText('сам по себе не обеспечивает требуемый приток наружного воздуха');
+  await expect(page.locator('main picture img')).toHaveCount(3);
+  await expect(page.locator('main')).toContainText('удаляет загрязнители и влагу');
+  await expect(page.locator('main')).toContainText('ГОСТ Р 72128-2025, п. 6.2 допускает осушители только для осушения подаваемого наружного воздуха');
+  await expect(page.locator('main')).toContainText('не заменяет вентиляцию');
+  await expect(page.locator('main')).toContainText('80 м³/ч на занимающегося и 20 м³/ч на зрителя');
 });
