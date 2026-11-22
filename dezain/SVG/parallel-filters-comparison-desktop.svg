@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">Один большой фильтр или два параллельных</title>
+  <desc id="desc">Сравнение одного крупного фильтра с парой меньших фильтров. В параллельной схеме общий поток разделяется и после очистки снова объединяется; два корпуса могут быть удобнее для монтажа и обслуживания.</desc>
+  <defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#087a9b"/></marker></defs>
+  <rect width="1200" height="590" rx="24" fill="#f4f9fa"/>
+  <text x="600" y="47" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="30" font-weight="800">ОДИН ФИЛЬТР ИЛИ ДВА ПАРАЛЛЕЛЬНЫХ</text>
+  <rect x="28" y="75" width="548" height="455" rx="20" fill="#fff" stroke="#cbdde4" stroke-width="2"/>
+  <rect x="624" y="75" width="548" height="455" rx="20" fill="#fff" stroke="#cbdde4" stroke-width="2"/>
+  <text x="302" y="116" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="24" font-weight="800">ОДИН КРУПНЫЙ ФИЛЬТР</text>
+  <path d="M55 238H180M425 238H548" fill="none" stroke="#087a9b" stroke-width="9" marker-end="url(#arrow)"/>
+  <text x="114" y="211" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="19" font-weight="700">общий расход Q</text>
+  <rect x="210" y="158" width="184" height="162" rx="30" fill="#eaf5f7" stroke="#447f94" stroke-width="5"/>
+  <path d="M222 252H382V294Q382 306 370 306H234Q222 306 222 294Z" fill="#d8b36b"/>
+  <text x="302" y="218" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="24" font-weight="800">ФИЛЬТР</text>
+  <text x="302" y="344" text-anchor="middle" fill="#516d79" font-family="system-ui,sans-serif" font-size="18">корпус большего диаметра</text>
+  <rect x="55" y="385" width="494" height="64" rx="12" fill="#edf5f7"/>
+  <text x="302" y="411" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="18" font-weight="700">Нужен проход для одного крупного корпуса</text>
+  <text x="302" y="435" text-anchor="middle" fill="#516d79" font-family="system-ui,sans-serif" font-size="17">При обслуживании может потребоваться остановка ветви</text>
+  <text x="898" y="116" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="24" font-weight="800">ДВА МЕНЬШИХ ФИЛЬТРА ПАРАЛЛЕЛЬНО</text>
+  <path d="M651 238H716M716 177V299M716 177H782M716 299H782M1015 177H1080V238H1144M1015 299H1080" fill="none" stroke="#087a9b" stroke-width="7"/>
+  <path d="M656 238H704" fill="none" stroke="#087a9b" stroke-width="4" marker-end="url(#arrow)"/><path d="M725 177H766M725 299H766" fill="none" stroke="#087a9b" stroke-width="4" marker-end="url(#arrow)"/><path d="M1024 177H1057M1024 299H1057" fill="none" stroke="#087a9b" stroke-width="4" marker-end="url(#arrow)"/><path d="M1087 238H1134" fill="none" stroke="#087a9b" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="682" y="211" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="17" font-weight="700">Q</text>
+  <rect x="786" y="140" width="225" height="74" rx="17" fill="#eaf5f7" stroke="#447f94" stroke-width="4"/>
+  <rect x="786" y="262" width="225" height="74" rx="17" fill="#eaf5f7" stroke="#447f94" stroke-width="4"/>
+  <path d="M800 191H997V203H800Z" fill="#d8b36b"/><path d="M800 313H997V325H800Z" fill="#d8b36b"/>
+  <text x="898" y="173" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="20" font-weight="800">ФИЛЬТР 1 · Q₁</text>
+  <text x="898" y="295" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="20" font-weight="800">ФИЛЬТР 2 · Q₂</text>
+  <text x="1125" y="211" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="16" font-weight="700">Q₁ + Q₂</text>
+  <rect x="651" y="385" width="494" height="64" rx="12" fill="#edf5f7"/>
+  <text x="898" y="411" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="18" font-weight="700">Корпуса меньшего диаметра проще занести</text>
+  <text x="898" y="435" text-anchor="middle" fill="#516d79" font-family="system-ui,sans-serif" font-size="17">Ветви можно обслуживать отдельно по проекту</text>
+  <text x="600" y="558" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="18" font-weight="700">Подбор учитывает расход, площадь, насос, обвязку и реальные проёмы помещения</text>
+  <text x="600" y="589" text-anchor="middle" fill="#516d79" font-family="system-ui,sans-serif" font-size="16">Равное деление расхода возможно только при сопоставимых гидравлических условиях</text>
+</svg>

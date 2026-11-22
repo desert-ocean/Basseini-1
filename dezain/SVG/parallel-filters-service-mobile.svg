@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1120" role="img" aria-labelledby="title desc">
+  <title id="title">Обслуживание одного фильтра при параллельной схеме</title>
+  <desc id="desc">В штатном режиме оба фильтра работают. При обслуживании одной ветви она изолируется, а второй фильтр может продолжить работу при проверенном расходе и режиме.</desc>
+  <defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#087a9b"/></marker></defs>
+  <rect width="720" height="1120" rx="24" fill="#f4f9fa"/>
+  <rect x="24" y="24" width="672" height="500" rx="20" fill="#fff" stroke="#cbdde4" stroke-width="2"/>
+  <text x="360" y="72" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="27" font-weight="800">РЕЖИМ ЭКСПЛУАТАЦИИ</text>
+  <text x="360" y="108" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="20" font-weight="700">оба фильтра работают</text>
+  <path d="M74 258H145M145 204V318M145 204H221M145 318H221M499 204H562M499 318H562M562 204V318M562 260H646" fill="none" stroke="#087a9b" stroke-width="7"/>
+  <path d="M78 258H132M155 204H208M155 318H208M510 204H552M510 318H552M572 258H636" fill="none" stroke="#087a9b" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="225" y="166" width="270" height="78" rx="16" fill="#eaf5f7" stroke="#447f94" stroke-width="4"/><rect x="225" y="280" width="270" height="78" rx="16" fill="#eaf5f7" stroke="#447f94" stroke-width="4"/>
+  <text x="360" y="214" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="21" font-weight="800">ФИЛЬТР 1 · РАБОТАЕТ</text><text x="360" y="328" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="21" font-weight="800">ФИЛЬТР 2 · РАБОТАЕТ</text>
+  <text x="360" y="420" text-anchor="middle" fill="#087a9b" font-family="system-ui,sans-serif" font-size="20" font-weight="700">Общий расход проходит через обе ветви</text>
+  <rect x="24" y="550" width="672" height="546" rx="20" fill="#fff" stroke="#cbdde4" stroke-width="2"/>
+  <text x="360" y="600" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="26" font-weight="800">ОДИН ФИЛЬТР НА ОБСЛУЖИВАНИИ</text>
+  <path d="M74 790H145M145 733V850M145 733H221M145 850H221M499 733H562M499 850H562M562 733V850M562 790H646" fill="none" stroke="#087a9b" stroke-width="7"/>
+  <path d="M78 790H132M155 733H208M510 733H552M572 790H636" fill="none" stroke="#087a9b" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M155 850H208M510 850H552" fill="none" stroke="#a5b1b6" stroke-width="4" stroke-dasharray="10 9"/>
+  <rect x="225" y="694" width="270" height="78" rx="16" fill="#eaf5f7" stroke="#447f94" stroke-width="4"/><rect x="225" y="811" width="270" height="78" rx="16" fill="#fff4e2" stroke="#c38b39" stroke-width="4"/>
+  <text x="360" y="727" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="18" font-weight="800">ВТОРОЙ ФИЛЬТР</text><text x="360" y="752" text-anchor="middle" fill="#087a9b" font-family="system-ui,sans-serif" font-size="16" font-weight="700">ПРОДОЛЖАЕТ ФИЛЬТРАЦИЮ</text>
+  <text x="360" y="843" text-anchor="middle" fill="#193e52" font-family="system-ui,sans-serif" font-size="17" font-weight="800">ФИЛЬТР 1 · ИЗОЛИРОВАН</text><text x="360" y="870" text-anchor="middle" fill="#8c5b17" font-family="system-ui,sans-serif" font-size="16">промывка / обслуживание</text>
+  <text x="360" y="955" text-anchor="middle" fill="#8c5b17" font-family="system-ui,sans-serif" font-size="19" font-weight="700">Оставшийся расход и скорость</text>
+  <text x="360" y="988" text-anchor="middle" fill="#8c5b17" font-family="system-ui,sans-serif" font-size="19" font-weight="700">должны быть проверены проектом</text>
+  <text x="360" y="1047" text-anchor="middle" fill="#516d79" font-family="system-ui,sans-serif" font-size="17">Продолжение работы не означает сохранение прежней производительности</text>
+</svg>

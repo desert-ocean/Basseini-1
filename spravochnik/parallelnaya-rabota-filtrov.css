@@ -1,0 +1,12 @@
+.parallel-filters-page .parallel-toc{max-width:60rem}
+.parallel-filters-page .parallel-toc h2{margin-top:0}
+.parallel-filters-page .parallel-toc ol{columns:2;column-gap:2rem;margin-bottom:0}
+.parallel-filters-page .parallel-toc li{break-inside:avoid;margin:.25rem 0}
+.parallel-filters-page .parallel-figure{max-width:1120px;margin:1.5rem auto 2rem}
+.parallel-filters-page .parallel-figure picture,.parallel-filters-page .parallel-figure img{display:block;width:100%;height:auto}
+.parallel-filters-page .parallel-figure img{border:1px solid #d4e2e8;border-radius:12px;background:#f7fbfc}
+.parallel-filters-page .parallel-figure figcaption{margin-top:.5rem;text-align:center;color:#516d79;font-size:.92rem}
+.parallel-filters-page .parallel-related{display:flex;flex-wrap:wrap;gap:.35rem 1rem}
+.parallel-filters-page h3{margin-top:1.25rem}
+@media(max-width:800px){.parallel-filters-page .parallel-toc ol{columns:1}.parallel-filters-page .parallel-figure{margin:1rem -4px 1.5rem}.parallel-filters-page .parallel-figure figcaption{padding-right:2.5rem}.parallel-filters-page .parallel-related{display:block}.parallel-filters-page .parallel-related a{display:inline-block;margin:.25rem .35rem .25rem 0}}
+@media(min-width:601px) and (max-width:800px){.parallel-filters-page .parallel-figure{padding-right:6rem}}
