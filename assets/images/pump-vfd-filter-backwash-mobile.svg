@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 900" role="img" aria-labelledby="t d">
+<title id="t">Фильтрация и промывка одним насосом</title><desc id="d">Два раздельных режима. Фильтрация ведёт воду из бассейна через насос и фильтр обратно в чашу. Промывка направляет воду через фильтр к канализации. Эти режимы не включаются одновременно.</desc>
+<defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="12" refY="6" orient="auto"><path d="M0 0 12 6 0 12z" fill="#087a9b"/></marker><marker id="b" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="12" refY="6" orient="auto"><path d="M0 0 12 6 0 12z" fill="#bd742d"/></marker></defs><rect width="500" height="900" rx="20" fill="#f3f8fa"/>
+<g font-family="system-ui,sans-serif" fill="#193e52"><text x="250" y="42" text-anchor="middle" font-size="23" font-weight="700">Один насос — разные режимы</text>
+<rect x="18" y="65" width="464" height="380" rx="18" fill="#fff" stroke="#c9dce4" stroke-width="2"/><text x="38" y="100" font-size="20" font-weight="700">1. Фильтрация</text>
+<rect x="38" y="145" width="112" height="72" rx="10" fill="#e8f6fb" stroke="#54a4bb" stroke-width="3"/><text x="94" y="188" text-anchor="middle" font-size="18">Бассейн</text>
+<circle cx="247" cy="180" r="36" fill="#f1f7fa" stroke="#447f94" stroke-width="4"/><path d="M234 160v40l32-20z" fill="#087a9b"/><text x="247" y="235" text-anchor="middle" font-size="16">Насос + ПЧ</text>
+<rect x="350" y="145" width="100" height="72" rx="24" fill="#edf5f7" stroke="#447f94" stroke-width="4"/><text x="400" y="188" text-anchor="middle" font-size="16">Фильтр</text>
+<path d="M150 160h58M283 160h67M450 160h12v-35H94v20" fill="none" stroke="#087a9b" stroke-width="6" marker-end="url(#a)"/>
+<rect x="38" y="270" width="424" height="120" rx="12" fill="#eaf4f7"/><text x="58" y="310" font-size="18" font-weight="700">Условный пример: 20 м³/ч</text><text x="58" y="340" font-size="16">Уставка фильтрации — по расчёту.</text><text x="58" y="367" font-size="16">Частоту выбирают по системе.</text>
+<rect x="18" y="465" width="464" height="410" rx="18" fill="#fff" stroke="#c9dce4" stroke-width="2"/><text x="38" y="500" font-size="20" font-weight="700">2. Обратная промывка</text>
+<rect x="38" y="570" width="100" height="72" rx="24" fill="#edf5f7" stroke="#447f94" stroke-width="4"/><text x="88" y="614" text-anchor="middle" font-size="16">Фильтр</text>
+<circle cx="247" cy="606" r="36" fill="#f1f7fa" stroke="#447f94" stroke-width="4"/><path d="M234 586v40l32-20z" fill="#087a9b"/><text x="247" y="660" text-anchor="middle" font-size="16">Насос + ПЧ</text>
+<rect x="360" y="570" width="92" height="72" rx="10" fill="#fff7ed" stroke="#bd742d" stroke-width="3"/><text x="406" y="600" text-anchor="middle" font-size="15">В</text><text x="406" y="621" text-anchor="middle" font-size="15">канализацию</text>
+<path d="M211 590H138M88 570V535H406V570" fill="none" stroke="#bd742d" stroke-width="6" marker-end="url(#b)"/>
+<rect x="38" y="700" width="424" height="135" rx="12" fill="#fff4e8"/><text x="58" y="740" font-size="18" font-weight="700">Условный пример: 30 м³/ч</text><text x="58" y="772" font-size="16">Уставка промывки — по расчёту.</text><text x="58" y="799" font-size="16">Расход задают фильтр и загрузка.</text>
+</g></svg>

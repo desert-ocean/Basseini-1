@@ -1,0 +1,18 @@
+.pump-vfd-page{max-width:1040px}
+.pump-vfd-page section{margin:34px 0}
+.pump-vfd-page h1{max-width:22ch}
+.pump-vfd-page h2{margin-top:0}
+.pump-vfd-page .lead{max-width:76ch}
+.vfd-toc ol{columns:2;column-gap:2rem;padding-left:1.4rem}
+.vfd-toc li{break-inside:avoid;margin:.3rem 0}
+.vfd-figure{margin:24px 0;padding:18px;background:#fff;border:1px solid #d4e2e8;border-radius:14px}
+.vfd-figure picture{display:block}
+.vfd-figure img{display:block;width:100%;max-width:none;height:auto;margin:auto}
+.vfd-figure figcaption{max-width:85ch;margin:12px auto 0;color:#516d79;font-size:.94rem}
+.vfd-warning{padding:16px 18px;background:#fff7ed;border-left:4px solid #bd742d;border-radius:6px}
+.vfd-formulas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.vfd-formulas p{margin:0;padding:14px;background:#eaf4f7;border-radius:9px;text-align:center;font-size:1.05rem}
+.pump-vfd-page .table-wrap{margin:18px 0}
+.pump-vfd-page table{min-width:690px}
+.pump-vfd-page td,.pump-vfd-page th{white-space:normal;vertical-align:top}
+@media(max-width:640px){.vfd-toc ol{columns:1}.vfd-figure{padding:10px;margin-inline:-4px}.vfd-formulas{grid-template-columns:1fr}.pump-vfd-page table{min-width:640px}}
