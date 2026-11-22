@@ -38,7 +38,7 @@ test('filter calculator handoff passes calculated flow, remains editable and rej
 });
 
 test('existing volume, filtration and heating calculators still initialize and calculate',async({page})=>{
- await page.goto('/kalkulyatori/kalkulyator-obema-basseyna.html');await page.locator('#pool-length').fill('10');await page.locator('#pool-width').fill('5');await page.locator('#pool-depth').fill('2');await expect(page.locator('#basin-volume')).toContainText('100');
+ await page.goto('/spravochnik/kalkulyator-obema-basseyna.html');await page.locator('#pool-length').fill('10');await page.locator('#pool-width').fill('5');await page.locator('#pool-depth').fill('2');await expect(page.locator('#basin-volume')).toContainText('100');
  await page.goto('/kalkulyatori/podbor-filtra-i-nasosa.html');await page.locator('#volume').fill('60');await page.locator('#turnover').fill('4');await page.locator('#rate').fill('30');await expect(page.locator('#q-circulation')).toContainText('15');
  await page.goto('/kalkulyatori/raschet-nagreva-vody-basseyna.html');await page.locator('#water-volume').fill('60');await page.locator('#water-area').fill('30');await page.locator('#water-start-temp').fill('20');await page.locator('#water-target-temp').fill('28');await page.locator('#pool-location').selectOption('indoor');await page.locator('#heating-hours').fill('24');await page.locator('#heating-condition-power').selectOption('operation');await expect(page.locator('#power-energy')).not.toHaveText('—');expect(page.jsErrors).toEqual([]);
 });

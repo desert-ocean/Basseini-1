@@ -24,7 +24,7 @@ CONTACT = """<footer id="footer">
 </footer>"""
 
 ALL_LINKS = [
-    ("/kalkulyatori/kalkulyator-obema-basseyna.html", "Объем"),
+    ("/spravochnik/kalkulyator-obema-basseyna.html", "Объем"),
     ("/kalkulyatori/kalkulyator-filtracii.html", "Фильтрация"),
     ("/kalkulyatori/kalkulyator-moshnosti-teploobmennika.html", "Теплообменник"),
     ("/kalkulyatori/kalkulyator-teplovogo-nasosa.html", "Тепловой насос"),
@@ -595,6 +595,10 @@ page_template = """<!DOCTYPE html>
 </html>"""
 
 for p in PAGES:
+    # The volume calculator is maintained in spravochnik; never regenerate
+    # a second full calculator at its retired kalkulyatori URL.
+    if p["file"] == "kalkulyator-obema-basseyna.html":
+        continue
     html = page_template.format(
         title=p["title"],
         desc=p["desc"],
@@ -614,7 +618,7 @@ for p in PAGES:
     (CALC_DIR / p["file"]).write_text(html, encoding="utf-8")
 
 catalog_links = "\n".join(
-    f'    <a href="/kalkulyatori/{p["file"]}">{p["title"]}</a>' for p in PAGES
+    f'    <a href="{("/spravochnik/" if p["file"] == "kalkulyator-obema-basseyna.html" else "/kalkulyatori/")}{p["file"]}">{p["title"]}</a>' for p in PAGES
 )
 catalog_html = f"""<!DOCTYPE html>
 <html lang="ru">
@@ -638,4 +642,4 @@ catalog_html = f"""<!DOCTYPE html>
 </html>"""
 (CAT_DIR / "index.html").write_text(catalog_html, encoding="utf-8")
 
-print(f"Generated {len(PAGES)} calculator pages and catalog.")
+print(f"Generated {len(PAGES) - 1} calculator pages and catalog.")
