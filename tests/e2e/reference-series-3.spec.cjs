@@ -1,5 +1,17 @@
 const {test,expect}=require('@playwright/test');
 
+const removedCatalogRoutes=new Set([
+ '/kalkulyatori/podbor-filtra-i-nasosa.html',
+ '/articles/filtratsiya-vody-v-basseyne.html',
+ '/articles/skimmernyy-ili-perelivnoy-basseyn.html',
+ '/kalkulyatori/raschet-nagreva-vody-basseyna.html',
+ '/articles/podogrev-vody-v-basseyne.html',
+ '/articles/nakrytie-dlya-basseyna.html',
+ '/articles/balans-ph-vody-v-basseyne.html',
+ '/articles/ochistka-vody-v-basseyne-problemy.html',
+ '/articles/skimmernyy-basseyn-pod-klyuch.html'
+]);
+
 const pages=[
  ['avtomaticheskaya-podpitka-basseyna','Автоматическая подпитка бассейна','Датчик уровня'],
  ['koagulyaciya-vody-basseyna','Коагуляция воды в бассейне','хлопья'],
@@ -66,11 +78,11 @@ test('new materials are searchable, categorized and listed in sitemap',async({pa
  await expect(page.locator('[data-search]:visible')).toContainText('Автоматическая подпитка');
  await page.fill('#search','');
  await page.selectOption('#category','Переливные системы');
- await expect(page.locator('[data-search]:visible')).toHaveCount(3);
+ await expect(page.locator('[data-search]:visible')).toHaveCount(2);
  await expect(page.locator('#cards a[href="kak-rabotaet-perelivnaya-sistema.html"]')).toHaveCount(1);
 });
 
-test('original 36 topics have searchable routes to existing ALPOOL materials',async({page})=>{
+test('retained catalogue topics have searchable routes to existing ALPOOL materials',async({page})=>{
  await page.goto('/spravochnik/index.html');
  const cases=[
   ['скорость песочного фильтра','/articles/filtratsiya-vody-v-basseyne.html'],
@@ -86,6 +98,7 @@ test('original 36 topics have searchable routes to existing ALPOOL materials',as
   ['почему нельзя выбирать трубу на глаз','skorost-vody.html']
  ];
  for(const [query,href] of cases){
+  if(removedCatalogRoutes.has(href)) continue;
   await page.fill('#search',query);
   const links=await page.locator('#cards article:visible a').evaluateAll(as=>as.map(a=>a.getAttribute('href')));
   expect(links,`search route for ${query}`).toContain(href);
@@ -93,14 +106,14 @@ test('original 36 topics have searchable routes to existing ALPOOL materials',as
  }
  await page.fill('#search','');
  await page.selectOption('#category','Подогрев и теплотехника');
- await expect(page.locator('#cards article:visible')).toHaveCount(5); await expect(page.locator('#cards a[href="teploobmennik-basseyna.html"]')).toBeVisible();
+ await expect(page.locator('#cards article:visible')).toHaveCount(1); await expect(page.locator('#cards a[href="teploobmennik-basseyna.html"]')).toBeVisible();
  await page.fill('#search',''); await page.selectOption('#category','');
  for(const width of [390,768,1440]){
   await page.setViewportSize({width,height:900});
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`catalog overflow at ${width}px`).toBeTruthy();
  }
 });
-test('all 36 inventory topics resolve through catalogue search',async({page})=>{
+test('retained inventory topics resolve through catalogue search',async({page})=>{
  await page.goto('/spravochnik/index.html');
  const topics=[
   ['диаметр трубы расход воды','skorost-vody.html'],
@@ -141,8 +154,30 @@ test('all 36 inventory topics resolve through catalogue search',async({page})=>{
   ['циркуляция воды в чаше','cirkulyaciya-vody-v-chashe.html']
  ];
  for(const [query,href] of topics){
+  if(removedCatalogRoutes.has(href)) continue;
   await page.fill('#search',query);
   const links=await page.locator('#cards article:visible a').evaluateAll(as=>as.map(a=>a.getAttribute('href')));
   expect(links,query).toContain(href);
  }
+});
+
+test('catalogue omits the ten selected cards and keeps the volume calculator',async({page},testInfo)=>{
+ const removedRoutes=[...removedCatalogRoutes];
+ const pageErrors=[];
+ page.on('pageerror',error=>pageErrors.push(error.message));
+ for(const width of [390,768,1440]){
+  await page.setViewportSize({width,height:900});
+  await page.goto('/spravochnik/index.html');
+  await expect(page.locator('#cards > .card')).toHaveCount(29);
+  for(const route of removedRoutes)
+   await expect(page.locator(`#cards > .card > h2 > a[href="${route}"]`)).toHaveCount(0);
+  await expect(page.locator('#cards > .card > h2 > a[href="kalkulyator-obema-basseyna.html"]')).toHaveCount(1);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`catalogue overflow at ${width}px`).toBeTruthy();
+  await page.fill('#search','расчётный расход и предварительное сопоставление');
+  for(const route of removedRoutes)
+   await expect(page.locator(`#cards > .card:visible > h2 > a[href="${route}"]`)).toHaveCount(0);
+  await page.fill('#search','');
+  await page.screenshot({path:testInfo.outputPath(`catalogue-${width}.png`),fullPage:true});
+ }
+ expect(pageErrors).toEqual([]);
 });
