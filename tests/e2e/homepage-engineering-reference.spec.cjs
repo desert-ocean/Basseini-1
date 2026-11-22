@@ -32,7 +32,7 @@ for (const width of [390, 768, 1440]) {
 			await page.locator('#navPanelToggle').click();
 			await expect(page.locator('#navPanel')).toHaveAttribute('aria-hidden', 'false');
 			await expect(page.locator('#navPanel a[href="/blog/blog.html"]')).toHaveText('Статьи');
-			await page.locator('#navPanelToggle').click();
+			await page.locator('#navPanel a.close').click();
 		}
 		await contactLink.click();
 		const contactHeading = page.locator('#contact-title');
@@ -46,6 +46,23 @@ for (const width of [390, 768, 1440]) {
 				return heading.left < menu.right && heading.right > menu.left && heading.top < menu.bottom && heading.bottom > menu.top;
 			});
 			expect(overlapsMenu).toBe(false);
+		}
+		const backToTop = page.locator('#backToTop');
+		await expect(backToTop).toBeVisible();
+		await expect(backToTop).toHaveAttribute('aria-label', 'Наверх');
+		const consultationTop = await section.locator('.engineering-reference__consultation').evaluate(element => element.getBoundingClientRect().top + window.scrollY);
+		await page.evaluate(top => window.scrollTo(0, top - (window.innerHeight - 330)), consultationTop);
+		if (width <= 480) {
+			await expect(backToTop).toHaveClass(/is-over-engineering-reference/);
+			const textOverlap = await page.evaluate(() => {
+				const button = document.querySelector('#backToTop').getBoundingClientRect();
+				return [...document.querySelectorAll('.engineering-reference__consultation h3, .engineering-reference__consultation p, .engineering-reference__consultation a')]
+					.some(element => {
+						const text = element.getBoundingClientRect();
+						return button.left < text.right && button.right > text.left && button.top < text.bottom && button.bottom > text.top;
+					});
+			});
+			expect(textOverlap).toBe(false);
 		}
 
 		const bounds = await section.locator('.engineering-reference__layout').evaluate(element => {

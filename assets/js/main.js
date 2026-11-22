@@ -226,9 +226,22 @@
 	// Back to top.
 		$backToTop = $('<button type="button" id="backToTop" aria-label="Наверх">↑</button>')
 			.appendTo($body);
+		var $engineeringReferenceConsultation = $('.engineering-reference__consultation');
 
 		var updateBackToTop = function() {
 			$backToTop.toggleClass('is-visible', $window.scrollTop() > Math.max(240, $window.height() * 0.35));
+
+			var overlapsEngineeringReference = false;
+			if ($engineeringReferenceConsultation.length > 0 && window.matchMedia('(max-width: 480px)').matches) {
+				var card = $engineeringReferenceConsultation[0].getBoundingClientRect();
+				var button = $backToTop[0].getBoundingClientRect();
+				overlapsEngineeringReference = button.left < card.right
+					&& button.right > card.left
+					&& button.top < card.bottom
+					&& button.bottom > card.top;
+			}
+
+			$backToTop.toggleClass('is-over-engineering-reference', overlapsEngineeringReference);
 		};
 
 		$window

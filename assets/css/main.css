@@ -4758,6 +4758,10 @@ input, select, textarea {
 			right: calc(0.75rem + env(safe-area-inset-right, 0px));
 		}
 
+		#backToTop.is-over-engineering-reference {
+			right: calc(0.25rem + env(safe-area-inset-right, 0px));
+		}
+
 	}
 
 	@media (prefers-reduced-motion: reduce) {
