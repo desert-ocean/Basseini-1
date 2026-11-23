@@ -22,7 +22,8 @@ test('every target keeps one shared inquiry form and has no separate task CTA', 
 		await expect(footer.locator('form[action="https://api.alpool.ru/api/leads"]'), url).toHaveCount(1);
 		await expect(footer.locator('a[href^="tel:"]'), url).toHaveCount(1);
 		await expect(footer.locator('a[href^="mailto:"]'), url).toHaveCount(1);
-		await expect(footer.locator('.contact-messengers a'), url).toHaveCount(2);
+		await expect(page.locator('a[href="https://wa.me/79856446654"]'), url).not.toHaveCount(0);
+		await expect(page.locator('a[href="https://t.me/desertocean"]'), url).not.toHaveCount(0);
 		const duplicateSharedIds = await page.evaluate(ids => ids.filter(id => document.querySelectorAll(`[id="${id}"]`).length !== 1), sharedIds);
 		expect(duplicateSharedIds, url).toEqual([]);
 		await expect(footer.locator('a[href="/tehnicheskoe-zadanie/"]'), url).toHaveCount(1);

@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test');
+const { allowedGovernmentDocuments } = require('../../scripts/external-link-policy.cjs');
 
 test.describe('Обеззараживание воды бассейна', () => {
   for (const width of [390, 768, 1440]) {
@@ -21,7 +22,9 @@ test.describe('Обеззараживание воды бассейна', () => 
       await expect(page.locator('.compatibility-table tbody tr')).toHaveCount(10);
       await expect(page.locator('.method-table tbody tr')).toHaveCount(7);
       await expect(page.locator('#sources a[href="https://02.rospotrebnadzor.ru/upload/iblock/749/td3cen07sl6tt5sp3z9kpc09onwb10br/SP_2.1.4284_26.pdf"]')).toHaveCount(1);
-      await expect(page.locator('a[href^="https://"]')).toHaveCount(1);
+      await expect(page.locator('#sources a[href^="https://"]')).toHaveCount(1);
+      const articleOutbound = await page.locator('main a[href^="https://"]').evaluateAll(links => links.map(link => link.href));
+      expect(articleOutbound.every(href => allowedGovernmentDocuments.has(href))).toBe(true);
       await expect(page.locator('#contact form')).toHaveAttribute('action', 'https://api.alpool.ru/api/leads');
       await expect(page.locator('a[href="/tehnicheskoe-zadanie/"]')).toHaveCount(1);
 

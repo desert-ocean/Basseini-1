@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test');
+const { allowedGovernmentDocuments, allowedAlpoolContacts } = require('../../scripts/external-link-policy.cjs');
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -84,7 +85,7 @@ test('series 6 pages use only internal user links and their local targets resolv
     const anchors = [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)].map(match => match[1]);
     for (const href of anchors) {
       if (/^https?:\/\//i.test(href)) {
-        expect(['https://wa.me/79856446654', 'https://t.me/desertocean'].includes(href), `${url} outbound user link`).toBe(true);
+        expect(allowedAlpoolContacts.has(href) || allowedGovernmentDocuments.has(href), `${url} outbound user link`).toBe(true);
         continue;
       }
       if (href.startsWith('tel:') || href.startsWith('mailto:')) continue;

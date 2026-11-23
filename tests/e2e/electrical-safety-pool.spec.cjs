@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test');
+const { allowedGovernmentDocuments, allowedAlpoolContacts } = require('../../scripts/external-link-policy.cjs');
 
 test.describe('Электробезопасность бассейна', () => {
   for (const width of [390, 768, 1440]) {
@@ -48,8 +49,10 @@ test.describe('Электробезопасность бассейна', () => {
       await expect(page.locator('#footer a[href^="tel:"]')).toBeVisible();
       await expect(page.locator('#footer a[href^="mailto:"]')).toBeVisible();
       await expect(page.locator('#footer a[href*="tehnicheskoe-zadanie"]')).toBeVisible();
-      await expect(page.locator('a[href*="wa.me"], a[href*="t.me"]')).toHaveCount(0);
-      await expect(page.locator('a[href^="http"]')).toHaveCount(0);
+      await expect(page.locator('a[href="https://wa.me/79856446654"]')).toHaveCount(1);
+      await expect(page.locator('a[href="https://t.me/desertocean"]')).toHaveCount(1);
+      const outbound = await page.locator('a[href^="https://"]').evaluateAll(links => links.map(link => link.href));
+      expect(outbound.every(href => allowedGovernmentDocuments.has(href) || allowedAlpoolContacts.has(href))).toBe(true);
       expect(pageErrors).toEqual([]);
     });
   }

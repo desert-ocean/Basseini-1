@@ -62,7 +62,8 @@ test('both calculators compute the reference pool, respond to settings, and reje
   await expect(page.locator('#floor-count-result')).not.toHaveText('8');
   await page.locator('#wall-placement').selectOption('oppositeLong');
   await expect(page.locator('#wall-layout-result')).toContainText('Две противоположные продольные стены');
-  await page.locator('#wall-staggered').check();
+  await page.locator('label.nozzle-stagger-control').click();
+  await expect(page.locator('#wall-staggered')).toBeChecked();
   await expect(page.locator('#wall-layout-result')).toContainText('шахматно');
   await page.fill('#floor-length', '0');
   await expect(page.locator('#floor-error')).not.toBeEmpty();

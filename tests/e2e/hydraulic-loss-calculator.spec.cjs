@@ -80,7 +80,8 @@ test('loss calculator gets flow, speed and both PVC-U series from the shared cor
   await page.selectOption('#loss-pool-type', 'overflow');
   await expect(page.locator('#loss-overflow-controls')).toBeVisible();
   await page.fill('#loss-static-input', '0,6');
-  await page.locator('#loss-static-confirm').check();
+  await page.locator('label:has(#loss-static-confirm)').click();
+  await expect(page.locator('#loss-static-confirm')).toBeChecked();
   await page.selectOption('#loss-static-mode', 'plus');
   const total = Number((await page.locator('#loss-total').textContent()).replace(' м', '').replace(',', '.'));
   await expect(page.locator('#loss-head')).toHaveText(`${(total + 0.6).toLocaleString('ru-RU', { maximumFractionDigits: 4 })} м`);

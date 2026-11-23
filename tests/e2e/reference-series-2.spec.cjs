@@ -1,4 +1,5 @@
 const {test,expect}=require('@playwright/test');
+const {allowedGovernmentDocuments,allowedAlpoolContacts}=require('../../scripts/external-link-policy.cjs');
 const pages=['svobodnyy-i-svyazannyy-hlor','shchelochnost-vody','donnyy-sliv-basseyna','kolichestvo-forsunok','cirkulyaciya-vody-v-chashe'];
 for(const width of [390,768,1440])test(`series 2 renders on ${width}px`,async({page})=>{
  await page.setViewportSize({width,height:900});const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -17,5 +18,5 @@ test('catalog categories, links, sitemap and no external navigation',async({page
  await page.goto('/spravochnik/index.html');await page.fill('#search','связанный хлор');await expect(page.locator('[data-search]:visible')).toHaveCount(1);
  await page.fill('#search','');await page.selectOption('#category','Закладные элементы');await expect(page.locator('[data-search]:visible')).toHaveCount(3);
  const xml=await(await page.request.get('/sitemap.xml')).text();
- for(const name of pages){expect(xml).toContain('/spravochnik/'+name+'.html');await page.goto('/spravochnik/'+name+'.html');const links=await page.locator('a[href]').evaluateAll(as=>as.map(a=>({href:a.href,messenger:!!a.closest('.contact-messengers')})));for(const {href,messenger} of links){const target=new URL(href);if(target.protocol==='tel:'||target.protocol==='mailto:')continue;if(target.origin!=='http://127.0.0.1:4179'){expect(messenger&&['https://wa.me/79856446654','https://t.me/desertocean'].includes(target.href),`${name}: ${href}`).toBe(true);continue;}expect((await page.request.get(href)).status()).toBe(200)}}
+ for(const name of pages){expect(xml).toContain('/spravochnik/'+name+'.html');await page.goto('/spravochnik/'+name+'.html');const links=await page.locator('a[href]').evaluateAll(as=>as.map(a=>a.href));for(const href of links){const target=new URL(href);if(target.protocol==='tel:'||target.protocol==='mailto:')continue;if(target.origin!=='http://127.0.0.1:4179'){expect(allowedAlpoolContacts.has(target.href)||allowedGovernmentDocuments.has(target.href),`${name}: ${href}`).toBe(true);continue;}expect((await page.request.get(href)).status()).toBe(200)}}
 });
