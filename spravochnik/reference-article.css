@@ -1,0 +1,43 @@
+/* Shared ALPOOL layout for every engineering reference article. */
+.reference-article-page [hidden] { display:none !important; }
+#main > .reference-article-content { min-width:0; color:#212931; background:#fff; }
+.reference-article-content > * { min-width:0; }
+.reference-article-page #main { background:#f7f8f8; }
+#main > nav.breadcrumbs, #main > nav.reference-breadcrumb, .reference-article-content > nav[aria-label="Хлебные крошки"] { margin:0 0 1.5rem; color:#526875; font:400 .95rem/1.5 "Merriweather",Georgia,serif; }
+#main > nav.breadcrumbs a, #main > nav.reference-breadcrumb a, .reference-article-content > nav[aria-label="Хлебные крошки"] a { color:#086b8b; border-bottom-color:rgba(8,107,139,.35); }
+#main .reference-article-content h1 { margin:0 0 1.25rem; color:#17212b; font:900 clamp(2rem,4vw,3.25rem)/1.1 "Source Sans Pro",Helvetica,sans-serif; letter-spacing:-.025em; text-transform:none; overflow-wrap:anywhere; }
+#main .reference-article-content h2 { margin-top:2.3rem; margin-bottom:.9rem; color:#17212b; font:900 clamp(1.45rem,2.3vw,2rem)/1.15 "Source Sans Pro",Helvetica,sans-serif; letter-spacing:-.015em; text-transform:none; }
+#main .reference-article-content h3 { margin-top:1.7rem; margin-bottom:.7rem; color:#213947; font:700 clamp(1.15rem,1.7vw,1.45rem)/1.25 "Source Sans Pro",Helvetica,sans-serif; letter-spacing:0; text-transform:none; }
+.reference-article-content p { max-width:82ch; margin-bottom:1.15rem; color:#303b43; font-size:1rem; line-height:1.85; text-align:left; overflow-wrap:anywhere; }
+.reference-article-content > .lead, .reference-article-content > header.major > p { max-width:74ch; color:#48545d; font-size:clamp(1rem,1.3vw,1.12rem); }
+.reference-article-content a:not(.button) { color:#086b8b; }
+.reference-article-content .panel, .reference-article-content .card { min-width:0; padding:clamp(1rem,2.2vw,1.5rem); border:1px solid #d7e0e3; border-radius:10px; background:#f6f9f9; box-shadow:none; }
+.reference-article-content .card { background:#fff; }
+.reference-article-content .article-toc, .reference-article-content .reference-toc { margin:1.5rem 0 2rem; padding:1rem 1.25rem; border:1px solid #d7e0e3; border-radius:10px; background:#f6f9f9; }
+#main .reference-article-content .article-toc h2, #main .reference-article-content .reference-toc h2 { margin:0 0 .5rem; font-size:1.2rem; }
+.reference-article-content .article-toc ol, .reference-article-content .reference-toc ol { margin:.5rem 0 0; padding-left:1.4rem; }
+.reference-article-content .article-toc li, .reference-article-content .reference-toc li { margin:.35rem 0; line-height:1.6; }
+.reference-article-content .table-wrap, .reference-article-content .table-scroll, .reference-article-content .reference-table-wrap { width:100%; max-width:100%; min-width:0; overflow-x:auto; overscroll-behavior-inline:contain; -webkit-overflow-scrolling:touch; }
+.reference-article-content table { width:100%; max-width:100%; border-collapse:collapse; background:#fff; }
+.reference-article-content th, .reference-article-content td { padding:.65rem .75rem; border-bottom:1px solid #dce8ed; text-align:left; vertical-align:top; white-space:normal; overflow-wrap:anywhere; }
+.reference-article-content thead th { background:#edf5f7; color:#193e52; font-weight:700; }
+.reference-article-content img, .reference-article-content picture, .reference-article-content video { max-width:100%; }
+.reference-article-content img { height:auto; }
+.reference-article-content figure { max-width:100%; margin:1.5rem auto; }
+.reference-article-content figcaption { max-width:78ch; margin:.65rem auto 0; color:#526875; font-size:.9rem; line-height:1.6; text-align:center; }
+.reference-article-content svg { max-width:100%; height:auto; }
+.reference-article-content .diagram-labels-readable { font-size:1rem; line-height:1.5; }
+.reference-article-content label { display:block; min-width:0; color:#303b43; font-size:.92rem; line-height:1.5; }
+.reference-article-content input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .reference-article-content select, .reference-article-content textarea { box-sizing:border-box; max-width:100%; }
+.reference-article-content input[type="text"], .reference-article-content input[type="number"], .reference-article-content input[type="search"], .reference-article-content input[type="email"], .reference-article-content select, .reference-article-content textarea { width:100%; font-family:"Merriweather",Georgia,serif; font-size:.95rem; letter-spacing:normal; text-transform:none; }
+.reference-article-content input[type="checkbox"], .reference-article-content input[type="radio"] { width:auto; }
+.reference-article-content .results { display:flex; flex-wrap:wrap; gap:1rem 1.5rem; }
+.reference-article-content .results strong, .reference-article-content output { color:#075b7c; font-family:"Source Sans Pro",Helvetica,sans-serif; font-variant-numeric:tabular-nums; }
+.reference-article-content .hint, .reference-article-content .note, .reference-article-content .caption { color:#526875; font-size:.92rem; }
+.reference-article-content .error { color:#a32626; }
+.reference-article-content .warning, .reference-article-content .note-panel { padding:.85rem 1rem; border-left:4px solid #147b9b; background:#edf5f7; }
+.reference-article-content .table-wrap:focus, .reference-article-content .table-scroll:focus, .reference-article-content a:focus-visible, .reference-article-content button:focus-visible, .reference-article-content input:focus-visible, .reference-article-content select:focus-visible, .reference-article-content textarea:focus-visible { outline:3px solid #59a9c6; outline-offset:3px; }
+.reference-article-content > section[aria-labelledby="tech-task-title"] { margin:3rem 0 0; padding:2rem 0 0; border-top:2px solid #eee; }
+#main .reference-article-content > section[aria-labelledby="tech-task-title"] h2 { font-size:clamp(1.6rem,3vw,2.3rem); }
+@media(max-width:736px) { .reference-article-content p { max-width:none; } .reference-article-content table { font-size:.92rem; } .reference-article-content th, .reference-article-content td { padding:.5rem .4rem; } }
+@media(max-width:390px) { .reference-article-content .panel, .reference-article-content .card { padding:.85rem; } }
