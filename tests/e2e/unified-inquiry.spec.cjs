@@ -6,10 +6,6 @@ const groups = ['articles', 'blog', 'kalkulyatori', 'napravleniya', 'servis', 's
 const pages = groups.flatMap(group => fs.readdirSync(group)
 	.filter(name => name.endsWith('.html'))
 	.map(name => `/${group}/${name}`));
-const sharedIds = ['contact-title', 'unified-name', 'unified-phone', 'unified-email',
-	'unified-message', 'unified-lead-files', 'unified-lead-files-help', 'unified-lead-files-selected',
-	'unified-alpool-personal-data-consent-home', 'unified-alpool-personal-data-consent-home-links'];
-
 test('every target keeps one shared inquiry form and has no separate task CTA', async ({ page }) => {
 	test.setTimeout(180000);
 	const pageErrors = [];
@@ -24,8 +20,29 @@ test('every target keeps one shared inquiry form and has no separate task CTA', 
 		await expect(footer.locator('a[href^="mailto:"]'), url).toHaveCount(1);
 		await expect(page.locator('a[href="https://wa.me/79856446654"]'), url).not.toHaveCount(0);
 		await expect(page.locator('a[href="https://t.me/desertocean"]'), url).not.toHaveCount(0);
-		const duplicateSharedIds = await page.evaluate(ids => ids.filter(id => document.querySelectorAll(`[id="${id}"]`).length !== 1), sharedIds);
-		expect(duplicateSharedIds, url).toEqual([]);
+		const form = footer.locator('form[action="https://api.alpool.ru/api/leads"]');
+		for (const name of ['name', 'phone', 'email', 'message', 'files', 'personal_data_consent']) {
+			await expect(form.locator(`[name="${name}"]`), `${url} ${name} control`).toHaveCount(1);
+		}
+		const labelsWithoutControls = await form.locator('label[for]').evaluateAll(labels => labels
+			.filter(label => !document.getElementById(label.htmlFor) || !label.closest('form')?.contains(document.getElementById(label.htmlFor)))
+			.map(label => label.htmlFor));
+		expect(labelsWithoutControls, `${url} labels target real form controls`).toEqual([]);
+		await form.locator('[name="name"]').fill('Проверка формы');
+		await form.locator('[name="phone"]').fill('+7 999 123-45-67');
+		await form.locator('[name="email"]').fill('test@example.invalid');
+		await form.locator('[name="message"]').fill('Проверка полей без отправки формы');
+		const consent = form.locator('[name="personal_data_consent"]');
+		const consentId = await consent.getAttribute('id');
+		await form.locator(`label[for="${consentId}"]`).click();
+		await expect(consent).toBeChecked();
+		await expect(form.locator('[name="name"]')).toHaveValue('Проверка формы');
+		await expect(form.locator('[name="phone"]')).toHaveValue('+7 999 123-45-67');
+		await expect(form.locator('[name="email"]')).toHaveValue('test@example.invalid');
+		await expect(form.locator('[name="message"]')).toHaveValue('Проверка полей без отправки формы');
+		expect(await form.evaluate(formElement => formElement.checkValidity()), `${url} form inputs pass native validation`).toBe(true);
+		await form.locator('[name="name"]').fill('');
+		await expect(form.locator('[name="name"]')).toHaveValue('');
 		await expect(footer.locator('a[href="/tehnicheskoe-zadanie/"]'), url).toHaveCount(1);
 	}
 	expect(pageErrors).toEqual([]);
@@ -89,8 +106,10 @@ for (const url of ['/articles/filtratsiya-vody-v-basseyne.html', '/spravochnik/t
 		await expect(form.locator('.lead-file-list')).toContainText('plan.pdf');
 		await form.locator('[type=submit]').click();
 		expect(leadRequests).toBe(0);
-		await form.locator('label[for="unified-alpool-personal-data-consent-home"]').click();
-		await expect(form.locator('[name=personal_data_consent]')).toBeChecked();
+		const consent = form.locator('[name=personal_data_consent]');
+		const consentId = await consent.getAttribute('id');
+		await form.locator(`label[for="${consentId}"]`).click();
+		await expect(consent).toBeChecked();
 		await form.locator('[type=submit]').click();
 		await expect(form.locator('.lead-status')).toContainText('Заявка отправлена');
 		expect(leadRequests).toBe(1);

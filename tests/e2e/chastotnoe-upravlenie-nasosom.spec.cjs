@@ -36,14 +36,6 @@ test('статья о частотном управлении: адаптивн�
       await image.screenshot({ path: path.join(artifactDir, `diagram-${i + 1}-${width}.png`) });
     }
 
-    // All local content links in the article should resolve without navigating away.
-    const hrefs = await page.locator('main a[href^="/"]').evaluateAll(links => [...new Set(links.map(link => link.getAttribute('href')).filter(href => href && !href.startsWith('#')))]);
-    await expect(page.locator('main a[href^="http"]')).toHaveCount(0);
-    for (const href of hrefs) {
-      const response = await page.request.get(new URL(href, baseURL).toString());
-      expect(response.status(), `broken internal link ${href}`).toBeLessThan(400);
-    }
-
     const fixedControls = await page.locator('body *').evaluateAll(nodes => nodes.filter(node => {
       const style = getComputedStyle(node);
       return style.position === 'fixed' && node.getBoundingClientRect().width > 0 && node.getBoundingClientRect().height > 0;
@@ -61,6 +53,14 @@ test('статья о частотном управлении: адаптивн�
       }
     }
   }
+  // Link targets are viewport-independent; request them once after checking all layouts.
+  const hrefs = await page.locator('main a[href^="/"]').evaluateAll(links => [...new Set(links.map(link => link.getAttribute('href')).filter(href => href && !href.startsWith('#')))]);
+  await expect(page.locator('main a[href^="http"]')).toHaveCount(0);
+  const linkResponses = [];
+  for (const href of hrefs) {
+    linkResponses.push({ href, response: await page.request.get(new URL(href, baseURL).toString()) });
+  }
+  for (const { href, response } of linkResponses) expect(response.status(), `broken internal link ${href}`).toBeLessThan(400);
   expect(browserName).toBe('chromium');
   expect(consoleErrors).toEqual([]);
 });

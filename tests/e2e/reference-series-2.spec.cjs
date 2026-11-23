@@ -3,16 +3,23 @@ const {allowedGovernmentDocuments,allowedAlpoolContacts}=require('../../scripts/
 const pages=['svobodnyy-i-svyazannyy-hlor','shchelochnost-vody','donnyy-sliv-basseyna','kolichestvo-forsunok','cirkulyaciya-vody-v-chashe'];
 for(const width of [390,768,1440])test(`series 2 renders on ${width}px`,async({page})=>{
  await page.setViewportSize({width,height:900});const errors=[];page.on('pageerror',e=>errors.push(e.message));
- for(const name of pages){const r=await page.goto('/spravochnik/'+name+'.html');expect(r.status()).toBe(200);await expect(page.locator('h1')).toBeVisible();await expect(page.locator('svg[role=img]')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href','https://alpool.ru/spravochnik/'+name+'.html')}
+ for(const name of pages){const r=await page.goto('/spravochnik/'+name+'.html');expect(r.status()).toBe(200);await expect(page.locator('h1')).toBeVisible();const images=page.locator('main picture img');const diagrams=page.locator('main svg[role=img]');expect(await images.count()+await diagrams.count(),`${name} has a diagram`).toBeGreaterThan(0);for(let i=0;i<await images.count();i++){const image=images.nth(i);await image.scrollIntoViewIfNeeded();await expect(image).toBeVisible();await expect.poll(()=>image.evaluate(node=>node.naturalWidth)).toBeGreaterThan(0)}if(await diagrams.count())await expect(diagrams.first()).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href','https://alpool.ru/spravochnik/'+name+'.html')}
  expect(errors).toEqual([]);
 });
 test('inlet count handles unequal division, decimals, invalid and extreme inputs',async({page})=>{
- await page.goto('/spravochnik/kolichestvo-forsunok.html');await expect(page.locator('#inlet-count')).toHaveText('4');
- await page.fill('#inlet-flow','10');await expect(page.locator('#inlet-count')).toHaveText('4');await expect(page.locator('#inlet-per')).toHaveText('2,5');
- await page.fill('#inlet-flow','0,07');await page.fill('#inlet-capacity','0,01');await expect(page.locator('#inlet-count')).toHaveText('7');
- await page.fill('#inlet-flow','0');await expect(page.locator('#inlet-count')).toHaveText('—');await expect(page.locator('#inlet-flow')).toHaveAttribute('aria-invalid','true');
- await page.fill('#inlet-flow','12');await page.fill('#inlet-capacity','foo');await expect(page.locator('#inlet-capacity')).toHaveAttribute('aria-invalid','true');await expect(page.locator('#inlet-error')).not.toBeEmpty();
- await page.fill('#inlet-flow','10001');await page.fill('#inlet-capacity','1');await expect(page.locator('#inlet-count')).toHaveText('—');
+ await page.goto('/spravochnik/kolichestvo-forsunok.html');
+ await expect(page.locator('#floor-count-result')).toHaveText('8');
+ await page.locator('#floor-turnover').fill('3.5');
+ await expect(page.locator('#floor-flow-result')).toHaveText('21,43');
+ await expect(page.locator('#floor-count-result')).not.toHaveText('—');
+ await page.locator('#floor-length').fill('0');
+ await expect(page.locator('#floor-error')).not.toBeEmpty();
+ await expect(page.locator('#floor-results')).toBeHidden();
+ await page.locator('#wall-placement').selectOption('oppositeLong');
+ await expect(page.locator('#wall-layout-result')).toContainText('Две противоположные продольные стены');
+ await page.locator('#wall-length').fill('0');
+ await expect(page.locator('#wall-error')).not.toBeEmpty();
+ await expect(page.locator('#wall-results')).toBeHidden();
 });
 test('catalog categories, links, sitemap and no external navigation',async({page})=>{
  await page.goto('/spravochnik/index.html');await page.fill('#search','связанный хлор');await expect(page.locator('[data-search]:visible')).toHaveCount(1);

@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const fs = require('node:fs');
 const path = require('node:path');
+const { allowedGovernmentDocuments, allowedAlpoolContacts } = require('../../scripts/external-link-policy.cjs');
 
 const widths = [390, 768, 1440];
 const output = path.resolve('.test-artifacts/visual-review/pool-ventilation-guide');
@@ -49,12 +50,13 @@ test('pool ventilation guide at mobile, tablet and desktop sizes', async ({ page
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/spravochnik/ventilyaciya-krytogo-basseyna.html');
-  const nav = page.locator('body > header');
+  const nav = page.locator('#header');
   await expect(nav).toBeVisible();
   await expect(page.locator('#footer form')).toBeAttached();
   await expect(page.locator('#footer a[href="/tehnicheskoe-zadanie/"]')).toBeAttached();
   await expect(page.getByRole('link', { name: 'Кратность и расход воздуха' })).toHaveAttribute('href', '#air-rate');
-  await expect(page.locator('a[href^="http"]')).toHaveCount(0);
+  const externalLinks = await page.locator('a[href^="http"]').evaluateAll(anchors => anchors.map(anchor => anchor.href));
+  for (const href of externalLinks) expect(allowedAlpoolContacts.has(href) || allowedGovernmentDocuments.has(href), href).toBe(true);
   const links = await page.locator('a[href^="/"]').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')));
   for (const href of links) {
     const target = href.split('#')[0];

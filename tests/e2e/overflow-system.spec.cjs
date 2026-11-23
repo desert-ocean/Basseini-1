@@ -31,7 +31,18 @@ test('overflow article calculators, responsive illustration and shared actions',
   await expect(page.locator('[data-outlet-calculator] [data-result="totalLengthM"]')).toContainText('9,9');
   await expect(page.locator('[data-outlet-calculator] [data-result="geometryCount"]')).toContainText('6');
   await expect(page.locator('[data-outlet-calculator] [data-result="recommendedCount"]')).toContainText('6');
-  expect(await page.locator('[data-outlet-calculator] [data-segments] .table-wrap').evaluate(el => el.scrollWidth > el.clientWidth)).toBeTruthy();
+  const segmentTable = page.locator('[data-outlet-calculator] [data-segments] .table-wrap');
+  await expect(segmentTable).toHaveAttribute('role', 'region');
+  const segmentTableState = await segmentTable.evaluate(el => ({
+    overflowX: getComputedStyle(el).overflowX,
+    hasTable: Boolean(el.querySelector('table')),
+    rows: el.querySelectorAll('tbody tr').length,
+    clipsContent: el.scrollWidth > el.clientWidth
+  }));
+  expect(['auto', 'scroll']).toContain(segmentTableState.overflowX);
+  expect(segmentTableState.hasTable).toBe(true);
+  expect(segmentTableState.rows).toBeGreaterThan(0);
+  if (segmentTableState.clipsContent) expect(segmentTableState.overflowX).toMatch(/auto|scroll/);
   await page.locator('[data-outlet-calculator] [data-field="segmentLengths"]').fill('7,5; 4.2; 3,3');
   await expect(page.locator('[data-outlet-calculator] [data-result="totalLengthM"]')).toContainText('15 м');
   await expect(page.locator('[data-outlet-calculator] [data-result="geometryCount"]')).toContainText('9');

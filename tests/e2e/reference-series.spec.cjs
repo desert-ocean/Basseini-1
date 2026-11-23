@@ -11,8 +11,16 @@ for (const width of [390, 768, 1440]) {
       const response = await page.goto(`/spravochnik/${name}.html`);
       expect(response.status()).toBe(200);
       await expect(page.locator('h1')).toBeVisible();
-      if (name === 'vodoobmen-basseyna') await expect(page.locator('.water-turnover-scheme img')).toBeVisible();
-      else await expect(page.locator('svg[role=img]')).toBeVisible();
+      const images = page.locator('main img[src$=".svg"]');
+      const diagrams = page.locator('main svg[role=img]');
+      expect(await images.count() + await diagrams.count(), `${name} has an engineering diagram`).toBeGreaterThan(0);
+      for (let index = 0; index < await images.count(); index += 1) {
+        const image = images.nth(index);
+        await image.scrollIntoViewIfNeeded();
+        await expect(image).toBeVisible();
+        await expect.poll(() => image.evaluate(node => node.naturalWidth)).toBeGreaterThan(0);
+      }
+      if (await diagrams.count()) await expect(diagrams.first()).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
       await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', `https://alpool.ru/spravochnik/${name}.html`);
     }
@@ -137,7 +145,7 @@ test('conversion article keeps internal links, search and sitemap integration', 
   await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', 'https://alpool.ru/spravochnik/perevod-rashoda.html');
   await page.goto('/spravochnik/index.html');
   await page.fill('#search', 'перевод расхода');
-  await expect(page.locator('#cards a[href="perevod-rashoda.html"]')).toBeVisible();
+  await expect(page.locator('#cards h2 a[href="perevod-rashoda.html"]')).toBeVisible();
   const sitemap = await (await page.request.get('/sitemap.xml')).text();
   expect(sitemap).toContain('/spravochnik/perevod-rashoda.html');
 });

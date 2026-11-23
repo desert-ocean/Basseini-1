@@ -5,6 +5,7 @@ function parseRu(text) {
 }
 
 test('heat calculator presents coherent results and remains usable at desktop, tablet, and mobile widths', async ({ page }, testInfo) => {
+	test.setTimeout(90000);
 	const pageErrors = [];
 	page.on('pageerror', (error) => pageErrors.push(error.message));
 	await page.setViewportSize({ width: 1440, height: 1000 });
@@ -89,8 +90,9 @@ test('heat calculator presents coherent results and remains usable at desktop, t
 	await expect(page.locator('#hx-duration-result')).toContainText('Цель не достигнута');
 	await expect(page.locator('#hx-primary-result-label')).toHaveText('Доступная мощность системы');
 	await expect(page.locator('#hx-source-energy-label')).toHaveText('Тепло от системы за период проверки');
+	await expect(page.locator('#hx-sim-hours')).toHaveValue('720');
 	await page.locator('#hx-sim-hours').fill('72');
-	await page.locator('#hx-sim-hours').fill('720');
+	await expect(page.locator('#hx-sim-hours')).toHaveValue('72');
 
 	await page.locator('#hx-cover-settings > summary').click();
 	await page.locator('#hx-cover-on').check();

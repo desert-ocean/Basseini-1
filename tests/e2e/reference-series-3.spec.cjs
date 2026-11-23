@@ -27,7 +27,10 @@ for(const width of [390,768,1440]) test(`series 3 pages render at ${width}px`,as
   expect(response.status()).toBe(200);
   await expect(page.locator('h1')).toHaveCount(1);
   await expect(page.locator('h1')).toContainText(title.split(':')[0]);
-  if(slug==='skorost-vody') await expect(page.locator('main svg[role="img"]')).toHaveCount(3); else if(pages.slice(0,3).some(([newSlug])=>newSlug===slug)) await expect(page.locator('main img, main svg[role="img"]')).toHaveCount(1); else await expect(page.locator('main svg[role="img"]')).toHaveCount(1);
+  const images=page.locator('main picture img');const diagrams=page.locator('main svg[role="img"]');
+  expect(await images.count()+await diagrams.count(),`${slug} has a diagram`).toBeGreaterThan(0);
+  for(let i=0;i<await images.count();i++){const image=images.nth(i);await image.scrollIntoViewIfNeeded();await expect(image).toBeVisible();await expect.poll(()=>image.evaluate(node=>node.naturalWidth)).toBeGreaterThan(0);}
+  if(await diagrams.count())await expect(diagrams.first()).toBeVisible();
   if(slug==='skorost-vody')await expect(page.locator('main')).toContainText('Ориентировочная скорость');else await expect(page.locator('main')).toContainText(new RegExp(content,'i'));
   expect(await page.locator('main > section:first-of-type svg text').count()).toBe(0);
   if(pages.slice(0,3).some(([newSlug])=>newSlug===slug) && await page.locator('.diagram-labels-readable').count())
@@ -45,19 +48,19 @@ test('PN conditions, makeup backflow protection and overflow loop are explicit',
  await expect(page.locator('main')).toContainText('PN10 и PN16 соответствуют номинальным значениям, установленным для условий конкретного стандарта и изделия');
  await expect(page.locator('main')).toContainText('Допустимое рабочее давление зависит от температуры, среды, серии и исполнения трубы');
  await page.goto('/spravochnik/avtomaticheskaya-podpitka-basseyna.html');
- await expect(page.locator('main')).toContainText('исключить обратный поток воды бассейна в сеть');
- await expect(page.locator('main')).toContainText('сам по себе такой защитой не является');
- await expect(page.locator('svg[role="img"]')).toHaveAttribute('aria-label',/воздушный разрыв/i);
- const makeupGeometry=await page.locator('svg[role="img"]').evaluate(svg=>{
-  const outlet=svg.querySelector('#makeup-outlet').getBBox();
-  const level=svg.querySelector('#max-water-level').getBBox();
-  const overflow=svg.querySelector('#overflow-channel').getBBox();
-  return {outletBottom:outlet.y+outlet.height,maxLevel:level.y,overflowLevel:overflow.y};
- });
- expect(makeupGeometry.outletBottom).toBeLessThan(makeupGeometry.maxLevel);
- expect(makeupGeometry.overflowLevel).toBe(makeupGeometry.maxLevel);
- await expect(page.locator('.diagram-labels-readable')).toContainText('Свободное падение через воздушный разрыв');
- await expect(page.locator('.diagram-labels-readable')).toContainText('Максимальный уровень задан переливом');
+ await expect(page.locator('main')).toContainText('защиту питьевого водопровода от обратного загрязнения');
+ await expect(page.locator('main')).toContainText(/сам по себе не измеряет уровень и не защищает водопровод от обратного потока/i);
+ const makeupImage=page.locator('.makeup-figure img').first();
+ await makeupImage.scrollIntoViewIfNeeded();
+ await expect(makeupImage).toBeVisible();
+ await expect.poll(()=>makeupImage.evaluate(image=>image.complete&&image.naturalWidth>0)).toBe(true);
+ await expect(makeupImage).toHaveAttribute('alt',/защиту от обратного потока.*воздушный разрыв.*аварийный перелив/i);
+ const svgPath=new URL(await makeupImage.evaluate(image=>image.currentSrc)).pathname;
+ const svgText=await(await page.request.get(svgPath)).text();
+ expect(svgText).toContain('воздушный разрыв');
+ expect(svgText).toContain('Аварийный перелив');
+ expect(svgText).toContain('устройство защиты от обратного потока');
+ expect(svgText).toContain('клапан');
  await page.goto('/spravochnik/kak-rabotaet-perelivnaya-sistema.html');
  await expect(page.locator('.overflow-hero img')).toHaveAttribute('alt',/вода из чаши через лоток/);
  await expect(page.locator('main')).toContainText('чаша → переливная кромка → переливной лоток');
@@ -71,7 +74,7 @@ test('new materials are searchable, categorized and listed in sitemap',async({pa
  await page.goto('/spravochnik/index.html');
  const sitemap=await(await page.request.get('/sitemap.xml')).text();
  for(const [slug] of pages.slice(0,3)){
-  await expect(page.locator(`#cards a[href="${slug}.html"]`)).toHaveCount(1);
+  await expect(page.locator(`#cards h2 a[href="${slug}.html"]`)).toHaveCount(1);
   expect(sitemap).toContain(`/spravochnik/${slug}.html`);
  }
  await page.fill('#search','подпитка уровень');
@@ -79,7 +82,7 @@ test('new materials are searchable, categorized and listed in sitemap',async({pa
  await page.fill('#search','');
  await page.selectOption('#category','Переливные системы');
  await expect(page.locator('[data-search]:visible')).toHaveCount(2);
- await expect(page.locator('#cards a[href="kak-rabotaet-perelivnaya-sistema.html"]')).toHaveCount(1);
+ await expect(page.locator('#cards h2 a[href="kak-rabotaet-perelivnaya-sistema.html"]')).toHaveCount(1);
 });
 
 test('retained catalogue topics have searchable routes to existing ALPOOL materials',async({page})=>{
@@ -100,13 +103,13 @@ test('retained catalogue topics have searchable routes to existing ALPOOL materi
  for(const [query,href] of cases){
   if(removedCatalogRoutes.has(href)) continue;
   await page.fill('#search',query);
-  const links=await page.locator('#cards article:visible a').evaluateAll(as=>as.map(a=>a.getAttribute('href')));
+  const links=await page.locator('#cards article.reference-card:visible h2 a').evaluateAll(as=>as.map(a=>a.getAttribute('href')));
   expect(links,`search route for ${query}`).toContain(href);
   expect((await page.request.get(new URL(href,page.url()).href)).status()).toBe(200);
  }
  await page.fill('#search','');
  await page.selectOption('#category','Подогрев и теплотехника');
- await expect(page.locator('#cards article:visible')).toHaveCount(1); await expect(page.locator('#cards a[href="teploobmennik-basseyna.html"]')).toBeVisible();
+ await expect(page.locator('#cards article.reference-card:visible')).toHaveCount(1); await expect(page.locator('#cards h2 a[href="teploobmennik-basseyna.html"]')).toBeVisible();
  await page.fill('#search',''); await page.selectOption('#category','');
  for(const width of [390,768,1440]){
   await page.setViewportSize({width,height:900});
@@ -156,7 +159,7 @@ test('retained inventory topics resolve through catalogue search',async({page})=
  for(const [query,href] of topics){
   if(removedCatalogRoutes.has(href)) continue;
   await page.fill('#search',query);
-  const links=await page.locator('#cards article:visible a').evaluateAll(as=>as.map(a=>a.getAttribute('href')));
+  const links=await page.locator('#cards article.reference-card:visible h2 a').evaluateAll(as=>as.map(a=>a.getAttribute('href')));
   expect(links,query).toContain(href);
  }
 });
@@ -168,14 +171,14 @@ test('catalogue omits the ten selected cards and keeps the volume calculator',as
  for(const width of [390,768,1440]){
   await page.setViewportSize({width,height:900});
   await page.goto('/spravochnik/index.html');
-  await expect(page.locator('#cards > .card')).toHaveCount(29);
+  await expect(page.locator('#cards > .reference-card')).toHaveCount(29);
   for(const route of removedRoutes)
-   await expect(page.locator(`#cards > .card > h2 > a[href="${route}"]`)).toHaveCount(0);
-  await expect(page.locator('#cards > .card > h2 > a[href="kalkulyator-obema-basseyna.html"]')).toHaveCount(1);
+   await expect(page.locator(`#cards > .reference-card h2 > a[href="${route}"]`)).toHaveCount(0);
+  await expect(page.locator('#cards > .reference-card h2 > a[href="kalkulyator-obema-basseyna.html"]')).toHaveCount(1);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`catalogue overflow at ${width}px`).toBeTruthy();
   await page.fill('#search','расчётный расход и предварительное сопоставление');
   for(const route of removedRoutes)
-   await expect(page.locator(`#cards > .card:visible > h2 > a[href="${route}"]`)).toHaveCount(0);
+   await expect(page.locator(`#cards > .reference-card:visible h2 > a[href="${route}"]`)).toHaveCount(0);
   await page.fill('#search','');
   await page.screenshot({path:testInfo.outputPath(`catalogue-${width}.png`),fullPage:true});
  }

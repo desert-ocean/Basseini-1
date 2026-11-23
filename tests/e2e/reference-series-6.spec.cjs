@@ -4,8 +4,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const pages = [
-  ['/spravochnik/obezzarazhivanie-vody-basseyna.html', 'Обеззараживание воды бассейна: хлор, УФ и озон — ALPOOL'],
-  ['/spravochnik/avtomaticheskoe-dozirovanie-reagentov.html', 'Автоматическое дозирование реагентов бассейна — ALPOOL'],
+  ['/spravochnik/obezzarazhivanie-vody-basseyna.html', 'Обеззараживание воды бассейна: хлор, озон, УФ и комбинированные системы | ALPOOL'],
+  ['/spravochnik/avtomaticheskoe-dozirovanie-reagentov.html', 'Автоматическое дозирование реагентов в бассейне — датчики, нормы и защита | ALPOOL'],
   ['/spravochnik/ventilyaciya-krytogo-basseyna.html', 'Вентиляция крытого бассейна: нормы и расчёт воздухообмена — ALPOOL'],
   ['/spravochnik/elektrobezopasnost-basseyna.html', 'Электробезопасность бассейна: зоны и защиты — ALPOOL'],
 ];
@@ -44,11 +44,24 @@ for (const [url, title] of pages) {
           expect(currentSrc).toContain(width <= 600 ? '-mobile.svg' : '-desktop.svg');
         }
       } else {
-        await expect(page.locator('main svg[role=img]')).toBeVisible();
+        const images = page.locator('main picture img');
+        const diagrams = page.locator('main svg[role=img]');
+        expect(await images.count() + await diagrams.count(), `${url} has an accessible diagram`).toBeGreaterThan(0);
+        for (let index = 0; index < await images.count(); index += 1) {
+          const image = images.nth(index);
+          await image.scrollIntoViewIfNeeded();
+          await expect(image).toBeVisible();
+          await expect.poll(() => image.evaluate(node => node.naturalWidth)).toBeGreaterThan(0);
+        }
+        if (await diagrams.count()) await expect(diagrams.first()).toBeVisible();
       }
-      const captions = page.locator('figcaption.diagram-labels');
-      await expect(captions).toHaveCount(url === '/spravochnik/elektrobezopasnost-basseyna.html' ? 4 : (url === '/spravochnik/ventilyaciya-krytogo-basseyna.html' ? 0 : 1));
-      if (await captions.count()) await expect(captions.first()).toBeVisible();
+      const figures = page.locator('main figure:has(img[src$=".svg"])');
+      const captions = figures.locator('figcaption');
+      await expect(captions).toHaveCount(await figures.count(), `${url} gives every SVG figure a caption`);
+      for (const caption of await captions.all()) {
+        await expect(caption).toBeVisible();
+        await expect(caption).not.toBeEmpty();
+      }
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
       expect(overflow, `horizontal overflow at ${width}px`).toBe(false);
       const file = path.join(process.cwd(), '.test-artifacts', 'series-6', `${path.basename(url, '.html')}-${width}.png`);
@@ -68,11 +81,11 @@ test('series 6 cards are searchable, categorized and listed in sitemap', async (
   ];
   for (const [query, href] of queries) {
     await page.fill('#search', query);
-    await expect(page.locator(`#cards a[href="${href}"]`), query).toBeVisible();
+    await expect(page.locator(`#cards h2 a[href="${href}"]`), query).toBeVisible();
   }
   await page.fill('#search', '');
   await page.selectOption('#category', 'Вентиляция');
-  await expect(page.locator('#cards .card:visible')).toHaveCount(1);
+  await expect(page.locator('#cards .reference-card:visible')).toHaveCount(1);
 
   const sitemap = fs.readFileSync(path.join(process.cwd(), 'sitemap.xml'), 'utf8');
   for (const [url] of pages) expect(sitemap).toContain(`https://alpool.ru${url}`);
@@ -100,12 +113,20 @@ test('series 6 pages use only internal user links and their local targets resolv
 
 test('dosing reference distinguishes ORP from direct free chlorine measurement', async ({ page }) => {
   await page.goto('/spravochnik/avtomaticheskoe-dozirovanie-reagentov.html');
-  await expect(page.locator('main')).toContainText('это не прямое измерение свободного хлора');
-  await expect(page.locator('main')).toContainText('Дозирование блокируют');
-  for (const id of ['dosing-main-flow', 'dosing-sample-branch', 'dosing-measurement-signals', 'dosing-circulation-permissive', 'dosing-pump-commands', 'dosing-reagent-lines']) {
-    await expect(page.locator(`#${id}`), `dosing diagram: ${id}`).toHaveCount(1);
-  }
-  await expect(page.locator('figcaption')).toContainText('Пробу возвращают в допустимую проектом точку либо отводят');
+  await expect(page.locator('main')).toContainText('ОВП не заменяет анализ свободного хлора');
+  await expect(page.locator('main')).toContainText('нельзя пересчитать любое значение Redox в универсальную концентрацию свободного хлора');
+  await expect(page.locator('main')).toContainText('Разрешает или блокирует дозирование по схеме защит');
+  const diagram = page.locator('.dosing-figure img');
+  await diagram.scrollIntoViewIfNeeded();
+  await expect(diagram).toBeVisible();
+  await expect.poll(() => diagram.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+  const diagramPath = new URL(await diagram.evaluate(image => image.currentSrc)).pathname;
+  const diagramSvg = await (await page.request.get(diagramPath)).text();
+  expect(diagramSvg).toContain('Проток');
+  expect(diagramSvg).toContain('Контроллер');
+  expect(diagramSvg).toContain('останов');
+  expect(diagramSvg).toContain('насос');
+  await expect(page.locator('.dosing-figure figcaption')).toContainText('путь измерения и реагента');
 });
 
 test('ventilation article uses responsive engineering diagrams and explains compliant dehumidification', async ({ page }) => {
