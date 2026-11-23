@@ -139,14 +139,15 @@ test('back-to-top does not cover catalog text or actions while scrolling', async
       const max = document.documentElement.scrollHeight - innerHeight;
       const overlaps = [];
       for (let y = 300; y <= max; y += 180) {
-        scrollTo(0, y);
-        await new Promise(resolve => setTimeout(resolve, 30));
+        scrollTo({ top: y, behavior: 'instant' });
+        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        const actualY = Math.round(scrollY);
         const b = button.getBoundingClientRect();
         if (getComputedStyle(button).opacity === '0') continue;
         for (const element of document.querySelectorAll('#cards h2, #cards p, #cards .reference-card__action')) {
           const r = element.getBoundingClientRect();
           if (r.width && r.height && r.bottom > 0 && r.top < innerHeight && b.left < r.right && b.right > r.left && b.top < r.bottom && b.bottom > r.top) {
-            overlaps.push({ text: element.textContent.trim().slice(0, 40), y, button: { x: Math.round(b.x), y: Math.round(b.y) }, position: button.className });
+            overlaps.push({ text: element.textContent.trim().slice(0, 40), y, actualY, button: { x: Math.round(b.x), y: Math.round(b.y) }, position: button.className });
           }
         }
       }
