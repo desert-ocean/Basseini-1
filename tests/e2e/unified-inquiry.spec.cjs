@@ -55,34 +55,7 @@ test('shared blocks use the same computed styles as the homepage', async ({ page
 	await expect(page).toHaveURL(/\/tehnicheskoe-zadanie\/$/);
 });
 
-test('filter and pump calculator still attaches its result to its own inquiry form', async ({ page }) => {
-	let payload;
-	await page.route('https://api.alpool.ru/api/leads', async route => {
-		if (route.request().method() === 'OPTIONS') {
-			await route.fulfill({ status: 204, headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'content-type' } });
-			return;
-		}
-		payload = route.request().postDataJSON();
-		await route.fulfill({ status: 200, contentType: 'application/json', headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ id: 'mock-filter-lead' }) });
-	});
-	await page.goto('/kalkulyatori/podbor-filtra-i-nasosa.html');
-	await page.locator('#volume').fill('60');
-	await page.locator('#turnover').fill('6');
-	await page.locator('#rate').fill('40');
-	const circulation = (await page.locator('#q-circulation').textContent()).trim();
-	expect(circulation).not.toBe('—');
-	const form = page.locator('#calculator-context-footer form[data-form-type="calculator-filter-pump"]');
-	await form.locator('[name=name]').fill('Проверка');
-	await form.locator('[name=phone]').fill('+7 999 123-45-67');
-	await form.locator('[name=message]').fill('Проверка данных расчёта');
-	await form.locator('label').filter({ hasText: 'Согласие' }).click();
-	await form.locator('[type=submit]').click();
-	await expect.poll(() => payload).toBeTruthy();
-	expect(payload.message).toContain('Проверка данных расчёта');
-	expect(payload.message).toContain(circulation);
-});
-
-for (const url of ['/articles/filtratsiya-vody-v-basseyne.html', '/spravochnik/truby-pvc-u.html', '/kalkulyatori/raschet-truboprovodov-basseyna.html']) {
+for (const url of ['/articles/filtratsiya-vody-v-basseyne.html', '/spravochnik/truby-pvc-u.html', '/spravochnik/gidravlicheskie-poteri.html']) {
 	test(`${url} mobile layout and form submission`, async ({ page }) => {
 		for (const width of [390, 768, 1440]) {
 			await page.setViewportSize({ width, height: 900 });

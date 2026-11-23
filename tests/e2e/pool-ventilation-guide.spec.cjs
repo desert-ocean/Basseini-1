@@ -61,9 +61,10 @@ test('pool ventilation guide at mobile, tablet and desktop sizes', async ({ page
     const response = await request.get(target || '/spravochnik/ventilyaciya-krytogo-basseyna.html');
     expect(response.ok(), `internal link ${href}`).toBeTruthy();
   }
-  const missingAnchors = await page.locator('main a[href*="#"]').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')).filter(href => {
-    const id = href.split('#')[1];
-    return id && !document.getElementById(id);
-  }));
+  const missingAnchors = await page.locator('main a[href*="#"]').evaluateAll(nodes => nodes.map(node => new URL(node.href)).filter(url =>
+    url.pathname === location.pathname && url.hash && !document.getElementById(url.hash.slice(1))
+  ).map(url => url.href));
   expect(missingAnchors).toEqual([]);
+  const heatPage = await request.get('/spravochnik/teploobmennik-basseyna.html');
+  expect(await heatPage.text()).toContain('id="hx-calc-title"');
 });

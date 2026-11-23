@@ -19,6 +19,7 @@ for (const width of [390, 768, 1440]) {
 		await page.locator('#pool-width').fill('5');
 		await page.locator('#pool-depth').fill('2');
 		await expect(page.locator('#basin-volume')).toContainText('100');
+		await expect(page.locator('#heating-calculator-link')).toHaveAttribute('href', '/spravochnik/teploobmennik-basseyna.html#hx-calc-title');
 
 		await page.locator('#pool-shape').selectOption('rectangular-slope');
 		await page.locator('#slope-length').fill('10');
@@ -46,27 +47,21 @@ for (const width of [390, 768, 1440]) {
 	});
 }
 
-test('calculator catalog navigation separates Articles and Reference on desktop and mobile', async ({ page }) => {
+test('reference navigation keeps articles and guide separate', async ({ page }) => {
 	await page.setViewportSize({ width: 1440, height: 900 });
-	await page.goto('/kalkulyatori/');
-	await expect(page.locator('#nav a[href="/blog/blog.html"]')).toHaveText('Статьи');
-	await expect(page.locator('#nav a[href="/spravochnik/"]')).toHaveText('Справочник');
-	await expect(page.locator('#nav a[href="/#articles"]')).toHaveCount(0);
-	await expect(page.locator('.hub-card a[href="/spravochnik/kalkulyator-obema-basseyna.html"]')).toHaveCount(1);
 	await page.goto('/spravochnik/');
-	const directoryCard = page.locator('#cards article.card').filter({ has: page.getByRole('link', { name: 'Калькулятор объёма бассейна' }) });
-	await expect(directoryCard).toContainText('Расчёт объёма воды в бассейне по размерам чаши.');
-	await expect(directoryCard.locator('a')).toHaveAttribute('href', 'kalkulyator-obema-basseyna.html');
+	await expect(page.locator('#nav a[href="/blog/blog.html"]')).toHaveCount(1);
+	await expect(page.locator('#nav a[href="/spravochnik/"]')).toHaveCount(1);
+	await expect(page.locator('#nav a[href*="/kalkulyatori/"]')).toHaveCount(0);
+	await expect(page.locator('#cards .reference-card')).toHaveCount(29);
+	await expect(page.locator('#cards a[href="kalkulyator-obema-basseyna.html"]')).toHaveCount(2);
 
-	await page.goto('/kalkulyatori/');
 	await page.setViewportSize({ width: 390, height: 900 });
-	await page.reload();
 	await page.locator('#navPanelToggle').click();
 	await expect(page.locator('#navPanel')).toHaveAttribute('aria-hidden', 'false');
-	await expect(page.locator('#navPanel a[href="/blog/blog.html"]')).toHaveText('Статьи');
-	await expect(page.locator('#navPanel a[href="/spravochnik/"]')).toHaveText('Справочник');
+	await expect(page.locator('#navPanel a[href="/blog/blog.html"]')).toHaveCount(1);
+	await expect(page.locator('#navPanel a[href="/spravochnik/"]')).toHaveCount(1);
 });
-
 test('retired calculator URL contains a noindex redirect to the canonical reference page', async ({ page, request }) => {
 	const response = await request.get('/kalkulyatori/kalkulyator-obema-basseyna.html');
 	expect(response.status()).toBe(200);

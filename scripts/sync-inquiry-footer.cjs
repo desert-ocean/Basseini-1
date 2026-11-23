@@ -7,7 +7,7 @@ const footerMatch = home.match(/<footer id="footer">[\s\S]*?<\/footer>/);
 if (!footerMatch) throw new Error('Homepage reference footer not found');
 const groups = ['articles', 'blog', 'kalkulyatori', 'napravleniya', 'servis', 'spravochnik'];
 const files = groups.flatMap(g => fs.readdirSync(g).filter(n => n.endsWith('.html')).sort().map(n => `${g}/${n}`));
-const specialCalculators = new Set(['spravochnik/kalkulyator-obema-basseyna.html','kalkulyatori/podbor-filtra-i-nasosa.html','kalkulyatori/raschet-nagreva-vody-basseyna.html','kalkulyatori/raschet-truboprovodov-basseyna.html']);
+const specialCalculators = new Set(['spravochnik/kalkulyator-obema-basseyna.html']);
 const redirectPages = new Set(['kalkulyatori/kalkulyator-obema-basseyna.html']);
 const ctaBegin = '<!-- BEGIN ALPOOL SHARED TASK CTA -->', ctaEnd = '<!-- END ALPOOL SHARED TASK CTA -->';
 const footerBegin = '<!-- BEGIN ALPOOL SHARED INQUIRY -->', footerEnd = '<!-- END ALPOOL SHARED INQUIRY -->';

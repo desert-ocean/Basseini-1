@@ -176,9 +176,7 @@
 			if (heatingLink && heatingLinkRow) {
 				var usableHeatingVolume = result.basinM3 >= 0.000001 && result.basinM3 <= 1000000;
 				if (usableHeatingVolume) {
-					var heatingUrl = new URL('/kalkulyatori/raschet-nagreva-vody-basseyna.html', window.location.origin);
-					heatingUrl.searchParams.set('volume', String(result.basinM3));
-					heatingLink.href = heatingUrl.pathname + heatingUrl.search;
+					heatingLink.href = '/spravochnik/teploobmennik-basseyna.html#hx-calc-title';
 					heatingLinkRow.hidden = false;
 				} else heatingLinkRow.hidden = true;
 			}
