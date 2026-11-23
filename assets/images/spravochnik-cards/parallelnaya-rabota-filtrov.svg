@@ -1,1 +1,72 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Параллельная работа фильтров</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path class="pipe" d="M54 240h150m0 0v-90h67m-67 90v104h67m0-194h63v44h64m-127 106h63v-44h64m0-62v62h181"/><rect class="soft-stroke" x="331" y="105" width="105" height="113" rx="40"/><rect class="soft-stroke" x="331" y="284" width="105" height="113" rx="40"/><path d="M353 187h62m-62 179h62" stroke="#c7aa6a" stroke-width="18"/><path class="water thin" d="M72 240h112m67-90h43m-43 194h43m167-89h135" marker-end="url(#arrow)"/><text x="351" y="95" class="small">1</text><text x="351" y="431" class="small">2</text><text x="596" y="230" class="small">общий поток</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Параллельная работа фильтров</title>
+<desc id="desc">Общий подающий коллектор разделяет поток между двумя песчаными фильтрами; после фильтрации вода объединяется в общий обратный коллектор. Отдельная пунктирная линия показывает возможность переключить одну ветвь на промывку со сбросом воды, только в предусмотренном проектом режиме.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f4f8fa"/></linearGradient>
+ <linearGradient id="tank" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9fcfe"/><stop offset=".6" stop-color="#e5f2f7"/><stop offset="1" stop-color="#cadfea"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9ce6f3"/><stop offset="1" stop-color="#5bc6de"/></linearGradient>
+ <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f5e4c8"/><stop offset="1" stop-color="#ddb98d"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#668a9b" flood-opacity=".13"/></filter>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8.7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#0e95b8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker>
+ <style>
+  .outline{stroke:#174967;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+  .pipe{stroke:#c2e9f2;stroke-width:15;fill:none;stroke-linejoin:round;stroke-linecap:round}
+  .pipeEdge{stroke:#174967;stroke-width:2;fill:none;stroke-linejoin:round;stroke-linecap:round}
+  .flow{stroke:#1398b9;stroke-width:3;fill:none;stroke-linecap:round;marker-end:url(#arrow)}
+  .fine{stroke:#75a1b4;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .heading{font:700 19px Arial,Helvetica,sans-serif;fill:#194965;text-anchor:middle}
+  .label{font:700 16px Arial,Helvetica,sans-serif;fill:#194965;text-anchor:middle}
+  .small{font:600 14px Arial,Helvetica,sans-serif;fill:#577b8b;text-anchor:middle}
+ </style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- supply manifold above both vessels -->
+<path d="M79 108H689" class="pipe"/>
+<path d="M79 108H689" class="pipeEdge"/>
+<path d="M287 108V180M481 108V180" class="pipe"/>
+<path d="M287 108V180M481 108V180" class="pipeEdge"/>
+<path d="M124 108H198M362 108H419M562 108H637" class="flow"/>
+<path d="M287 125V164M481 125V164" class="flow"/>
+<text x="384" y="75" class="heading">Общий подающий коллектор</text>
+<!-- valves on supply lines, project-dependent switching -->
+<g fill="#f9fdff" stroke="#174967" stroke-width="2">
+ <path d="M277 153L287 143L297 153L287 163Z"/>
+ <path d="M471 153L481 143L491 153L481 163Z"/>
+</g>
+<!-- paired filters -->
+<g filter="url(#shadow)">
+ <rect x="218" y="178" width="138" height="202" rx="50" fill="url(#tank)" class="outline"/>
+ <rect x="412" y="178" width="138" height="202" rx="50" fill="url(#tank)" class="outline"/>
+ <!-- water upper zones -->
+ <path d="M228 250Q257 244 287 250T346 250V280H228Z" fill="url(#water)" opacity=".9"/>
+ <path d="M422 250Q451 244 481 250T540 250V280H422Z" fill="url(#water)" opacity=".9"/>
+ <path d="M228 251Q258 245 287 251T346 251M422 251Q452 245 481 251T540 251" class="fine" stroke="#edfdff"/>
+ <!-- sand -->
+ <path d="M228 282Q258 274 287 282T346 282V334Q333 367 287 367Q241 367 228 334Z" fill="url(#sand)"/>
+ <path d="M422 282Q452 274 481 282T540 282V334Q527 367 481 367Q435 367 422 334Z" fill="url(#sand)"/>
+ <path d="M228 282Q258 274 287 282T346 282M422 282Q452 274 481 282T540 282" fill="none" stroke="#caa876" stroke-width="2"/>
+ <!-- drain collectors / grid -->
+ <path d="M254 344H320M448 344H514" fill="none" stroke="#2a829f" stroke-width="3.5" stroke-linecap="round"/>
+ <path d="M254 344L270 332M270 344L286 332M286 344L302 332M302 344L318 332 M448 344L464 332M464 344L480 332M480 344L496 332M496 344L512 332" fill="none" stroke="#2a829f" stroke-width="2"/>
+ <!-- feet -->
+ <path d="M241 382H333M435 382H527" class="outline" fill="none"/>
+</g>
+<!-- downward flow within filters -->
+<path d="M287 208V236M481 208V236" class="flow"/>
+<path d="M287 300V325M481 300V325" class="flow"/>
+<text x="287" y="273" class="label">Фильтр 1</text>
+<text x="481" y="273" class="label">Фильтр 2</text>
+<!-- return manifold -->
+<path d="M287 382V434M481 382V434M140 434H627" class="pipe"/>
+<path d="M287 382V434M481 382V434M140 434H627" class="pipeEdge"/>
+<path d="M287 392V419M481 392V419M337 434H402M523 434H593" class="flow"/>
+<text x="384" y="473" class="heading">Общий обратный коллектор</text>
+<!-- conceptual separate wash branch, without implying simultaneous filtration and wash -->
+<path d="M550 225H616V328H664" stroke="#cb995d" stroke-width="2.5" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M654 322L665 328L654 334" stroke="#cb995d" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="568" y="347" width="154" height="42" rx="21" fill="#fff8ee" stroke="#e5c79c" stroke-width="1.5"/>
+<text x="655" y="364" class="small" fill="#976a34">Промывка:</text>
+<text x="655" y="379" class="small" fill="#976a34">отдельный режим</text>
+<!-- legend in quiet footer -->
+<text x="138" y="224" class="small">Q = Q₁ + Q₂</text>
+</svg>

@@ -1,1 +1,112 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Датчики, управление и блокировки</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><rect class="soft-stroke" x="276" y="176" width="216" height="162" rx="22"/><rect fill="#d9f2f3" stroke="#178e9e" stroke-width="8" x="322" y="214" width="124" height="70" rx="14"/><circle fill="#fff" stroke="#183a4a" stroke-width="7" cx="140" cy="257" r="42"/><circle fill="#fff" stroke="#183a4a" stroke-width="7" cx="628" cy="174" r="42"/><circle fill="#fff" stroke="#183a4a" stroke-width="7" cx="628" cy="342" r="42"/><path d="M183 257h90m220-50 95-22m-95 98 95 42" stroke="#178e9e" stroke-width="9" stroke-dasharray="12 9"/><path d="M350 230h68m-68 34h68" stroke="#183a4a" stroke-width="8"/><text x="318" y="372" class="small">контроллер</text><text x="87" y="332" class="small">датчик</text><text x="585" y="250" class="small">насос</text><text x="580" y="420" class="small">клапан</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Датчики, управление и защитные блокировки бассейна</title>
+<desc id="desc">Четыре датчика — уровня, протока, давления и температуры — связаны с контроллером. Контроллер управляет насосом и оборудованием, а при опасном состоянии блокирует соответствующий узел и выдаёт сигнал тревоги. Условная схема без уставок.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f3f8fa"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbfdff"/><stop offset="1" stop-color="#e0eff5"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a7eaf4"/><stop offset="1" stop-color="#59c6de"/></linearGradient>
+ <linearGradient id="board" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eaf7fa"/><stop offset="1" stop-color="#cbe6f0"/></linearGradient>
+ <filter id="shade" x="-25%" y="-25%" width="150%" height="165%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#5b8598" flood-opacity=".13"/></filter>
+ <marker id="signal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" stroke="#168eaf" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></marker>
+ <style>
+ .outline{fill:none;stroke:#194b67;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+ .fine{fill:none;stroke:#4b859f;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+ .signal{fill:none;stroke:#168eaf;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#signal)}
+ .label{fill:#19445d;font:700 17px Arial,Helvetica,sans-serif;text-anchor:middle}
+ .sub{fill:#537489;font:600 13px Arial,Helvetica,sans-serif;text-anchor:middle}
+ .mini{fill:#19445d;font:700 14px Arial,Helvetica,sans-serif;text-anchor:middle}
+ </style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- input cards -->
+<g filter="url(#shade)">
+ <rect x="34" y="77" width="172" height="74" rx="14" fill="url(#glass)" stroke="#c9dfe9" stroke-width="1.6"/>
+ <rect x="34" y="161" width="172" height="74" rx="14" fill="url(#glass)" stroke="#c9dfe9" stroke-width="1.6"/>
+ <rect x="34" y="245" width="172" height="74" rx="14" fill="url(#glass)" stroke="#c9dfe9" stroke-width="1.6"/>
+ <rect x="34" y="329" width="172" height="74" rx="14" fill="url(#glass)" stroke="#c9dfe9" stroke-width="1.6"/>
+</g>
+<!-- left-side sensor icons -->
+<g>
+ <!-- level, water with float -->
+ <rect x="49" y="97" width="53" height="36" rx="5" fill="#f8fcff" stroke="#1a5371" stroke-width="1.8"/>
+ <path d="M52 116Q63 110 74 116T99 116V130H52Z" fill="url(#water)"/>
+ <path d="M52 116Q63 110 74 116T99 116" class="fine"/>
+ <circle cx="82" cy="113" r="6" fill="#f9fdff" stroke="#194b67" stroke-width="1.7"/>
+ <path d="M82 107V102" class="fine"/>
+ <!-- flow, duct -->
+ <rect x="48" y="189" width="56" height="21" rx="10" fill="#d9f2f7" stroke="#194b67" stroke-width="1.8"/>
+ <path d="M54 199H93" class="signal"/>
+ <!-- pressure gauge -->
+ <circle cx="76" cy="282" r="20" fill="#f9fdff" stroke="#194b67" stroke-width="2"/>
+ <path d="M76 282L86 270M69 267L65 263M84 264L87 259" class="outline"/>
+ <circle cx="76" cy="282" r="3.2" fill="#1b87a9"/>
+ <!-- thermometer -->
+ <rect x="67" y="347" width="14" height="34" rx="7" fill="#f8fcff" stroke="#194b67" stroke-width="2"/>
+ <circle cx="74" cy="383" r="9" fill="#9fe1ed" stroke="#194b67" stroke-width="1.8"/>
+ <path d="M74 358V382" stroke="#26aecb" stroke-width="4" stroke-linecap="round"/>
+</g>
+<text x="150" y="106" class="mini">Уровень</text>
+<text x="150" y="190" class="mini">Проток</text>
+<text x="150" y="274" class="mini">Давление</text>
+<text x="150" y="358" class="mini">Температура</text>
+<text x="150" y="125" class="sub">воды</text>
+<text x="150" y="209" class="sub">воды</text>
+<text x="150" y="293" class="sub">фильтра</text>
+<text x="150" y="377" class="sub">воды</text>
+<!-- wire bus / electronics input -->
+<path d="M207 114H235 M207 198H235 M207 282H235 M207 366H235 M235 114V366M235 240H281" class="fine"/>
+<path d="M236 240H279" class="signal"/>
+<g fill="#1797b8"><circle cx="235" cy="114" r="3.5"/><circle cx="235" cy="198" r="3.5"/><circle cx="235" cy="282" r="3.5"/><circle cx="235" cy="366" r="3.5"/></g>
+<!-- central controller -->
+<g filter="url(#shade)">
+ <rect x="284" y="134" width="208" height="215" rx="22" fill="url(#board)" stroke="#194b67" stroke-width="2.5"/>
+ <rect x="306" y="158" width="164" height="68" rx="12" fill="#f8fcff" stroke="#7eb5c9" stroke-width="1.6"/>
+ <rect x="325" y="175" width="84" height="12" rx="6" fill="#a5dce9"/>
+ <rect x="325" y="195" width="118" height="9" rx="4.5" fill="#d4e8f0"/>
+ <circle cx="452" cy="180" r="7" fill="#3cbbd7" stroke="#1b6381" stroke-width="1.4"/>
+ <rect x="309" y="253" width="157" height="68" rx="12" fill="#eaf7f9" stroke="#9dcbd9" stroke-width="1.4"/>
+ <path d="M328 288L350 305L382 266" fill="none" stroke="#229ba5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M403 276H444M403 289H444M403 302H432" class="fine"/>
+ <g stroke="#557c94" stroke-width="1.6" stroke-linecap="round">
+  <path d="M303 240V248M320 240V248M337 240V248M354 240V248M371 240V248M388 240V248M405 240V248M422 240V248M439 240V248M456 240V248"/>
+ </g>
+</g>
+<text x="388" y="116" class="label">Контроллер</text>
+<text x="388" y="372" class="sub">Проверка условий</text>
+<!-- output bus -->
+<path d="M493 241H520M520 117V366" class="fine"/>
+<path d="M520 117H552M520 241H552M520 366H552" class="signal"/>
+<!-- output cards -->
+<g filter="url(#shade)">
+ <rect x="553" y="77" width="176" height="81" rx="14" fill="url(#glass)" stroke="#c9dfe9" stroke-width="1.6"/>
+ <rect x="553" y="201" width="176" height="81" rx="14" fill="url(#glass)" stroke="#c9dfe9" stroke-width="1.6"/>
+ <rect x="553" y="326" width="176" height="81" rx="14" fill="url(#glass)" stroke="#c9dfe9" stroke-width="1.6"/>
+</g>
+<!-- pump -->
+<g transform="translate(566 91)">
+ <circle cx="30" cy="26" r="19" fill="#c4e9f3" stroke="#194b67" stroke-width="2"/>
+ <circle cx="30" cy="26" r="7" fill="#6bc7dc" stroke="#194b67" stroke-width="1.5"/>
+ <rect x="46" y="12" width="18" height="28" rx="4" fill="#cadfe9" stroke="#194b67" stroke-width="1.7"/>
+ <path d="M10 50H69" class="outline"/>
+</g>
+<text x="670" y="112" class="mini">Насос</text>
+<text x="670" y="133" class="sub">Пуск / стоп</text>
+<!-- heater / dosing symbol -->
+<g transform="translate(565 215)">
+ <rect x="0" y="3" width="64" height="47" rx="12" fill="#e7f4f8" stroke="#194b67" stroke-width="2"/>
+ <path d="M14 28L22 19L30 33L39 18L48 30" fill="none" stroke="#2aafc8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="680" y="235" class="mini">Нагрев</text>
+<text x="680" y="254" class="sub">и дозирование</text>
+<!-- warning with orange subtle accent -->
+<g transform="translate(573 340)">
+ <path d="M25 3L49 47H1Z" fill="#fff4df" stroke="#b27a38" stroke-width="2.1" stroke-linejoin="round"/>
+ <path d="M25 17V30" stroke="#b27a38" stroke-width="3" stroke-linecap="round"/>
+ <circle cx="25" cy="37" r="2.4" fill="#b27a38"/>
+</g>
+<text x="680" y="359" class="mini">Блокировка</text>
+<text x="680" y="379" class="sub">и сигнал</text>
+<!-- bottom explanation ribbon -->
+<rect x="172" y="448" width="432" height="45" rx="22.5" fill="#edf7fa" stroke="#afd9e5" stroke-width="1.7"/>
+<text x="388" y="476" class="label" font-size="16">Датчики → логика → безопасное действие</text>
+</svg>

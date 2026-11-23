@@ -1,1 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Трубы PVC-U</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g transform="translate(72 145)"><path class="pipe" d="M25 45h370v68H25z"/><ellipse class="soft-stroke" cx="395" cy="79" rx="28" ry="34"/><ellipse fill="#fff" stroke="#183a4a" stroke-width="12" cx="395" cy="79" rx="11" ry="19"/><path class="pipe thin" d="M460 20h155v48H460z"/><ellipse class="soft-stroke" cx="615" cy="44" rx="23" ry="24"/><ellipse fill="#fff" stroke="#183a4a" stroke-width="10" cx="615" cy="44" rx="9" ry="13"/><path class="pipe thin teal" d="M460 105h155v48H460z"/><ellipse fill="#dff4f4" stroke="#178e9e" stroke-width="11" cx="615" cy="129" rx="23" ry="24"/><text x="35" y="183" class="label">PVC-U</text><text x="475" y="204" class="small">стенка · проход</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 768 512" width="768" height="512" role="img" aria-labelledby="title desc">
+<title id="title">Трубы PVC-U — инженерная иллюстрация</title>
+<desc id="desc">Три отрезка труб PVC-U в перспективе, их круглые сечения и тонкие размерные линии.</desc>
+<defs>
+ <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#fafdff"/></linearGradient>
+ <linearGradient id="pipeTop" x1="0" y1="0" x2="0.25" y2="1"><stop stop-color="#eaf4fa"/><stop offset=".35" stop-color="#fcfeff"/><stop offset=".7" stop-color="#d7e9f4"/><stop offset="1" stop-color="#c2dbe9"/></linearGradient>
+ <linearGradient id="pipeBottom" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#b1cddd"/><stop offset="1" stop-color="#e8f2f8"/></linearGradient>
+ <linearGradient id="lip" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".55" stop-color="#dfedf5"/><stop offset="1" stop-color="#a7c9dc"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8dd8ed"/><stop offset="1" stop-color="#2d9fca"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-100%" width="180%" height="300%"><feGaussianBlur stdDeviation="9"/></filter>
+ <marker id="arrow" markerWidth="7" markerHeight="7" refX="3" refY="3" orient="auto-start-reverse"><path d="M6,1 L1,3.5 L6,6" fill="none" stroke="#568ba5" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- ground shadow -->
+<ellipse cx="386" cy="382" rx="291" ry="23" fill="#8baec3" opacity=".14" filter="url(#shadow)"/>
+<!-- far short pipe -->
+<g stroke-linejoin="round" stroke-linecap="round">
+ <path d="M352 140 L599 158 L599 226 L352 208 Z" fill="url(#pipeTop)" stroke="#2c6483" stroke-width="2.5"/>
+ <path d="M352 204 L599 222 L599 232 L352 214 Z" fill="url(#pipeBottom)" stroke="#2c6483" stroke-width="2"/>
+ <ellipse cx="599" cy="195" rx="32" ry="37" fill="url(#lip)" stroke="#205676" stroke-width="3"/>
+ <ellipse cx="599" cy="195" rx="20" ry="26" fill="#b5d8e9" stroke="#276383" stroke-width="2"/>
+ <ellipse cx="599" cy="195" rx="14" ry="20" fill="#f5fbfe" stroke="#508ba8" stroke-width="1.5"/>
+ <path d="M380 155 L556 167" stroke="#fff" stroke-width="5" opacity=".8"/>
+</g>
+<!-- rear connector pipe, small -->
+<g stroke-linejoin="round" stroke-linecap="round">
+ <path d="M400 273 L646 252 L646 306 L400 327 Z" fill="url(#pipeTop)" stroke="#276484" stroke-width="2.5"/>
+ <path d="M414 288 L600 271" fill="none" stroke="#fff" stroke-width="5" opacity=".75"/>
+ <ellipse cx="646" cy="279" rx="28" ry="29" fill="url(#lip)" stroke="#205676" stroke-width="2.8"/>
+ <ellipse cx="646" cy="279" rx="17" ry="19" fill="url(#water)" stroke="#2a6b8b" stroke-width="2"/>
+ <ellipse cx="646" cy="279" rx="11" ry="13" fill="#d9f3fa" opacity=".85"/>
+</g>
+<!-- main foreground pipe -->
+<g stroke-linecap="round" stroke-linejoin="round">
+ <path d="M118 220 L473 238 L473 353 L118 335 Z" fill="url(#pipeTop)" stroke="#1b526f" stroke-width="3"/>
+ <path d="M118 316 L473 335 L473 356 L118 337 Z" fill="url(#pipeBottom)" stroke="#1b526f" stroke-width="2.5"/>
+ <path d="M135 239 L431 254" stroke="#fff" stroke-width="9" opacity=".72"/>
+ <path d="M135 322 L429 339" stroke="#8badc0" stroke-width="2" opacity=".65"/>
+ <ellipse cx="473" cy="296" rx="52" ry="59" fill="url(#lip)" stroke="#1b526f" stroke-width="4"/>
+ <ellipse cx="473" cy="296" rx="35" ry="42" fill="#83b6d0" stroke="#1b526f" stroke-width="3"/>
+ <ellipse cx="473" cy="296" rx="27" ry="34" fill="#f8fcff" stroke="#6c9eb6" stroke-width="2"/>
+ <path d="M455 277 Q469 267 481 275" stroke="#fff" stroke-width="4" fill="none" opacity=".9"/>
+</g>
+<!-- dimensional lines: spare precise drafting style -->
+<g stroke="#568ba5" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".9">
+ <path d="M113 201 V165 M475 217 V164 M117 172 H472" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+ <path d="M535 241 H570 M535 354 H570 M557 243 V352" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+ <path d="M90 222 V335" stroke-dasharray="4 6" opacity=".55"/>
+</g>
+<g fill="#497f9b" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="15" text-anchor="middle">
+ <text x="295" y="158">L</text><text x="578" y="299">D</text>
+</g>
+<!-- subtle drafting markers -->
+<g fill="none" stroke="#c3dce8" stroke-width="1.3" opacity=".75">
+ <path d="M97 393 h45 M120 370 v45 M660 139 h40 M680 119 v40"/>
+</g>
+</svg>

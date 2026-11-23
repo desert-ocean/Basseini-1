@@ -1,1 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Вентиляция крытого бассейна</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path d="M102 144h564v259H102z" fill="#f6fafb" stroke="#183a4a" stroke-width="9"/><path d="M126 306h516" stroke="#178e9e" stroke-width="8"/><path d="M196 300v-93h190v93" fill="#dff2f4" stroke="#183a4a" stroke-width="8"/><path d="M183 206h215" stroke="#183a4a" stroke-width="9"/><path class="water thin" d="M158 171h160" marker-end="url(#arrow)"/><path d="M570 176h74v-70h-110" fill="none" stroke="#2489a8" stroke-width="12" marker-end="url(#arrow)"/><path d="M245 280c0-45 72-45 72 0m-72 0h72" fill="none" stroke="#2489a8" stroke-width="8"/><path d="M475 198v97m35-97v97" stroke="#9ab9c2" stroke-width="8"/><circle fill="#d9f2f3" stroke="#178e9e" stroke-width="7" cx="527" cy="171" r="12"/><circle fill="#d9f2f3" stroke="#178e9e" stroke-width="7" cx="558" cy="151" r="9"/><text x="135" y="444" class="small">приток · вытяжка · холодное остекление</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="ttl dsc">
+<title id="ttl">Вентиляция крытого бассейна</title>
+<desc id="dsc">Условная схема крытого бассейна: испарение с водной поверхности, подача воздуха вдоль холодного окна, удаление влажного воздуха и указание на риск конденсации при температуре поверхности ниже точки росы.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f4f8fa"/></linearGradient>
+  <linearGradient id="pool" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#aaebf6"/><stop offset="1" stop-color="#49c1da"/></linearGradient>
+  <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fafdff"/><stop offset="1" stop-color="#dcecf3"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e0f4fc"/><stop offset="1" stop-color="#b3d9e9"/></linearGradient>
+  <filter id="shade" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#53859a" flood-opacity=".13"/></filter>
+  <marker id="blueArrow" viewBox="0 0 10 10" refX="8.7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#119abd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="grayArrow" viewBox="0 0 10 10" refX="8.7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#729cad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <style>
+  .outline{stroke:#164761;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .fine{fill:none;stroke:#6998ab;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+  .air{fill:none;stroke:#149dbd;stroke-width:3.1;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#blueArrow)}
+  .vapor{fill:none;stroke:#78a7b9;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6 8;marker-end:url(#grayArrow)}
+  .txt{font:700 17px Arial,Helvetica,sans-serif;fill:#164761;text-anchor:middle}
+  .sub{font:600 14px Arial,Helvetica,sans-serif;fill:#587d90;text-anchor:middle}
+  .tiny{font:700 13px Arial,Helvetica,sans-serif;fill:#295a74;text-anchor:middle}
+  </style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- roof and room outline -->
+<path d="M54 326V113L141 65H623L704 113V326" fill="none" stroke="#a6bfcc" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M44 330H716" stroke="#b3cbd4" stroke-width="2"/>
+<!-- window and exterior cold -->
+<g filter="url(#shade)">
+ <rect x="533" y="117" width="143" height="175" rx="7" fill="url(#glass)" class="outline"/>
+ <path d="M604.5 119V289M535 204.5H673" stroke="#7baec2" stroke-width="5"/>
+ <path d="M547 135L578 135L546 173M622 220L656 220L623 261" stroke="#fff" stroke-opacity=".55" stroke-width="5" stroke-linecap="round" fill="none"/>
+</g>
+<!-- condensation risk symbol close to window (illustrative) -->
+<g transform="translate(686 172)">
+ <path d="M0 -12C-4 -5-8 1-8 5A8 8 0 0 0 8 5C8 1 4-5 0-12Z" fill="#93d9eb" stroke="#368fae" stroke-width="1.5"/>
+</g>
+<text x="607" y="102" class="txt">Остекление</text>
+<!-- pool water section -->
+<g filter="url(#shade)">
+ <path d="M95 334V411Q95 421 105 421H454Q464 421 464 411V334" fill="url(#wall)" class="outline"/>
+ <path d="M104 337Q123 330 145 337T188 337T231 337T274 337T317 337T360 337T403 337T455 337V405Q455 413 447 413H112Q104 413 104 405Z" fill="url(#pool)"/>
+ <path d="M104 337Q123 330 145 337T188 337T231 337T274 337T317 337T360 337T403 337T455 337" fill="none" stroke="#effdff" stroke-width="3.7" stroke-linecap="round"/>
+ <path d="M132 372Q155 366 176 372T217 372T260 372T303 372T346 372" fill="none" stroke="#e2faff" stroke-width="2.5" stroke-linecap="round"/>
+</g>
+<text x="280" y="455" class="txt">Чаша бассейна</text>
+<!-- evaporation arrows rising from water surface -->
+<path d="M169 316C150 282 181 260 164 224" class="vapor"/>
+<path d="M252 312C237 281 272 250 252 216" class="vapor"/>
+<path d="M340 315C323 280 353 247 343 214" class="vapor"/>
+<text x="234" y="189" class="txt">Испарение</text>
+<!-- air supply louver near floor / glazing -->
+<rect x="486" y="338" width="66" height="20" rx="7" fill="#edf7fa" stroke="#4c91a8" stroke-width="1.8"/>
+<path d="M496 347H543M496 351H543" stroke="#709eae" stroke-width="1.5"/>
+<path d="M518 333C561 321 572 285 576 244" class="air"/>
+<path d="M537 328C598 308 617 273 626 239" class="air"/>
+<text x="523" y="385" class="tiny">Подача воздуха</text>
+<!-- return/extraction high-level grille -->
+<g filter="url(#shade)">
+ <rect x="349" y="106" width="78" height="39" rx="9" fill="url(#wall)" stroke="#164761" stroke-width="2"/>
+ <path d="M365 117H411M365 125H411M365 133H411" stroke="#7cabbc" stroke-width="2" stroke-linecap="round"/>
+</g>
+<path d="M417 182C424 164 412 156 394 145" class="vapor"/>
+<text x="392" y="91" class="txt">Удаление влаги</text>
+<!-- informative dewpoint pill -->
+<rect x="454" y="440" width="270" height="48" rx="24" fill="#eaf6fa" stroke="#a5d5e3" stroke-width="1.7"/>
+<text x="589" y="459" class="tiny">Конденсация при</text>
+<text x="589" y="477" class="tiny">T поверхности &lt; T точки росы</text>
+</svg>

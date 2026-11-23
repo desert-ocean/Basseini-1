@@ -1,1 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Что такое щёлочность воды</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path d="M86 330h170m0 0 76-130 76 130m0 0h274" fill="none" stroke="#183a4a" stroke-width="12" stroke-linecap="round"/><circle fill="#d9f2f3" stroke="#178e9e" stroke-width="8" cx="165" cy="330" r="26"/><circle fill="#d9f2f3" stroke="#178e9e" stroke-width="8" cx="332" cy="200" r="32"/><circle fill="#d9f2f3" stroke="#178e9e" stroke-width="8" cx="505" cy="330" r="26"/><path d="M332 140v-45m-95 237v56m190-56v56" stroke="#183a4a" stroke-width="7"/><text x="245" y="430" class="small">буферная ёмкость воды</text><text x="293" y="118" class="label">pH</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Общая щёлочность воды и устойчивость pH</title>
+  <desc id="svg-desc">Бассейн, символ бикарбонатной буферной системы и условный индикатор pH: буфер помогает ослаблять изменения кислотности воды.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#F5F9FA"/></linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#F3FAFC"/><stop offset="1" stop-color="#D5E8F1"/></linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#A1E7F3"/><stop offset=".55" stop-color="#5DCDE3"/><stop offset="1" stop-color="#2FAFCF"/></linearGradient>
+    <linearGradient id="dial" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#E8F2F7"/></linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="9" stdDeviation="12" flood-color="#6A9AB0" flood-opacity=".15"/></filter>
+    <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 6 3.5 1 6" stroke="#2B8EB1" stroke-width="1.5" fill="none" stroke-linecap="round"/></marker>
+  </defs>
+  <rect width="768" height="512" fill="url(#bg)"/>
+  <!-- basin -->
+  <g filter="url(#shadow)" stroke-linejoin="round">
+    <path d="M70 262 L128 183 H421 L478 262 L478 355 Q478 363 470 363 H78 Q70 363 70 355 Z" fill="url(#wall)" stroke="#16466A" stroke-width="2.7"/>
+    <path d="M70 262 L128 183 H421 L478 262 H70 Z" fill="#fff" stroke="#16466A" stroke-width="2.7"/>
+    <path d="M100 248 L142 200 H408 L446 248 Z" fill="url(#water)" stroke="#33AFCD" stroke-width="1.9"/>
+    <path d="M140 214 C170 205 188 225 216 214 S269 225 300 214 S353 225 384 214 S414 219 422 215" stroke="#E0FAFF" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+    <path d="M128 237 C160 227 185 248 219 237 S280 248 317 237 S378 248 422 237" stroke="#E0FAFF" stroke-width="3.1" fill="none" stroke-linecap="round" opacity=".88"/>
+  </g>
+  <!-- water molecules accents -->
+  <g fill="#E5FAFD" stroke="#2CA4C6" stroke-width="1.2" opacity=".86">
+    <circle cx="178" cy="307" r="5"/><circle cx="209" cy="328" r="3.5"/><circle cx="272" cy="300" r="4"/><circle cx="313" cy="329" r="5"/><circle cx="386" cy="310" r="4"/>
+  </g>
+  <!-- buffering badge -->
+  <g filter="url(#shadow)">
+    <rect x="200" y="285" width="148" height="63" rx="31.5" fill="#F0FAFC" stroke="#77C9DE" stroke-width="2.2"/>
+    <text x="274" y="323" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" fill="#165276">HCO₃⁻</text>
+  </g>
+  <!-- central bridge arrow -->
+  <path d="M478 276 C511 274 526 268 538 251" stroke="#2A9FBF" stroke-width="3" fill="none" stroke-linecap="round" marker-end="url(#arr)"/>
+  <!-- pH gauge -->
+  <g filter="url(#shadow)">
+    <circle cx="621" cy="234" r="112" fill="url(#dial)" stroke="#16466A" stroke-width="2.7"/>
+    <circle cx="621" cy="234" r="92" fill="#fff" stroke="#D7EAF1" stroke-width="1.6"/>
+    <path d="M557 267 A78 78 0 0 1 685 267" stroke="#E2ECF2" stroke-width="16" fill="none" stroke-linecap="round"/>
+    <path d="M557 267 A78 78 0 0 1 598 184" stroke="#74C8D7" stroke-width="16" fill="none" stroke-linecap="round"/>
+    <path d="M598 184 A78 78 0 0 1 646 184" stroke="#2DA8C3" stroke-width="16" fill="none" stroke-linecap="round"/>
+    <path d="M646 184 A78 78 0 0 1 685 267" stroke="#74C8D7" stroke-width="16" fill="none" stroke-linecap="round"/>
+    <text x="621" y="230" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="39" font-weight="700" fill="#16466A">pH</text>
+    <path d="M621 262 L621 284" stroke="#16466A" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="621" cy="262" r="5" fill="#16466A"/>
+    <text x="621" y="320" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#517789">БУФЕРНАЯ СИСТЕМА</text>
+  </g>
+  <!-- title pill -->
+  <rect x="202" y="411" width="366" height="58" rx="29" fill="#EFF8FB" stroke="#8DCFE1" stroke-width="2"/>
+  <text x="385" y="447" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="23" fill="#16466A">Щёлочность стабилизирует pH</text>
+</svg>

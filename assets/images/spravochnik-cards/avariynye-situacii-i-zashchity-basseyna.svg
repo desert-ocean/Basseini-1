@@ -1,1 +1,99 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Аварийные ситуации и защиты</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><circle fill="#fff0e7" stroke="#c7543c" stroke-width="10" cx="155" cy="185" r="48"/><path d="M155 156v36m0 20v3" stroke="#c7543c" stroke-width="10" stroke-linecap="round"/><rect class="soft-stroke" x="315" y="130" width="170" height="110" rx="20"/><path class="water thin" d="M210 185h93" marker-end="url(#arrow)"/><path class="water thin" d="M486 185h110" marker-end="url(#arrow)"/><circle fill="#eaf5f7" stroke="#183a4a" stroke-width="9" cx="638" cy="185" r="42"/><path d="M618 165l40 40m0-40-40 40" stroke="#c7543c" stroke-width="8"/><path d="M110 350h540" stroke="#b7cbd1" stroke-width="6" stroke-dasharray="15 14"/><text x="324" y="290" class="small">сигнал → защита → останов</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Аварийные ситуации и защиты бассейна</title>
+<desc id="desc">Контроль низкого уровня, отсутствия протока и перегрева. Сигналы поступают в контроллер, который в зависимости от проектной логики блокирует соответствующее оборудование и передаёт сигнал оператору.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f3f8fa"/></linearGradient>
+ <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#e2f0f5"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a8e8f3"/><stop offset="1" stop-color="#57c3db"/></linearGradient>
+ <linearGradient id="controller" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9f7fb"/><stop offset="1" stop-color="#cfe9f1"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#62879b" flood-opacity=".12"/></filter>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#158baa" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></marker>
+ <style>
+ .stroke{fill:none;stroke:#194b66;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+ .fine{fill:none;stroke:#6093ab;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+ .wire{fill:none;stroke:#80b9cc;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+ .flow{fill:none;stroke:#158baa;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+ .label{fill:#183f59;font:700 18px Arial,Helvetica,sans-serif;text-anchor:middle}
+ .small{fill:#547388;font:600 14px Arial,Helvetica,sans-serif;text-anchor:middle}
+ .micro{fill:#315f76;font:700 14px Arial,Helvetica,sans-serif;text-anchor:middle}
+ </style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- left sensor cards -->
+<g filter="url(#shadow)">
+ <rect x="31" y="100" width="185" height="78" rx="14" fill="url(#panel)" stroke="#cfdee7" stroke-width="1.5"/>
+ <rect x="31" y="195" width="185" height="78" rx="14" fill="url(#panel)" stroke="#cfdee7" stroke-width="1.5"/>
+ <rect x="31" y="290" width="185" height="78" rx="14" fill="url(#panel)" stroke="#cfdee7" stroke-width="1.5"/>
+</g>
+<!-- low water level sensor -->
+<g>
+ <rect x="48" y="115" width="58" height="46" rx="7" fill="#fafdfe" stroke="#194b66" stroke-width="2"/>
+ <path d="M51 143Q62 137 74 143T103 143V158H51Z" fill="url(#water)"/>
+ <path d="M51 143Q62 137 74 143T103 143" class="fine"/>
+ <path d="M55 125H100" stroke="#d49b55" stroke-dasharray="5 4" stroke-width="2"/>
+ <circle cx="92" cy="138" r="4" fill="#d49b55"/>
+ <text x="161" y="133" class="micro">Уровень</text>
+ <text x="161" y="152" class="small">ниже нормы</text>
+</g>
+<!-- flow sensor -->
+<g>
+ <rect x="49" y="222" width="55" height="23" rx="11" fill="#d6f1f7" stroke="#194b66" stroke-width="2"/>
+ <path d="M58 233H94" stroke="#8abacc" stroke-width="2" stroke-dasharray="5 5"/>
+ <path d="M75 217V250" class="stroke"/>
+ <path d="M69 222L75 217L81 222" class="fine"/>
+ <text x="161" y="228" class="micro">Проток</text>
+ <text x="161" y="247" class="small">не подтверждён</text>
+</g>
+<!-- temperature -->
+<g>
+ <rect x="72" y="304" width="15" height="37" rx="7" fill="#fafdfe" stroke="#194b66" stroke-width="2"/>
+ <circle cx="79" cy="347" r="11" fill="#fff2dc" stroke="#194b66" stroke-width="2"/>
+ <path d="M79 315V345" stroke="#df9f56" stroke-width="4" stroke-linecap="round"/>
+ <path d="M94 310H105M94 321H101" class="fine"/>
+ <text x="161" y="324" class="micro">Нагрев</text>
+ <text x="161" y="343" class="small">перегрев</text>
+</g>
+<!-- sensor signals to controller -->
+<path d="M217 139H246M217 234H246M217 329H246M246 139V329M246 234H279" class="wire"/>
+<circle cx="246" cy="139" r="3" fill="#188dad"/><circle cx="246" cy="234" r="3" fill="#188dad"/><circle cx="246" cy="329" r="3" fill="#188dad"/>
+<path d="M248 234H280" class="flow"/>
+<!-- central controller -->
+<g filter="url(#shadow)">
+ <rect x="284" y="139" width="194" height="190" rx="21" fill="url(#controller)" stroke="#194b66" stroke-width="2.5"/>
+ <rect x="307" y="162" width="148" height="83" rx="12" fill="#fafdfe" stroke="#a2cbd9" stroke-width="1.7"/>
+ <path d="M324 183H360M324 202H376" stroke="#abd5e1" stroke-width="6" stroke-linecap="round"/>
+ <circle cx="433" cy="180" r="8" fill="#e7b879" stroke="#b17a39" stroke-width="1.6"/>
+ <path d="M433 175V182" stroke="#946221" stroke-width="1.7" stroke-linecap="round"/>
+ <circle cx="433" cy="185" r="1.2" fill="#946221"/>
+ <path d="M331 283H433" stroke="#91bdce" stroke-width="2"/>
+ <rect x="310" y="261" width="142" height="48" rx="12" fill="#e8f5f8" stroke="#add4df" stroke-width="1.3"/>
+ <path d="M326 283L340 296L364 270" stroke="#228fa8" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+ <path d="M386 277H435M386 290H424" class="fine"/>
+</g>
+<text x="381" y="119" class="label">Контроллер</text>
+<text x="381" y="352" class="small">Логика по проекту</text>
+<!-- right output branches -->
+<path d="M479 234H513M513 139V329M513 139H542M513 329H542" class="wire"/>
+<path d="M514 139H542M514 329H542" class="flow"/>
+<g filter="url(#shadow)">
+ <rect x="544" y="98" width="192" height="111" rx="16" fill="url(#panel)" stroke="#cfdee7" stroke-width="1.6"/>
+ <rect x="544" y="266" width="192" height="111" rx="16" fill="url(#panel)" stroke="#cfdee7" stroke-width="1.6"/>
+</g>
+<!-- stop/block symbol -->
+<circle cx="587" cy="139" r="22" fill="#fef5e9" stroke="#bd8340" stroke-width="2"/>
+<rect x="577" y="129" width="20" height="20" rx="3" fill="none" stroke="#bd8340" stroke-width="3"/>
+<path d="M579 151L596 127" stroke="#bd8340" stroke-width="2" stroke-linecap="round"/>
+<text x="669" y="130" class="micro">Запрет пуска</text>
+<text x="669" y="149" class="small">или останов</text>
+<text x="639" y="186" class="small">связанного узла</text>
+<!-- notification icon -->
+<path d="M577 321Q577 299 591 299Q605 299 605 321L611 332H571Z" fill="#d6f1f7" stroke="#194b66" stroke-width="2" stroke-linejoin="round"/>
+<path d="M587 336Q591 343 595 336" class="stroke"/>
+<circle cx="607" cy="299" r="7" fill="#e8b878" stroke="#b9833d" stroke-width="1.5"/>
+<text x="671" y="310" class="micro">Сигнал</text>
+<text x="671" y="329" class="small">оператору</text>
+<text x="641" y="356" class="small">и диагностика</text>
+<!-- clean bottom sequence -->
+<rect x="152" y="431" width="464" height="52" rx="26" fill="#eaf7fa" stroke="#a7d5e2" stroke-width="1.8"/>
+<text x="384" y="463" fill="#194b66" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" text-anchor="middle">Событие → проверка → защитная реакция</text>
+</svg>

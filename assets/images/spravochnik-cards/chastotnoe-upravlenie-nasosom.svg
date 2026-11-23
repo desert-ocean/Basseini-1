@@ -1,1 +1,120 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Частотное управление насосом</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><rect class="soft-stroke" x="95" y="152" width="186" height="180" rx="24"/><rect fill="#d9f2f3" stroke="#178e9e" stroke-width="8" x="132" y="190" width="112" height="85" rx="12"/><path d="M154 218h68m-68 28h43" stroke="#183a4a" stroke-width="7"/><circle class="soft-stroke" cx="525" cy="260" r="84"/><path d="M480 260c28-52 80-52 94 0-14 52-66 52-94 0z" fill="#d9f2f3" stroke="#178e9e" stroke-width="8"/><path class="pipe thin" d="M281 240h150m0 0v-46h40m-40 46v72h40"/><path class="water thin" d="M302 240h110" marker-end="url(#arrow)"/><path d="M200 351v48m-16-16 16 16 16-16" fill="none" stroke="#e4a43a" stroke-width="8"/><text x="145" y="376" class="label">Hz</text><text x="477" y="388" class="small">обороты → Q, H</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+  <title id="title">Частотное управление насосом</title>
+  <desc id="desc">Циркуляционный насос с частотным преобразователем и графиком рабочей точки. Показаны снижение частоты, семейство характеристик насоса и ограничения регулируемого режима.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f4f8fa"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#dcebf2"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a7eaf4"/>
+      <stop offset="100%" stop-color="#53c4dd"/>
+    </linearGradient>
+    <linearGradient id="graphfill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6fbfd"/>
+      <stop offset="100%" stop-color="#edf6fa"/>
+    </linearGradient>
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="170%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#648696" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.8" refY="5" markerWidth="6.8" markerHeight="6.8" orient="auto">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#1298bb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .stroke{stroke:#174a67;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+      .fine{stroke:#6f99ad;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;fill:none}
+      .flow{stroke:#1298bb;stroke-width:2.9;stroke-linecap:round;stroke-linejoin:round;fill:none;marker-end:url(#arrow)}
+      .label{font:700 18px Arial,Helvetica,sans-serif;fill:#174a67;text-anchor:middle}
+      .small{font:600 14px Arial,Helvetica,sans-serif;fill:#55788a;text-anchor:middle}
+      .mini{font:700 14px Arial,Helvetica,sans-serif;fill:#174a67;text-anchor:middle}
+    </style>
+  </defs>
+
+  <rect width="768" height="512" fill="url(#bg)"/>
+
+  <!-- frequency drive panel -->
+  <g filter="url(#shadow)">
+    <rect x="54" y="110" width="168" height="236" rx="24" fill="url(#panel)" class="stroke"/>
+    <rect x="76" y="134" width="124" height="72" rx="12" fill="#f8fcfe" stroke="#9dc8d8" stroke-width="1.6"/>
+    <rect x="91" y="151" width="55" height="10" rx="5" fill="#8fd8e8"/>
+    <path d="M91 178H178" class="fine"/>
+    <path d="M91 191H164" class="fine"/>
+    <circle cx="177" cy="155" r="8" fill="#57c3db" stroke="#1a6c89" stroke-width="1.4"/>
+    <!-- keypad -->
+    <g fill="#eef7fa" stroke="#8fbfd0" stroke-width="1.1">
+      <rect x="84" y="229" width="26" height="20" rx="5"/>
+      <rect x="117" y="229" width="26" height="20" rx="5"/>
+      <rect x="150" y="229" width="26" height="20" rx="5"/>
+      <rect x="84" y="257" width="26" height="20" rx="5"/>
+      <rect x="117" y="257" width="26" height="20" rx="5"/>
+      <rect x="150" y="257" width="26" height="20" rx="5"/>
+      <rect x="84" y="285" width="26" height="20" rx="5"/>
+      <rect x="117" y="285" width="26" height="20" rx="5"/>
+      <rect x="150" y="285" width="26" height="20" rx="5"/>
+    </g>
+    <path d="M125 324H152" stroke="#25a8c5" stroke-width="4.5" stroke-linecap="round"/>
+  </g>
+  <text x="138" y="89" class="label">Частотный</text>
+  <text x="138" y="107" class="small">преобразователь</text>
+
+  <!-- control signal to pump -->
+  <path d="M223 228H284" class="flow"/>
+  <text x="254" y="210" class="small">f</text>
+
+  <!-- pump and piping -->
+  <g filter="url(#shadow)">
+    <path d="M304 233H289" stroke="#bfe8f1" stroke-width="16" stroke-linecap="round"/>
+    <path d="M304 233H289" stroke="#174a67" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="332" cy="233" r="38" fill="url(#panel)" class="stroke"/>
+    <circle cx="332" cy="233" r="15" fill="url(#accent)" stroke="#174a67" stroke-width="1.8"/>
+    <path d="M323 233c0-7 7-12 15-12 0 8-5 15-12 15-4 0-7-1-10-3 3 0 7-1 7-6Z" fill="#eafcff" stroke="#1d86a7" stroke-width="1.2"/>
+    <rect x="365" y="207" width="34" height="52" rx="7" fill="#d7e7ee" class="stroke"/>
+    <rect x="399" y="197" width="74" height="74" rx="12" fill="url(#panel)" class="stroke"/>
+    <path d="M414 212V256M429 212V256M444 212V256" class="fine"/>
+    <path d="M473 233H520" stroke="#bfe8f1" stroke-width="16" stroke-linecap="round"/>
+    <path d="M473 233H520" stroke="#174a67" stroke-width="2" stroke-linecap="round"/>
+    <path d="M308 278H466" class="stroke"/>
+  </g>
+  <text x="404" y="313" class="label">Насос</text>
+  <text x="404" y="331" class="small">Работа с регулированием частоты</text>
+
+  <!-- graph card -->
+  <g filter="url(#shadow)">
+    <rect x="516" y="84" width="204" height="278" rx="22" fill="url(#graphfill)" stroke="#cfe3ea" stroke-width="1.6"/>
+    <path d="M554 315V130H689" class="stroke"/>
+    <path d="M554 169H689M554 207H689M554 245H689M592 315V130M630 315V130M668 315V130" class="fine" opacity="0.65"/>
+    <!-- curves -->
+    <path d="M566 163C598 169 635 182 679 210" fill="none" stroke="#1c8fb0" stroke-width="3" stroke-linecap="round"/>
+    <path d="M566 193C600 200 636 215 679 244" fill="none" stroke="#5fbfd6" stroke-width="3" stroke-linecap="round"/>
+    <path d="M566 225C598 234 634 251 679 278" fill="none" stroke="#9cd9e7" stroke-width="3" stroke-linecap="round"/>
+    <!-- system curve -->
+    <path d="M565 300C592 281 614 253 632 222C649 194 663 165 679 136" fill="none" stroke="#174a67" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="5 5"/>
+    <!-- working points -->
+    <circle cx="626" cy="211" r="5.5" fill="#1c8fb0" stroke="#174a67" stroke-width="1.2"/>
+    <circle cx="612" cy="235" r="5.5" fill="#5fbfd6" stroke="#174a67" stroke-width="1.2"/>
+    <path d="M626 211L653 186" class="fine"/>
+    <path d="M612 235L648 241" class="fine"/>
+    <text x="664" y="181" class="small">Рабочая</text>
+    <text x="664" y="198" class="small">точка</text>
+    <text x="661" y="239" class="small">Снижение</text>
+    <text x="661" y="256" class="small">частоты</text>
+    <text x="548" y="121" class="small" text-anchor="start">H</text>
+    <text x="694" y="333" class="small" text-anchor="middle">Q</text>
+  </g>
+  <text x="618" y="55" class="label">Характеристики</text>
+
+  <!-- bottom limitation ribbon -->
+  <g filter="url(#shadow)">
+    <rect x="184" y="409" width="401" height="54" rx="27" fill="#edf8fb" stroke="#b6dde8" stroke-width="1.5"/>
+    <path d="M220 436H264" class="flow"/>
+    <circle cx="298" cy="436" r="13" fill="#fff4df" stroke="#b47b38" stroke-width="1.7"/>
+    <path d="M298 429v8" stroke="#b47b38" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="298" cy="441.5" r="1.7" fill="#b47b38"/>
+    <text x="420" y="431" class="small">Регулирование по частоте</text>
+    <text x="420" y="448" class="small">работает в допустимой области</text>
+  </g>
+</svg>

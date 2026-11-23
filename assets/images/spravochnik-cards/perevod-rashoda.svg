@@ -1,1 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Как перевести м³/ч в л/с</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path class="pipe" d="M75 218h230v84H75z"/><path class="water" d="M92 260h190" marker-end="url(#arrow)"/><circle class="soft-stroke" cx="430" cy="260" r="102"/><text x="365" y="248" class="label">м³/ч</text><path class="water thin" d="M535 260h90" marker-end="url(#arrow)"/><rect class="soft-stroke" x="635" y="188" width="64" height="145" rx="18"/><text x="640" y="374" class="small">л/с</text><text x="205" y="378" class="small">один поток · разные единицы</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Перевод расхода воды между единицами измерения</title>
+<desc id="desc">Единый поток воды проходит через три измерительные секции: 12 кубических метров в час, 200 литров в минуту и 3,33 литра в секунду. Двусторонние стрелки показывают возможность перевода единиц.</desc>
+<defs>
+ <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fafdfe"/><stop offset=".46" stop-color="#e9f4f8"/><stop offset="1" stop-color="#c9e2ed"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#bceefa"/><stop offset="1" stop-color="#5bc4e5"/></linearGradient>
+ <linearGradient id="card" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f3f9fc"/></linearGradient>
+ <filter id="shadow" x="-25%" y="-30%" width="150%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#6d9bae" flood-opacity=".12"/></filter>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2489aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<!-- airy neutral background -->
+<rect width="768" height="512" fill="#ffffff"/>
+<path d="M44 376H724" stroke="#e7f0f4" stroke-width="1.5"/>
+<!-- continuous hydraulics motif -->
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M78 155 H690" stroke="#c8dee8" stroke-width="78"/>
+ <path d="M78 155 H690" stroke="url(#metal)" stroke-width="73"/>
+ <path d="M78 155 H690" stroke="#1d4660" stroke-width="2.5"/>
+ <path d="M78 155 H690" stroke="url(#water)" stroke-width="48"/>
+ <path d="M90 151 C118 139 136 164 163 151 S207 139 236 151 S282 164 309 151 S354 139 381 151 S426 164 453 151 S497 139 525 151 S573 164 601 151 S650 139 676 151" stroke="#effcff" stroke-width="3" opacity=".96"/>
+ <path d="M90 166 C119 154 139 178 168 166 S213 154 242 166 S288 178 317 166 S361 154 391 166 S440 178 469 166 S516 154 544 166 S596 178 624 166 S656 154 679 166" stroke="#d2f8ff" stroke-width="2" opacity=".88"/>
+</g>
+<!-- three circular measurement ports -->
+<g filter="url(#shadow)">
+ <circle cx="154" cy="155" r="63" fill="url(#metal)" stroke="#183f58" stroke-width="2.7"/>
+ <circle cx="384" cy="155" r="63" fill="url(#metal)" stroke="#183f58" stroke-width="2.7"/>
+ <circle cx="614" cy="155" r="63" fill="url(#metal)" stroke="#183f58" stroke-width="2.7"/>
+</g>
+<g fill="url(#water)" stroke="#2e819e" stroke-width="2">
+ <circle cx="154" cy="155" r="48"/><circle cx="384" cy="155" r="48"/><circle cx="614" cy="155" r="48"/>
+</g>
+<g fill="none" stroke="#f4ffff" stroke-width="2.5" opacity=".93" stroke-linecap="round">
+ <path d="M121 152q16 -9 32 0t34 0 M126 171q14 -8 28 0t29 0"/>
+ <path d="M351 152q16 -9 32 0t34 0 M356 171q14 -8 28 0t29 0"/>
+ <path d="M581 152q16 -9 32 0t34 0 M586 171q14 -8 28 0t29 0"/>
+</g>
+<!-- level rules -->
+<g stroke="#267d9b" stroke-linecap="round" opacity=".85">
+ <path d="M154 79v-9 M384 79v-9 M614 79v-9" stroke-width="2"/>
+ <path d="M131 85v-6 M177 85v-6 M361 85v-6 M407 85v-6 M591 85v-6 M637 85v-6" stroke-width="1.5"/>
+</g>
+<!-- connect units to flow -->
+<g stroke="#6b9fba" stroke-width="1.7" stroke-dasharray="4 6"><path d="M154 220V260"/><path d="M384 220V260"/><path d="M614 220V260"/></g>
+<!-- Three matching conversion cards -->
+<g filter="url(#shadow)">
+ <rect x="45" y="260" width="218" height="126" rx="18" fill="url(#card)" stroke="#cfdfE7" stroke-width="1.5"/>
+ <rect x="275" y="260" width="218" height="126" rx="18" fill="url(#card)" stroke="#cfdfE7" stroke-width="1.5"/>
+ <rect x="505" y="260" width="218" height="126" rx="18" fill="url(#card)" stroke="#cfdfE7" stroke-width="1.5"/>
+</g>
+<g font-family="Arial, 'DejaVu Sans', sans-serif" text-anchor="middle" fill="#163b55">
+ <text x="154" y="312" font-size="29" font-weight="700">12 м³/ч</text>
+ <text x="384" y="312" font-size="29" font-weight="700">200 л/мин</text>
+ <text x="614" y="312" font-size="29" font-weight="700">3,33 л/с</text>
+ <text x="154" y="345" font-size="15" fill="#557789">за час</text>
+ <text x="384" y="345" font-size="15" fill="#557789">за минуту</text>
+ <text x="614" y="345" font-size="15" fill="#557789">за секунду</text>
+</g>
+<!-- understated arrows showing equivalence -->
+<g stroke="#2489aa" stroke-width="1.9" fill="none" stroke-linecap="round" marker-start="url(#arrow)" marker-end="url(#arrow)">
+ <path d="M267 324h-8" opacity="0"/>
+ <path d="M267 323h-4" opacity="0"/>
+</g>
+<!-- conversion tags below: all equal volumes per unit time -->
+<g fill="none" stroke="#8eb9ca" stroke-width="1.5" stroke-linecap="round"><path d="M263 323h12"/><path d="M493 323h12"/></g>
+<g fill="#177b9c"><circle cx="269" cy="323" r="2.4"/><circle cx="499" cy="323" r="2.4"/></g>
+<g font-family="Arial, 'DejaVu Sans', sans-serif" text-anchor="middle" fill="#5e8598" font-size="15">
+ <text x="384" y="431">Один и тот же расход — разные единицы</text>
+</g>
+<path d="M230 453H538" stroke="#b9d8e5" stroke-width="2" stroke-linecap="round"/>
+</svg>

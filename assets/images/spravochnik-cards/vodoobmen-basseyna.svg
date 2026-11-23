@@ -1,1 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Что такое время водообмена бассейна</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path class="pool" d="M125 155v187q0 24 28 38l140 58h90l141-58q28-14 28-38V155"/><path class="water" d="M150 210h355" marker-end="url(#arrow)"/><path class="water thin" d="M515 302C474 404 216 417 145 300" marker-end="url(#arrow)"/><circle fill="#fff" stroke="#183a4a" stroke-width="9" cx="613" cy="213" r="47"/><path d="M613 213v-26m0 26 22 13" stroke="#178e9e" stroke-width="8" stroke-linecap="round"/><text x="584" y="289" class="small">t</text><text x="235" y="175" class="label">V / t → Q</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Время водообмена бассейна</title>
+<desc id="desc">Схематичная чаша бассейна соединена циркуляционным трубопроводом с насосом и песчаным фильтром. Стрелки указывают направление потока. Формула T равно V делить на Q обозначает расчётное время водообмена.</desc>
+<defs>
+ <linearGradient id="background" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f6f9fb"/></linearGradient>
+ <linearGradient id="poolSide" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4fafc"/><stop offset="1" stop-color="#d8ebf3"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#35b9d7"/><stop offset="1" stop-color="#85dcea"/></linearGradient>
+ <linearGradient id="filter" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f5fbfd"/><stop offset=".57" stop-color="#dcecf4"/><stop offset="1" stop-color="#f2f8fa"/></linearGradient>
+ <linearGradient id="pipe" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e9f8fc"/><stop offset="1" stop-color="#bfe8f2"/></linearGradient>
+ <filter id="shade" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#6a9ab0" flood-opacity=".13"/></filter>
+ <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 9 5 1 9" fill="none" stroke="#128cab" stroke-width="1.5" stroke-linejoin="round"/></marker>
+ <style>.outline{stroke:#123e5e;stroke-width:2.35;stroke-linecap:round;stroke-linejoin:round}.flow{stroke:#1496b8;stroke-width:4.4;fill:none;stroke-linecap:round;stroke-linejoin:round}.label{font:700 21px Arial,Helvetica,sans-serif;fill:#144466}.small{font:600 16px Arial,Helvetica,sans-serif;fill:#35657c}.formula{font:italic 700 38px Arial,Helvetica,sans-serif;fill:#123e5e}</style>
+</defs>
+<rect width="768" height="512" fill="url(#background)"/>
+<!-- basin -->
+<g filter="url(#shade)">
+ <path d="M66 228 123 144 H353 L393 228 V316 Q393 325 384 325 H76 Q66 325 66 315Z" fill="url(#poolSide)" class="outline"/>
+ <path d="M66 228 H393" fill="none" stroke="#123e5e" stroke-width="2"/>
+ <path d="M106 217 140 157 H338 L366 217 Z" fill="url(#water)" stroke="#1f9fc1" stroke-width="2" stroke-linejoin="round"/>
+ <path d="M139 177q16-8 32 0t32 0t32 0t32 0t32 0t32 0" stroke="#e1faff" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+ <path d="M122 199q16-8 32 0t32 0t32 0t32 0t32 0t32 0" stroke="#dff9ff" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+</g>
+<text x="228" y="281" text-anchor="middle" class="label">V</text>
+<text x="228" y="302" text-anchor="middle" class="small">объём чаши</text>
+<!-- suction line: basin to pump -->
+<path d="M393 296 H458 Q467 296 467 287 V281" fill="none" stroke="#123e5e" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M393 296 H458 Q467 296 467 287 V281" fill="none" stroke="#a9dfed" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M405 296H444" class="flow" marker-end="url(#arr)"/>
+<!-- pump -->
+<g filter="url(#shade)">
+ <path d="M445 280 452 270 H497 L507 280" fill="#a4c9dc" class="outline"/>
+ <circle cx="477" cy="244" r="34" fill="url(#filter)" class="outline"/>
+ <circle cx="477" cy="244" r="17" fill="#92d7e8" stroke="#1286a5" stroke-width="2"/>
+ <path d="M471 230Q490 236 480 251Q474 259 463 250" fill="none" stroke="#1286a5" stroke-width="3" stroke-linecap="round"/>
+ <rect x="509" y="221" width="47" height="47" rx="8" fill="#d3e8f1" class="outline"/>
+ <path d="M521 230v29M531 230v29M541 230v29" stroke="#7fb7cc" stroke-width="2"/>
+ <path d="M447 284H559" stroke="#123e5e" stroke-width="3" stroke-linecap="round"/>
+</g>
+<!-- rising pressure line to filter -->
+<path d="M555 243H588V195H631" fill="none" stroke="#123e5e" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M555 243H588V195H631" fill="none" stroke="#a9dfed" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M588 233V208" class="flow" marker-end="url(#arr)"/>
+<!-- filter -->
+<g filter="url(#shade)">
+ <rect x="628" y="157" width="90" height="134" rx="42" fill="url(#filter)" class="outline"/>
+ <path d="M631 229Q674 240 715 229V258Q673 264 631 258Z" fill="#c6e4ed" opacity=".75"/>
+ <path d="M630 230H716" stroke="#86b7c9" stroke-width="2"/>
+ <rect x="664" y="143" width="20" height="15" rx="3" fill="#9bcbda" class="outline"/>
+ <path d="M674 143V128H696" stroke="#123e5e" stroke-width="5" stroke-linecap="round"/>
+ <path d="M649 291H698L707 307H640Z" fill="#c1dce9" class="outline"/>
+</g>
+<!-- return line above pool, from filter to pool -->
+<path d="M673 158V105Q673 96 662 96H299Q286 96 286 109V145" fill="none" stroke="#123e5e" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M673 158V105Q673 96 662 96H299Q286 96 286 109V145" fill="none" stroke="url(#pipe)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M632 96H577" class="flow" marker-end="url(#arr)"/>
+<path d="M458 96H400" class="flow" marker-end="url(#arr)"/>
+<path d="M286 116V139" class="flow" marker-end="url(#arr)"/>
+<!-- concise secondary labels -->
+<text x="535" y="341" text-anchor="middle" class="small">насос</text>
+<text x="674" y="341" text-anchor="middle" class="small">фильтр</text>
+<!-- formula -->
+<rect x="246" y="397" width="276" height="76" rx="38" fill="#eff9fc" stroke="#76cddd" stroke-width="2.5"/>
+<text x="384" y="446" text-anchor="middle" class="formula">T = V / Q</text>
+</svg>

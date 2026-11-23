@@ -1,1 +1,81 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Перепад давления на фильтре</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path class="pipe" d="M62 264h180m267 0h196"/><rect class="soft-stroke" x="280" y="156" width="195" height="221" rx="64"/><path d="M300 285h155v54H300z" fill="#d6c18a" stroke="#183a4a" stroke-width="7"/><path d="M170 264v-72h28m400 72v-72h-28" fill="none" stroke="#183a4a" stroke-width="9"/><circle fill="#fff" stroke="#183a4a" stroke-width="8" cx="170" cy="160" r="40"/><circle fill="#fff" stroke="#183a4a" stroke-width="8" cx="598" cy="160" r="40"/><path d="M170 160l17-17m411 17 12-11" stroke="#d85d52" stroke-width="7" stroke-linecap="round"/><path class="water thin" d="M75 264h160m300 0h170" marker-end="url(#arrow)"/><text x="142" y="224" class="small">до</text><text x="574" y="224" class="small">после</text><text x="337" y="420" class="small">фильтр</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Перепад давления на песчаном фильтре бассейна</title>
+<desc id="desc">Песчаный фильтр с двумя точками измерения давления: манометром на входе p1 и манометром на выходе p2. Вода проходит через фильтр сверху вниз. Перепад давления равен давлению на входе минус давление на выходе при сопоставимом расходе.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f4f8fa"/></linearGradient>
+ <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fafdff"/><stop offset=".65" stop-color="#dcecf3"/><stop offset="1" stop-color="#c6dee9"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8edf8"/><stop offset="1" stop-color="#65c9df"/></linearGradient>
+ <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f7e7c8"/><stop offset="1" stop-color="#d9b98e"/></linearGradient>
+ <filter id="shadow" x="-25%" y="-25%" width="150%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#6d98aa" flood-opacity=".14"/></filter>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8.7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#128eaf" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></marker>
+ <style>
+ .edge{stroke:#184967;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+ .fine{stroke:#6b9aac;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round;fill:none}
+ .pipe{stroke:#c4e9f2;stroke-width:19;fill:none;stroke-linecap:round;stroke-linejoin:round}
+ .pipeedge{stroke:#184967;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+ .flow{stroke:#128eaf;stroke-width:3;fill:none;stroke-linecap:round;marker-end:url(#arrow)}
+ .title{font:700 19px Arial,Helvetica,sans-serif;fill:#184967;text-anchor:middle}
+ .label{font:700 17px Arial,Helvetica,sans-serif;fill:#184967;text-anchor:middle}
+ .small{font:600 14px Arial,Helvetica,sans-serif;fill:#557b8d;text-anchor:middle}
+ </style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- horizontal inlet and outlet, pressure taps close to filter -->
+<path d="M74 238H269V206H323" class="pipe"/>
+<path d="M74 238H269V206H323" class="pipeedge"/>
+<path d="M446 335H495V338H697" class="pipe"/>
+<path d="M446 335H495V338H697" class="pipeedge"/>
+<path d="M105 238H146" class="flow"/>
+<path d="M230 238H263" class="flow"/>
+<path d="M536 338H579" class="flow"/>
+<path d="M635 338H676" class="flow"/>
+<!-- pressure tap lines: upstream and downstream gauges -->
+<path d="M230 228V169H192" stroke="#184967" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M563 328V169H596" stroke="#184967" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="230" cy="238" r="4.5" fill="#ffffff" stroke="#184967" stroke-width="1.7"/>
+<circle cx="563" cy="338" r="4.5" fill="#ffffff" stroke="#184967" stroke-width="1.7"/>
+<!-- inlet gauge -->
+<g filter="url(#shadow)">
+ <circle cx="153" cy="138" r="54" fill="url(#body)" class="edge"/>
+ <circle cx="153" cy="138" r="44" fill="#fcfeff" stroke="#a5c8d6" stroke-width="1.6"/>
+ <path d="M125 156A34 34 0 0 1 181 156" fill="none" stroke="#a9d6e5" stroke-width="3" stroke-linecap="round"/>
+ <path d="M153 105V113M129 116L135 122M177 116L171 122M119 137H127M179 137H187" class="fine"/>
+ <path d="M153 138L173 119" stroke="#176d92" stroke-width="3.8" stroke-linecap="round"/>
+ <circle cx="153" cy="138" r="5.3" fill="#176d92"/>
+</g>
+<!-- outlet gauge, visibly lower reading but no invented values -->
+<g filter="url(#shadow)">
+ <circle cx="630" cy="138" r="54" fill="url(#body)" class="edge"/>
+ <circle cx="630" cy="138" r="44" fill="#fcfeff" stroke="#a5c8d6" stroke-width="1.6"/>
+ <path d="M602 156A34 34 0 0 1 658 156" fill="none" stroke="#a9d6e5" stroke-width="3" stroke-linecap="round"/>
+ <path d="M630 105V113M606 116L612 122M654 116L648 122M596 137H604M656 137H664" class="fine"/>
+ <path d="M630 138L608 127" stroke="#176d92" stroke-width="3.8" stroke-linecap="round"/>
+ <circle cx="630" cy="138" r="5.3" fill="#176d92"/>
+</g>
+<text x="153" y="69" class="label">p₁ — вход</text>
+<text x="630" y="69" class="label">p₂ — выход</text>
+<!-- sand filter vessel, typical cross section -->
+<g filter="url(#shadow)">
+ <rect x="320" y="122" width="132" height="260" rx="60" fill="url(#body)" class="edge"/>
+ <rect x="334" y="139" width="104" height="225" rx="46" fill="#f7fbfd" stroke="#a7c9d8" stroke-width="1.2"/>
+ <path d="M336 184Q359 176 384 184T436 184V222H336Z" fill="url(#water)"/>
+ <path d="M336 235Q357 227 385 235T436 235V319Q435 351 406 363H363Q337 354 336 320Z" fill="url(#sand)"/>
+ <path d="M336 235Q357 227 385 235T436 235" fill="none" stroke="#c5a478" stroke-width="2.3"/>
+ <g fill="#c4a479" opacity=".7"><circle cx="357" cy="271" r="2.1"/><circle cx="375" cy="286" r="2.1"/><circle cx="399" cy="269" r="2.1"/><circle cx="420" cy="298" r="2.1"/><circle cx="352" cy="319" r="2.1"/><circle cx="393" cy="326" r="2.1"/><circle cx="416" cy="341" r="2.1"/></g>
+ <path d="M344 182H428" stroke="#176a8a" stroke-width="3" stroke-linecap="round"/>
+ <path d="M348 348H424" stroke="#176a8a" stroke-width="3" stroke-linecap="round"/>
+ <path d="M358 346V335M374 346V335M391 346V335M407 346V335" stroke="#176a8a" stroke-width="2"/>
+ <rect x="365" y="109" width="42" height="16" rx="5" fill="#bed8e5" class="edge"/>
+ <path d="M352 383H420" stroke="#184967" stroke-width="2.5" stroke-linecap="round"/>
+</g>
+<!-- flow within vessel -->
+<path d="M385 197V220" class="flow"/>
+<path d="M385 260V292" class="flow"/>
+<path d="M385 307V331" class="flow"/>
+<!-- two captions with clear air -->
+<text x="386" y="405" class="label">Песчаный фильтр</text>
+<text x="386" y="424" class="small">Сопоставимый расход Q</text>
+<!-- formula pill -->
+<rect x="245" y="448" width="278" height="51" rx="25.5" fill="#edf8fa" stroke="#96d5e4" stroke-width="2"/>
+<text x="384" y="482" class="title" font-size="23">Δp = p₁ − p₂</text>
+</svg>

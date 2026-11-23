@@ -1,1 +1,93 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Обеззараживание воды бассейна</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path class="pipe" d="M42 225h684v78H42z"/><path class="water thin" d="M58 264h644" marker-end="url(#arrow)"/><rect class="soft-stroke" x="133" y="140" width="115" height="245" rx="42"/><path d="M165 172v178m50-178v178" stroke="#e4a43a" stroke-width="9"/><rect class="soft-stroke" x="327" y="163" width="134" height="172" rx="23"/><path d="M355 198l76 95m0-95-76 95" stroke="#7a69b0" stroke-width="8"/><circle fill="#d8f0f3" stroke="#178e9e" stroke-width="8" cx="588" cy="264" r="42"/><text x="139" y="432" class="small">реагент</text><text x="344" y="376" class="small">УФ</text><text x="553" y="342" class="small">озон</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="svg-title svg-desc">
+<title id="svg-title">Обеззараживание воды бассейна: озон, УФ и остаточный дезинфектант</title>
+<desc id="svg-desc">Условная последовательность потока слева направо: озонирование в контактной ступени, затем УФ-реактор, затем дозирование остаточного дезинфектанта перед возвратом воды в бассейн. На стадии озона предусмотрен отвод остаточного газа.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f4f8fb"/></linearGradient>
+ <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".48" stop-color="#d8e9f2"/><stop offset="1" stop-color="#c2dae7"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#aff0fa"/><stop offset="1" stop-color="#45bedb"/></linearGradient>
+ <linearGradient id="ozone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f2fbff"/><stop offset="1" stop-color="#a4dcec"/></linearGradient>
+ <linearGradient id="uv" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f5fb"/><stop offset="1" stop-color="#8cc7df"/></linearGradient>
+ <filter id="shadow" x="-25%" y="-25%" width="150%" height="175%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#547a8a" flood-opacity=".16"/></filter>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8.7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#1193b8" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></marker>
+ <style>
+ .edge{stroke:#174967;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+ .fine{stroke:#477e99;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+ .pipe{stroke:#d5eef5;stroke-width:19;stroke-linecap:round;stroke-linejoin:round;fill:none}
+ .pipe-edge{stroke:#174967;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;fill:none}
+ .flow{stroke:#1596ba;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none;marker-end:url(#arrow)}
+ .name{font:700 19px Arial,Helvetica,sans-serif;fill:#184762;text-anchor:middle}
+ .small{font:600 15px Arial,Helvetica,sans-serif;fill:#52788a;text-anchor:middle}
+ .item{font:700 15px Arial,Helvetica,sans-serif;fill:#184762;text-anchor:middle}
+ </style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- Flow direction reads left to right -->
+<path d="M31 267H98M247 267H298M452 267H496M630 267H734" class="pipe"/>
+<path d="M31 267H98M247 267H298M452 267H496M630 267H734" class="pipe-edge"/>
+<!-- contact vessel / ozone -->
+<g filter="url(#shadow)">
+ <rect x="94" y="166" width="156" height="213" rx="42" fill="url(#metal)" class="edge"/>
+ <rect x="108" y="184" width="128" height="181" rx="30" fill="url(#ozone)" stroke="#a1cddd" stroke-width="1.5"/>
+ <path d="M109 272Q140 261 172 272T235 272V335Q234 358 206 364H138Q111 361 109 334Z" fill="url(#water)" opacity=".89"/>
+ <path d="M110 273Q141 263 172 273T235 273" stroke="#f0fcff" stroke-width="3" fill="none"/>
+ <!-- bubbles -->
+ <g fill="#f1fcff" stroke="#1aa3c3" stroke-width="1.7">
+  <circle cx="143" cy="318" r="7"/><circle cx="165" cy="297" r="5"/><circle cx="184" cy="319" r="9"/><circle cx="205" cy="291" r="6"/>
+  <circle cx="155" cy="255" r="4"/><circle cx="192" cy="244" r="4"/>
+ </g>
+ <!-- injector lower left -->
+ <path d="M98 308H119" fill="none" stroke="#147fa5" stroke-width="5" stroke-linecap="round"/>
+ <path d="M119 301L130 308L119 315" fill="none" stroke="#147fa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+ <!-- off-gas outlet -->
+ <path d="M169 165V137H221" fill="none" stroke="#477e99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M207 129L222 137L207 145" fill="none" stroke="#477e99" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="175" y="112" class="name">Озон O₃</text>
+<text x="172" y="402" class="small">Контактная ступень</text>
+<text x="240" y="130" class="small">Отвод газа</text>
+<!-- UV reactor, no ambiguous device ordering -->
+<g filter="url(#shadow)">
+ <rect x="297" y="226" width="160" height="81" rx="27" fill="url(#metal)" class="edge"/>
+ <rect x="313" y="244" width="128" height="45" rx="19" fill="url(#uv)" stroke="#75b7d0" stroke-width="1.6"/>
+ <path d="M326 267H427" fill="none" stroke="#43a7d1" stroke-width="8" stroke-linecap="round"/>
+ <path d="M326 267H427" fill="none" stroke="#f3feff" stroke-width="3" stroke-linecap="round"/>
+ <g stroke="#9a8ad8" stroke-width="2.4" stroke-linecap="round" opacity=".9">
+  <path d="M344 251L338 240M365 251L365 238M386 251L391 239M405 251L414 241"/>
+  <path d="M344 284L338 296M365 284L365 297M386 284L392 296M405 284L414 294"/>
+ </g>
+ <rect x="359" y="209" width="35" height="17" rx="4" fill="#d6eaf3" class="edge"/>
+</g>
+<text x="378" y="179" class="name">УФ</text>
+<text x="377" y="339" class="small">УФ-реактор</text>
+<!-- dosing on pipe downstream of UV -->
+<g filter="url(#shadow)">
+ <rect x="517" y="160" width="92" height="73" rx="12" fill="url(#metal)" class="edge"/>
+ <rect x="530" y="174" width="66" height="40" rx="7" fill="#f8fdff" stroke="#95c4d6" stroke-width="1.5"/>
+ <path d="M541 186H585M541 195H576" class="fine"/>
+ <circle cx="584" cy="204" r="3.5" fill="#47b8d3"/>
+ <!-- downstream injection point -->
+ <path d="M563 233V253" fill="none" stroke="#174967" stroke-width="4" stroke-linecap="round"/>
+ <path d="M557 247L563 257L569 247" fill="none" stroke="#1596ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M559 263L563 269L567 263" stroke="#1596ba" stroke-width="1.9" stroke-linejoin="round" fill="none"/>
+</g>
+<text x="563" y="128" class="name">Дозирование</text>
+<text x="563" y="146" class="small">остаточного реагента</text>
+<!-- pool corner / water as visual destination -->
+<g filter="url(#shadow)">
+ <path d="M647 229V313Q647 322 656 322H722Q731 322 731 313V229" fill="url(#metal)" class="edge"/>
+ <path d="M657 244Q672 237 685 244T721 244V309Q721 313 717 313H661Q657 313 657 309Z" fill="url(#water)"/>
+ <path d="M657 244Q672 237 685 244T721 244" stroke="#e3fbff" stroke-width="3" fill="none"/>
+ <path d="M657 228H727" class="edge"/>
+ <path d="M651 266H668" stroke="#1b8eaf" stroke-width="4" stroke-linecap="round"/>
+ <path d="M668 260L680 266L668 272" stroke="#1b8eaf" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</g>
+<text x="689" y="203" class="name">Чаша</text>
+<!-- directional arrows on pipes -->
+<path d="M44 267H78" class="flow"/>
+<path d="M260 267H286" class="flow"/>
+<path d="M465 267H485" class="flow"/>
+<path d="M615 267H644" class="flow"/>
+<!-- final subtle legend -->
+<rect x="165" y="436" width="438" height="52" rx="26" fill="#eaf6fa" stroke="#abd8e5" stroke-width="1.7"/>
+<text x="384" y="468" class="item">Озон → УФ → остаточная защита воды</text>
+</svg>

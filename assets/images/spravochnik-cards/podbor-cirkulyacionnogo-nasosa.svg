@@ -1,1 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Подбор циркуляционного насоса</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path d="M100 394V115m0 279h560" stroke="#183a4a" stroke-width="8"/><path d="M135 345C206 318 263 251 327 215s138-56 304-66" fill="none" stroke="#178e9e" stroke-width="11"/><path d="M136 360C300 353 415 310 638 214" fill="none" stroke="#e4a43a" stroke-width="8" stroke-dasharray="15 12"/><circle fill="#fff" stroke="#183a4a" stroke-width="11" cx="397" cy="313" r="30"/><path d="M397 290v46m-20-23h40" stroke="#178e9e" stroke-width="7"/><text x="54" y="110" class="label">H</text><text x="659" y="431" class="label">Q</text><text x="135" y="430" class="small">насосная характеристика</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="t d">
+<title id="t">Подбор циркуляционного насоса бассейна</title>
+<desc id="d">Условная насосная установка с подводом воды, характеристиками насоса и сети, рабочей точкой и напоминанием о проверке всасывания. График не является паспортной характеристикой.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#F3F8FA"/></linearGradient>
+<linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FDFEFF"/><stop offset=".52" stop-color="#D9EBF2"/><stop offset="1" stop-color="#B6D6E4"/></linearGradient>
+<linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9DE6F2"/><stop offset="1" stop-color="#49BCD7"/></linearGradient>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#6F98AB" flood-opacity=".13"/></filter>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#1598B5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></marker>
+<style>
+.out{stroke:#174B68;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.pipe{fill:none;stroke:#A9DFEB;stroke-width:19;stroke-linecap:round;stroke-linejoin:round}
+.edge{fill:none;stroke:#174B68;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow{fill:none;stroke:#1394B2;stroke-width:3;stroke-linecap:round;marker-end:url(#arrow)}
+.txt{font:700 19px Arial,Helvetica,sans-serif;fill:#19445D}
+.mini{font:600 15px Arial,Helvetica,sans-serif;fill:#537589}
+.axis{font:700 italic 22px Arial,Helvetica,sans-serif;fill:#19445D}
+</style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- suction pipe and discharge line behind pump -->
+<path d="M54 282H188" class="pipe"/><path d="M54 282H188" class="edge"/>
+<path d="M291 196V147H362" class="pipe"/><path d="M291 196V147H362" class="edge"/>
+<path d="M94 282H141" class="flow"/><path d="M293 185V157" class="flow"/>
+<!-- pump + strainer -->
+<g filter="url(#shadow)">
+<rect x="162" y="243" width="71" height="77" rx="13" fill="url(#metal)" class="out"/>
+<path d="M174 239V228Q174 220 182 220H216Q224 220 224 228V243Z" fill="#D5EAF2" class="out"/>
+<path d="M183 234H215" stroke="#6E9AAE" stroke-width="2" stroke-linecap="round"/>
+<rect x="183" y="247" width="32" height="44" rx="7" fill="#EAF6F9" stroke="#79AABD" stroke-width="1.7"/>
+<path d="M190 258H207M190 267H207M190 276H207" stroke="#7EC7D9" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M232 260H246" class="out"/>
+<path d="M234 260C244 235 270 221 292 233C314 245 327 269 315 294C306 313 286 322 267 316C243 310 228 287 234 260Z" fill="url(#metal)" class="out"/>
+<circle cx="276" cy="273" r="31" fill="#D8F2F7" class="out"/>
+<path d="M276 253C294 254 298 268 288 274C279 281 268 274 274 264C254 267 252 288 269 291" fill="none" stroke="#36AAC8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="276" cy="273" r="5" fill="#1B6988"/>
+<rect x="304" y="255" width="55" height="37" rx="7" fill="url(#metal)" class="out"/>
+<path d="M315 265V282M327 265V282M339 265V282M350 265V282" stroke="#7DABBF" stroke-width="2"/>
+<path d="M174 322H348" stroke="#174B68" stroke-width="4" stroke-linecap="round"/>
+<path d="M190 323V334H337V323" fill="#BBD8E5" class="out"/>
+</g>
+<text x="250" y="367" class="txt" text-anchor="middle">Циркуляционный насос</text>
+<text x="93" y="258" class="mini" text-anchor="middle">Всасывание</text>
+<text x="356" y="132" class="mini" text-anchor="middle">Подача</text>
+<!-- conditional curves card -->
+<g filter="url(#shadow)"><rect x="402" y="101" width="327" height="282" rx="21" fill="#FFFFFF" stroke="#DBE9EF" stroke-width="2"/></g>
+<text x="566" y="130" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#19445D" text-anchor="middle">Рабочая точка</text>
+<path d="M455 168V326H694" class="edge"/>
+<path d="M455 273H694M455 220H694" fill="none" stroke="#E2ECF1" stroke-width="1.2" stroke-dasharray="5 6"/>
+<path d="M475 190Q535 210 589 252Q635 281 670 307" fill="none" stroke="#158DAD" stroke-width="4.5" stroke-linecap="round"/>
+<path d="M476 312Q535 298 589 252Q631 218 670 194" fill="none" stroke="#C18A54" stroke-width="4.5" stroke-linecap="round"/>
+<!-- intersection approximately x 587, y 251 -->
+<circle cx="589" cy="252" r="8" fill="#163E59" stroke="#FFFFFF" stroke-width="3"/>
+<path d="M589 259V326M455 252H582" stroke="#7B98AA" stroke-dasharray="5 6" stroke-width="1.6"/>
+<path d="M598 248L630 228" stroke="#174B68" stroke-width="1.5" stroke-linecap="round"/>
+<text x="463" y="164" class="axis">H</text><text x="694" y="356" class="axis" text-anchor="middle">Q</text>
+<text x="477" y="208" class="mini">Насос</text>
+<text x="634" y="186" class="mini">Сеть</text>
+<text x="633" y="220" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#174B68">Q, H</text>
+<!-- step pills for selection criteria -->
+<g font-family="Arial,Helvetica,sans-serif" text-anchor="middle" font-size="17" font-weight="700" fill="#19445D">
+ <rect x="66" y="410" width="180" height="62" rx="31" fill="#EEF8FB" stroke="#A3D5E3" stroke-width="2"/>
+ <rect x="294" y="410" width="180" height="62" rx="31" fill="#EEF8FB" stroke="#A3D5E3" stroke-width="2"/>
+ <rect x="522" y="410" width="180" height="62" rx="31" fill="#EEF8FB" stroke="#A3D5E3" stroke-width="2"/>
+ <text x="156" y="435">1. Расход</text><text x="156" y="457" font-size="14" font-weight="400">Q, м³/ч</text>
+ <text x="384" y="435">2. Напор</text><text x="384" y="457" font-size="14" font-weight="400">H, м</text>
+ <text x="612" y="435">3. Всасывание</text><text x="612" y="457" font-size="14" font-weight="400">проверка NPSH</text>
+</g>
+</svg>

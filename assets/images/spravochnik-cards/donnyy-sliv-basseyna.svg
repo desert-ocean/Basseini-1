@@ -1,1 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Донный слив бассейна</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path d="M95 135v216h578" fill="#dff2f4" stroke="#183a4a" stroke-width="12"/><path d="M95 230h578" stroke="#178e9e" stroke-width="8"/><rect x="334" y="323" width="118" height="31" rx="14" fill="#fff" stroke="#183a4a" stroke-width="9"/><path d="M353 323v-42m80 42v-42m-69 0h58m-48-14h38" stroke="#183a4a" stroke-width="8"/><path class="pipe thin" d="M393 354v82h210"/><path class="water thin" d="M393 420h188" marker-end="url(#arrow)"/><text x="460" y="291" class="small">защитная решётка</text><text x="430" y="469" class="small">водозаборная линия</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Донный водозабор бассейна</title>
+<desc id="desc">Условный разрез чаши с двумя защищёнными донными водозаборами и общей всасывающей линией к насосу. Не монтажная схема.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f4f8fa"/></linearGradient>
+ <linearGradient id="pool" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#b5eefa"/><stop offset=".7" stop-color="#68cee5"/><stop offset="1" stop-color="#34b2d1"/></linearGradient>
+ <linearGradient id="concrete" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#eaf3f7"/><stop offset="1" stop-color="#c9dde9"/></linearGradient>
+ <linearGradient id="pipe" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#d2eaf4"/><stop offset="1" stop-color="#9bc9dc"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-35%" width="140%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#547b90" flood-opacity=".13"/></filter>
+ <marker id="flow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="#128fac" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker>
+ <style>.outline{stroke:#144565;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}.pipe{stroke:#144565;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}.txt{font-family:Arial,Helvetica,sans-serif;fill:#204e68}.small{font-size:18px;font-weight:700}.label{font-size:16px;font-weight:600}</style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- simple sectioned basin, intentionally not a detailed installation drawing -->
+<g filter="url(#shadow)">
+ <path d="M100 117V304Q100 323 120 323H605Q625 323 625 304V117" fill="none" stroke="#d2e2eb" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M100 117V304Q100 323 120 323H605Q625 323 625 304V117" fill="none" stroke="#154866" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M101 150V300Q101 322 123 322H602Q624 322 624 300V150Z" fill="url(#pool)"/>
+ <path d="M101 150H624" stroke="#4ebed8" stroke-width="3"/>
+ <path d="M137 169Q167 161 195 169T251 169T307 169T363 169T419 169T475 169T531 169T587 169" fill="none" stroke="#e7fbff" stroke-width="3.5" stroke-linecap="round" opacity=".86"/>
+ <path d="M150 194Q176 187 202 194T254 194T306 194T358 194T410 194T462 194T514 194T566 194" fill="none" stroke="#dffaff" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+</g>
+<!-- two mechanically fixed grilles, inset at bottom -->
+<g>
+ <rect x="217" y="312" width="88" height="14" rx="6" fill="#edf7fa" class="outline"/>
+ <rect x="430" y="312" width="88" height="14" rx="6" fill="#edf7fa" class="outline"/>
+ <g stroke="#487d96" stroke-width="2.3" stroke-linecap="round">
+ <path d="M229 316v7M241 316v7M253 316v7M265 316v7M277 316v7M289 316v7"/>
+ <path d="M442 316v7M454 316v7M466 316v7M478 316v7M490 316v7M502 316v7"/>
+ </g>
+ <circle cx="223" cy="319" r="2" fill="#144565"/><circle cx="299" cy="319" r="2" fill="#144565"/>
+ <circle cx="436" cy="319" r="2" fill="#144565"/><circle cx="512" cy="319" r="2" fill="#144565"/>
+</g>
+<!-- common manifold below basin, two branches connected -->
+<g>
+ <path d="M260 326V386H480V326" fill="none" stroke="#e4eff4" stroke-width="21" stroke-linejoin="round"/>
+ <path d="M260 326V386H480V326" fill="none" stroke="#154866" stroke-width="24" stroke-linejoin="round"/>
+ <path d="M260 326V386H480V326" fill="none" stroke="url(#pipe)" stroke-width="18" stroke-linejoin="round"/>
+ <path d="M370 386H648" fill="none" stroke="#154866" stroke-width="24" stroke-linecap="round"/>
+ <path d="M370 386H648" fill="none" stroke="url(#pipe)" stroke-width="18" stroke-linecap="round"/>
+ <path d="M389 386H452M505 386H558M588 386H637" fill="none" stroke="#169dbb" stroke-width="3" stroke-linecap="round" marker-end="url(#flow)"/>
+</g>
+<!-- soft flow cues, not a guarantee of anti-entrapment -->
+<g stroke="#e6faff" stroke-width="3" fill="none" stroke-linecap="round" marker-end="url(#flow)">
+ <path d="M261 263V300"/><path d="M474 263V300"/>
+</g>
+<!-- labels -->
+<path d="M260 306L197 273H120" fill="none" stroke="#547f96" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="260" cy="306" r="3" fill="#164b6b"/>
+<text x="118" y="244" class="txt small">Защитная</text>
+<text x="118" y="265" class="txt small">решётка</text>
+<text x="566" y="353" class="txt label">К насосу</text>
+<rect x="240" y="432" width="289" height="52" rx="26" fill="#eaf7fa" stroke="#99d6e5" stroke-width="2"/>
+<text x="384.5" y="464" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#174f6c" text-anchor="middle">Два донных водозабора</text>
+</svg>

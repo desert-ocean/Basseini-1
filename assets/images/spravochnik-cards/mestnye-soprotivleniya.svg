@@ -1,1 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Местные сопротивления трубопровода</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path class="pipe" d="M60 258h120q45 0 45-45v-90h120v90q0 45 45 45h90m0 0h85"/><path class="pipe thin" d="M380 258v100h115"/><path class="water thin" d="M70 258h120m168 0h200" marker-end="url(#arrow)"/><path class="water thin" d="M350 340h120" marker-end="url(#arrow)"/><circle fill="#eaf5f7" stroke="#183a4a" stroke-width="12" cx="550" cy="258" r="38"/><path d="M550 220v76m-28-38h56" stroke="#183a4a" stroke-width="10"/><text x="90" y="414" class="small">отвод · тройник · арматура</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Местные сопротивления трубопровода</title>
+<desc id="desc">Три технических примера: отвод девяносто градусов, тройник с ответвлением и шаровой кран. Голубые стрелки показывают движение воды; каждый элемент создаёт местные потери напора.</desc>
+<defs>
+ <linearGradient id="shell" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f7fbfd"/><stop offset=".58" stop-color="#dfedf4"/><stop offset="1" stop-color="#c8dfed"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9fe1f2"/><stop offset="1" stop-color="#46b6d8"/></linearGradient>
+ <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9fcfe"/><stop offset="1" stop-color="#bad4e3"/></linearGradient>
+ <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.4" markerHeight="5.4" orient="auto"><path d="M1 1 9 5 1 9" fill="none" stroke="#117da5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+ <filter id="shadow" x="-15%" y="-25%" width="130%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="11" flood-color="#214d65" flood-opacity=".07"/></filter>
+</defs>
+<rect width="768" height="512" fill="#fff"/>
+<g opacity=".92" filter="url(#shadow)">
+ <rect x="30" y="65" width="224" height="350" rx="22" fill="#fbfdfe" stroke="#e0edf2" stroke-width="1.5"/>
+ <rect x="272" y="65" width="224" height="350" rx="22" fill="#fbfdfe" stroke="#e0edf2" stroke-width="1.5"/>
+ <rect x="514" y="65" width="224" height="350" rx="22" fill="#fbfdfe" stroke="#e0edf2" stroke-width="1.5"/>
+</g>
+<!-- 90 degree elbow: paired coaxial paths preserve a uniform pipe diameter -->
+<g stroke-linecap="round" stroke-linejoin="round">
+ <path d="M82 289 H135 Q185 289 185 239 V148" fill="none" stroke="#123d58" stroke-width="67"/>
+ <path d="M82 289 H135 Q185 289 185 239 V148" fill="none" stroke="url(#shell)" stroke-width="62"/>
+ <path d="M82 289 H135 Q185 289 185 239 V148" fill="none" stroke="#123d58" stroke-width="44"/>
+ <path d="M82 289 H135 Q185 289 185 239 V148" fill="none" stroke="url(#water)" stroke-width="40"/>
+ <path d="M80 289 H134 Q185 289 185 240 V164" fill="none" stroke="#e0f9ff" stroke-width="2.5" opacity=".9" stroke-dasharray="23 12"/>
+ <path d="M91 289 H136 Q185 289 185 237 V163" fill="none" stroke="#087fa7" stroke-width="3.5" marker-end="url(#arr)"/>
+ <path d="M66 254 V323 M202 135 H168" stroke="#b3cdd9" stroke-width="2" opacity=".75"/>
+</g>
+<!-- tee main run + branch. All waterways are joined at the center -->
+<g stroke-linejoin="round" stroke-linecap="round">
+ <path d="M311 270 H457 M384 270 V145" fill="none" stroke="#123d58" stroke-width="70"/>
+ <path d="M311 270 H457 M384 270 V145" fill="none" stroke="url(#shell)" stroke-width="65"/>
+ <path d="M311 270 H457 M384 270 V145" fill="none" stroke="#123d58" stroke-width="48"/>
+ <path d="M311 270 H457 M384 270 V145" fill="none" stroke="url(#water)" stroke-width="44"/>
+ <path d="M323 270 H445" fill="none" stroke="#e1f7fd" stroke-width="2.5" stroke-dasharray="16 12"/>
+ <path d="M326 270 H445" fill="none" stroke="#087fa7" stroke-width="3.3" marker-end="url(#arr)"/>
+ <path d="M384 267 V163" fill="none" stroke="#087fa7" stroke-width="3.3" marker-end="url(#arr)"/>
+ <path d="M384 221 Q375 242 355 250" fill="none" stroke="#eaffff" stroke-width="2" opacity=".85"/>
+</g>
+<!-- ball valve, shown in line: cylindrical body, ball port and operating handle -->
+<g stroke-linejoin="round" stroke-linecap="round">
+ <path d="M548 269 H704" fill="none" stroke="#123d58" stroke-width="64"/>
+ <path d="M548 269 H704" fill="none" stroke="url(#shell)" stroke-width="59"/>
+ <path d="M548 269 H704" fill="none" stroke="#123d58" stroke-width="42"/>
+ <path d="M548 269 H704" fill="none" stroke="url(#water)" stroke-width="38"/>
+ <rect x="597" y="223" width="63" height="93" rx="15" fill="url(#steel)" stroke="#123d58" stroke-width="3"/>
+ <rect x="608" y="234" width="42" height="71" rx="12" fill="#deeff6" stroke="#7baec6" stroke-width="1.5"/>
+ <circle cx="628.5" cy="269" r="24" fill="#b8d9e7" stroke="#123d58" stroke-width="3"/>
+ <rect x="608" y="256" width="41" height="26" rx="9" fill="url(#water)" stroke="#1b6c8b" stroke-width="1.4"/>
+ <path d="M628 223 V193" stroke="#123d58" stroke-width="9"/>
+ <path d="M628 223 V193" stroke="#a6cbdc" stroke-width="5"/>
+ <path d="M625 190 H689" stroke="#123d58" stroke-width="12"/>
+ <path d="M625 190 H689" stroke="#4c9bc0" stroke-width="8"/>
+ <circle cx="628" cy="190" r="7" fill="#e7f2f7" stroke="#123d58" stroke-width="2"/>
+ <path d="M548 269 H589 M670 269 H700" stroke="#087fa7" stroke-width="3.3" fill="none" marker-end="url(#arr)"/>
+</g>
+<!-- labels and understated loss indication -->
+<g font-family="Arial,Helvetica,sans-serif" text-anchor="middle" fill="#173a51">
+ <text x="142" y="357" font-size="21" font-weight="700">Отвод 90°</text>
+ <text x="384" y="357" font-size="21" font-weight="700">Тройник</text>
+ <text x="626" y="357" font-size="21" font-weight="700">Кран</text>
+ <text x="142" y="386" font-size="13" fill="#6b8b9b">Изменение направления</text>
+ <text x="384" y="386" font-size="13" fill="#6b8b9b">Разделение потока</text>
+ <text x="626" y="386" font-size="13" fill="#6b8b9b">Местное сужение</text>
+</g>
+<g transform="translate(235 439)">
+ <rect width="298" height="47" rx="23.5" fill="#edf8fb" stroke="#accfdd" stroke-width="1.6"/>
+ <path d="M25 24 H61" fill="none" stroke="#188db2" stroke-width="3" marker-end="url(#arr)"/>
+ <text x="81" y="30" fill="#234b62" font-size="18" font-family="Arial,Helvetica,sans-serif" font-weight="700">Δh = ζ · v² / 2g</text>
+</g>
+</svg>

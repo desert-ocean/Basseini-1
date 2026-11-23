@@ -1,1 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Свободный и связанный хлор</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path d="M165 155h145l-15 215q-6 42-58 42t-57-42z" fill="#e3f5f6" stroke="#183a4a" stroke-width="10"/><path d="M183 284h110" stroke="#178e9e" stroke-width="12"/><circle fill="#fff" stroke="#178e9e" stroke-width="8" cx="237" cy="220" r="27"/><path d="M433 155h145l-15 215q-6 42-58 42t-57-42z" fill="#e7eef3" stroke="#183a4a" stroke-width="10"/><path d="M451 284h110" stroke="#6a91a6" stroke-width="12"/><circle fill="#fff" stroke="#6a91a6" stroke-width="8" cx="505" cy="220" r="27"/><text x="150" y="455" class="small">свободный</text><text x="422" y="455" class="small">связанный</text><text x="316" y="94" class="label">Cl₂</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Свободный, связанный и общий хлор</title>
+<desc id="desc">Три лабораторные колбы с голубым, золотистым и составным показателями. Схема: свободный плюс связанный равняется общему хлору.</desc>
+<defs>
+  <linearGradient id="background" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4F8FA"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFFFFF" stop-opacity=".96"/><stop offset="1" stop-color="#D9EAF2" stop-opacity=".65"/></linearGradient>
+  <linearGradient id="free" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#A8EAF6"/><stop offset="1" stop-color="#40BFD8"/></linearGradient>
+  <linearGradient id="bound" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFE5AF"/><stop offset="1" stop-color="#EFB565"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#54788C" flood-opacity=".12"/></filter>
+  <clipPath id="tube1"><rect x="136" y="131" width="88" height="187" rx="39"/></clipPath>
+  <clipPath id="tube2"><rect x="340" y="131" width="88" height="187" rx="39"/></clipPath>
+  <clipPath id="tube3"><rect x="544" y="131" width="88" height="187" rx="39"/></clipPath>
+</defs>
+<rect width="768" height="512" fill="url(#background)"/>
+<!-- a discreet scientific measurement baseline -->
+<path d="M78 351H690" stroke="#DEEAF0" stroke-width="2" stroke-linecap="round"/>
+<!-- laboratory glassware -->
+<g filter="url(#shadow)">
+ <rect x="128" y="120" width="104" height="207" rx="49" fill="url(#glass)" stroke="#194B6A" stroke-width="2.7"/>
+ <rect x="332" y="120" width="104" height="207" rx="49" fill="url(#glass)" stroke="#194B6A" stroke-width="2.7"/>
+ <rect x="536" y="120" width="104" height="207" rx="49" fill="url(#glass)" stroke="#194B6A" stroke-width="2.7"/>
+</g>
+<!-- contents, explicitly conceptual rather than concentration scale -->
+<g clip-path="url(#tube1)">
+ <path d="M133 209C155 198 174 219 198 206S225 211 229 207V324H132Z" fill="url(#free)"/>
+ <path d="M143 217C163 209 182 228 212 215" stroke="#E5FAFF" stroke-width="3" stroke-linecap="round" fill="none"/>
+</g>
+<g clip-path="url(#tube2)">
+ <path d="M335 242C354 234 375 251 398 238S423 243 435 240V324H335Z" fill="url(#bound)"/>
+ <path d="M345 251C366 243 382 261 418 247" stroke="#FFF6DE" stroke-width="3" stroke-linecap="round" fill="none"/>
+</g>
+<g clip-path="url(#tube3)">
+ <path d="M540 209C562 198 581 219 605 206S633 211 637 207V324H540Z" fill="url(#free)"/>
+ <path d="M540 264C558 254 580 273 607 262S629 263 637 261V324H540Z" fill="url(#bound)" opacity=".96"/>
+ <path d="M550 213C570 205 590 224 621 211" stroke="#E5FAFF" stroke-width="3" stroke-linecap="round" fill="none"/>
+</g>
+<!-- glass highlights and graduated marks -->
+<g stroke="#FFFFFF" opacity=".75" stroke-width="4" stroke-linecap="round">
+ <path d="M149 155V193"/><path d="M353 155V193"/><path d="M557 155V193"/>
+</g>
+<g stroke="#6099B0" stroke-width="1.5" opacity=".7" stroke-linecap="round">
+ <path d="M216 185H225M216 202H225M216 219H225M216 236H225"/>
+ <path d="M420 185H429M420 202H429M420 219H429M420 236H429"/>
+ <path d="M624 185H633M624 202H633M624 219H633M624 236H633"/>
+</g>
+<!-- math operators placed centrally -->
+<g fill="#19516F" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="48" text-anchor="middle">
+ <text x="282" y="240">+</text>
+ <text x="486" y="240">=</text>
+</g>
+<!-- labels -->
+<g fill="#183F58" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" text-anchor="middle">
+ <text x="180" y="387">Свободный</text>
+ <text x="384" y="387">Связанный</text>
+ <text x="588" y="387">Общий</text>
+</g>
+<g fill="#5B7889" font-family="Arial,Helvetica,sans-serif" font-size="16" text-anchor="middle">
+ <text x="180" y="411">хлор</text><text x="384" y="411">хлор</text><text x="588" y="411">хлор</text>
+</g>
+<rect x="210" y="442" width="348" height="48" rx="24" fill="#ECF7FA" stroke="#A8D7E4" stroke-width="1.8"/>
+<text x="384" y="472" fill="#164C69" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" text-anchor="middle">Связанный = Общий − Свободный</text>
+</svg>

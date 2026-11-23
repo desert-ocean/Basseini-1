@@ -1,1 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Как работает обратная промывка фильтра</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><rect class="soft-stroke" x="275" y="105" width="220" height="300" rx="82"/><path d="M292 298h186v55H292z" fill="#e7cf9a" stroke="#183a4a" stroke-width="7"/><path class="water" d="M385 380V230" marker-end="url(#arrow)"/><path class="water thin" d="M386 123V62h190" marker-end="url(#arrow)"/><path class="water thin" d="M250 250h-90v110h90" marker-end="url(#arrow)"/><path d="M368 262v-64m36 64v-64m36 64v-64" stroke="#178e9e" stroke-width="8"/><text x="295" y="449" class="small">обратный поток через загрузку</text><text x="520" y="88" class="small">слив</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Обратная промывка песчаного фильтра</title>
+<desc id="desc">Разрез фильтра: вода подаётся снизу через дренаж, проходит вверх через песчаную загрузку и уносит загрязнения в линию сброса в канализацию.</desc>
+<defs>
+ <linearGradient id="background" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f3f7f9"/></linearGradient>
+ <linearGradient id="shell" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#d8eaf2"/><stop offset=".32" stop-color="#f8fdff"/><stop offset=".73" stop-color="#ecf6fa"/><stop offset="1" stop-color="#c8e0eb"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b3ebf4"/><stop offset="1" stop-color="#5bc9e0"/></linearGradient>
+ <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dfd2b2"/><stop offset="1" stop-color="#c9b78d"/></linearGradient>
+ <marker id="arrowBlue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1L11 6L1 11" fill="none" stroke="#118caf" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></marker>
+ <marker id="arrowNavy" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1L11 6L1 11" fill="none" stroke="#143c58" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></marker>
+ <clipPath id="interior"><rect x="286" y="104" width="206" height="283" rx="98"/></clipPath>
+ <filter id="softShadow" x="-20%" y="-20%" width="150%" height="160%"><feDropShadow dx="0" dy="7" stdDeviation="12" flood-color="#315a6b" flood-opacity=".12"/></filter>
+ <style>
+ .pipe{stroke:#163f5d;stroke-width:3.1;stroke-linejoin:round;fill:none;stroke-linecap:round}
+ .flow{stroke:#138daf;stroke-width:4.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+ .label{fill:#24465b;font:600 20px Arial,Helvetica,sans-serif}
+ .small{fill:#607c8b;font:16px Arial,Helvetica,sans-serif}
+ </style>
+</defs>
+<rect width="768" height="512" fill="url(#background)"/>
+<!-- background pale halos -->
+<ellipse cx="387" cy="262" rx="210" ry="221" fill="#e9f6fa" opacity=".45"/>
+<!-- left pump / input line -->
+<path d="M130 352H232V344H280" stroke="#c7e3ef" stroke-width="27" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="pipe" d="M130 352H232V344H280"/>
+<path class="flow" d="M150 352H218" marker-end="url(#arrowBlue)"/>
+<path class="flow" d="M245 352H269" marker-end="url(#arrowBlue)"/>
+<!-- outlet to waste upper right -->
+<path d="M498 148H579V190H645" stroke="#c7e3ef" stroke-width="27" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="pipe" d="M498 148H579V190H645"/>
+<path class="flow" d="M516 148H560" marker-end="url(#arrowBlue)"/>
+<path class="flow" d="M598 190H628" marker-end="url(#arrowBlue)"/>
+<!-- glass-like filter tank -->
+<g filter="url(#softShadow)">
+ <rect x="279" y="96" width="220" height="300" rx="105" fill="url(#shell)" stroke="#143f5c" stroke-width="3.2"/>
+ <g clip-path="url(#interior)">
+   <rect x="286" y="104" width="206" height="283" fill="url(#water)" opacity=".7"/>
+   <path d="M281 222Q306 208 330 222T378 222T427 222T495 222V396H281Z" fill="url(#sand)"/>
+   <path d="M285 226Q314 218 339 225T397 224T458 225T497 223" stroke="#b5a37b" stroke-width="2" fill="none"/>
+   <!-- gentle granular texture -->
+   <g fill="#ae9870" opacity=".54">
+     <circle cx="327" cy="251" r="2.2"/><circle cx="365" cy="265" r="2"/><circle cx="413" cy="248" r="2"/><circle cx="454" cy="279" r="2.1"/>
+     <circle cx="306" cy="306" r="2"/><circle cx="345" cy="320" r="2.2"/><circle cx="399" cy="300" r="1.9"/><circle cx="453" cy="336" r="2.2"/>
+     <circle cx="318" cy="362" r="2"/><circle cx="367" cy="357" r="2"/><circle cx="428" cy="365" r="2"/>
+   </g>
+   <!-- lower distributors -->
+   <path d="M388 392V354M341 354H435" class="pipe" stroke-width="5"/>
+   <path d="M341 354L327 345M341 354L327 361M435 354L449 345M435 354L449 361" stroke="#194a69" stroke-width="3" fill="none" stroke-linecap="round"/>
+   <!-- upwards arrows through loading -->
+   <path class="flow" d="M343 337V260" marker-end="url(#arrowBlue)"/>
+   <path class="flow" d="M388 331V247" marker-end="url(#arrowBlue)"/>
+   <path class="flow" d="M433 337V260" marker-end="url(#arrowBlue)"/>
+   <path class="flow" d="M350 196V143" marker-end="url(#arrowBlue)"/>
+   <path class="flow" d="M425 198V143" marker-end="url(#arrowBlue)"/>
+   <!-- rising dirt -->
+   <g fill="#8c8f82" opacity=".75"><circle cx="319" cy="207" r="3"/><circle cx="372" cy="189" r="2.7"/><circle cx="452" cy="202" r="3.4"/><circle cx="403" cy="169" r="2"/><circle cx="336" cy="161" r="2.6"/></g>
+ </g>
+ <!-- center inlet riser to drain -->
+ <path d="M279 344H304L319 365H388" fill="none" stroke="#143f5c" stroke-width="3" stroke-linejoin="round"/>
+ <path d="M388 355V385" fill="none" stroke="#143f5c" stroke-width="3"/>
+ <path d="M388 124V148H500" fill="none" stroke="#143f5c" stroke-width="3"/>
+ <!-- tank top details -->
+ <path d="M324 98H452" stroke="#8bb4c7" stroke-width="3" opacity=".7"/>
+</g>
+<!-- stand -->
+<path d="M324 399L310 422H469L453 399" fill="#b7d4e4" stroke="#194763" stroke-width="2.8" stroke-linejoin="round"/>
+<path d="M295 423H484" stroke="#194763" stroke-width="3" stroke-linecap="round"/>
+<!-- callout labels -->
+<text x="64" y="290" class="label">Вода на</text>
+<text x="64" y="316" class="label">промывку</text>
+<path d="M163 325V340" stroke="#8caab9" stroke-width="1.5" stroke-dasharray="4 5"/>
+<text x="582" y="113" class="label">В сброс</text>
+<text x="582" y="137" class="small">(канализация)</text>
+<path d="M615 148V175" stroke="#90adbd" stroke-width="1.6" stroke-dasharray="4 5"/>
+<!-- subtle explanatory bottom pill -->
+<rect x="229" y="451" width="314" height="42" rx="21" fill="#e7f6fa" stroke="#80cadd" stroke-width="1.7"/>
+<path d="M259 478V465" stroke="#148dad" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowBlue)"/>
+<text x="385" y="478" text-anchor="middle" class="label" font-size="18" style="font-size:18px">Поток снизу вверх</text>
+</svg>

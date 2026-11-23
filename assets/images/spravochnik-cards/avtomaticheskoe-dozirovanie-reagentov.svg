@@ -1,1 +1,107 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Автоматическое дозирование реагентов</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path class="pipe" d="M75 280h620v72H75z"/><path class="water thin" d="M91 316h580" marker-end="url(#arrow)"/><rect class="soft-stroke" x="285" y="110" width="180" height="120" rx="18"/><path d="M315 150h120m-120 36h75" stroke="#183a4a" stroke-width="8"/><path d="M375 230v76" stroke="#178e9e" stroke-width="8"/><circle fill="#d8f0f3" stroke="#178e9e" stroke-width="8" cx="375" cy="262" r="17"/><path d="M130 280v-65h74v65" fill="#e8f5f7" stroke="#183a4a" stroke-width="8"/><path d="M168 212v-48h205" fill="none" stroke="#e4a43a" stroke-width="8"/><circle fill="#fff" stroke="#183a4a" stroke-width="7" cx="580" cy="174" r="35"/><path d="M580 174l15-17" stroke="#178e9e" stroke-width="7"/><text x="276" y="396" class="small">дозирование по измерению</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Автоматическое дозирование реагентов в бассейне</title>
+<desc id="desc">Проба воды отбирается из циркуляционного трубопровода в проточную измерительную ячейку. Датчики pH и хлора передают измерения контроллеру, который с учётом подтверждённого протока управляет двумя независимыми дозирующими насосами. Корректор pH и дезинфектант вводятся в отдельные точки потока.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f4f8fa"/></linearGradient>
+ <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbfeff"/><stop offset="1" stop-color="#dcebf2"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a7eaf6"/><stop offset="1" stop-color="#57c5df"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#678fa0" flood-opacity=".14"/></filter>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.7" markerHeight="6.7" orient="auto"><path d="M1 1L9 5L1 9" stroke="#1198b6" stroke-width="1.8" fill="none" stroke-linejoin="round" stroke-linecap="round"/></marker>
+ <style>
+ .stroke{stroke:#174a67;stroke-width:2.3;stroke-linejoin:round;stroke-linecap:round}
+ .fine{stroke:#6d9bb1;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;fill:none}
+ .pipe{stroke:#c1e9f2;stroke-width:16;stroke-linejoin:round;stroke-linecap:round;fill:none}
+ .pipeedge{stroke:#174a67;stroke-width:2;stroke-linejoin:round;stroke-linecap:round;fill:none}
+ .flow{stroke:#1198b6;stroke-width:2.8;stroke-linecap:round;fill:none;marker-end:url(#arrow)}
+ .wire{stroke:#629db8;stroke-width:2;stroke-dasharray:5 5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+ .label{font:700 18px Arial,Helvetica,sans-serif;fill:#194b67;text-anchor:middle}
+ .small{font:600 14px Arial,Helvetica,sans-serif;fill:#507589;text-anchor:middle}
+ .mini{font:700 15px Arial,Helvetica,sans-serif;fill:#194b67;text-anchor:middle}
+ </style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- main circulation manifold bottom -->
+<path d="M48 409H722" class="pipe"/>
+<path d="M48 409H722" class="pipeedge"/>
+<path d="M78 409H112M313 409H358M451 409H489M702 409H716" class="flow"/>
+<text x="380" y="462" class="small">Циркуляционный трубопровод бассейна</text>
+
+<!-- sample takeoff and return are a separate circulating sampling branch -->
+<path d="M135 409V308H163V290" class="pipe" style="stroke-width:10"/>
+<path d="M135 409V308H163V290" class="pipeedge" style="stroke-width:1.7"/>
+<path d="M240 290V310H286V409" class="pipe" style="stroke-width:10"/>
+<path d="M240 290V310H286V409" class="pipeedge" style="stroke-width:1.7"/>
+<path d="M135 366V338" class="flow"/>
+<path d="M286 342V375" class="flow"/>
+<!-- analysis cell -->
+<g filter="url(#shadow)">
+ <rect x="102" y="207" width="198" height="85" rx="18" fill="url(#panel)" class="stroke"/>
+ <rect x="118" y="242" width="163" height="37" rx="10" fill="#e2f5fa" stroke="#85c4d5" stroke-width="1.5"/>
+ <path d="M119 260H279" stroke="#71cde1" stroke-width="9" stroke-linecap="round"/>
+ <circle cx="155" cy="258" r="10" fill="#eafaff" class="stroke"/>
+ <circle cx="244" cy="258" r="10" fill="#eafaff" class="stroke"/>
+ <path d="M155 224V247M244 224V247" class="stroke" fill="none"/>
+ <rect x="143" y="214" width="24" height="14" rx="4" fill="#b2d5e2" class="stroke"/>
+ <rect x="232" y="214" width="24" height="14" rx="4" fill="#b2d5e2" class="stroke"/>
+</g>
+<text x="201" y="185" class="label">Измерительная ячейка</text>
+<text x="155" y="315" class="small">pH</text>
+<text x="244" y="315" class="small">Cl₂</text>
+<text x="125" y="444" class="small">Проба</text>
+
+<!-- controller upper centre -->
+<g filter="url(#shadow)">
+ <rect x="295" y="92" width="190" height="119" rx="19" fill="url(#panel)" class="stroke"/>
+ <rect x="316" y="113" width="147" height="66" rx="10" fill="#f9fdff" stroke="#9fc8d7" stroke-width="1.5"/>
+ <rect x="333" y="128" width="60" height="9" rx="4.5" fill="#93d9e8"/>
+ <path d="M334 153H446M334 164H417" class="fine"/>
+ <circle cx="442" cy="132" r="7" fill="#66c7db" stroke="#1b718e" stroke-width="1.6"/>
+ <circle cx="328" cy="195" r="4" fill="#2cb6d4"/>
+ <circle cx="345" cy="195" r="4" fill="#2cb6d4"/>
+ <circle cx="362" cy="195" r="4" fill="#bed6e2"/>
+</g>
+<text x="390" y="70" class="label">Контроллер</text>
+<!-- measurement to controller signal line, dashed not water pipe -->
+<path d="M253 206V162H294" class="wire"/>
+<circle cx="253" cy="206" r="4" fill="#6fa2b5"/>
+<text x="250" y="144" class="small">Сигналы датчиков</text>
+<!-- controller sends separate control signals -->
+<path d="M485 145H558V206M485 157H673V206" class="wire"/>
+
+<!-- two dosing pumps, separate and independent -->
+<g filter="url(#shadow)">
+ <rect x="521" y="213" width="76" height="59" rx="15" fill="url(#panel)" class="stroke"/>
+ <circle cx="551" cy="244" r="17" fill="#c1e9f3" class="stroke"/>
+ <circle cx="551" cy="244" r="7" fill="#48bbd3" stroke="#174a67" stroke-width="1.5"/>
+ <rect x="565" y="229" width="25" height="27" rx="5" fill="#d4e5ec" class="stroke"/>
+ <rect x="635" y="213" width="76" height="59" rx="15" fill="url(#panel)" class="stroke"/>
+ <circle cx="665" cy="244" r="17" fill="#c1e9f3" class="stroke"/>
+ <circle cx="665" cy="244" r="7" fill="#48bbd3" stroke="#174a67" stroke-width="1.5"/>
+ <rect x="679" y="229" width="25" height="27" rx="5" fill="#d4e5ec" class="stroke"/>
+</g>
+<text x="558" y="190" class="mini">Насос pH</text>
+<text x="674" y="190" class="mini">Насос Cl</text>
+
+<!-- reagent containers below dosing pumps, each pump has separate suction line -->
+<g filter="url(#shadow)">
+ <rect x="532" y="305" width="52" height="61" rx="8" fill="url(#panel)" class="stroke"/>
+ <rect x="646" y="305" width="52" height="61" rx="8" fill="url(#panel)" class="stroke"/>
+ <path d="M538 329H578V358H538Z" fill="#b2e4ee"/>
+ <path d="M652 329H692V358H652Z" fill="#f5d6a3"/>
+ <rect x="541" y="298" width="34" height="10" rx="3" fill="#b7d9e6" class="stroke"/>
+ <rect x="655" y="298" width="34" height="10" rx="3" fill="#b7d9e6" class="stroke"/>
+</g>
+<!-- suction lines reservoir to dedicated dosing pumps -->
+<path d="M558 306V276M672 306V276" stroke="#789eaf" stroke-width="2.2" stroke-linecap="round"/>
+<text x="558" y="351" class="mini" font-size="13">pH</text>
+<text x="672" y="351" class="mini">Cl</text>
+<!-- separate injection paths to points on main pipeline -->
+<path d="M595 243H610V395" fill="none" stroke="#3f9cba" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M711 243H725V374H684V395" fill="none" stroke="#d1a75b" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M605 388L610 397L615 388M679 388L684 397L689 388" fill="none" stroke="#174a67" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="610" cy="409" r="4.5" fill="#3cacc9" stroke="#174a67" stroke-width="1"/>
+<circle cx="684" cy="409" r="4.5" fill="#e3bb7e" stroke="#174a67" stroke-width="1"/>
+<!-- bottom information caption -->
+<rect x="251" y="475" width="370" height="29" rx="14.5" fill="#eef8fa" stroke="#b4dce7" stroke-width="1.4"/>
+<text x="436" y="494" class="small">Раздельные линии подачи и точки ввода</text>
+</svg>

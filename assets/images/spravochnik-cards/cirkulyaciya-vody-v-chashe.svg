@@ -1,1 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Циркуляция воды в чаше бассейна</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path d="M100 145v215q0 35 38 48l132 44h230l132-44q38-13 38-48V145" fill="#dff2f4" stroke="#183a4a" stroke-width="10"/><path d="M128 220h120m392 112H520" stroke="#2489a8" stroke-width="14" marker-end="url(#arrow)"/><path d="M250 220C345 184 465 210 520 258M520 318c-80 72-202 62-276 8" fill="none" stroke="#27a4b5" stroke-width="10" stroke-dasharray="18 11" marker-end="url(#arrow)"/><circle fill="#fff" stroke="#183a4a" stroke-width="8" cx="112" cy="220" r="20"/><circle fill="#fff" stroke="#183a4a" stroke-width="8" cx="646" cy="332" r="20"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title description">
+<title id="title">Циркуляция воды в чаше бассейна</title>
+<desc id="description">Условный вид бассейна сверху: вода поступает через три подающие форсунки слева, распределяется по чаше и направляется к поверхностному водозабору справа. Стрелки показывают возможные направления перемешивания, а не результаты гидродинамического расчёта.</desc>
+<defs>
+  <linearGradient id="back" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f4f8fa"/></linearGradient>
+  <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f2f8fa"/><stop offset="1" stop-color="#d9e9ef"/></linearGradient>
+  <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c2f0f7"/><stop offset=".52" stop-color="#8bddea"/><stop offset="1" stop-color="#5bc5dc"/></linearGradient>
+  <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#1598bc"/><stop offset="1" stop-color="#08688e"/></linearGradient>
+  <filter id="lift" x="-15%" y="-30%" width="130%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#4f8da4" flood-opacity=".13"/></filter>
+  <marker id="flowTip" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L11 6L1 11" fill="none" stroke="#096d96" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="768" height="512" fill="url(#back)"/>
+<!-- Pool basin, top plan with subtle architectural depth -->
+<g filter="url(#lift)">
+  <rect x="109" y="103" width="550" height="284" rx="28" fill="url(#rim)" stroke="#164567" stroke-width="2.8"/>
+  <rect x="128" y="122" width="512" height="246" rx="17" fill="url(#water)" stroke="#1599b7" stroke-width="2"/>
+  <path d="M130 151Q129 124 157 124H612Q639 124 639 151" fill="none" stroke="#ffffff" stroke-width="5" opacity=".82"/>
+  <path d="M129 339V351Q129 367 147 368H620Q638 368 638 348" fill="none" stroke="#26799a" stroke-width="3" opacity=".38"/>
+</g>
+<!-- subtle watercolor-like specular ripples -->
+<g stroke="#f4ffff" stroke-width="3.3" stroke-linecap="round" fill="none" opacity=".75">
+  <path d="M202 170q19-10 37 0t36 0t36 0"/>
+  <path d="M452 317q17-8 34 0t34 0t34 0"/>
+  <path d="M363 204q14-8 28 0t28 0" opacity=".58"/>
+</g>
+<!-- Three return inlet fixtures: blue ceramic rings built into left wall -->
+<g stroke="#16496c" stroke-width="2.3">
+  <rect x="120" y="163" width="18" height="29" rx="5" fill="#edf8fb"/>
+  <rect x="120" y="228" width="18" height="29" rx="5" fill="#edf8fb"/>
+  <rect x="120" y="293" width="18" height="29" rx="5" fill="#edf8fb"/>
+</g>
+<g fill="#36b9d7" stroke="#187ca0" stroke-width="1.4">
+  <circle cx="139" cy="177.5" r="5"/><circle cx="139" cy="242.5" r="5"/><circle cx="139" cy="307.5" r="5"/>
+</g>
+<!-- illustrative jet envelopes -->
+<g fill="#edfdff" opacity=".42">
+  <path d="M144 171L273 155L273 199L144 184Z"/>
+  <path d="M144 236L286 218L286 267L144 249Z"/>
+  <path d="M144 301L273 284L273 331L144 314Z"/>
+</g>
+<!-- Flow paths deliberately diverse / illustrative rather than proof of mixing -->
+<g fill="none" stroke="url(#flow)" stroke-width="4.5" stroke-linecap="round" marker-end="url(#flowTip)">
+  <path d="M153 177C251 132 402 141 509 178C542 190 555 207 575 226"/>
+  <path d="M153 243C278 245 410 225 565 242"/>
+  <path d="M153 308C249 357 418 351 513 306C552 287 560 269 578 254"/>
+</g>
+<!-- Local eddy icon indicates redistribution; no strong guarantee of flow field -->
+<path d="M397 264C381 251 365 257 364 273C363 287 382 293 392 280" stroke="#ffffff" stroke-width="3" opacity=".84" fill="none" stroke-linecap="round"/>
+<!-- Skimmer / intake along right-side wall -->
+<rect x="635" y="211" width="24" height="67" rx="8" fill="#eef8fb" stroke="#164567" stroke-width="2.4"/>
+<rect x="630" y="226" width="10" height="37" rx="4" fill="#0f7799"/>
+<path d="M635 233h15m-15 7h15m-15 7h15m-15 7h15" stroke="#4a9fba" stroke-width="1.4" opacity=".7"/>
+<!-- restrained captions and leaders -->
+<g font-family="Arial, Helvetica, sans-serif" fill="#174762">
+  <text x="113" y="75" font-size="19" font-weight="700">Подача воды</text>
+  <text x="658" y="75" text-anchor="end" font-size="19" font-weight="700">Водозабор</text>
+</g>
+<g stroke="#558ea6" stroke-width="1.7" fill="none" stroke-linecap="round">
+  <path d="M162 83L151 130L139 159"/>
+  <path d="M590 83L650 142L650 207"/>
+</g>
+<g fill="#174762" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">
+  <text x="384" y="444">Подача → перемешивание → водозабор</text>
+</g>
+<path d="M238 465H530" stroke="#9acbd9" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -1,1 +1,94 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Расчёт балансной ёмкости</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path d="M245 120h280v300H245z" fill="#edf7f8" stroke="#183a4a" stroke-width="10"/><path d="M257 280h256v126H257z" fill="#c8edf0" stroke="#178e9e" stroke-width="5"/><path d="M218 206h336m-336 68h336m-336 68h336" stroke="#9ab9c2" stroke-width="5" stroke-dasharray="12 10"/><path d="M565 180v214m-14-14 14 14 14-14m-28-186 14-14 14 14" fill="none" stroke="#183a4a" stroke-width="6"/><text x="294" y="250" class="label">полезный объём</text><text x="580" y="302" class="small">уровни</text><path class="water thin" d="M290 160h185" marker-end="url(#arrow)"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Расчёт балансной ёмкости переливного бассейна</title>
+<desc id="desc">Схема переливного бассейна, самотечного поступления воды в балансную ёмкость и отбора воды насосом. В баке показаны минимальный, нормальный и верхний рабочие уровни; расчёт объёма учитывает разные режимы работы.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop stop-color="#fff"/><stop offset="1" stop-color="#f4f8fa"/>
+  </linearGradient>
+  <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#f8fdff"/><stop offset="1" stop-color="#dcebf2"/>
+  </linearGradient>
+  <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+    <stop stop-color="#9ae4f1"/><stop offset="1" stop-color="#46bdd9"/>
+  </linearGradient>
+  <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+    <stop stop-color="#f9e8c9"/><stop offset="1" stop-color="#e0c093"/>
+  </linearGradient>
+  <filter id="shadow" x="-25%" y="-25%" width="150%" height="170%">
+    <feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#6b9aaa" flood-opacity=".13"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.6" markerHeight="6.6" orient="auto">
+    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#1099b7" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <style>
+    .stroke{stroke:#174b68;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+    .pipe{stroke:#b7e5ef;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;fill:none}
+    .pipe-edge{stroke:#174b68;stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round;fill:none}
+    .flow{stroke:#119bb9;stroke-width:3;stroke-linecap:round;fill:none;marker-end:url(#arrow)}
+    .title{font:700 18px Arial,Helvetica,sans-serif;fill:#174b68;text-anchor:middle}
+    .small{font:600 14px Arial,Helvetica,sans-serif;fill:#54778a;text-anchor:middle}
+    .level{font:600 14px Arial,Helvetica,sans-serif;fill:#174b68}
+  </style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+
+<!-- Pool side view and gutter at upper left -->
+<g filter="url(#shadow)">
+  <path d="M61 130 V240 Q61 249 70 249 H246 Q255 249 255 240 V143" fill="url(#wall)" class="stroke"/>
+  <path d="M70 153 H245 V236 Q245 239 240 239 H75 Q70 239 70 234Z" fill="url(#water)"/>
+  <path d="M71 156 Q90 147 108 156 T145 156 T181 156 T218 156 T246 156" fill="none" stroke="#e7fbff" stroke-width="3.4"/>
+  <path d="M255 145 V197 Q255 203 261 203 H287 Q293 203 293 197 V170" fill="url(#wall)" class="stroke"/>
+  <path d="M262 165 H286 V196 H262Z" fill="#8cddeb"/>
+  <path d="M247 150 Q261 148 263 165" fill="none" stroke="#20b1d0" stroke-width="3.7" stroke-linecap="round"/>
+  <path d="M263 175H287" stroke="#edfeff" stroke-width="2.2"/>
+</g>
+<text x="154" y="115" class="title">Переливной бассейн</text>
+<text x="278" y="140" class="small">Лоток</text>
+
+<!-- Gravity route -->
+<path d="M291 189 H354 Q367 189 367 202 V247" class="pipe"/>
+<path d="M291 189 H354 Q367 189 367 202 V247" class="pipe-edge"/>
+<path d="M310 189 H339" class="flow"/>
+<path d="M367 210 V236" class="flow"/>
+<text x="362" y="170" class="small">Самотёк</text>
+
+<!-- balance tank with three marked levels -->
+<g filter="url(#shadow)">
+  <rect x="285" y="254" width="268" height="156" rx="11" fill="url(#wall)" class="stroke"/>
+  <path d="M294 337 Q316 329 338 337 T382 337 T426 337 T470 337 T514 337 T544 337 V400 H294 Z" fill="url(#water)"/>
+  <path d="M294 337 Q316 329 338 337 T382 337 T426 337 T470 337 T514 337 T544 337" fill="none" stroke="#e9fcff" stroke-width="3.3"/>
+  <path d="M299 279 H540" stroke="#a1c2d0" stroke-width="1.6" stroke-dasharray="8 6"/>
+  <path d="M299 336 H540" stroke="#118eae" stroke-width="1.8" stroke-dasharray="7 6"/>
+  <path d="M299 386 H540" stroke="#366b87" stroke-width="1.6" stroke-dasharray="7 6"/>
+</g>
+<text x="419" y="236" class="title">Балансная ёмкость</text>
+<!-- level callouts to the right, compact and legible -->
+<path d="M553 279H583 M553 337H583 M553 386H583" fill="none" stroke="#a4c2d1" stroke-width="1.6"/>
+<text x="592" y="284" class="level">Верхний</text>
+<text x="592" y="342" class="level">Рабочий</text>
+<text x="592" y="391" class="level">Минимальный</text>
+<!-- maximum headroom on tank -->
+<path d="M272 279V336 M266 282L272 276L278 282 M266 332L272 338L278 332" fill="none" stroke="#4ab5cf" stroke-width="2" stroke-linecap="round"/>
+<!-- suction pipe and pump -->
+<path d="M420 410V440H489" class="pipe"/>
+<path d="M420 410V440H489" class="pipe-edge"/>
+<path d="M444 440H476" class="flow"/>
+<g filter="url(#shadow)">
+  <rect x="492" y="415" width="82" height="51" rx="16" fill="url(#wall)" class="stroke"/>
+  <circle cx="519" cy="440" r="18" fill="#c4eaf3" class="stroke"/>
+  <circle cx="519" cy="440" r="7" fill="#50c1d9" stroke="#174b68" stroke-width="1.8"/>
+  <rect x="539" y="424" width="27" height="30" rx="5" fill="#bad7e5" class="stroke"/>
+  <path d="M495 470H570" class="stroke"/>
+</g>
+<text x="534" y="496" class="small">Насос</text>
+
+<!-- low-key top graphic for the roles of water reserves -->
+<g transform="translate(60 294)">
+  <rect x="0" y="0" width="176" height="102" rx="18" fill="#f6fbfd" stroke="#d5e9ef" stroke-width="1.7"/>
+  <path d="M25 35H149" stroke="#b0cfdc" stroke-width="1.7" stroke-dasharray="6 6"/>
+  <path d="M29 56 Q41 46 53 56 T77 56 T101 56 T125 56 T148 56" fill="none" stroke="#38b9d4" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M29 72 Q42 62 55 72 T81 72 T107 72 T133 72" fill="none" stroke="#8edbe9" stroke-width="3" stroke-linecap="round"/>
+  <text x="88" y="22" class="small">Запас воды</text>
+  <text x="88" y="93" class="small">для разных режимов</text>
+</g>
+</svg>

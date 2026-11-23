@@ -1,1 +1,91 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Как работает переливная система бассейна</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path d="M85 115v195h250v-78h84v78h220V115" fill="#dff2f4" stroke="#183a4a" stroke-width="10"/><path d="M85 208h250m84 0h220" stroke="#178e9e" stroke-width="8"/><path class="water thin" d="M133 194h168" marker-end="url(#arrow)"/><path class="pipe thin" d="M640 152h42v130h-83v76H410"/><rect x="443" y="316" width="150" height="102" rx="18" fill="#e9f6f6" stroke="#183a4a" stroke-width="9"/><path class="pipe thin" d="M440 372h-118V322"/><circle fill="#fff" stroke="#183a4a" stroke-width="8" cx="258" cy="372" r="34"/><text x="451" y="452" class="small">балансная ёмкость</text><text x="367" y="168" class="small">лоток</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Как работает переливная система бассейна</title>
+<desc id="desc">Вода переливается из чаши в лоток, самотёком попадает в балансную ёмкость, затем насос прокачивает её через фильтр и возвращает в бассейн через подающие форсунки.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f3f8fa"/></linearGradient>
+  <linearGradient id="poolWater" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#83dfeb"/><stop offset="1" stop-color="#45bdd9"/></linearGradient>
+  <linearGradient id="shell" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9fcfe"/><stop offset="1" stop-color="#dbeaf1"/></linearGradient>
+  <linearGradient id="tankWater" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a3e9f3"/><stop offset="1" stop-color="#65cce2"/></linearGradient>
+  <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f4dfbb"/><stop offset="1" stop-color="#dab785"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#4c7990" flood-opacity=".14"/></filter>
+  <marker id="flowArrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.8" markerHeight="6.8" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#078fb5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <style>
+    .outline {stroke:#164868;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
+    .pipe {stroke:#a5dbe9;stroke-width:16;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .pipeEdge {stroke:#164868;stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .direction {stroke:#078fb5;stroke-width:3;fill:none;stroke-linecap:round;marker-end:url(#flowArrow)}
+    .label {font:700 18px Arial,Helvetica,sans-serif;fill:#1b4a65;text-anchor:middle}
+    .small {font:600 14px Arial,Helvetica,sans-serif;fill:#52768a;text-anchor:middle}
+  </style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- background hydraulic routes: gravity leg, tank to pump, filter return -->
+<path d="M390 228H448Q460 228 460 241V278H514" class="pipe"/>
+<path d="M390 228H448Q460 228 460 241V278H514" class="pipeEdge"/>
+<path d="M548 362V398H545" class="pipe"/>
+<path d="M548 362V398H545" class="pipeEdge"/>
+<path d="M479 414H401" class="pipe"/>
+<path d="M479 414H401" class="pipeEdge"/>
+<path d="M333 414H154Q142 414 142 402V294" class="pipe"/>
+<path d="M333 414H154Q142 414 142 402V294" class="pipeEdge"/>
+<!-- basin: section with high level near rim -->
+<g filter="url(#shadow)">
+ <path d="M92 148V283Q92 296 105 296H350Q365 296 365 282V176" fill="url(#shell)" class="outline"/>
+ <path d="M104 168H355V280Q355 286 349 286H110Q104 286 104 280Z" fill="url(#poolWater)"/>
+ <path d="M106 173C127 164 146 181 167 173S207 181 228 173 269 181 289 173 333 181 354 173" fill="none" stroke="#e9fcff" stroke-width="4" stroke-linecap="round"/>
+ <path d="M106 204C135 193 153 213 181 204S228 213 256 204 312 214 353 204" fill="none" stroke="#ddf9fc" stroke-width="2.5" stroke-linecap="round" opacity=".65"/>
+ <!-- overflow edge and trough -->
+ <path d="M365 171V241Q365 249 373 249H404Q412 249 412 241V204" fill="url(#shell)" class="outline"/>
+ <path d="M371 190H405V240H371Z" fill="#79d7e8"/>
+ <path d="M359 172Q368 168 373 180T389 192" fill="none" stroke="#31bdd8" stroke-width="4" stroke-linecap="round"/>
+ <path d="M373 189H405" stroke="#e9fcff" stroke-width="3" stroke-linecap="round"/>
+ <path d="M372 183H406" stroke="#164868" stroke-width="1.8" stroke-dasharray="4 5" opacity=".7"/>
+ <!-- supply nozzle -->
+ <circle cx="143" cy="280" r="8" fill="#f8fdff" stroke="#164868" stroke-width="2"/>
+ <path d="M143 279L169 257M144 282L176 283M145 278L164 265" stroke="#078fb5" stroke-width="2.3" stroke-linecap="round"/>
+</g>
+<!-- water direction over the overflow rim and down gravity pipe -->
+<path d="M336 166H363" class="direction"/>
+<path d="M425 228H443" class="direction"/>
+<path d="M460 244V265" class="direction"/>
+<!-- tank -->
+<g filter="url(#shadow)">
+ <rect x="486" y="272" width="156" height="105" rx="10" fill="url(#shell)" class="outline"/>
+ <path d="M495 310Q512 304 531 310T567 310 604 310 633 310V366H495Z" fill="url(#tankWater)"/>
+ <path d="M495 310Q512 304 531 310T567 310 604 310 633 310" fill="none" stroke="#e7fcff" stroke-width="3"/>
+ <path d="M492 278H636" stroke="#ffffff" stroke-width="2" opacity=".9"/>
+</g>
+<text x="565" y="257" class="label">Балансная ёмкость</text>
+<!-- flow from tank to pump -->
+<path d="M548 381V394" class="direction"/>
+<!-- pump silhouette -->
+<g filter="url(#shadow)">
+ <rect x="487" y="393" width="67" height="47" rx="17" fill="url(#shell)" class="outline"/>
+ <circle cx="512" cy="416" r="17" fill="#b9e6f1" class="outline"/>
+ <circle cx="512" cy="416" r="7" fill="#5ac5db" stroke="#164868" stroke-width="1.7"/>
+ <rect x="532" y="402" width="25" height="26" rx="5" fill="#d3e7f0" class="outline"/>
+ <path d="M495 443H554" class="outline"/>
+</g>
+<text x="516" y="467" class="label">Насос</text>
+<!-- pump -> filter direction -->
+<path d="M468 414H435" class="direction"/>
+<!-- sand filter -->
+<g filter="url(#shadow)">
+ <rect x="334" y="364" width="68" height="87" rx="29" fill="url(#shell)" class="outline"/>
+ <path d="M340 412Q355 407 369 412T396 412V430Q391 445 369 445Q346 445 340 430Z" fill="url(#sand)"/>
+ <path d="M339 411Q355 407 369 412T397 412" fill="none" stroke="#caa574" stroke-width="2"/>
+ <path d="M344 399H391" stroke="#93d6e8" stroke-width="4" stroke-linecap="round"/>
+ <path d="M362 370V386" stroke="#164868" stroke-width="2"/>
+ <rect x="355" y="357" width="28" height="10" rx="3" fill="#9fc4d4" class="outline"/>
+ <path d="M351 452H386" stroke="#164868" stroke-width="2" stroke-linecap="round"/>
+</g>
+<text x="369" y="475" class="label">Фильтр</text>
+<!-- return to pool -->
+<path d="M317 414H276" class="direction"/>
+<path d="M142 386V341" class="direction"/>
+<!-- concise zone labels -->
+<text x="222" y="131" class="label">Чаша бассейна</text>
+<text x="398" y="153" class="small">Лоток</text>
+<text x="448" y="207" class="small">Самотёк</text>
+<text x="223" y="449" class="small">Возврат воды</text>
+</svg>

@@ -83,11 +83,10 @@
 
 .reference-hub-page .reference-card {
 	min-width: 0;
-	min-height: 100%;
 	padding: 1.15rem;
 	border: 1px solid var(--reference-line);
 	border-radius: 8px;
-	background: #fff;
+	background: #f7fafb;
 	box-shadow: 0 5px 18px rgb(24 58 74 / 5%);
 	transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
 }
@@ -109,15 +108,12 @@
 	height: auto;
 	aspect-ratio: 3 / 2;
 	margin: 0 0 1rem;
-	border: 1px solid #e1eaed;
-	border-radius: 5px;
-	background: #f3f8f9;
+	background: #fff;
 	object-fit: contain;
 }
 
 .reference-hub-page .reference-card__body {
 	display: flex;
-	min-height: 12.5rem;
 	flex: 1;
 	flex-direction: column;
 	align-items: flex-start;
@@ -131,10 +127,10 @@
 	letter-spacing: .045em;
 }
 
-.reference-hub-page .reference-card h2 {
+#main .reference-hub-page .reference-card h2 {
 	margin: 0 0 .55rem;
-	font-size: 1.2rem;
-	line-height: 1.22;
+	font-size: 1.75rem;
+	line-height: 1.15;
 }
 
 .reference-hub-page .reference-card h2 a {
@@ -157,10 +153,8 @@
 
 .reference-hub-page .reference-card__action {
 	width: auto;
-	min-height: 2.8rem;
 	margin: auto 0 0;
-	padding: .7rem 1.1rem;
-	font-size: .76rem;
+	align-self: flex-start;
 }
 
 .reference-hub-page .reference-empty {
@@ -173,14 +167,6 @@
 
 .reference-hub-page .hint {
 	margin: 1.5rem 0;
-}
-
-.reference-hub-page > .panel:not(.reference-catalog-tools) {
-	margin-top: 2rem;
-}
-
-.reference-hub-page > footer:not(#footer) {
-	margin-top: 1.5rem;
 }
 
 .reference-hub-page a:focus-visible,
@@ -214,6 +200,12 @@
 	}
 }
 
+@media (min-width: 601px) and (max-width: 980px) {
+	#main .reference-hub-page .reference-card h2 {
+		font-size: 1.65rem;
+	}
+}
+
 @media (max-width: 600px) {
 	.reference-hub-page .reference-card-grid {
 		grid-template-columns: minmax(0, 1fr);
@@ -224,12 +216,8 @@
 		padding: .9rem;
 	}
 
-	.reference-hub-page .reference-card__body {
-		min-height: 0;
-	}
-
-	.reference-hub-page .reference-card h2 {
-		font-size: 1.15rem;
+	#main .reference-hub-page .reference-card h2 {
+		font-size: 1.6rem;
 	}
 }
 

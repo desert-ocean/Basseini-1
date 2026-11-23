@@ -1,1 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Как понять напор насоса</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path d="M108 384V119m0 265h550" stroke="#183a4a" stroke-width="8"/><path d="M143 345C235 327 270 300 330 252s112-110 282-148" fill="none" stroke="#178e9e" stroke-width="12"/><path d="M145 354C250 345 385 323 641 278" fill="none" stroke="#e4a43a" stroke-width="9" stroke-dasharray="15 12"/><circle fill="#fff" stroke="#183a4a" stroke-width="10" cx="438" cy="306" r="18"/><text x="60" y="112" class="label">H</text><text x="661" y="415" class="label">Q</text><text x="360" y="285" class="small">рабочая точка</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="ttl desc">
+<title id="ttl">Как понять напор насоса — инженерная иллюстрация ALPOOL</title>
+<desc id="desc">Центробежный насос и условные кривые напора насоса и сопротивления системы, пересекающиеся в рабочей точке.</desc>
+<defs>
+ <linearGradient id="shell" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9fdff"/><stop offset=".55" stop-color="#e5f2f8"/><stop offset="1" stop-color="#bdd8e9"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b6eff9"/><stop offset="1" stop-color="#55b9dd"/></linearGradient>
+ <linearGradient id="motor" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#eaf6fb"/><stop offset="1" stop-color="#afcfe2"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%"><feGaussianBlur stdDeviation="7"/></filter>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#238eb5" stroke-width="1.8" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="768" height="512" fill="#ffffff"/>
+<!-- subtle ground and left pump -->
+<ellipse cx="218" cy="376" rx="156" ry="15" fill="#b4cbd6" opacity=".17" filter="url(#shadow)"/>
+<path d="M77 356H352" fill="none" stroke="#cadde7" stroke-width="2" stroke-linecap="round"/>
+<!-- pump feet -->
+<path d="M137 343L129 364H191L188 344M278 339L282 364H325L317 337" fill="url(#motor)" stroke="#234b65" stroke-width="2.4" stroke-linejoin="round"/>
+<!-- motor casing -->
+<rect x="230" y="223" width="97" height="113" rx="19" fill="url(#motor)" stroke="#234b65" stroke-width="2.5"/>
+<rect x="322" y="246" width="25" height="67" rx="7" fill="#b2d0e1" stroke="#234b65" stroke-width="2.5"/>
+<g stroke="#477b97" stroke-width="2.5" opacity=".7">
+<path d="M247 228V331M259 225V334M271 225V334M283 225V334M295 225V334M307 228V332"/>
+</g>
+<rect x="322" y="265" width="13" height="25" rx="3" fill="#e3f2f8" stroke="#234b65" stroke-width="2"/>
+<!-- pump volute casing -->
+<path d="M191 218C228 218 250 242 250 280C250 318 218 346 179 346C139 346 112 318 112 278C112 236 143 208 183 212L183 181H218V224C210 220 203 218 191 218Z" fill="url(#shell)" stroke="#234b65" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="181" cy="278" r="48" fill="url(#water)" stroke="#234b65" stroke-width="2.7"/>
+<circle cx="181" cy="278" r="25" fill="#edfaff" stroke="#398ba9" stroke-width="2.1"/>
+<path d="M181 253C194 259 196 271 194 279C190 298 174 301 165 289C154 273 171 259 181 253Z" fill="#7ecbe2" opacity=".9"/>
+<circle cx="181" cy="278" r="6.5" fill="#246d91"/>
+<!-- inlet -->
+<path d="M83 264H115V292H83" fill="url(#shell)" stroke="#234b65" stroke-width="2.5"/>
+<rect x="75" y="258" width="11" height="40" rx="2" fill="#b6d7e8" stroke="#234b65" stroke-width="2"/>
+<path d="M45 278H78" stroke="#238eb5" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+<!-- outlet -->
+<path d="M184 210V183H216V218" fill="url(#water)" stroke="#234b65" stroke-width="2.5"/>
+<path d="M179 180H221" stroke="#234b65" stroke-width="3" stroke-linecap="round"/>
+<path d="M200 166V138H279" stroke="#238eb5" stroke-width="4" fill="none" marker-end="url(#arrow)" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M144 310Q180 335 216 311" stroke="#fff" stroke-width="3" opacity=".65" fill="none" stroke-linecap="round"/>
+<!-- graph right -->
+<rect x="393" y="104" width="313" height="282" rx="19" fill="#fbfdfe" stroke="#d8e9f0" stroke-width="2"/>
+<path d="M435 131V346H676" stroke="#294f67" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M435 294H676M435 241H676M435 188H676" stroke="#e5f0f5" stroke-width="1.7" stroke-dasharray="5 8"/>
+<text x="417" y="129" font-family="Arial,Helvetica,sans-serif" font-size="23" font-style="italic" fill="#183d56">H</text>
+<text x="679" y="366" font-family="Arial,Helvetica,sans-serif" font-size="23" font-style="italic" fill="#183d56">Q</text>
+<!-- decreasing pump head curve -->
+<path d="M450 160C500 165 552 189 582 226C608 257 632 284 665 300" fill="none" stroke="#1e5478" stroke-width="4.2" stroke-linecap="round"/>
+<!-- increasing system curve -->
+<path d="M450 331C498 325 531 302 553 266C576 230 595 189 632 145" fill="none" stroke="#2aaac4" stroke-width="4.2" stroke-linecap="round"/>
+<!-- crossover at approx 567 243? actual curves approximate --><circle cx="569" cy="241" r="8.5" fill="#fff" stroke="#1b6788" stroke-width="3.5"/>
+<path d="M569 250V345M435 241H559" stroke="#8fb5c8" stroke-width="1.7" stroke-dasharray="4 5" fill="none"/>
+<path d="M580 231L604 209" stroke="#316c85" stroke-width="1.5" fill="none"/>
+<rect x="585" y="178" width="103" height="27" rx="13.5" fill="#eaf7fb" stroke="#b2d7e4"/>
+<text x="637" y="195.5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12.5" font-weight="bold" fill="#28516a">Рабочая точка</text>
+<!-- legend simple and airy -->
+<path d="M425 407H458" stroke="#1e5478" stroke-width="4" stroke-linecap="round"/>
+<text x="468" y="412" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#31566c">Насос</text>
+<path d="M555 407H588" stroke="#2aaac4" stroke-width="4" stroke-linecap="round"/>
+<text x="598" y="412" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#31566c">Система</text>
+</svg>

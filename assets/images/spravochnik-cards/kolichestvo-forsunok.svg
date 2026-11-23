@@ -1,1 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Сколько форсунок нужно бассейну</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path d="M105 155v225h558" fill="#e2f4f5" stroke="#183a4a" stroke-width="10"/><path d="M105 240h558" stroke="#178e9e" stroke-width="7"/><path d="M170 272h140m40 0h140m40 0h80" stroke="#2489a8" stroke-width="12" marker-end="url(#arrow)"/><rect x="90" y="255" width="42" height="42" rx="8" fill="#fff" stroke="#183a4a" stroke-width="8"/><rect x="310" y="255" width="42" height="42" rx="8" fill="#fff" stroke="#183a4a" stroke-width="8"/><rect x="530" y="255" width="42" height="42" rx="8" fill="#fff" stroke="#183a4a" stroke-width="8"/><text x="276" y="433" class="label">Qобщ = ΣQветвей</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+<title id="title">Сколько форсунок нужно бассейну</title>
+<desc id="desc">Светлая инженерная иллюстрация бассейна с несколькими подающими форсунками и стрелками движения воды. Под бассейном формула предварительного количества форсунок N не меньше Q, делённого на паспортный расход одной форсунки q.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f4f8fa"/></linearGradient>
+ <linearGradient id="rim" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#f8fcfe"/><stop offset="1" stop-color="#dcecf3"/></linearGradient>
+ <linearGradient id="basin" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f0f8fb"/><stop offset="1" stop-color="#cde7f1"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#92e2f1"/><stop offset=".54" stop-color="#54c7e0"/><stop offset="1" stop-color="#36b4d2"/></linearGradient>
+ <filter id="shade" x="-20%" y="-20%" width="150%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#64889b" flood-opacity=".13"/></filter>
+ <marker id="flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#e9fbff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+ <style>.edge{stroke:#124764;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.flow{stroke:#edfcff;stroke-width:4;stroke-linecap:round;fill:none;marker-end:url(#flow-arrow)}.text{font-family:Arial,Helvetica,sans-serif;fill:#174662}</style>
+</defs>
+<rect width="768" height="512" fill="url(#bg)"/>
+<!-- simplified isometric basin -->
+<g filter="url(#shade)">
+ <path d="M93 309L199 154Q201 150 209 150H543Q550 150 554 155L675 309V359Q675 367 668 367H101Q93 367 93 359Z" fill="url(#basin)" class="edge"/>
+ <path d="M93 309L199 154Q201 150 209 150H543Q550 150 554 155L675 309Z" fill="url(#rim)" class="edge"/>
+ <path d="M135 297L219 175H536L629 297Z" fill="url(#water)" stroke="#1e92b6" stroke-width="2.2" stroke-linejoin="round"/>
+ <path d="M135 297L219 175L230 193L158 297Z" fill="#36b3d1" opacity=".38"/>
+ <path d="M629 297L536 175L529 193L608 297Z" fill="#0e9dc4" opacity=".24"/>
+ <path d="M93 309H675" stroke="#124764" stroke-width="2.5"/>
+</g>
+<!-- gentle surface reflections -->
+<path d="M237 206C265 196 285 216 313 207S360 198 389 207M419 211C448 201 470 218 502 207" stroke="#e4faff" stroke-width="3.2" opacity=".7" stroke-linecap="round" fill="none"/>
+<!-- five representative inlet nozzles on near pool wall, not a prescribed count -->
+<g>
+ <g fill="#e5f8fc" stroke="#145577" stroke-width="2.5">
+  <ellipse cx="183" cy="284" rx="10" ry="7" transform="rotate(-15 183 284)"/>
+  <ellipse cx="280" cy="291" rx="10" ry="7" transform="rotate(-8 280 291)"/>
+  <ellipse cx="385" cy="293" rx="10" ry="7"/>
+  <ellipse cx="492" cy="291" rx="10" ry="7" transform="rotate(8 492 291)"/>
+  <ellipse cx="590" cy="284" rx="10" ry="7" transform="rotate(15 590 284)"/>
+ </g>
+ <g fill="#2aaac9">
+  <ellipse cx="183" cy="284" rx="4.1" ry="3" transform="rotate(-15 183 284)"/>
+  <ellipse cx="280" cy="291" rx="4.1" ry="3" transform="rotate(-8 280 291)"/>
+  <ellipse cx="385" cy="293" rx="4.1" ry="3"/>
+  <ellipse cx="492" cy="291" rx="4.1" ry="3" transform="rotate(8 492 291)"/>
+  <ellipse cx="590" cy="284" rx="4.1" ry="3" transform="rotate(15 590 284)"/>
+ </g>
+</g>
+<!-- flow direction visually shows multiple supply points -->
+<path d="M185 270Q196 242 226 229" class="flow"/>
+<path d="M281 275Q290 242 316 231" class="flow"/>
+<path d="M385 276Q385 246 390 233" class="flow"/>
+<path d="M490 274Q480 242 455 230" class="flow"/>
+<path d="M588 270Q575 242 546 228" class="flow"/>
+<!-- minimal metric line -->
+<path d="M249 385H520" stroke="#d6e8ee" stroke-width="2" stroke-linecap="round"/>
+<rect x="205" y="403" width="358" height="70" rx="35" fill="#eaf7fa" stroke="#91d3e4" stroke-width="2.2"/>
+<text x="384" y="447" class="text" font-size="30" font-weight="700" text-anchor="middle">N ≥ Q / q</text>
+<text x="384" y="496" font-family="Arial,Helvetica,sans-serif" fill="#628292" font-size="13" text-anchor="middle">Предварительная оценка по расходу; расположение проверяют отдельно</text>
+</svg>

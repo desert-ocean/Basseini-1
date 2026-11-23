@@ -1,1 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Коагуляция воды бассейна</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><path class="pipe" d="M70 235h628v84H70z"/><path class="water thin" d="M86 277h580" marker-end="url(#arrow)"/><circle fill="#dff2f4" stroke="#178e9e" stroke-width="6" cx="160" cy="267" r="11"/><circle fill="#dff2f4" stroke="#178e9e" stroke-width="6" cx="231" cy="295" r="12"/><circle fill="#dff2f4" stroke="#178e9e" stroke-width="6" cx="303" cy="254" r="10"/><path d="M400 255l24-18 18 23-19 20zM495 284l30-28 27 28-28 29zM590 253l18-16 18 18-17 19z" fill="#e4a43a" stroke="#b77a20" stroke-width="5"/><rect x="608" y="170" width="72" height="150" rx="25" fill="#eef4f5" stroke="#183a4a" stroke-width="8"/><path d="M618 246h52" stroke="#c7aa6a" stroke-width="18"/><text x="116" y="390" class="small">частицы</text><text x="476" y="390" class="small">хлопья</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title description">
+<title id="title">Коагуляция воды бассейна</title>
+<desc id="description">Мелкая взвесь после добавления коагулянта образует укрупнённые хлопья, которые задерживаются фильтрующей загрузкой; справа показан фильтр с чистой водой на выходе.</desc>
+<defs>
+ <linearGradient id="background" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f5f9fb"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8f8fd"/><stop offset="1" stop-color="#b4e9f5"/></linearGradient>
+ <linearGradient id="vessel" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#e7f1f6"/><stop offset=".52" stop-color="#ffffff"/><stop offset="1" stop-color="#d6e7f0"/></linearGradient>
+ <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e9d5af"/><stop offset="1" stop-color="#cfb389"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#678e9f" flood-opacity=".12"/></filter>
+ <clipPath id="filterClip"><rect x="547" y="122" width="140" height="231" rx="60"/></clipPath>
+ <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 9 5 1 9" stroke="#1687aa" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></marker>
+ <g id="floc" fill="#2f91b1" stroke="#d7f5fb" stroke-width="1.8"><circle cx="-10" cy="-1" r="8"/><circle cx="2" cy="-9" r="10"/><circle cx="11" cy="3" r="9"/><circle cx="-2" cy="11" r="9"/><circle cx="2" cy="1" r="8"/></g>
+</defs>
+<rect width="768" height="512" fill="url(#background)"/>
+<!-- subtle main water flow -->
+<path d="M50 248 C100 218 161 222 207 241 S298 268 354 243 S438 215 503 242" stroke="#d7f3f9" stroke-width="83" stroke-linecap="round" fill="none" opacity=".66"/>
+<path d="M50 248 C100 218 161 222 207 241 S298 268 354 243 S438 215 503 242" stroke="#b1e5f2" stroke-width="2.2" stroke-linecap="round" fill="none" opacity=".9"/>
+<!-- fine particles in untreated water -->
+<g fill="#3a9fbb" opacity=".93">
+ <circle cx="72" cy="222" r="3.5"/><circle cx="97" cy="199" r="2.7"/><circle cx="112" cy="233" r="4"/><circle cx="141" cy="217" r="3.3"/><circle cx="163" cy="246" r="2.8"/><circle cx="92" cy="256" r="3.2"/><circle cx="134" cy="265" r="3"/><circle cx="175" cy="219" r="3.6"/><circle cx="198" cy="255" r="2.8"/><circle cx="69" cy="265" r="2.8"/><circle cx="118" cy="194" r="2.5"/><circle cx="159" cy="197" r="2.7"/><circle cx="193" cy="231" r="3.2"/><circle cx="151" cy="283" r="2.6"/><circle cx="88" cy="283" r="2.7"/><circle cx="211" cy="230" r="2.4"/>
+</g>
+<!-- coagulant dosing cue (an abstract droplet entering water, not a piping design) -->
+<g transform="translate(270 125)">
+ <path d="M0 -36 C-9 -20 -17 -8 -17 3 C-17 14 -10 21 0 21 S17 14 17 3 C17 -8 9 -20 0 -36Z" fill="#78d2e7" stroke="#137b9d" stroke-width="2.1"/>
+ <path d="M-9 2 C-9 9 -5 12 0 13" stroke="#e9fbff" stroke-width="3" stroke-linecap="round"/>
+ <path d="M0 29 V61" stroke="#429fb9" stroke-width="1.8" stroke-dasharray="4 6"/>
+</g>
+<g stroke="#1687aa" stroke-width="2.7" stroke-linecap="round" fill="none" marker-end="url(#arr)"><path d="M228 241 H280"/><path d="M457 242 H504"/></g>
+<!-- destabilized small aggregates, progressing toward larger flocs -->
+<g>
+ <use href="#floc" transform="translate(330 213) scale(.57)"/>
+ <use href="#floc" transform="translate(360 253) scale(.78)"/>
+ <use href="#floc" transform="translate(403 217) scale(.93)"/>
+ <use href="#floc" transform="translate(428 277) scale(.8)"/>
+ <use href="#floc" transform="translate(312 276) scale(.56)"/>
+</g>
+<!-- transparent sand filter; water flows down through granular medium -->
+<g filter="url(#shadow)">
+ <rect x="541" y="116" width="152" height="241" rx="65" fill="url(#vessel)" stroke="#174763" stroke-width="2.8"/>
+ <g clip-path="url(#filterClip)">
+  <path d="M545 168 Q618 156 690 168 V260 H545Z" fill="url(#water)" opacity=".88"/>
+  <path d="M545 260 Q618 252 690 260 V337 H545Z" fill="url(#sand)"/>
+  <path d="M545 260 Q618 252 690 260" stroke="#b99970" stroke-width="2" fill="none"/>
+  <!-- captured flocs just below surface -->
+  <use href="#floc" transform="translate(574 275) scale(.36)"/>
+  <use href="#floc" transform="translate(623 270) scale(.45)"/>
+  <use href="#floc" transform="translate(663 280) scale(.33)"/>
+  <g fill="#bca079" opacity=".75"><circle cx="559" cy="314" r="3"/><circle cx="591" cy="302" r="3"/><circle cx="611" cy="327" r="3"/><circle cx="647" cy="309" r="3"/><circle cx="678" cy="328" r="3"/><circle cx="568" cy="338" r="2.5"/><circle cx="635" cy="338" r="2.5"/></g>
+  <path d="M616 194 V245" stroke="#1485ac" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+ </g>
+ <rect x="582" y="98" width="72" height="20" rx="5" fill="#a5d4e5" stroke="#174763" stroke-width="2.2"/>
+ <path d="M618 98 V80 H508 V164" fill="none" stroke="#174763" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
+ <path d="M618 98 V80 H508 V164" fill="none" stroke="#89d8eb" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+ <path d="M618 357 V378 H708" fill="none" stroke="#174763" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M618 357 V378 H708" fill="none" stroke="#7cd2e7" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M698 378 H727" stroke="#1687aa" stroke-width="2.7" marker-end="url(#arr)"/>
+ <path d="M579 359 H657" stroke="#174763" stroke-width="3" stroke-linecap="round"/>
+</g>
+<!-- small technical titles: legible at card scale -->
+<g font-family="Arial,Helvetica,sans-serif" text-anchor="middle" fill="#164762">
+ <text x="136" y="340" font-size="22" font-weight="700">Мелкая взвесь</text>
+ <text x="378" y="340" font-size="22" font-weight="700">Хлопья</text>
+ <text x="620" y="418" font-size="22" font-weight="700">Фильтрация</text>
+</g>
+<text x="270" y="71" font-family="Arial,Helvetica,sans-serif" text-anchor="middle" font-size="17" font-weight="600" fill="#55798c">Коагулянт</text>
+<path d="M270 78 V85" stroke="#8caebd" stroke-width="2" stroke-linecap="round"/>
+</svg>

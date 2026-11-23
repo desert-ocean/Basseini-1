@@ -1,1 +1,129 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512"><title>Электробезопасность бассейна</title><defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1l9 5-9 5z" fill="#178e9e"/></marker></defs><style>.pipe{fill:#eaf5f7;stroke:#183a4a;stroke-width:14;stroke-linejoin:round}.pipe.thin{stroke-width:10}.water{fill:none;stroke:#2489a8;stroke-width:12;stroke-linecap:round}.water.thin{stroke-width:8}.pool{fill:#cbeef0;stroke:#183a4a;stroke-width:12;stroke-linejoin:round}.soft-stroke{fill:#eaf5f7;stroke:#183a4a;stroke-width:10}.label{font:800 28px "Source Sans Pro",Arial,sans-serif;fill:#183a4a}.small{font:700 20px "Source Sans Pro",Arial,sans-serif;fill:#426775}</style><rect width="768" height="512" fill="#f3f8f9"/><rect x="18" y="18" width="732" height="476" rx="28" fill="#fff" stroke="#dce8eb" stroke-width="3"/><g><rect class="soft-stroke" x="75" y="145" width="180" height="150" rx="20"/><path d="M111 186h108m-108 32h108m-108 32h70" stroke="#183a4a" stroke-width="8"/><path d="M255 220h112m0 0v160M366 220h115m0 0h126" fill="none" stroke="#278b63" stroke-width="11"/><circle fill="#e1f3e9" stroke="#278b63" stroke-width="8" cx="367" cy="380" r="24"/><circle fill="#e1f3e9" stroke="#278b63" stroke-width="8" cx="481" cy="220" r="24"/><circle fill="#e1f3e9" stroke="#278b63" stroke-width="8" cx="607" cy="220" r="24"/><path d="M366 354v-27m-13 13h27" stroke="#278b63" stroke-width="6"/><path d="M130 354h510" stroke="#9ab9c2" stroke-width="7" stroke-dasharray="13 12"/><text x="112" y="340" class="small">защита</text><text x="390" y="432" class="small">PE + уравнивание потенциалов</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+  <title id="title">Электробезопасность бассейна</title>
+  <desc id="desc">Крытый бассейн с условным делением на зоны, защитным заземлением, уравниванием потенциалов и устройством защитного отключения.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f4f8fa"/>
+    </linearGradient>
+    <linearGradient id="shell" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#dcebf2"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9fe6f3"/>
+      <stop offset="100%" stop-color="#47bdd9"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eff8fb"/>
+      <stop offset="100%" stop-color="#d4e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="170%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#628595" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.7" refY="5" markerWidth="6.6" markerHeight="6.6" orient="auto">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#1196b9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .stroke{stroke:#174a67;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+      .fine{stroke:#6e9aae;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;fill:none}
+      .flow{stroke:#1196b9;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;fill:none;marker-end:url(#arrow)}
+      .equip{fill:url(#panel);stroke:#174a67;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+      .zone0{fill:#d8f5fb;fill-opacity:.95;stroke:#7bcfdf;stroke-width:1.6}
+      .zone1{fill:#eaf8fb;fill-opacity:.85;stroke:#b2dfe9;stroke-width:1.4;stroke-dasharray:6 6}
+      .bond{stroke:#27abc8;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none}
+      .warn{fill:#fff3df;stroke:#b47b38;stroke-width:1.8}
+      .label{font:700 18px Arial,Helvetica,sans-serif;fill:#174a67;text-anchor:middle}
+      .small{font:600 14px Arial,Helvetica,sans-serif;fill:#54788a;text-anchor:middle}
+      .mini{font:700 14px Arial,Helvetica,sans-serif;fill:#174a67;text-anchor:middle}
+    </style>
+  </defs>
+
+  <rect width="768" height="512" fill="url(#bg)"/>
+
+  <!-- pool and zones -->
+  <g filter="url(#shadow)">
+    <rect x="72" y="118" width="358" height="238" rx="26" class="zone1"/>
+    <rect x="112" y="158" width="278" height="158" rx="18" class="zone0"/>
+    <path d="M134 180H368V297Q368 304 361 304H141Q134 304 134 297Z" fill="url(#water)" class="stroke"/>
+    <path d="M134 180Q162 170 190 180T246 180T302 180T368 180" fill="none" stroke="#eafcff" stroke-width="3.5"/>
+    <path d="M112 158H390V317H112Z" fill="none" class="stroke"/>
+    <!-- niche light -->
+    <circle cx="352" cy="225" r="13" fill="#f9fdff" stroke="#174a67" stroke-width="2"/>
+    <circle cx="352" cy="225" r="5" fill="#67cade"/>
+    <path d="M362 225h28" class="fine"/>
+  </g>
+
+  <text x="251" y="96" class="label">Зоны и электрооборудование</text>
+  <text x="250" y="381" class="small">Зона 0 — внутри чаши · Зона 1 — вокруг воды</text>
+
+  <!-- equipotential bonding line -->
+  <path d="M118 334H404" class="bond"/>
+  <circle cx="161" cy="334" r="5" fill="#27abc8"/>
+  <circle cx="256" cy="334" r="5" fill="#27abc8"/>
+  <circle cx="352" cy="334" r="5" fill="#27abc8"/>
+  <text x="262" y="356" class="small">Уравнивание потенциалов</text>
+
+  <!-- bonding links to metal parts -->
+  <path d="M161 334V304" class="bond"/>
+  <path d="M256 334V317" class="bond"/>
+  <path d="M352 334V239" class="bond"/>
+  <!-- ladder symbol / handrail -->
+  <path d="M146 173V129M176 173V129M146 145H176M146 160H176" class="stroke"/>
+  <!-- drain grate / fitting -->
+  <circle cx="256" cy="304" r="11" fill="#f9fdff" stroke="#174a67" stroke-width="2"/>
+  <path d="M250 304h12M256 298v12" class="fine"/>
+
+  <!-- grounding symbol -->
+  <g transform="translate(420 318)">
+    <path d="M0 16H38" class="bond"/>
+    <path d="M38 16V30" class="bond"/>
+    <path d="M22 30H54M27 37H49M32 44H44" class="stroke"/>
+    <text x="42" y="-2" class="small" text-anchor="middle">PE</text>
+  </g>
+  <text x="494" y="382" class="small">Защитное заземление</text>
+
+  <!-- RCD panel on right -->
+  <g filter="url(#shadow)">
+    <rect x="518" y="104" width="177" height="116" rx="18" class="equip"/>
+    <rect x="539" y="126" width="74" height="54" rx="9" fill="#f9fdff" stroke="#8dbdce" stroke-width="1.5"/>
+    <rect x="625" y="126" width="49" height="54" rx="9" fill="#f9fdff" stroke="#8dbdce" stroke-width="1.5"/>
+    <circle cx="652" cy="147" r="10" fill="#c8eaf3" stroke="#174a67" stroke-width="1.5"/>
+    <rect x="552" y="140" width="48" height="11" rx="5.5" fill="#9fdceb"/>
+    <path d="M552 161h31" class="fine"/>
+    <path d="M620 191H676" class="fine"/>
+  </g>
+  <text x="607" y="82" class="label">УЗО / защита линии</text>
+  <text x="576" y="246" class="small">Отключение при утечке</text>
+
+  <!-- warning and safe logic -->
+  <g filter="url(#shadow)">
+    <rect x="502" y="278" width="209" height="118" rx="18" fill="#fbfdff" stroke="#cfe3ea" stroke-width="1.5"/>
+    <path d="M535 313h44" class="flow"/>
+    <path d="M621 313h44" class="flow"/>
+    <rect x="579" y="289" width="42" height="48" rx="10" class="equip"/>
+    <path d="M592 302l8 14 8-14" fill="none" stroke="#1c9cb6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <g transform="translate(542 344)">
+      <path d="M18 2L34 32H2Z" class="warn"/>
+      <path d="M18 10v10" stroke="#b47b38" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="18" cy="25" r="1.8" fill="#b47b38"/>
+    </g>
+    <g transform="translate(647 344)">
+      <circle cx="16" cy="16" r="16" fill="#ecf8fb" stroke="#82c7d9" stroke-width="1.5"/>
+      <path d="M9 16l5 5 10-12" fill="none" stroke="#1e9f7a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <text x="606" y="419" class="small">Сигнал аварии → безопасное отключение</text>
+
+  <!-- zone callouts -->
+  <path d="M390 162H455" class="fine"/>
+  <text x="492" y="167" class="mini">Зона 1</text>
+  <path d="M368 215H455" class="fine"/>
+  <text x="492" y="220" class="mini">Светильник IP</text>
+  <path d="M390 296H455" class="fine"/>
+  <text x="503" y="301" class="mini">Металлические части</text>
+
+  <!-- bottom ribbon -->
+  <rect x="159" y="448" width="450" height="38" rx="19" fill="#edf8fb" stroke="#b5dce7" stroke-width="1.4"/>
+  <text x="384" y="472" class="label" font-size="16">Зоны • PE • уравнивание потенциалов • УЗО</text>
+</svg>
