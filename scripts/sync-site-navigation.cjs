@@ -9,6 +9,7 @@ const protectedFiles = new Set([
   'kalkulyatori/kalkulyator-obema-basseyna.html',
   'yandex_7501679aa8a44979.html'
 ]);
+const nonPublicDirectories = ['consent-versions/'];
 const additionalPublicPages = new Set([
   'privacy.html',
   'consent.html',
@@ -31,16 +32,21 @@ function getTrackedHtml() {
     .map(file => file.replaceAll('\\', '/'));
 }
 
-function isExcluded(file, html) {
-  return protectedFiles.has(file)
-    || file.startsWith('spravochnik/')
-    || file.startsWith('consent-versions/')
+function isNonPublicHtml(file, html) {
+  return file === 'yandex_7501679aa8a44979.html'
+    || nonPublicDirectories.some(directory => file.startsWith(directory))
     || /<meta\b[^>]*http-equiv=["']refresh["']/i.test(html);
 }
 
+function isManagedPage(file) {
+  return !protectedFiles.has(file) && !file.startsWith('spravochnik/');
+}
+
 function activeSection(file) {
-  if (file.startsWith('servis/') || file.startsWith('napravleniya/')) return 'services';
+  if (file === 'index.html' || file.startsWith('servis/') || file.startsWith('napravleniya/')) return 'services';
+  if (file.startsWith('spravochnik/')) return 'reference';
   if (file.startsWith('articles/') || file === 'blog/blog.html') return 'articles';
+  if (file.startsWith('portfolio/')) return 'portfolio';
   return '';
 }
 
@@ -108,7 +114,8 @@ function syncSpecialPage(file, original) {
 
 function updatePage(file, write) {
   const original = fs.readFileSync(file, 'utf8');
-  if (isExcluded(file, original)) return { file, excluded: true, changed: false };
+  if (isNonPublicHtml(file, original)) return { file, excluded: true, changed: false };
+  if (!isManagedPage(file)) return { file, changed: false, valid: hasExpectedMenu(file, original) };
 
   let updated = original;
   if (additionalPublicPages.has(file)) {
@@ -131,7 +138,9 @@ function hasExpectedMenu(file, html) {
   const anchors = [...menu.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)];
   const links = anchors.slice(0, 6).map(([, href]) => href);
   const labels = anchors.slice(0, 6).map(([, , label]) => label.replace(/<[^>]*>/g, '').trim());
-  const expectedHrefs = ['/#services', '/#why-us', '/#portfolio', '/blog/blog.html', '/spravochnik/', '/#contact'];
+  const expectedHrefs = file === 'index.html'
+    ? ['#services', '#why-us', '#portfolio', '/blog/blog.html', '/spravochnik/', '#contact']
+    : ['/#services', '/#why-us', '/#portfolio', '/blog/blog.html', '/spravochnik/', '/#contact'];
   const expectedLabels = ['Услуги', 'Почему мы', 'Портфолио', 'Статьи', 'Справочник', 'Контакты'];
   const active = [...menu.matchAll(/<li\b[^>]*class=["'][^"']*\bactive\b[^"']*["'][^>]*>/gi)].length;
   const expectedActive = activeSection(file) ? 1 : 0;
@@ -146,15 +155,15 @@ function hasExpectedMenu(file, html) {
 }
 
 const allHtml = getTrackedHtml();
-const selected = new Set(allHtml.filter(file => {
-  if (additionalPublicPages.has(file)) return true;
+const publicHtml = allHtml.filter(file => {
   const html = fs.readFileSync(file, 'utf8');
-  return !isExcluded(file, html) && /<nav\b(?=[^>]*\bid=["']nav["'])/i.test(html);
-}));
+  return !isNonPublicHtml(file, html);
+});
+const managedPages = publicHtml.filter(isManagedPage);
 const write = process.argv.includes('--write');
-const results = [...selected].sort().map(file => updatePage(file, write));
+const results = [...publicHtml].sort().map(file => updatePage(file, write && isManagedPage(file)));
 const errors = results.filter(result => result.error || result.valid === false);
-console.log(`${write ? 'Synchronized' : 'Checked'} ${results.length} public pages; changed ${results.filter(result => result.changed).length}.`);
+console.log(`${write ? `Synchronized ${managedPages.length} managed pages` : `Checked ${results.length} public HTML pages`}; changed ${results.filter(result => result.changed).length}.`);
 if (errors.length) {
   console.error(errors.map(result => `${result.file}: ${result.error || 'menu contract failed'}`).join('\n'));
   process.exitCode = 1;

@@ -40,7 +40,7 @@ for (const width of [390, 768, 1440]) {
     });
     await page.setViewportSize({ width, height: 844 });
     const audit = execFileSync(process.execPath, ['scripts/sync-site-navigation.cjs'], { encoding: 'utf8' });
-    expect(audit).toContain('Checked 62 public pages; changed 0.');
+    expect(audit).toMatch(/Checked \d+ public HTML pages; changed 0\./);
     const pageErrors = [];
     page.on('pageerror', error => pageErrors.push(error.message));
 
