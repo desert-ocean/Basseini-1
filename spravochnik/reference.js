@@ -17,41 +17,6 @@
     };
     search.addEventListener('input',update);category.addEventListener('change',update);update();
   }
-  if(document.body.classList.contains('reference-catalog-page')){
-    const backToTop=$('backToTop');
-    if(backToTop){
-      const place=()=>{
-        if(!backToTop.classList.contains('is-visible')){
-          backToTop.classList.remove('catalog-back-to-top--positioned');
-          backToTop.style.left='';backToTop.style.top='';backToTop.style.right='';backToTop.style.bottom='';
-          return;
-        }
-        const width=backToTop.offsetWidth,height=backToTop.offsetHeight,gap=16;
-        const xPositions=Array.from({length:5},(_,index)=>gap+(innerWidth-2*gap-width)*index/4);
-        const yPositions=Array.from({length:5},(_,index)=>gap+(innerHeight-2*gap-height)*index/4);
-        const candidates=xPositions.flatMap(left=>yPositions.map(top=>({left,top})));
-        const obstacles=[...document.querySelectorAll('#cards .reference-card__art, #cards .reference-card__category, #cards h2, #cards p, #cards .reference-card__action, #navPanelToggle')]
-          .filter(element=>element!==backToTop&&element.getClientRects().length>0&&getComputedStyle(element).visibility!=='hidden');
-        const score=point=>obstacles.reduce((sum,element)=>{
-          const rect=element.getBoundingClientRect();
-          const area=Math.max(0,Math.min(point.left+width,rect.right)-Math.max(point.left,rect.left))
-            *Math.max(0,Math.min(point.top+height,rect.bottom)-Math.max(point.top,rect.top));
-          const isArtwork=element.matches('.reference-card__art');
-          return sum+area*(isArtwork?1:1000);
-        },0);
-        const selected=candidates.reduce((best,point)=>score(point)<score(best)?point:best,candidates[0]);
-        backToTop.classList.add('catalog-back-to-top--positioned');
-        backToTop.style.left=`${selected.left}px`;backToTop.style.top=`${selected.top}px`;
-        backToTop.style.right='auto';backToTop.style.bottom='auto';
-      };
-      let scheduled=false;
-      const schedule=()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;place()})};
-      window.addEventListener('scroll',schedule,{passive:true});
-      window.addEventListener('resize',schedule);
-      new MutationObserver(schedule).observe(backToTop,{attributes:true,attributeFilter:['class']});
-      schedule();
-    }
-  }
   const series=$('series'),diameter=$('diameter'),flow=$('flow'),mode=$('pipe-mode'),custom=$('custom-id');
   if(series&&diameter&&flow&&core){
     const fmt=(n,d=2)=>n.toLocaleString('ru-RU',{maximumFractionDigits:d});

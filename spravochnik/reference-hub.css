@@ -176,16 +176,6 @@
 	outline-offset: 3px;
 }
 
-.reference-catalog-page #backToTop.catalog-back-to-top--positioned {
-	bottom: auto;
-	transform: none;
-}
-
-.reference-catalog-page #backToTop.catalog-back-to-top--positioned:hover,
-.reference-catalog-page #backToTop.catalog-back-to-top--positioned:focus-visible {
-	transform: translateY(-0.15rem);
-}
-
 @media (max-width: 736px) {
 	.reference-hub-page .major p {
 		font-size: 1rem;

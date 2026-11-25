@@ -129,31 +129,69 @@ test('back-to-top uses the shared control and respects reduced motion', async ({
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThan(2);
 });
 
-test('back-to-top does not cover catalog text or actions while scrolling', async ({ page }) => {
+test('catalog back-to-top matches the shared homepage control and stays fixed after filtering', async ({ page }) => {
   for (const width of [390, 768, 1440]) {
     await page.setViewportSize({ width, height: 844 });
+
+    await page.goto('/');
+    await expect(page.locator('body')).not.toHaveClass(/is-preload/);
+    await page.evaluate(() => window.scrollTo(0, 700));
+    const homepageButton = page.locator('#backToTop');
+    await expect(homepageButton).toHaveClass(/is-visible/);
+    const homepageStyle = await homepageButton.evaluate(button => {
+      const style = getComputedStyle(button);
+      const rect = button.getBoundingClientRect();
+      const before = getComputedStyle(button, '::before');
+      return {
+        rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+        position: style.position,
+        background: style.backgroundColor,
+        color: style.color,
+        borderRadius: style.borderRadius,
+        zIndex: style.zIndex,
+        arrow: { content: before.content, color: before.color, fontSize: before.fontSize }
+      };
+    });
+
     await page.goto('/spravochnik/');
     await expect(page.locator('body')).not.toHaveClass(/is-preload/);
-    const collisions = await page.evaluate(async () => {
-      const button = document.getElementById('backToTop');
-      const max = document.documentElement.scrollHeight - innerHeight;
-      const overlaps = [];
-      for (let y = 300; y <= max; y += 180) {
-        scrollTo({ top: y, behavior: 'instant' });
-        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-        const actualY = Math.round(scrollY);
-        const b = button.getBoundingClientRect();
-        if (getComputedStyle(button).opacity === '0') continue;
-        for (const element of document.querySelectorAll('#cards h2, #cards p, #cards .reference-card__action')) {
-          const r = element.getBoundingClientRect();
-          if (r.width && r.height && r.bottom > 0 && r.top < innerHeight && b.left < r.right && b.right > r.left && b.top < r.bottom && b.bottom > r.top) {
-            overlaps.push({ text: element.textContent.trim().slice(0, 40), y, actualY, button: { x: Math.round(b.x), y: Math.round(b.y) }, position: button.className });
-          }
-        }
-      }
-      scrollTo(0, 0);
-      return overlaps;
+    const catalogButton = page.locator('#backToTop');
+    await expect(catalogButton).toHaveCount(1);
+    await page.evaluate(() => window.scrollTo(0, 700));
+    await expect(catalogButton).toHaveClass(/is-visible/);
+    const catalogStyle = await catalogButton.evaluate(button => {
+      const style = getComputedStyle(button);
+      const rect = button.getBoundingClientRect();
+      const before = getComputedStyle(button, '::before');
+      return {
+        rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+        position: style.position,
+        background: style.backgroundColor,
+        color: style.color,
+        borderRadius: style.borderRadius,
+        zIndex: style.zIndex,
+        arrow: { content: before.content, color: before.color, fontSize: before.fontSize },
+        inlineStyle: button.getAttribute('style'),
+        positionedClass: button.classList.contains('catalog-back-to-top--positioned')
+      };
     });
-    expect(collisions, `button overlaps at ${width}px`).toEqual([]);
+    expect(catalogStyle).toMatchObject(homepageStyle);
+    expect(catalogStyle.inlineStyle).toBeNull();
+    expect(catalogStyle.positionedClass).toBe(false);
+
+    await page.locator('#search').fill('фильтр');
+    await page.locator('#category').selectOption({ label: 'Фильтрация' });
+    for (const scrollY of [850, 1100]) {
+      await page.evaluate(y => window.scrollTo(0, y), scrollY);
+      await expect(catalogButton).toHaveClass(/is-visible/);
+      const rect = await catalogButton.boundingBox();
+      expect(rect.x).toBeCloseTo(homepageStyle.rect.x, 1);
+      expect(rect.y).toBeCloseTo(homepageStyle.rect.y, 1);
+      expect(await catalogButton.getAttribute('style')).toBeNull();
+      expect(await catalogButton).not.toHaveClass(/catalog-back-to-top--positioned/);
+    }
+    await catalogButton.click();
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThan(2);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });
