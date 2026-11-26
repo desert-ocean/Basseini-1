@@ -117,6 +117,9 @@ function updatePage(file, write) {
   if (isNonPublicHtml(file, original)) return { file, excluded: true, changed: false };
   if (!isManagedPage(file)) return { file, changed: false, valid: hasExpectedMenu(file, original) };
 
+  const originalIsValid = hasExpectedMenu(file, original);
+  if (!write && originalIsValid) return { file, changed: false, valid: true };
+
   let updated = original;
   if (additionalPublicPages.has(file)) {
     updated = syncSpecialPage(file, original);
@@ -128,43 +131,92 @@ function updatePage(file, write) {
 
   const changed = updated !== original;
   if (write && changed) fs.writeFileSync(file, updated, 'utf8');
-  return { file, changed, valid: hasExpectedMenu(file, updated) };
+  return {
+    file,
+    changed,
+    valid: write ? hasExpectedMenu(file, updated) : originalIsValid,
+    needsWrite: !originalIsValid
+  };
 }
 
 function hasExpectedMenu(file, html) {
-  const menuPattern = /<nav\b(?=[^>]*\bid=["']nav["'])[^>]*>[\s\S]*?<\/nav>/i;
-  const menu = html.match(menuPattern)?.[0];
-  if (!menu) return false;
-  const anchors = [...menu.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)];
-  const links = anchors.slice(0, 6).map(([, href]) => href);
-  const labels = anchors.slice(0, 6).map(([, , label]) => label.replace(/<[^>]*>/g, '').trim());
+  const navs = [...html.matchAll(/<nav\b([^>]*)>([\s\S]*?)<\/nav\s*>/gi)]
+    .filter(([, attrs]) => readAttribute(attrs, 'id') === 'nav');
+  if (navs.length !== 1) return false;
+  const menu = navs[0][2];
+  const lists = [...menu.matchAll(/<ul\b([^>]*)>([\s\S]*?)<\/ul\s*>/gi)];
+  const linkLists = lists.filter(([, attrs]) => hasClass(attrs, 'links'));
+  const iconLists = lists.filter(([, attrs]) => hasClass(attrs, 'icons'));
+  if (linkLists.length !== 1 || iconLists.length !== 1) return false;
+
+  const links = listItems(linkLists[0][2]);
+  const icons = listItems(iconLists[0][2]);
   const expectedHrefs = file === 'index.html'
     ? ['#services', '#why-us', '#portfolio', '/blog/blog.html', '/spravochnik/', '#contact']
     : ['/#services', '/#why-us', '/#portfolio', '/blog/blog.html', '/spravochnik/', '/#contact'];
   const expectedLabels = ['Услуги', 'Почему мы', 'Портфолио', 'Статьи', 'Справочник', 'Контакты'];
-  const active = [...menu.matchAll(/<li\b[^>]*class=["'][^"']*\bactive\b[^"']*["'][^>]*>/gi)].length;
-  const expectedActive = activeSection(file) ? 1 : 0;
+  const expectedContacts = [
+    { href: 'tel:+74956446654', label: 'Телефон', icon: 'fa-phone' },
+    { href: 'https://wa.me/79856446654', label: 'WhatsApp', icon: 'fa-whatsapp' },
+    { href: 'https://t.me/desertocean', label: 'Telegram', icon: 'fa-telegram-plane' }
+  ];
+  const expectedActive = activeSection(file);
+
   return links.length === 6
-    && links.every((href, index) => href === expectedHrefs[index])
-    && labels.every((label, index) => label === expectedLabels[index])
-    && (anchors.length - 6) === 3
-    && active === expectedActive
-    && /id=["']nav["']/.test(menu)
-    && /class=["']links["']/.test(menu)
-    && /class=["']icons["']/.test(menu);
+    && links.every((item, index) => item.href === expectedHrefs[index]
+      && item.label === expectedLabels[index]
+      && item.active === (expectedActive === ['services', 'why-us', 'portfolio', 'articles', 'reference', 'contact'][index]))
+    && icons.length === expectedContacts.length
+    && icons.every((item, index) => item.href === expectedContacts[index].href
+      && item.label === expectedContacts[index].label
+      && item.classes.includes(expectedContacts[index].icon));
 }
 
-const allHtml = getTrackedHtml();
-const publicHtml = allHtml.filter(file => {
-  const html = fs.readFileSync(file, 'utf8');
-  return !isNonPublicHtml(file, html);
-});
-const managedPages = publicHtml.filter(isManagedPage);
-const write = process.argv.includes('--write');
-const results = [...publicHtml].sort().map(file => updatePage(file, write && isManagedPage(file)));
-const errors = results.filter(result => result.error || result.valid === false);
-console.log(`${write ? `Synchronized ${managedPages.length} managed pages` : `Checked ${results.length} public HTML pages`}; changed ${results.filter(result => result.changed).length}.`);
-if (errors.length) {
-  console.error(errors.map(result => `${result.file}: ${result.error || 'menu contract failed'}`).join('\n'));
-  process.exitCode = 1;
+function readAttribute(attrs, name) {
+  const match = attrs.match(new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, 'i'));
+  return match ? (match[1] ?? match[2] ?? match[3] ?? '') : '';
 }
+
+function hasClass(attrs, className) {
+  return readAttribute(attrs, 'class').split(/\s+/).includes(className);
+}
+
+function listItems(listHtml) {
+  return [...listHtml.matchAll(/<li\b([^>]*)>([\s\S]*?)<\/li\s*>/gi)].map(([, liAttrs, content]) => {
+    const anchor = content.match(/<a\b([^>]*)>([\s\S]*?)<\/a\s*>/i);
+    if (!anchor) return { href: '', label: '', classes: '', active: hasClass(liAttrs, 'active') };
+    const anchorText = anchor[2].replace(/<[^>]*>/g, '').replace(/&nbsp;/gi, ' ').replace(/&amp;/gi, '&').trim();
+    return {
+      href: readAttribute(anchor[1], 'href'),
+      label: anchorText,
+      classes: readAttribute(anchor[1], 'class').split(/\s+/).filter(Boolean),
+      active: hasClass(liAttrs, 'active')
+    };
+  });
+}
+
+if (require.main === module) {
+  const allHtml = getTrackedHtml();
+  const publicHtml = allHtml.filter(file => {
+    if (!fs.existsSync(file)) return false;
+    const html = fs.readFileSync(file, 'utf8');
+    return !isNonPublicHtml(file, html);
+  });
+  const managedPages = publicHtml.filter(isManagedPage);
+  const write = process.argv.includes('--write');
+  const results = [...publicHtml].sort().map(file => updatePage(file, write && isManagedPage(file)));
+  const errors = results.filter(result => result.error || result.valid === false);
+  console.log(`${write ? `Synchronized ${managedPages.length} managed pages` : `Checked ${results.length} public HTML pages`}; changed ${results.filter(result => result.changed).length}.`);
+  if (errors.length) {
+    console.error(errors.map(result => `${result.file}: ${result.error || 'menu contract failed'}`).join('\n'));
+    process.exitCode = 1;
+  }
+}
+
+module.exports = {
+  activeSection,
+  hasExpectedMenu,
+  listItems,
+  renderNavigation,
+  updatePage
+};

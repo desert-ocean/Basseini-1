@@ -20,9 +20,7 @@ const routes = [
   '/404.html',
   '/privacy.html',
   '/consent.html',
-  '/tehnicheskoe-zadanie/',
-  '/generic.html',
-  '/elements.html'
+  '/tehnicheskoe-zadanie/'
 ];
 
 function expectedActive(route) {

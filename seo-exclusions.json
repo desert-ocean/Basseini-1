@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "excludedFromIndexingAndSitemap": [
+    { "path": "404.html", "reason": "Страница ошибки; не является поисковой посадочной страницей." },
+    { "path": "yandex_7501679aa8a44979.html", "reason": "Файл подтверждения владения сайтом для вебмастера." },
+    { "path": "privacy.html", "reason": "Юридическая политика; доступна по ссылкам сайта, robots noindex, follow." },
+    { "path": "consent.html", "reason": "Юридическое согласие; доступно по ссылкам сайта, robots noindex, follow." },
+    { "path": "consent-versions/alpool-consent-2026-11-08-v1.html", "reason": "Архивная редакция согласия; canonical на действующую редакцию и noindex." },
+    { "path": "consent-versions/draft-2026-11-08-v2.html", "reason": "Архивный черновик юридического текста; noindex, follow." },
+    { "path": "consent-versions/draft-2026-11-08-v3.html", "reason": "Архивный черновик юридического текста; noindex, follow." },
+    { "path": "kalkulyatori/kalkulyator-obema-basseyna.html", "reason": "Технический meta-refresh переход на действующий калькулятор в справочнике; noindex." }
+  ],
+  "removedDemonstrationPages": ["elements.html", "generic.html"],
+  "knownIndexableOrphans": [
+    "napravleniya/oborudovanie-dlya-basseyna.html",
+    "napravleniya/obsluzhivanie-basseyna-hub.html",
+    "napravleniya/otdelka-basseyna.html",
+    "napravleniya/premium-resheniya.html",
+    "napravleniya/proektirovanie-basseynov.html",
+    "napravleniya/remont-basseynov.html",
+    "napravleniya/stroitelstvo-basseynov.html"
+  ]
+}
